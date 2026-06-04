@@ -1,9 +1,5 @@
 using Assets.Scripts.Model;
 using Scripts.Components;
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEditor.Animations;
 using UnityEngine;
 
@@ -11,6 +7,7 @@ namespace Scripts
 {
     public class Hero : MonoBehaviour
     {
+        //Данные для игрока
         private GameSession _gameSession;
 
         //Скорость персонажа, сила прыжка и макс. кол. доп прыжков

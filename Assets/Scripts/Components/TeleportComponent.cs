@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace Scripts.Components
@@ -10,7 +8,6 @@ namespace Scripts.Components
 
         public void Teleport(GameObject target)
         {
-            Debug.Log("Работает");
             target.transform.position = _destTranform.position;
         }
     }
