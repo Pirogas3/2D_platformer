@@ -1,0 +1,63 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!78 &1
+TagManager:
+  serializedVersion: 2
+  tags:
+  - MovingPlatform
+  - Enemy
+  layers:
+  - Default
+  - TransparentFX
+  - Ignore Raycast
+  - Background
+  - Water
+  - UI
+  - Ground
+  - Interactables
+  - Trash
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  m_SortingLayers:
+  - name: Background
+    uniqueID: 4248796525
+    locked: 0
+  - name: "\u0421louds"
+    uniqueID: 2707650503
+    locked: 0
+  - name: BackTrees
+    uniqueID: 1565004295
+    locked: 0
+  - name: Ground
+    uniqueID: 3128645105
+    locked: 0
+  - name: Player
+    uniqueID: 2821704273
+    locked: 0
+  - name: Grass
+    uniqueID: 1232631321
+    locked: 0
+  - name: Default
+    uniqueID: 0
+    locked: 0
