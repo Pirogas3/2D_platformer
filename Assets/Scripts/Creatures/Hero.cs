@@ -3,7 +3,7 @@ using Scripts.Components;
 using UnityEditor.Animations;
 using UnityEngine;
 
-namespace Scripts
+namespace Scripts.Creatures
 {
     public class Hero : MonoBehaviour
     {

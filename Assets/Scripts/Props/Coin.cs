@@ -1,6 +1,7 @@
 using UnityEngine;
+using Scripts.Creatures;
 
-namespace Scripts
+namespace Scripts.Props
 {
     public class Coin : MonoBehaviour
     {

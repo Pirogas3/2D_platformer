@@ -15,10 +15,14 @@ namespace Scripts.Components
         {
             _health -= damage;
             OnHealthChanged?.Invoke(_health);
-            _onDamage?.Invoke();
             if (_health <= 0)
             {
+                gameObject.tag = "Untagged";
                 _onDie?.Invoke();
+            }
+            else
+            {
+                _onDamage?.Invoke();
             }
         }
 
