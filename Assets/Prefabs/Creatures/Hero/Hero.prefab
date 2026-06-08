@@ -17,6 +17,7 @@ GameObject:
   - component: {fileID: 3460630329764527741}
   - component: {fileID: 6948727606871584072}
   - component: {fileID: 5585551586713403144}
+  - component: {fileID: 44946075099930308}
   m_Layer: 0
   m_Name: Hero
   m_TagString: Player
@@ -122,22 +123,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 08f74481868bf2d40825b66db6ffbda8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _particles: {fileID: 44946075099930308}
   _speed: 4.5
   _jumpPower: 10
   _maxExtraJumps: 1
   _groundCheck: {fileID: 4804697892880738580}
+  _attackDamage: 0
+  _attackHitbox: {fileID: 4256680600277974716}
   _interactionRadius: 1
   _interactionLayer:
     serializedVersion: 2
     m_Bits: 128
-  _footStepParticles: {fileID: 1074949101952980634}
-  _jumpParticles: {fileID: 461839050356600211}
-  _fallParticles: {fileID: 5125542322684180014}
   _hitParticles: {fileID: 5111943393226388899}
   _heroUnarmed: {fileID: 9100000, guid: b7c98743ed47ae3478a3049915aa9d67, type: 2}
   _heroArmed: {fileID: 9100000, guid: 97cc849b47b4b89498e4a05846dd6f74, type: 2}
-  _attackDamage: 0
-  _attackHitbox: {fileID: 4256680600277974716}
 --- !u!114 &946119232345141262
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -332,8 +331,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 4312153819627111551}
-        m_TargetAssemblyTypeName: Scripts.Hero, Assembly-CSharp
-        m_MethodName: TakeDamage
+        m_TargetAssemblyTypeName: Scripts.Creatures.Hero, Assembly-CSharp
+        m_MethodName: TakeDamageFromSpikes
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -376,6 +375,25 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &44946075099930308
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2773358274999582965}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 82e3cf02a249f3e4e8723c5b6fe43370, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _spawners:
+  - ID: FootStep
+    Component: {fileID: 1074949101952980634}
+  - ID: Jump
+    Component: {fileID: 461839050356600211}
+  - ID: Fall
+    Component: {fileID: 5125542322684180014}
 --- !u!1001 &392863731001232703
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -1,3 +1,4 @@
+using Assets.Scripts.Components;
 using Assets.Scripts.Model;
 using Scripts.Components;
 using UnityEditor.Animations;
@@ -5,64 +6,31 @@ using UnityEngine;
 
 namespace Scripts.Creatures
 {
-    public class Hero : MonoBehaviour
+    public class Hero : Creature
     {
         //Данные для игрока
         private GameSession _gameSession;
 
-        //Скорость персонажа, сила прыжка и макс. кол. доп прыжков
-        [Header("Movement settings")]
-        [SerializeField] private float _speed;
-        [SerializeField] private float _jumpPower;
-        [SerializeField] private int _maxExtraJumps;
-
-        //Граунд чекер
-        [Header("Ground Checker")]
-        [SerializeField] private LayerCheck _groundCheck;
-
-        //Интерактивность (настройка слоя интерактивных объектов и радиуса в котором проверяются интерактивные объекты)
+        //Интерактивность
         [Header("Interaction settings")]
-        [SerializeField] private float _interactionRadius;
-        [SerializeField] private LayerMask _interactionLayer;
+        [SerializeField] private float _interactionRadius; //радиус в котором проверяются интерактивные объекты
+        [SerializeField] private LayerMask _interactionLayer; //слой интерактивных объектов
+        private Collider2D[] _interactionResult = new Collider2D[1];
 
-        //Партикл анимации
+        //Анимации
         [Header("Animations")]
-        [SerializeField] private SpawnComponent _footStepParticles;
-        [SerializeField] private SpawnComponent _jumpParticles;
-        [SerializeField] private SpawnComponent _fallParticles;
         [SerializeField] private ParticleSystem _hitParticles;
         [SerializeField] private AnimatorController _heroUnarmed;
         [SerializeField] private AnimatorController _heroArmed;
 
-        //Настройка атаки
-        [Header("Attack settings")]
-        [SerializeField] private int _attackDamage;
-        [SerializeField] private AttackHitbox _attackHitbox;
-
-        private Vector2 _moveDirection;
-        private Rigidbody2D _rigidbody;
-        private Animator _animator;
-        private Collider2D[] _interactionResult = new Collider2D[1];
-
-        private static readonly int IsGround = Animator.StringToHash("is_ground");
-        private static readonly int IsRunning = Animator.StringToHash("is_running");
-        private static readonly int VerticalVelocity = Animator.StringToHash("vertical_velocity");
-        private static readonly int Hit = Animator.StringToHash("hit");
-        private static readonly int AttackKey = Animator.StringToHash("attack");
-
-        private int _jumpsLeft;
-        private bool _jumpRequested;
-        private bool _doubleJumpUsedThisAirborne;
-        private float _timeInAir;
         private Transform _activePlatform; //Запоминаем текущую платформу
 
-        private void Awake()
+        protected override void Awake()
         {
-            _rigidbody = GetComponent<Rigidbody2D>();
-            _animator = GetComponent<Animator>();
+            base.Awake();
         }
 
-        private void Start()
+        protected override void Start()
         {
             _gameSession = FindObjectOfType<GameSession>();
 
@@ -78,22 +46,9 @@ namespace Scripts.Creatures
             }
         }
 
-        private void FixedUpdate()
+        protected override void FixedUpdate()
         {
-            //горизонтальное движение
-            _rigidbody.velocity = new Vector2(_moveDirection.x * _speed, _rigidbody.velocity.y);
-
-            //обработка прыжка и логики падения
-            JumpCalc();
-            LogicOfFalling();
-
-            //обработка анимаций
-            _animator.SetBool(IsGround, IsGrounded());
-            _animator.SetBool(IsRunning, _moveDirection.x != 0);
-            _animator.SetFloat(VerticalVelocity, _rigidbody.velocity.y);
-
-            //обработка направления спрайта персонажа
-            SpriteDirection();
+            base.FixedUpdate();
         }
 
         private void OnCollisionEnter2D(Collision2D collision)
@@ -114,95 +69,9 @@ namespace Scripts.Creatures
             }
         }
 
-        private void LogicOfFalling()
+        public override void TakeDamageFromSpikes()
         {
-            bool isGrounded = IsGrounded();
-            bool inTheAir = isGrounded ? false : true;
-
-            if (inTheAir)
-            {
-                _timeInAir += Time.deltaTime;
-            }
-
-            if ((_doubleJumpUsedThisAirborne || _timeInAir > 2f) && isGrounded == true)
-            {
-                SpawnFallDast();
-            }
-
-            if (isGrounded)
-            {
-                _timeInAir = 0;
-                _doubleJumpUsedThisAirborne = false;
-            }
-        }
-
-        public void JumpRequest()
-        {
-            _jumpRequested = true;
-        }
-
-        private void JumpCalc()
-        {
-            if (_jumpRequested)
-            {
-                if (IsGrounded())
-                {
-                    PerformJump();
-                    _jumpsLeft = _maxExtraJumps;
-                    _doubleJumpUsedThisAirborne = false;
-                }
-                else if (_jumpsLeft > 0)
-                {
-                    PerformJump();
-                    _jumpsLeft--;
-                    _doubleJumpUsedThisAirborne = true;
-                }
-                _jumpRequested = false;
-            }
-
-            if (IsGrounded())
-            {
-                _jumpsLeft = _maxExtraJumps;
-            }
-        }
-
-        private void PerformJump()
-        {
-            _rigidbody.velocity = new Vector2(_rigidbody.velocity.x, 0f);
-            _rigidbody.AddForce(Vector2.up * _jumpPower, ForceMode2D.Impulse);
-        }
-
-        private bool IsGrounded()
-        {
-            return _groundCheck.IsTouchingLayer;
-        }
-
-        private void SpriteDirection()
-        {
-            if (_moveDirection.x > 0)
-            {
-                transform.localScale = Vector3.one;
-                if (_attackHitbox != null)
-                    _attackHitbox.transform.localRotation = Quaternion.identity;
-            }
-            else if (_moveDirection.x < 0)
-            {
-                transform.localScale = new Vector3(-1, 1, 1);
-                if (_attackHitbox != null)
-                    _attackHitbox.transform.localRotation = Quaternion.Euler(0, 0, 180);
-            }
-        }
-
-        public void SetMovementDirection(Vector2 direction)
-        {
-            _moveDirection = direction;
-        }
-
-        public void TakeDamage()
-        {
-            _animator.SetTrigger(Hit);
-            _rigidbody.velocity = new Vector2(_rigidbody.velocity.x, 0f);
-            _rigidbody.AddForce(Vector2.up * _jumpPower, ForceMode2D.Impulse);
+            base.TakeDamageFromSpikes();
 
             if (_gameSession.PlayerData.Money > 0)
             {
@@ -246,31 +115,10 @@ namespace Scripts.Creatures
             }
         }
 
-        public void SpawnFootDast()
-        {
-            _footStepParticles.Spawn();
-        }
-
-        public void SpawnJumpDast()
-        {
-            _jumpParticles.Spawn();
-        }
-
-        public void SpawnFallDast()
-        {
-            _fallParticles.Spawn();
-        }
-
-        public void Attack()
+        public override void Attack()
         {
             if (!_gameSession.PlayerData.IsArmed) return;
-            _animator.SetTrigger(AttackKey);
-        }
-
-        public void PerformDamage()
-        {
-            if (_attackHitbox != null)
-                _attackHitbox.Attack(_attackDamage);
+            base.Attack();
         }
 
         public void ChangeArmedOrUnarmed()
