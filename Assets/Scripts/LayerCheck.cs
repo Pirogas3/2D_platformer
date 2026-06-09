@@ -4,7 +4,7 @@ namespace Scripts
 {
     public class LayerCheck : MonoBehaviour
     {
-        [SerializeField] private LayerMask _groundLayer;
+        [SerializeField] private LayerMask _layer;
         private Collider2D _collider;
 
         public bool IsTouchingLayer;
@@ -16,12 +16,12 @@ namespace Scripts
 
         private void OnTriggerStay2D(Collider2D collision)
         {
-            IsTouchingLayer = _collider.IsTouchingLayers(_groundLayer);
+            IsTouchingLayer = _collider.IsTouchingLayers(_layer);
         }
 
         private void OnTriggerExit2D(Collider2D collision)
         {
-            IsTouchingLayer = _collider.IsTouchingLayers(_groundLayer);
+            IsTouchingLayer = _collider.IsTouchingLayers(_layer);
         }
     }
 }

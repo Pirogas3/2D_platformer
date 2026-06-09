@@ -158,7 +158,24 @@ namespace Scripts.Creatures
             }
             else
             {
+                bool isGrounded = IsGrounded();
+                bool inTheAir = isGrounded ? false : true;
 
+                if (inTheAir)
+                {
+                    _timeInAir += Time.deltaTime;
+                }
+
+                if (_timeInAir > 2f && isGrounded == true)
+                {
+                    _particles.Spawn("Fall");
+                }
+
+                if (isGrounded)
+                {
+                    _timeInAir = 0;
+                    _doubleJumpUsedThisAirborne = false;
+                }
             }
         }
 
