@@ -7,6 +7,7 @@ namespace Assets.Scripts.Model
     {
         public int Money;
         public int Hp;
+        public int SwordCount;
         public bool IsArmed;
     }
 }

@@ -1,8 +1,5 @@
 using Assets.Scripts.Components;
-using Assets.Scripts.Model;
 using Scripts.Components;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace Scripts.Creatures
@@ -11,13 +8,13 @@ namespace Scripts.Creatures
     {
         //Партикл анимации
         [Header("Particles")]
-        [SerializeField] private SpawnListComponent _particles;
+        [SerializeField] protected SpawnListComponent _particles;
 
         //Скорость существа, сила прыжка и макс. кол. доп прыжков
         [Header("Movement settings")]
-        [SerializeField] private float _speed;
-        [SerializeField] private float _jumpPower;
-        [SerializeField] private int _maxExtraJumps;
+        [SerializeField] protected float _speed;
+        [SerializeField] protected float _jumpPower;
+        [SerializeField] protected int _maxExtraJumps;
 
         //Чекеры
         [Header("Checkers")]
@@ -29,18 +26,20 @@ namespace Scripts.Creatures
         [SerializeField] private AttackHitbox _attackHitbox;
 
         private Vector2 _moveDirection;
-        private Rigidbody2D _rigidbody;
+        protected Rigidbody2D _rigidbody;
         protected Animator _animator;
         private int _jumpsLeft;
         private bool _jumpRequested;
         private bool _doubleJumpUsedThisAirborne;
         private float _timeInAir;
+        private Transform _activePlatform; //Запоминаем текущую платформу
 
         private static readonly int IsGround = Animator.StringToHash("is_ground");
         private static readonly int IsRunning = Animator.StringToHash("is_running");
         private static readonly int VerticalVelocity = Animator.StringToHash("vertical_velocity");
         private static readonly int Hit = Animator.StringToHash("hit");
         private static readonly int AttackKey = Animator.StringToHash("attack");
+        protected static readonly int ThrowKey = Animator.StringToHash("throw");
 
         protected virtual void Awake()
         {
@@ -69,6 +68,24 @@ namespace Scripts.Creatures
 
             //обработка направления спрайта существа
             SpriteDirection();
+        }
+
+        private void OnCollisionEnter2D(Collision2D collision)
+        {
+            if (collision.gameObject.CompareTag("MovingPlatform"))
+            {
+                _activePlatform = collision.transform;
+                transform.SetParent(_activePlatform);
+            }
+        }
+
+        private void OnCollisionExit2D(Collision2D collision)
+        {
+            if (collision.gameObject.CompareTag("MovingPlatform"))
+            {
+                _activePlatform = null;
+                transform.SetParent(null);
+            }
         }
 
         protected bool IsGrounded()
@@ -199,6 +216,12 @@ namespace Scripts.Creatures
         public virtual void Attack()
         {
             _animator.SetTrigger(AttackKey);
+        }
+
+        public virtual void ThrowAttack(float holdTime)
+        {
+            _animator.SetTrigger(ThrowKey);
+            _particles.Spawn("Throw");
         }
 
         public void PerformDamage()

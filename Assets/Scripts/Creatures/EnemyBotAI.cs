@@ -1,4 +1,5 @@
 using Assets.Scripts.Components;
+using Assets.Scripts.Creatures;
 using System.Collections;
 using UnityEngine;
 
@@ -8,6 +9,7 @@ namespace Scripts.Creatures
     {
         [SerializeField] private LayerCheck _vision;
         [SerializeField] private LayerCheck _attackRange;
+        [SerializeField] private Patrol _patrol;
 
         [SerializeField] private float _alarmDelay = 0.5f;
         [SerializeField] private float _attackCooldown = 1f;
@@ -16,11 +18,16 @@ namespace Scripts.Creatures
         private GameObject _target;
         private SpawnListComponent _particles;
         private Creature _creature;
+        private Animator _animator;
+        private bool _isDead = false;
+
+        private static readonly int IsDeadKey = Animator.StringToHash("is_dead");
 
         private void Awake()
         {
             _particles = GetComponent<SpawnListComponent>();
             _creature = GetComponent<Creature>();
+            _animator = GetComponent<Animator>();
         }
 
         private void Start()
@@ -30,7 +37,17 @@ namespace Scripts.Creatures
 
         private IEnumerator Patrolling()
         {
-            yield return null;
+            while (true)
+            {
+                if (_patrol != null)
+                {
+                    yield return _patrol.DoPatrol(_creature);
+                }
+                else
+                {
+                    yield return null;
+                }
+            }
         }
 
         private void StartState(IEnumerator coroutine)
@@ -54,7 +71,7 @@ namespace Scripts.Creatures
             {
                 if (_attackRange.IsTouchingLayer)
                 {
-                    StartState(Attack());
+                    StartState(Attacking());
                 }
                 else
                 {
@@ -62,14 +79,19 @@ namespace Scripts.Creatures
                 }
                 yield return null;
             }
+            yield return new WaitForSeconds(_alarmDelay);
+
+            _creature.SetMovementDirection(Vector2.zero);
+            yield return new WaitForSeconds(_alarmDelay);
+
+            StartState(Patrolling());
         }
 
-        private IEnumerator Attack()
+        private IEnumerator Attacking()
         {
             while (_attackRange.IsTouchingLayer)
             {
-                Vector2 stopMove = Vector2.zero;
-                _creature.SetMovementDirection(stopMove);
+                _creature.SetMovementDirection(Vector2.zero);
                 _creature.Attack();
                 yield return new WaitForSeconds(_attackCooldown);
             }
@@ -80,8 +102,8 @@ namespace Scripts.Creatures
             }
             else
             {
-                Vector2 stopMove = Vector2.zero;
-                _creature.SetMovementDirection(stopMove);
+                _creature.SetMovementDirection(Vector2.zero);
+                yield return new WaitForSeconds(_alarmDelay);
                 StartState(Patrolling());
             }
         }
@@ -90,14 +112,26 @@ namespace Scripts.Creatures
         {
             var direction = _target.transform.position - transform.position;
             direction.y = 0;
-            _creature.SetMovementDirection(direction);
+            _creature.SetMovementDirection(direction.normalized);
         }
 
         public void OnHeroInVision(GameObject target)
         {
+            if (_isDead)
+                return;
+
             _target = target;
 
             StartState(AgroToHero());
+        }
+
+        public void OnDie()
+        {
+            if (_currentCoroutine != null)
+                StopCoroutine(_currentCoroutine);
+
+            _isDead = true;
+            _animator.SetBool(IsDeadKey, _isDead);
         }
     }
 }

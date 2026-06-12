@@ -9349,6 +9349,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Spikes (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 4567281206118970225, guid: b914d24559d1fd549959f736abf9ee57, type: 3}
+      propertyPath: _action.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 1386881348}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -10280,6 +10284,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Spikes
       objectReference: {fileID: 0}
+    - target: {fileID: 4567281206118970225, guid: b914d24559d1fd549959f736abf9ee57, type: 3}
+      propertyPath: _action.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 1386881348}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -10359,9 +10367,25 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 386253215502546597, guid: c16c9c600787ee548aee0bfe48516b04, type: 3}
+      propertyPath: _action.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 386253215502546597, guid: c16c9c600787ee548aee0bfe48516b04, type: 3}
       propertyPath: _action.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1386881348}
+    - target: {fileID: 386253215502546597, guid: c16c9c600787ee548aee0bfe48516b04, type: 3}
+      propertyPath: _action.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: CollectSword
+      objectReference: {fileID: 0}
+    - target: {fileID: 386253215502546597, guid: c16c9c600787ee548aee0bfe48516b04, type: 3}
+      propertyPath: _action.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: Scripts.Creatures.Hero, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 386253215502546597, guid: c16c9c600787ee548aee0bfe48516b04, type: 3}
+      propertyPath: _action.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_IntArgument
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 3242891467671863014, guid: c16c9c600787ee548aee0bfe48516b04, type: 3}
       propertyPath: m_Name
       value: Sword

@@ -1,6 +1,6 @@
-using Assets.Scripts.Components;
 using Assets.Scripts.Model;
 using Scripts.Components;
+using System.Collections;
 using UnityEditor.Animations;
 using UnityEngine;
 
@@ -23,7 +23,10 @@ namespace Scripts.Creatures
         [SerializeField] private AnimatorController _heroUnarmed;
         [SerializeField] private AnimatorController _heroArmed;
 
-        private Transform _activePlatform; //Запоминаем текущую платформу
+        //Дальняя атака
+        [Header("Dist Attack")]
+        [SerializeField] private float _throwCooldown = 0.5f;
+        private float _lastThrowTime;
 
         protected override void Awake()
         {
@@ -49,24 +52,6 @@ namespace Scripts.Creatures
         protected override void FixedUpdate()
         {
             base.FixedUpdate();
-        }
-
-        private void OnCollisionEnter2D(Collision2D collision)
-        {
-            if (collision.gameObject.CompareTag("MovingPlatform"))
-            {
-                _activePlatform = collision.transform;
-                transform.SetParent(_activePlatform);
-            }
-        }
-
-        private void OnCollisionExit2D(Collision2D collision)
-        {
-            if (collision.gameObject.CompareTag("MovingPlatform"))
-            {
-                _activePlatform = null;
-                transform.SetParent(null);
-            }
         }
 
         public override void TakeDamageFromSpikes()
@@ -102,6 +87,17 @@ namespace Scripts.Creatures
             Debug.Log($"У игрока: {_gameSession.PlayerData.Money} денег.");
         }
 
+        public void CollectSword(int count)
+        {
+            if (!_gameSession.PlayerData.IsArmed)
+            {
+                ChangeArmedOrUnarmed();
+            }
+
+            _gameSession.PlayerData.SwordCount += count;
+            Debug.Log($"У игрока: {_gameSession.PlayerData.SwordCount} мечей.");
+        }
+
         public void Interact()
         {
             var size = Physics2D.OverlapCircleNonAlloc(transform.position, _interactionRadius, _interactionResult, _interactionLayer);
@@ -119,6 +115,52 @@ namespace Scripts.Creatures
         {
             if (!_gameSession.PlayerData.IsArmed) return;
             base.Attack();
+        }
+
+        public override void ThrowAttack(float holdTime)
+        {
+            if (!_gameSession.PlayerData.IsArmed
+               || _gameSession.PlayerData.SwordCount <= 1
+               || Time.time < _lastThrowTime + _throwCooldown)
+            {
+                Debug.Log("Бросок ещё не готов");
+                return;
+            }
+            _lastThrowTime = Time.time;
+
+            if (holdTime > 1.0f && _gameSession.PlayerData.SwordCount >= 4)
+            {
+                _gameSession.PlayerData.SwordCount -= 3;
+                StartCoroutine(MultiThrowAttack(holdTime));
+            }
+            else
+            {
+                _gameSession.PlayerData.SwordCount -= 1;
+                base.ThrowAttack(holdTime);
+            }
+        }
+
+        public IEnumerator MultiThrowAttack(float holdTime)
+        {
+            if (!_gameSession.PlayerData.IsArmed) yield break;
+
+            int throwCount = holdTime > 1.0f ? 3 : 1;
+
+            for (int i = 0; i < throwCount; i++)
+            {
+                _animator.SetTrigger(ThrowKey);
+                _particles.Spawn("Throw");
+
+                if (i < throwCount - 1)
+                    yield return new WaitForSeconds(0.2f);
+            }
+        }
+
+        public override void TakeDamageSimple()
+        {
+            base.TakeDamageSimple();
+            _rigidbody.velocity = new Vector2(_rigidbody.velocity.x, 0f);
+            _rigidbody.AddForce(Vector2.up * (_jumpPower / 3), ForceMode2D.Impulse);
         }
 
         public void ChangeArmedOrUnarmed()

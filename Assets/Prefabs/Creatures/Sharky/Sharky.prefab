@@ -18,6 +18,7 @@ GameObject:
   - component: {fileID: 1542057918080749297}
   - component: {fileID: 8658165533631541474}
   - component: {fileID: 405669221662529752}
+  - component: {fileID: 7121311215274575714}
   m_Layer: 10
   m_Name: Sharky
   m_TagString: Enemy
@@ -195,7 +196,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c1e452d9552c6ca40956b60e53545a9f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _health: 6
+  _health: 10
   _onDamage:
     m_PersistentCalls:
       m_Calls:
@@ -214,9 +215,9 @@ MonoBehaviour:
   _onDie:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1542057918080749297}
-        m_TargetAssemblyTypeName: Scripts.Components.DestroyObjectComponent, Assembly-CSharp
-        m_MethodName: DestroyObject
+      - m_Target: {fileID: 405669221662529752}
+        m_TargetAssemblyTypeName: Scripts.Creatures.EnemyBotAI, Assembly-CSharp
+        m_MethodName: OnDie
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -281,7 +282,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _particles: {fileID: 44946075099930308}
-  _speed: 3
+  _speed: 1
   _jumpPower: 2
   _maxExtraJumps: 0
   _groundCheck: {fileID: 4804697892880738580}
@@ -301,7 +302,26 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _vision: {fileID: 6783745402708885024}
   _attackRange: {fileID: 5682953621609710398}
+  _patrol: {fileID: 7121311215274575714}
   _alarmDelay: 0.5
+  _attackCooldown: 1
+--- !u!114 &7121311215274575714
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2773358274999582965}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c501cc6418857dd46a7c734c08ba2366, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  waypoints:
+  - {fileID: 0}
+  - {fileID: 0}
+  pauseBetweenPoints: 1
+  reachDistance: 0.2
 --- !u!1001 &1508863027675943374
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -537,6 +557,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 5130552442721590256}
     m_Modifications:
+    - target: {fileID: 2449505088188320637, guid: c16c8cda6874d0b47bdef42f3520b31d, type: 3}
+      propertyPath: _damage
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4492817916408287038, guid: c16c8cda6874d0b47bdef42f3520b31d, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.15

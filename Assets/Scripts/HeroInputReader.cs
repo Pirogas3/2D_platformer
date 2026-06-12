@@ -8,6 +8,9 @@ namespace Scripts
     {
         [SerializeField] private Hero _hero;
 
+        private float _throwPressStartTime;
+        private bool _isChargingThrow;
+
         public void OnMovement2D(InputAction.CallbackContext context)
         {
             Vector2 moveVector = context.ReadValue<Vector2>();
@@ -23,7 +26,7 @@ namespace Scripts
 
         public void OnInteract(InputAction.CallbackContext context)
         {
-            if (context.canceled)
+            if (context.performed)
             {
                 _hero.Interact();
             }
@@ -31,9 +34,24 @@ namespace Scripts
 
         public void OnAttack(InputAction.CallbackContext context)
         {
-            if (context.canceled)
+            if (context.performed)
             {
                 _hero.Attack();
+            }
+        }
+
+        public void OnThrow(InputAction.CallbackContext context)
+        {
+            if (context.started)
+            {
+                _isChargingThrow = true;
+                _throwPressStartTime = Time.time;
+            }
+            else if (context.canceled && _isChargingThrow)
+            {
+                float holdTime = Time.time - _throwPressStartTime;
+                _hero.ThrowAttack(holdTime);
+                _isChargingThrow = false;
             }
         }
     }

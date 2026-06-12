@@ -18,7 +18,6 @@ GameObject:
   - component: {fileID: 6948727606871584072}
   - component: {fileID: 5585551586713403144}
   - component: {fileID: 44946075099930308}
-  - component: {fileID: 3613008456674296121}
   m_Layer: 9
   m_Name: Hero
   m_TagString: Player
@@ -44,6 +43,7 @@ Transform:
   - {fileID: 2007230798879075954}
   - {fileID: 6526349709560493519}
   - {fileID: 8275133131000957667}
+  - {fileID: 923253938723380118}
   - {fileID: 7411913656131508736}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -124,7 +124,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 08f74481868bf2d40825b66db6ffbda8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _particles: {fileID: 3613008456674296121}
+  _particles: {fileID: 44946075099930308}
   _speed: 4.5
   _jumpPower: 10
   _maxExtraJumps: 1
@@ -138,6 +138,7 @@ MonoBehaviour:
   _hitParticles: {fileID: 5111943393226388899}
   _heroUnarmed: {fileID: 9100000, guid: b7c98743ed47ae3478a3049915aa9d67, type: 2}
   _heroArmed: {fileID: 9100000, guid: 97cc849b47b4b89498e4a05846dd6f74, type: 2}
+  _throwCooldown: 0.4
 --- !u!114 &946119232345141262
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -227,6 +228,22 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: a752097e-4b2e-469f-9d1c-e0e333517756
     m_ActionName: Hero/Attack[/Mouse/leftButton]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 4048117732655476751}
+        m_TargetAssemblyTypeName: Scripts.HeroInputReader, Assembly-CSharp
+        m_MethodName: OnThrow
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: e9b641d4-9dc0-4fa1-9cf5-357986b05dbb
+    m_ActionName: Hero/DistAttack[/Mouse/rightButton]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Hero
@@ -304,7 +321,7 @@ Animator:
   m_GameObject: {fileID: 2773358274999582965}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: b7c98743ed47ae3478a3049915aa9d67, type: 2}
+  m_Controller: {fileID: 9100000, guid: 97cc849b47b4b89498e4a05846dd6f74, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -332,8 +349,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 4312153819627111551}
-        m_TargetAssemblyTypeName: Scripts.Creatures.Hero, Assembly-CSharp
-        m_MethodName: TakeDamageFromSpikes
+        m_TargetAssemblyTypeName: Scripts.Creatures.Creature, Assembly-CSharp
+        m_MethodName: TakeDamageSimple
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -395,25 +412,8 @@ MonoBehaviour:
     Component: {fileID: 461839050356600211}
   - ID: Fall
     Component: {fileID: 5125542322684180014}
---- !u!114 &3613008456674296121
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2773358274999582965}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 82e3cf02a249f3e4e8723c5b6fe43370, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _spawners:
-  - ID: FootStep
-    Component: {fileID: 1074949101952980634}
-  - ID: Jump
-    Component: {fileID: 461839050356600211}
-  - ID: Fall
-    Component: {fileID: 5125542322684180014}
+  - ID: Throw
+    Component: {fileID: 3754475101025034199}
 --- !u!1001 &392863731001232703
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -643,6 +643,79 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4492817916408287038, guid: 1e450e33324d20b4b9f9ca30dc550c0a, type: 3}
   m_PrefabInstance: {fileID: 6378744295655150910}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &6506315664859943541
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 5130552442721590256}
+    m_Modifications:
+    - target: {fileID: 708983397410991641, guid: cae039d3ff6a48844b209b6345cce601, type: 3}
+      propertyPath: m_Name
+      value: SwordThrowPos
+      objectReference: {fileID: 0}
+    - target: {fileID: 6240613804399331811, guid: cae039d3ff6a48844b209b6345cce601, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.453
+      objectReference: {fileID: 0}
+    - target: {fileID: 6240613804399331811, guid: cae039d3ff6a48844b209b6345cce601, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.057
+      objectReference: {fileID: 0}
+    - target: {fileID: 6240613804399331811, guid: cae039d3ff6a48844b209b6345cce601, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6240613804399331811, guid: cae039d3ff6a48844b209b6345cce601, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6240613804399331811, guid: cae039d3ff6a48844b209b6345cce601, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6240613804399331811, guid: cae039d3ff6a48844b209b6345cce601, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6240613804399331811, guid: cae039d3ff6a48844b209b6345cce601, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6240613804399331811, guid: cae039d3ff6a48844b209b6345cce601, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6240613804399331811, guid: cae039d3ff6a48844b209b6345cce601, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6240613804399331811, guid: cae039d3ff6a48844b209b6345cce601, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: cae039d3ff6a48844b209b6345cce601, type: 3}
+--- !u!4 &923253938723380118 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6240613804399331811, guid: cae039d3ff6a48844b209b6345cce601, type: 3}
+  m_PrefabInstance: {fileID: 6506315664859943541}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &3754475101025034199 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7949276200263486882, guid: cae039d3ff6a48844b209b6345cce601, type: 3}
+  m_PrefabInstance: {fileID: 6506315664859943541}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f82868b17f636fa4dbb12a6aa1bb4cee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &6804704579128184192
 PrefabInstance:
   m_ObjectHideFlags: 0
