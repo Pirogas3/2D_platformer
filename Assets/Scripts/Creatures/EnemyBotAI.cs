@@ -7,35 +7,35 @@ namespace Scripts.Creatures
 {
     public class EnemyBotAI : MonoBehaviour
     {
-        [SerializeField] private LayerCheck _vision;
-        [SerializeField] private LayerCheck _attackRange;
-        [SerializeField] private Patrol _patrol;
+        [SerializeField] protected LayerCheck _vision;
+        [SerializeField] protected LayerCheck _attackRange;
+        [SerializeField] protected Patrol _patrol;
 
-        [SerializeField] private float _alarmDelay = 0.5f;
-        [SerializeField] private float _attackCooldown = 1f;
+        [SerializeField] protected float _alarmDelay = 0.5f;
+        [SerializeField] protected float _attackCooldown = 1f;
 
-        private Coroutine _currentCoroutine;
-        private GameObject _target;
-        private SpawnListComponent _particles;
-        private Creature _creature;
-        private Animator _animator;
-        private bool _isDead = false;
+        protected Coroutine _currentCoroutine;
+        protected GameObject _target;
+        protected SpawnListComponent _particles;
+        protected Creature _creature;
+        protected Animator _animator;
+        protected bool _isDead = false;
 
-        private static readonly int IsDeadKey = Animator.StringToHash("is_dead");
+        protected static readonly int IsDeadKey = Animator.StringToHash("is_dead");
 
-        private void Awake()
+        protected virtual void Awake()
         {
             _particles = GetComponent<SpawnListComponent>();
             _creature = GetComponent<Creature>();
             _animator = GetComponent<Animator>();
         }
 
-        private void Start()
+        protected virtual void Start()
         {
             StartState(Patrolling());
         }
 
-        private IEnumerator Patrolling()
+        protected virtual IEnumerator Patrolling()
         {
             while (true)
             {
@@ -50,7 +50,7 @@ namespace Scripts.Creatures
             }
         }
 
-        private void StartState(IEnumerator coroutine)
+        protected void StartState(IEnumerator coroutine)
         {
             if (_currentCoroutine != null)
                 StopCoroutine(_currentCoroutine);
@@ -58,14 +58,14 @@ namespace Scripts.Creatures
             _currentCoroutine = StartCoroutine(coroutine);
         }
 
-        private IEnumerator AgroToHero()
+        protected virtual IEnumerator AgroToHero()
         {
             _particles.Spawn("Exclamation");
             yield return new WaitForSeconds(_alarmDelay);
             StartState(GoToHero());
         }
 
-        private IEnumerator GoToHero()
+        protected virtual IEnumerator GoToHero()
         {
             while (_vision.IsTouchingLayer)
             {
@@ -87,7 +87,7 @@ namespace Scripts.Creatures
             StartState(Patrolling());
         }
 
-        private IEnumerator Attacking()
+        protected virtual IEnumerator Attacking()
         {
             while (_attackRange.IsTouchingLayer)
             {
@@ -108,14 +108,14 @@ namespace Scripts.Creatures
             }
         }
 
-        private void SetDirectionToTarget()
+        protected virtual void SetDirectionToTarget()
         {
             var direction = _target.transform.position - transform.position;
             direction.y = 0;
             _creature.SetMovementDirection(direction.normalized);
         }
 
-        public void OnHeroInVision(GameObject target)
+        public virtual void OnHeroInVision(GameObject target)
         {
             if (_isDead)
                 return;
@@ -125,7 +125,7 @@ namespace Scripts.Creatures
             StartState(AgroToHero());
         }
 
-        public void OnDie()
+        public virtual void OnDie()
         {
             if (_currentCoroutine != null)
                 StopCoroutine(_currentCoroutine);
