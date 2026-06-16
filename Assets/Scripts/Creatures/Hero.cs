@@ -58,7 +58,7 @@ namespace Scripts.Creatures
         {
             base.TakeDamageFromSpikes();
 
-            if (_gameSession.PlayerData.Money > 0)
+            if (_gameSession.PlayerData.Inventory.Count("Coin") > 0)
             {
                 SpawnCoins();
             }
@@ -71,8 +71,8 @@ namespace Scripts.Creatures
 
         private void SpawnCoins()
         {
-            var numCoinsToDispose = Mathf.Min(_gameSession.PlayerData.Money, 5);
-            _gameSession.PlayerData.Money -= numCoinsToDispose;
+            var numCoinsToDispose = Mathf.Min(_gameSession.PlayerData.Inventory.Count("Coin"), 5);
+            _gameSession.PlayerData.Inventory.Remove("Coin", numCoinsToDispose);
 
             var burst = _hitParticles.emission.GetBurst(0);
             burst.count = numCoinsToDispose;
@@ -81,21 +81,30 @@ namespace Scripts.Creatures
             _hitParticles.Play();
         }
 
+        public void AddInInventory(string id, int value)
+        {
+            _gameSession.PlayerData.Inventory.Add(id, value);
+        }
+
         public void CollectCoin(int cost)
         {
-            _gameSession.PlayerData.Money += cost;
-            Debug.Log($"У игрока: {_gameSession.PlayerData.Money} денег.");
+            _gameSession.PlayerData.Inventory.Add("Coin", cost);
+            Debug.Log($"У игрока: {_gameSession.PlayerData.Inventory.Count("Coin")} денег.");
         }
 
         public void CollectSword(int count)
         {
-            if (!_gameSession.PlayerData.IsArmed)
+            if (_gameSession.PlayerData.Inventory.Count("Sword") < 1)
             {
+                _gameSession.PlayerData.Inventory.Add("Sword", count);
                 ChangeArmedOrUnarmed();
             }
+            else
+            {
+                _gameSession.PlayerData.Inventory.Add("Sword", count);
+            }
 
-            _gameSession.PlayerData.SwordCount += count;
-            Debug.Log($"У игрока: {_gameSession.PlayerData.SwordCount} мечей.");
+            Debug.Log($"У игрока: {_gameSession.PlayerData.Inventory.Count("Sword")} мечей.");
         }
 
         public void Interact()
@@ -119,23 +128,21 @@ namespace Scripts.Creatures
 
         public override void ThrowAttack(float holdTime)
         {
-            if (!_gameSession.PlayerData.IsArmed
-               || _gameSession.PlayerData.SwordCount <= 1
-               || Time.time < _lastThrowTime + _throwCooldown)
+            if (_gameSession.PlayerData.Inventory.Count("Sword") <= 1 || Time.time < _lastThrowTime + _throwCooldown)
             {
-                Debug.Log("Бросок ещё не готов");
+                Debug.Log("Бросок не готов");
                 return;
             }
             _lastThrowTime = Time.time;
 
-            if (holdTime > 1.0f && _gameSession.PlayerData.SwordCount >= 4)
+            if (holdTime > 1.0f && _gameSession.PlayerData.Inventory.Count("Sword") >= 4)
             {
-                _gameSession.PlayerData.SwordCount -= 3;
+                _gameSession.PlayerData.Inventory.Remove("Sword", 3);
                 StartCoroutine(MultiThrowAttack(holdTime));
             }
             else
             {
-                _gameSession.PlayerData.SwordCount -= 1;
+                _gameSession.PlayerData.Inventory.Remove("Sword", 1);
                 base.ThrowAttack(holdTime);
             }
         }
@@ -165,7 +172,6 @@ namespace Scripts.Creatures
 
         public void ChangeArmedOrUnarmed()
         {
-            _gameSession.PlayerData.IsArmed = !_gameSession.PlayerData.IsArmed;
             _animator.runtimeAnimatorController = _gameSession.PlayerData.IsArmed ? _heroArmed : _heroUnarmed;
         }
     }

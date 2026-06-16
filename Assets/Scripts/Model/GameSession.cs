@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using Assets.Scripts.Model.Data;
 
 namespace Assets.Scripts.Model
 {

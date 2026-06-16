@@ -15,14 +15,14 @@ PrefabInstance:
     - target: {fileID: 975933343251050254, guid: ade1e6c725ae5844fa9c348fe2f41726, type: 3}
       propertyPath: _action.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 3870152894003913127}
+      objectReference: {fileID: 4689254029701708100}
     - target: {fileID: 975933343251050254, guid: ade1e6c725ae5844fa9c348fe2f41726, type: 3}
       propertyPath: _action.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: Exit
+      value: Check
       objectReference: {fileID: 0}
     - target: {fileID: 975933343251050254, guid: ade1e6c725ae5844fa9c348fe2f41726, type: 3}
       propertyPath: _action.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: Scripts.Components.ExitLevelComponent, Assembly-CSharp
+      value: Assets.Scripts.Components.RequireItemComponent, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 975933343251050254, guid: ade1e6c725ae5844fa9c348fe2f41726, type: 3}
       propertyPath: _action.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
@@ -34,15 +34,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2186377048624592788, guid: ade1e6c725ae5844fa9c348fe2f41726, type: 3}
       propertyPath: m_Name
-      value: TeleportExit Variant
+      value: TeleportExit
       objectReference: {fileID: 0}
     - target: {fileID: 6243240594465573670, guid: ade1e6c725ae5844fa9c348fe2f41726, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 18
+      value: 4.5
       objectReference: {fileID: 0}
     - target: {fileID: 6243240594465573670, guid: ade1e6c725ae5844fa9c348fe2f41726, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 6.5
+      value: 0.75
       objectReference: {fileID: 0}
     - target: {fileID: 6243240594465573670, guid: ade1e6c725ae5844fa9c348fe2f41726, type: 3}
       propertyPath: m_LocalPosition.z
@@ -84,6 +84,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 2186377048624592788, guid: ade1e6c725ae5844fa9c348fe2f41726, type: 3}
       insertIndex: -1
       addedObject: {fileID: 3870152894003913127}
+    - targetCorrespondingSourceObject: {fileID: 2186377048624592788, guid: ade1e6c725ae5844fa9c348fe2f41726, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 4689254029701708100}
   m_SourcePrefab: {fileID: 100100000, guid: ade1e6c725ae5844fa9c348fe2f41726, type: 3}
 --- !u!1 &2228922963669786240 stripped
 GameObject:
@@ -103,3 +106,41 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _sceneName: Scene2
+--- !u!114 &4689254029701708100
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2228922963669786240}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f47279b5e15236b4693eb184370ddc4e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _required:
+  - Id: Sword
+    Value: 1
+  - Id: Key
+    Value: 1
+  - Id: Coin
+    Value: 30
+  _removeAfterUse: 1
+  _onSuccess:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 3870152894003913127}
+        m_TargetAssemblyTypeName: Scripts.Components.ExitLevelComponent, Assembly-CSharp
+        m_MethodName: Exit
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  _onFail:
+    m_PersistentCalls:
+      m_Calls: []
