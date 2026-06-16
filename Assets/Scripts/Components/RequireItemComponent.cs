@@ -1,6 +1,5 @@
 ﻿using Assets.Scripts.Model;
 using Assets.Scripts.Model.Data;
-using Assets.Scripts.Model.Definitions;
 using UnityEngine;
 using UnityEngine.Events;
 

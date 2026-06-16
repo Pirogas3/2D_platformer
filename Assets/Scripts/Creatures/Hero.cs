@@ -15,7 +15,7 @@ namespace Scripts.Creatures
         [Header("Interaction settings")]
         [SerializeField] private float _interactionRadius; //радиус в котором проверяются интерактивные объекты
         [SerializeField] private LayerMask _interactionLayer; //слой интерактивных объектов
-        private Collider2D[] _interactionResult = new Collider2D[1];
+        private Collider2D[] _interactionResult = new Collider2D[5];
 
         //Анимации
         [Header("Animations")]
@@ -54,16 +54,6 @@ namespace Scripts.Creatures
             base.FixedUpdate();
         }
 
-        public override void TakeDamageFromSpikes()
-        {
-            base.TakeDamageFromSpikes();
-
-            if (_gameSession.PlayerData.Inventory.Count("Coin") > 0)
-            {
-                SpawnCoins();
-            }
-        }
-
         public void OnHeroHealthChanged(int newHealth)
         {
             _gameSession.PlayerData.Hp = newHealth;
@@ -83,40 +73,43 @@ namespace Scripts.Creatures
 
         public void AddInInventory(string id, int value)
         {
-            _gameSession.PlayerData.Inventory.Add(id, value);
-        }
-
-        public void CollectCoin(int cost)
-        {
-            _gameSession.PlayerData.Inventory.Add("Coin", cost);
-            Debug.Log($"У игрока: {_gameSession.PlayerData.Inventory.Count("Coin")} денег.");
-        }
-
-        public void CollectSword(int count)
-        {
-            if (_gameSession.PlayerData.Inventory.Count("Sword") < 1)
+            if (id == "Sword" && _gameSession.PlayerData.Inventory.Count("Sword") < 1)
             {
-                _gameSession.PlayerData.Inventory.Add("Sword", count);
+                _gameSession.PlayerData.Inventory.Add(id, value);
                 ChangeArmedOrUnarmed();
             }
-            else
-            {
-                _gameSession.PlayerData.Inventory.Add("Sword", count);
-            }
-
-            Debug.Log($"У игрока: {_gameSession.PlayerData.Inventory.Count("Sword")} мечей.");
+            else _gameSession.PlayerData.Inventory.Add(id, value);
         }
 
         public void Interact()
         {
-            var size = Physics2D.OverlapCircleNonAlloc(transform.position, _interactionRadius, _interactionResult, _interactionLayer);
+            int size = Physics2D.OverlapCircleNonAlloc(transform.position, _interactionRadius, _interactionResult, _interactionLayer);
+
+            if (size == 0) return;
+
+            Transform playerTransform = transform;
+            float minDistance = float.MaxValue;
+            InteractableComponent closestInteractable = null;
+
             for (int i = 0; i < size; i++)
             {
-                var interactable = _interactionResult[i].GetComponent<InteractableComponent>();
-                if (interactable != null)
+                Collider2D col = _interactionResult[i];
+                if (col == null) continue;
+
+                var interactable = col.GetComponent<InteractableComponent>();
+                if (interactable == null) continue;
+
+                float distance = Vector2.Distance(playerTransform.position, col.transform.position);
+                if (distance < minDistance)
                 {
-                    interactable.Interact();
+                    minDistance = distance;
+                    closestInteractable = interactable;
                 }
+            }
+
+            if (closestInteractable != null)
+            {
+                closestInteractable.Interact(gameObject);
             }
         }
 
@@ -168,6 +161,16 @@ namespace Scripts.Creatures
             base.TakeDamageSimple();
             _rigidbody.velocity = new Vector2(_rigidbody.velocity.x, 0f);
             _rigidbody.AddForce(Vector2.up * (_jumpPower / 3), ForceMode2D.Impulse);
+        }
+
+        public override void TakeDamageFromSpikes()
+        {
+            base.TakeDamageFromSpikes();
+
+            if (_gameSession.PlayerData.Inventory.Count("Coin") > 0)
+            {
+                SpawnCoins();
+            }
         }
 
         public void ChangeArmedOrUnarmed()

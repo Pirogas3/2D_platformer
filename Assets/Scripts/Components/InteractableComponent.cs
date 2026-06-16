@@ -5,11 +5,11 @@ namespace Scripts.Components
 {
     public class InteractableComponent : MonoBehaviour
     {
-        [SerializeField] private UnityEvent _action;
+        [SerializeField] private UnityEvent<GameObject> _action;
 
-        public void Interact()
+        public void Interact(GameObject target)
         {
-            _action?.Invoke();
+            _action?.Invoke(target);
         }
     }
 }

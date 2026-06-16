@@ -1,11 +1,12 @@
 using UnityEngine;
 using UnityEngine.Events;
+using WSWhitehouse.TagSelector;
 
 namespace Scripts.Components
 {
     public class EnterTriggerComponent : MonoBehaviour
     {
-        [SerializeField] private string _tag;
+        [TagSelector][SerializeField] private string _tag;
         [SerializeField] private UnityEvent<GameObject> _action;
 
         private void OnTriggerEnter2D(Collider2D other)

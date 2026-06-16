@@ -113,7 +113,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 5
+  m_Mass: 2
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 3
@@ -283,7 +283,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _particles: {fileID: 44946075099930308}
   _speed: 1
-  _jumpPower: 2
+  _jumpPower: 10
   _maxExtraJumps: 0
   _groundCheck: {fileID: 4804697892880738580}
   _attackDamage: 0

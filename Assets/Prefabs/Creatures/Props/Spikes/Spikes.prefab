@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 9041319538939026472}
   - component: {fileID: 4567281206118970225}
   - component: {fileID: 5514047271652520547}
+  - component: {fileID: 4996425058894717883}
   m_Layer: 6
   m_Name: Spikes
   m_TagString: Untagged
@@ -144,7 +145,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6d957d7b7509f934fa192a9129d88be1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _tag: Player
+  _tags:
+  - Player
+  - Enemy
   _action:
     m_PersistentCalls:
       m_Calls:
@@ -160,10 +163,10 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: Scripts.Creatures.Hero, Assembly-CSharp
+      - m_Target: {fileID: 4996425058894717883}
+        m_TargetAssemblyTypeName: Assets.Scripts.Creatures.Traps.Spikes, Assembly-CSharp
         m_MethodName: TakeDamageFromSpikes
-        m_Mode: 1
+        m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -185,3 +188,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _damage: 2
+--- !u!114 &4996425058894717883
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1607381587293972551}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 28df46885a0c6fe48afe3939615bacea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

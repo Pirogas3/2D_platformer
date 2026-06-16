@@ -57,12 +57,12 @@ GameObject:
   - component: {fileID: 1466913177735925533}
   - component: {fileID: 92149735866670114}
   - component: {fileID: 1785534812144973969}
-  - component: {fileID: -7257853996536725095}
   - component: {fileID: 5854826281433220752}
   - component: {fileID: 2652980745109964042}
-  - component: {fileID: 3105911794195584057}
   - component: {fileID: 4222750312099014004}
+  - component: {fileID: -7257853996536725095}
   - component: {fileID: 4756360026200476577}
+  - component: {fileID: 3105911794195584057}
   - component: {fileID: 6947489128948035986}
   m_Layer: 0
   m_Name: SwordProjectile
@@ -173,19 +173,6 @@ MonoBehaviour:
   _onCompliteDest:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &-7257853996536725095
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8810187064220961209}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: feab1597610da484d8bfc8ce95f7e033, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _objectToDestroy: {fileID: 8810187064220961209}
 --- !u!50 &5854826281433220752
 Rigidbody2D:
   serializedVersion: 4
@@ -248,19 +235,6 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.3
---- !u!114 &3105911794195584057
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8810187064220961209}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1fedc3d1d583e0a4b971cc58a3affe54, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _speed: 0.1
 --- !u!114 &4222750312099014004
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -301,6 +275,19 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &-7257853996536725095
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8810187064220961209}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: feab1597610da484d8bfc8ce95f7e033, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _objectToDestroy: {fileID: 8810187064220961209}
 --- !u!114 &4756360026200476577
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -343,6 +330,19 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &3105911794195584057
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8810187064220961209}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1fedc3d1d583e0a4b971cc58a3affe54, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _speed: 0.1
 --- !u!114 &6947489128948035986
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -141,7 +141,7 @@ namespace Scripts.Components
             return results;
         }
 
-        public void Attack(int damage)
+        public void Attack()
         {
             var targets = GetTargets();
             foreach (var target in targets)
@@ -152,9 +152,10 @@ namespace Scripts.Components
                 }
                 else
                 {
-                    // если DamageComponent всё же не найден, напрямую бьём по HealthComponent
+                    // если DamageComponent всё же не найден, напрямую бьём по HealthComponent и выводим сообщение, что _damageComponent не найден
                     var health = target.GetComponent<HealthComponent>();
-                    if (health != null) health.TakeDamage(damage);
+                    if (health != null) health.TakeDamage(0);
+                    Debug.Log($"У {name} не найден {_damageComponent} поэтому урон равен 0");
                 }
             }
         }

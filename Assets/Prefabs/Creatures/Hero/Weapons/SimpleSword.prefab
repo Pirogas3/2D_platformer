@@ -94,44 +94,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5593068952414934893, guid: ec8df9f1fe2934741a25b62a0d93c257, type: 3}
-      propertyPath: _damage
-      value: 2
-      objectReference: {fileID: 0}
     - target: {fileID: 5926691972822334891, guid: ec8df9f1fe2934741a25b62a0d93c257, type: 3}
       propertyPath: m_Name
       value: WeaponHitbox
       objectReference: {fileID: 0}
-    - target: {fileID: 7239050539243813276, guid: ec8df9f1fe2934741a25b62a0d93c257, type: 3}
-      propertyPath: _shape
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7239050539243813276, guid: ec8df9f1fe2934741a25b62a0d93c257, type: 3}
-      propertyPath: _radius
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 7239050539243813276, guid: ec8df9f1fe2934741a25b62a0d93c257, type: 3}
-      propertyPath: _offset.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7239050539243813276, guid: ec8df9f1fe2934741a25b62a0d93c257, type: 3}
-      propertyPath: _offset.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7239050539243813276, guid: ec8df9f1fe2934741a25b62a0d93c257, type: 3}
-      propertyPath: _coneAngle
-      value: 100
-      objectReference: {fileID: 0}
-    - target: {fileID: 7239050539243813276, guid: ec8df9f1fe2934741a25b62a0d93c257, type: 3}
-      propertyPath: _coneRadius
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7239050539243813276, guid: ec8df9f1fe2934741a25b62a0d93c257, type: 3}
-      propertyPath: _coneDirection.y
-      value: 0.05
-      objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 5593068952414934893, guid: ec8df9f1fe2934741a25b62a0d93c257, type: 3}
+    m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []

@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using Scripts.Creatures;
 
-namespace Scripts
+namespace Assets.Scripts.PlayerInput
 {
     public class HeroInputReader : MonoBehaviour
     {

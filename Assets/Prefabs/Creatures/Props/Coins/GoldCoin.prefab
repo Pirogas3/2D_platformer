@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 5441039257358651693}
   - component: {fileID: 2355584443832789623}
   - component: {fileID: 2701015011671997789}
-  - component: {fileID: -2181391230550012449}
+  - component: {fileID: 7682612769374183035}
   m_Layer: 0
   m_Name: GoldCoin
   m_TagString: Untagged
@@ -140,10 +140,11 @@ MonoBehaviour:
   _action:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2701015011671997789}
-        m_TargetAssemblyTypeName: Scripts.SpriteAnimation, Assembly-CSharp
-        m_MethodName: ChangeSpritesWhenDest
-        m_Mode: 1
+      - m_Target: {fileID: 7682612769374183035}
+        m_TargetAssemblyTypeName: Assets.Scripts.Components.InventoryAddComponent,
+          Assembly-CSharp
+        m_MethodName: Add
+        m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -152,9 +153,21 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: -2181391230550012449}
-        m_TargetAssemblyTypeName: Scripts.Coin, Assembly-CSharp
-        m_MethodName: "\u0421ollect\u0421oin"
+      - m_Target: {fileID: 9044992771796990593}
+        m_TargetAssemblyTypeName: UnityEngine.Behaviour, UnityEngine
+        m_MethodName: set_enabled
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 2701015011671997789}
+        m_TargetAssemblyTypeName: Scripts.SpriteAnimation, Assembly-CSharp
+        m_MethodName: ChangeSpritesWhenDest
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -227,7 +240,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!114 &-2181391230550012449
+--- !u!114 &7682612769374183035
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -236,7 +249,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 9023838803304107893}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3d7f36337accb1e4f97037d944e72894, type: 3}
+  m_Script: {fileID: 11500000, guid: 17697f03c75f68b499b27221ae50d0fb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _cost: 10
+  _id: Coin
+  _count: 10

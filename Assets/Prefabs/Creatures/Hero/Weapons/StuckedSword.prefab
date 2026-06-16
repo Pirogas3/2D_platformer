@@ -10,11 +10,11 @@ GameObject:
   m_Component:
   - component: {fileID: 1466913177735925533}
   - component: {fileID: 92149735866670114}
-  - component: {fileID: 8819413184784959565}
   - component: {fileID: 1785534812144973969}
-  - component: {fileID: -7257853996536725095}
   - component: {fileID: 2652980745109964042}
   - component: {fileID: 4222750312099014004}
+  - component: {fileID: -7257853996536725095}
+  - component: {fileID: 9030784684471673979}
   m_Layer: 0
   m_Name: StuckedSword
   m_TagString: Untagged
@@ -89,19 +89,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &8819413184784959565
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8810187064220961209}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5bc21d0a527ae044d9e717b03953c94c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _count: 1
 --- !u!114 &1785534812144973969
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -136,19 +123,6 @@ MonoBehaviour:
   _onCompliteDest:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &-7257853996536725095
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8810187064220961209}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: feab1597610da484d8bfc8ce95f7e033, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _objectToDestroy: {fileID: 8810187064220961209}
 --- !u!58 &2652980745109964042
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -200,10 +174,11 @@ MonoBehaviour:
   _action:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 8819413184784959565}
-        m_TargetAssemblyTypeName: Assets.Scripts.Creatures.Weapon.StuckedSword, Assembly-CSharp
-        m_MethodName: "\u0421ollectSword"
-        m_Mode: 1
+      - m_Target: {fileID: 9030784684471673979}
+        m_TargetAssemblyTypeName: Assets.Scripts.Components.InventoryAddComponent,
+          Assembly-CSharp
+        m_MethodName: Add
+        m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -224,3 +199,30 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &-7257853996536725095
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8810187064220961209}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: feab1597610da484d8bfc8ce95f7e033, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _objectToDestroy: {fileID: 8810187064220961209}
+--- !u!114 &9030784684471673979
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8810187064220961209}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 17697f03c75f68b499b27221ae50d0fb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _id: Sword
+  _count: 1

@@ -22,7 +22,6 @@ namespace Scripts.Creatures
 
         //Настройка атаки
         [Header("Attack settings")]
-        [SerializeField] private int _attackDamage; //можно и не задавать, если использовать DamageComponent на оружие или существе
         [SerializeField] private AttackHitbox _attackHitbox;
 
         private Vector2 _moveDirection;
@@ -34,11 +33,11 @@ namespace Scripts.Creatures
         private float _timeInAir;
         private Transform _activePlatform; //Запоминаем текущую платформу
 
-        private static readonly int IsGround = Animator.StringToHash("is_ground");
-        private static readonly int IsRunning = Animator.StringToHash("is_running");
-        private static readonly int VerticalVelocity = Animator.StringToHash("vertical_velocity");
-        private static readonly int Hit = Animator.StringToHash("hit");
-        private static readonly int AttackKey = Animator.StringToHash("attack");
+        protected static readonly int IsGround = Animator.StringToHash("is_ground");
+        protected static readonly int IsRunning = Animator.StringToHash("is_running");
+        protected static readonly int VerticalVelocity = Animator.StringToHash("vertical_velocity");
+        protected static readonly int Hit = Animator.StringToHash("hit");
+        protected static readonly int AttackKey = Animator.StringToHash("attack");
         protected static readonly int ThrowKey = Animator.StringToHash("throw");
 
         protected virtual void Awake()
@@ -152,47 +151,23 @@ namespace Scripts.Creatures
 
         protected virtual void LogicOfFalling()
         {
-            if (gameObject.tag == "Player")
+            bool isGrounded = IsGrounded();
+            bool inTheAir = isGrounded ? false : true;
+
+            if (inTheAir)
             {
-                bool isGrounded = IsGrounded();
-                bool inTheAir = isGrounded ? false : true;
-
-                if (inTheAir)
-                {
-                    _timeInAir += Time.deltaTime;
-                }
-
-                if ((_doubleJumpUsedThisAirborne || _timeInAir > 2f) && isGrounded == true)
-                {
-                    _particles.Spawn("Fall");
-                }
-
-                if (isGrounded)
-                {
-                    _timeInAir = 0;
-                    _doubleJumpUsedThisAirborne = false;
-                }
+                _timeInAir += Time.deltaTime;
             }
-            else
+
+            if ((_doubleJumpUsedThisAirborne || _timeInAir > 2f) && isGrounded == true)
             {
-                bool isGrounded = IsGrounded();
-                bool inTheAir = isGrounded ? false : true;
+                _particles.Spawn("Fall");
+            }
 
-                if (inTheAir)
-                {
-                    _timeInAir += Time.deltaTime;
-                }
-
-                if (_timeInAir > 2f && isGrounded == true)
-                {
-                    _particles.Spawn("Fall");
-                }
-
-                if (isGrounded)
-                {
-                    _timeInAir = 0;
-                    _doubleJumpUsedThisAirborne = false;
-                }
+            if (isGrounded)
+            {
+                _timeInAir = 0;
+                _doubleJumpUsedThisAirborne = false;
             }
         }
 
@@ -227,7 +202,7 @@ namespace Scripts.Creatures
         public void PerformDamage()
         {
             if (_attackHitbox != null)
-                _attackHitbox.Attack(_attackDamage);
+                _attackHitbox.Attack();
         }
     }
 }

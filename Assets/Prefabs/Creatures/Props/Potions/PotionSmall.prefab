@@ -218,10 +218,10 @@ MonoBehaviour:
       - m_Target: {fileID: 2512173467663514588}
         m_TargetAssemblyTypeName: Scripts.Components.DamageComponent, Assembly-CSharp
         m_MethodName: AppleyHeal
-        m_Mode: 2
+        m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 

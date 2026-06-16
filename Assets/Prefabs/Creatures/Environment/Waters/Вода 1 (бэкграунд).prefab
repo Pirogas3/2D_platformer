@@ -97,14 +97,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 60e005b8982562d4eb3b251d17dce057, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _frameRate: 5
-  _loop: 1
-  _sprites:
+  _idleFrameRate: 10
+  _idleLoop: 1
+  _idleSprites:
   - {fileID: 1725895358, guid: 8fd70b2f3bfcafd49b452804f80f2293, type: 3}
   - {fileID: -32913886, guid: 8fd70b2f3bfcafd49b452804f80f2293, type: 3}
   - {fileID: 69961704, guid: 8fd70b2f3bfcafd49b452804f80f2293, type: 3}
   - {fileID: 858356307, guid: 8fd70b2f3bfcafd49b452804f80f2293, type: 3}
-  _spritesDest: []
-  _onComplite:
+  _onCompliteIdle:
+    m_PersistentCalls:
+      m_Calls: []
+  _hitFrameRate: 0
+  _hitLoop: 0
+  _hitSprites: []
+  _onCompliteHit:
+    m_PersistentCalls:
+      m_Calls: []
+  _destFrameRate: 0
+  _destLoop: 0
+  _destSprites: []
+  _onCompliteDest:
     m_PersistentCalls:
       m_Calls: []

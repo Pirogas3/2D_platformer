@@ -1,18 +1,26 @@
 using UnityEngine;
 using UnityEngine.Events;
+using WSWhitehouse.TagSelector;
 
 namespace Scripts.Components
 {
     public class EnterCollisionComponent : MonoBehaviour
     {
-        [SerializeField] private string _tag;
+        [TagSelector][SerializeField] private string[] _tags;
         [SerializeField] private UnityEvent<GameObject> _action;
 
         private void OnCollisionEnter2D(Collision2D collision)
         {
-            if (collision.gameObject.CompareTag(_tag))
+            if (_tags == null || _tags.Length == 0) return;
+
+            string colliderTag = collision.gameObject.tag;
+            foreach (string tag in _tags)
             {
-                _action?.Invoke(collision.gameObject);
+                if (tag == colliderTag)
+                {
+                    _action?.Invoke(collision.gameObject);
+                    break;
+                }
             }
         }
     }

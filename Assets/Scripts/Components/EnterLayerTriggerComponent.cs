@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Assets.Scripts.Utils;
+using UnityEngine;
 using UnityEngine.Events;
 
 namespace Assets.Scripts.Components

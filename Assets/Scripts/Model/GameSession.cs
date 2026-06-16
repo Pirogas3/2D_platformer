@@ -8,27 +8,34 @@ namespace Assets.Scripts.Model
         [SerializeField] private PlayerData _playerData;
         public PlayerData PlayerData => _playerData;
 
+        private PlayerData _initialPlayerData;
+
         private void Awake()
         {
             if (IsSessionExit())
             {
                 DestroyImmediate(gameObject);
+                return;
             }
-            else
-            {
-                DontDestroyOnLoad(this);
-            }
+
+            DontDestroyOnLoad(this);
+
+            _initialPlayerData = _playerData.Clone();
+        }
+
+        public void ResetToInitialState()
+        {
+            _playerData = _initialPlayerData.Clone();
         }
 
         private bool IsSessionExit()
         {
-            var session = FindObjectsOfType<GameSession>();
-            foreach (var gameSession in session)
+            var sessions = FindObjectsOfType<GameSession>();
+            foreach (var session in sessions)
             {
-                if (gameSession != this)
+                if (session != this)
                     return true;
             }
-
             return false;
         }
     }

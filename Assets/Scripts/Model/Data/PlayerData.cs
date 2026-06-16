@@ -1,5 +1,4 @@
 ﻿using System;
-using UnityEditor.ShaderGraph.Serialization;
 using UnityEngine;
 
 namespace Assets.Scripts.Model.Data

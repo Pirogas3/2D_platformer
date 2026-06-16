@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 28204050727207346}
   - component: {fileID: 7239050539243813276}
-  - component: {fileID: 5593068952414934893}
   m_Layer: 0
   m_Name: WeaponHitbox
   m_TagString: Untagged
@@ -45,28 +44,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 677475783f2d9554d8a796227ad4ad75, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _shape: 2
+  _shape: 0
   _offset: {x: 0, y: 0}
   _targetLayers:
     serializedVersion: 2
     m_Bits: 0
   _useTagInsteadOfLayer: 1
   _targetTag: Enemy
-  _radius: 1
+  _radius: 0.5
   _rectangleSize: {x: 1, y: 1}
-  _coneRadius: 2
-  _coneAngle: 90
-  _coneDirection: {x: 1, y: 0}
---- !u!114 &5593068952414934893
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5926691972822334891}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4a152c42f2dece8499355a888445412d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _damage: 0
+  _coneRadius: 1
+  _coneAngle: 100

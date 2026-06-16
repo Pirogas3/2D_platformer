@@ -1578,6 +1578,22 @@ PrefabInstance:
       propertyPath: _playerData.SwordCount
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 6958666155233098242, guid: 433b7621dadcc76479fe5a6a56d3b448, type: 3}
+      propertyPath: _playerData._inventory._inventory.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6958666155233098242, guid: 433b7621dadcc76479fe5a6a56d3b448, type: 3}
+      propertyPath: _playerData._inventory._inventory.Array.data[0].Id
+      value: Sword
+      objectReference: {fileID: 0}
+    - target: {fileID: 6958666155233098242, guid: 433b7621dadcc76479fe5a6a56d3b448, type: 3}
+      propertyPath: _playerData._inventory._inventory.Array.data[1].Id
+      value: Coin
+      objectReference: {fileID: 0}
+    - target: {fileID: 6958666155233098242, guid: 433b7621dadcc76479fe5a6a56d3b448, type: 3}
+      propertyPath: _playerData._inventory._inventory.Array.data[0].Value
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3208,10 +3224,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Spikes
       objectReference: {fileID: 0}
-    - target: {fileID: 4567281206118970225, guid: b914d24559d1fd549959f736abf9ee57, type: 3}
-      propertyPath: _action.m_PersistentCalls.m_Calls.Array.data[1].m_Target
-      value: 
-      objectReference: {fileID: 2065627404}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3424,17 +3436,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2fa02adb4be7053419f066151a9ad91f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &2065627404 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 4312153819627111551, guid: 3eed152a018666943ad19c4049049091, type: 3}
-  m_PrefabInstance: {fileID: 1112351118}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 08f74481868bf2d40825b66db6ffbda8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &2696305975109059840
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3629,7 +3630,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2773358274999582965, guid: b3290f7ac29b0ec40baa6827d3286d5b, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5130552442721590256, guid: b3290f7ac29b0ec40baa6827d3286d5b, type: 3}
       propertyPath: m_LocalPosition.x
