@@ -45,4 +45,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _target: {fileID: 6985611819206427828}
-  _prefab: {fileID: 0}
+  _prefab: {fileID: 4419271661204445425, guid: 5a7b55d1e3a6cfc418b4cf9833c283bd, type: 3}

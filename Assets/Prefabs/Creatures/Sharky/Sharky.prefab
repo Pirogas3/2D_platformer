@@ -286,7 +286,6 @@ MonoBehaviour:
   _jumpPower: 10
   _maxExtraJumps: 0
   _groundCheck: {fileID: 4804697892880738580}
-  _attackDamage: 0
   _attackHitbox: {fileID: 3149286720227921118}
 --- !u!114 &405669221662529752
 MonoBehaviour:
@@ -479,7 +478,7 @@ PrefabInstance:
     - target: {fileID: 529204710856235806, guid: 7318e892b92c4bf4b8558daedd0ef5f8, type: 3}
       propertyPath: _prefab
       value: 
-      objectReference: {fileID: 8810187064220961209, guid: 28993e15496be874394bcbfb6a53aea5, type: 3}
+      objectReference: {fileID: 8810187064220961209, guid: 8d3c7d457c255304298ae273136dd706, type: 3}
     - target: {fileID: 1939865121959254271, guid: 7318e892b92c4bf4b8558daedd0ef5f8, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -818,7 +817,7 @@ PrefabInstance:
     - target: {fileID: 5802279266475350810, guid: bb145ce25f0001946ac9981282a40c85, type: 3}
       propertyPath: _prefab
       value: 
-      objectReference: {fileID: 8810187064220961209, guid: c2a0674ab4b54ce44a94ddf8d0c46ff1, type: 3}
+      objectReference: {fileID: 8810187064220961209, guid: 3e1a718e5c05c9843a901a5f4a2a1293, type: 3}
     - target: {fileID: 8264385776508662309, guid: bb145ce25f0001946ac9981282a40c85, type: 3}
       propertyPath: m_Name
       value: FootStepPos
@@ -984,7 +983,7 @@ PrefabInstance:
     - target: {fileID: 9142457068338317472, guid: 32817e6253bce10409fdb892db655307, type: 3}
       propertyPath: _prefab
       value: 
-      objectReference: {fileID: 8810187064220961209, guid: 011043ef4618d304987dd3c2b462b4d0, type: 3}
+      objectReference: {fileID: 8810187064220961209, guid: 00994f620cbd17e488ae5f6c9a9b1ead, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
