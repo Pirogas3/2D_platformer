@@ -101,28 +101,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 60e005b8982562d4eb3b251d17dce057, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _idleFrameRate: 10
-  _idleLoop: 0
-  _idleSprites:
-  - {fileID: 21300000, guid: ed3a3a714ca0611488973fc0438a46e9, type: 3}
-  - {fileID: 21300000, guid: 60efe9d4b315d534583e152b35f135f6, type: 3}
-  - {fileID: 21300000, guid: b3770b4b67d3f8a4394d4f2b803e672a, type: 3}
-  - {fileID: 21300000, guid: 3f3907d7429f95345b72e8b89bfdc01c, type: 3}
-  _onCompliteIdle:
-    m_PersistentCalls:
-      m_Calls: []
-  _hitFrameRate: 0
-  _hitLoop: 0
-  _hitSprites: []
-  _onCompliteHit:
-    m_PersistentCalls:
-      m_Calls: []
-  _destFrameRate: 0
-  _destLoop: 0
-  _destSprites: []
-  _onCompliteDest:
-    m_PersistentCalls:
-      m_Calls: []
+  _clips:
+  - name: Idle
+    sprites:
+    - {fileID: 21300000, guid: ed3a3a714ca0611488973fc0438a46e9, type: 3}
+    - {fileID: 21300000, guid: 60efe9d4b315d534583e152b35f135f6, type: 3}
+    - {fileID: 21300000, guid: b3770b4b67d3f8a4394d4f2b803e672a, type: 3}
+    - {fileID: 21300000, guid: 3f3907d7429f95345b72e8b89bfdc01c, type: 3}
+    frameRate: 10
+    loop: 0
+    onComplete:
+      m_PersistentCalls:
+        m_Calls: []
+  _defaultClipName: Idle
 --- !u!58 &2652980745109964042
 CircleCollider2D:
   m_ObjectHideFlags: 0

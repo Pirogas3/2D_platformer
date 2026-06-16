@@ -101,48 +101,46 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 60e005b8982562d4eb3b251d17dce057, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _idleFrameRate: 7
-  _idleLoop: 1
-  _idleSprites:
-  - {fileID: 21300000, guid: e0753557ddddff84ab7dde4e18c28b02, type: 3}
-  - {fileID: 21300000, guid: e5f20662ea8af59469935042acaa0546, type: 3}
-  - {fileID: 21300000, guid: 0db0d8c4dfb2d1b4e971b5787b8e0809, type: 3}
-  - {fileID: 21300000, guid: 6b99875049f866d49ad4b29b0d7ffc33, type: 3}
-  - {fileID: 21300000, guid: 8eaf4cfcab621b447b79ccd32538a184, type: 3}
-  - {fileID: 21300000, guid: 7eff85d67e789c34998ef4d2dfa9c20b, type: 3}
-  - {fileID: 21300000, guid: 9488f43b5c25e9546b90dd32fa10a258, type: 3}
-  - {fileID: 21300000, guid: 878f0721d16338c4fa0cdb962390ad29, type: 3}
-  _onCompliteIdle:
-    m_PersistentCalls:
-      m_Calls: []
-  _hitFrameRate: 0
-  _hitLoop: 0
-  _hitSprites: []
-  _onCompliteHit:
-    m_PersistentCalls:
-      m_Calls: []
-  _destFrameRate: 10
-  _destLoop: 0
-  _destSprites:
-  - {fileID: 21300000, guid: 2462a385df45ab445a950fe285b34fbe, type: 3}
-  - {fileID: 21300000, guid: a0f7e06fd1f556b409b86d9fec63960d, type: 3}
-  - {fileID: 21300000, guid: b5ddf9ffb1e40d647860bac3492bd924, type: 3}
-  - {fileID: 21300000, guid: 60ac137b4f18fc244bba111ad3cff801, type: 3}
-  _onCompliteDest:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 6848611850949958205}
-        m_TargetAssemblyTypeName: Scripts.Components.DestroyObjectComponent, Assembly-CSharp
-        m_MethodName: DestroyObject
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+  _clips:
+  - name: Idle
+    sprites:
+    - {fileID: 21300000, guid: e0753557ddddff84ab7dde4e18c28b02, type: 3}
+    - {fileID: 21300000, guid: e5f20662ea8af59469935042acaa0546, type: 3}
+    - {fileID: 21300000, guid: 0db0d8c4dfb2d1b4e971b5787b8e0809, type: 3}
+    - {fileID: 21300000, guid: 6b99875049f866d49ad4b29b0d7ffc33, type: 3}
+    - {fileID: 21300000, guid: 8eaf4cfcab621b447b79ccd32538a184, type: 3}
+    - {fileID: 21300000, guid: 7eff85d67e789c34998ef4d2dfa9c20b, type: 3}
+    - {fileID: 21300000, guid: 9488f43b5c25e9546b90dd32fa10a258, type: 3}
+    - {fileID: 21300000, guid: 878f0721d16338c4fa0cdb962390ad29, type: 3}
+    frameRate: 10
+    loop: 1
+    onComplete:
+      m_PersistentCalls:
+        m_Calls: []
+  - name: Collected
+    sprites:
+    - {fileID: 21300000, guid: 2462a385df45ab445a950fe285b34fbe, type: 3}
+    - {fileID: 21300000, guid: a0f7e06fd1f556b409b86d9fec63960d, type: 3}
+    - {fileID: 21300000, guid: b5ddf9ffb1e40d647860bac3492bd924, type: 3}
+    - {fileID: 21300000, guid: 60ac137b4f18fc244bba111ad3cff801, type: 3}
+    frameRate: 10
+    loop: 0
+    onComplete:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 6848611850949958205}
+          m_TargetAssemblyTypeName: Scripts.Components.DestroyObjectComponent, Assembly-CSharp
+          m_MethodName: DestroyObject
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  _defaultClipName: Idle
 --- !u!58 &4771542272395666963
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -220,15 +218,16 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 2134042908517826373}
-        m_TargetAssemblyTypeName: Scripts.SpriteAnimation, Assembly-CSharp
-        m_MethodName: ChangeSpritesWhenDest
-        m_Mode: 1
+        m_TargetAssemblyTypeName: Assets.Scripts.Components.SpriteAnimationComponent,
+          Assembly-CSharp
+        m_MethodName: Play
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: Collected
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &6848611850949958205

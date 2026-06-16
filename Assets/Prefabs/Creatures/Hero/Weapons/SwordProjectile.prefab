@@ -60,8 +60,8 @@ GameObject:
   - component: {fileID: 5854826281433220752}
   - component: {fileID: 2652980745109964042}
   - component: {fileID: 4222750312099014004}
-  - component: {fileID: -7257853996536725095}
   - component: {fileID: 4756360026200476577}
+  - component: {fileID: -7257853996536725095}
   - component: {fileID: 3105911794195584057}
   - component: {fileID: 6947489128948035986}
   m_Layer: 0
@@ -151,28 +151,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 60e005b8982562d4eb3b251d17dce057, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _idleFrameRate: 10
-  _idleLoop: 1
-  _idleSprites:
-  - {fileID: 21300000, guid: 5fd45c590b872da4c9326ab7b4b559b5, type: 3}
-  - {fileID: 21300000, guid: 47bfdf51c84930e41a2a71ca82da37cf, type: 3}
-  - {fileID: 21300000, guid: 7acf787959fb7cf4491e875e8d48cb08, type: 3}
-  - {fileID: 21300000, guid: 8bff49d4c30ccb946bd2687a53ec9b97, type: 3}
-  _onCompliteIdle:
-    m_PersistentCalls:
-      m_Calls: []
-  _hitFrameRate: 0
-  _hitLoop: 0
-  _hitSprites: []
-  _onCompliteHit:
-    m_PersistentCalls:
-      m_Calls: []
-  _destFrameRate: 0
-  _destLoop: 0
-  _destSprites: []
-  _onCompliteDest:
-    m_PersistentCalls:
-      m_Calls: []
+  _clips:
+  - name: Idle
+    sprites:
+    - {fileID: 21300000, guid: 5fd45c590b872da4c9326ab7b4b559b5, type: 3}
+    - {fileID: 21300000, guid: 47bfdf51c84930e41a2a71ca82da37cf, type: 3}
+    - {fileID: 21300000, guid: 7acf787959fb7cf4491e875e8d48cb08, type: 3}
+    - {fileID: 21300000, guid: 8bff49d4c30ccb946bd2687a53ec9b97, type: 3}
+    frameRate: 10
+    loop: 1
+    onComplete:
+      m_PersistentCalls:
+        m_Calls: []
+  _defaultClipName: Idle
 --- !u!50 &5854826281433220752
 Rigidbody2D:
   serializedVersion: 4
@@ -275,19 +266,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!114 &-7257853996536725095
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8810187064220961209}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: feab1597610da484d8bfc8ce95f7e033, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _objectToDestroy: {fileID: 8810187064220961209}
 --- !u!114 &4756360026200476577
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -330,6 +308,19 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &-7257853996536725095
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8810187064220961209}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: feab1597610da484d8bfc8ce95f7e033, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _objectToDestroy: {fileID: 8810187064220961209}
 --- !u!114 &3105911794195584057
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -342,7 +333,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1fedc3d1d583e0a4b971cc58a3affe54, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _speed: 0.1
+  _speed: 0.15
 --- !u!114 &6947489128948035986
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -15,7 +15,7 @@ namespace Scripts.Components
             }
         }
 
-        public void AppleyHeal(GameObject target)
+        public void ApplyHeal(GameObject target)
         {
             var healthComponent = target.GetComponent<HealthComponent>();
             if (healthComponent != null)

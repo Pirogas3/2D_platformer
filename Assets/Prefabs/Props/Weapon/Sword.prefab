@@ -101,32 +101,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 60e005b8982562d4eb3b251d17dce057, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _idleFrameRate: 6
-  _idleLoop: 1
-  _idleSprites:
-  - {fileID: 21300000, guid: 03de91effead8a346b7d4ecb9feeb409, type: 3}
-  - {fileID: 21300000, guid: baf987ce1aa966f49af5d8029a43f718, type: 3}
-  - {fileID: 21300000, guid: 2683c0f176dfdcf409e8c871d42ebad7, type: 3}
-  - {fileID: 21300000, guid: 9b4ae0335eba2994db895570e6960af5, type: 3}
-  - {fileID: 21300000, guid: c394decadb7b3f7408c406a1be9370c6, type: 3}
-  - {fileID: 21300000, guid: 8949e8b75196146419eb3557a01e286a, type: 3}
-  - {fileID: 21300000, guid: 2a8fdcdfb23325d45826828c04c6862e, type: 3}
-  - {fileID: 21300000, guid: 720da168cbed7cb448abb349c7d68e60, type: 3}
-  _onCompliteIdle:
-    m_PersistentCalls:
-      m_Calls: []
-  _hitFrameRate: 0
-  _hitLoop: 0
-  _hitSprites: []
-  _onCompliteHit:
-    m_PersistentCalls:
-      m_Calls: []
-  _destFrameRate: 0
-  _destLoop: 0
-  _destSprites: []
-  _onCompliteDest:
-    m_PersistentCalls:
-      m_Calls: []
+  _clips:
+  - name: Idle
+    sprites:
+    - {fileID: 21300000, guid: 03de91effead8a346b7d4ecb9feeb409, type: 3}
+    - {fileID: 21300000, guid: baf987ce1aa966f49af5d8029a43f718, type: 3}
+    - {fileID: 21300000, guid: 2683c0f176dfdcf409e8c871d42ebad7, type: 3}
+    - {fileID: 21300000, guid: 9b4ae0335eba2994db895570e6960af5, type: 3}
+    - {fileID: 21300000, guid: c394decadb7b3f7408c406a1be9370c6, type: 3}
+    - {fileID: 21300000, guid: 8949e8b75196146419eb3557a01e286a, type: 3}
+    - {fileID: 21300000, guid: 2a8fdcdfb23325d45826828c04c6862e, type: 3}
+    - {fileID: 21300000, guid: 720da168cbed7cb448abb349c7d68e60, type: 3}
+    frameRate: 10
+    loop: 1
+    onComplete:
+      m_PersistentCalls:
+        m_Calls: []
+  _defaultClipName: Idle
 --- !u!58 &6473741956080166785
 CircleCollider2D:
   m_ObjectHideFlags: 0

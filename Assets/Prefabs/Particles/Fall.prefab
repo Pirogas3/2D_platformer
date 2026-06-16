@@ -98,41 +98,32 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 60e005b8982562d4eb3b251d17dce057, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _idleFrameRate: 10
-  _idleLoop: 0
-  _idleSprites:
-  - {fileID: 21300000, guid: eca51df7945752e4392aa35bdfc32c35, type: 3}
-  - {fileID: 21300000, guid: 751ad08fabf2836459685aed208e80db, type: 3}
-  - {fileID: 21300000, guid: f04ba0ff67e4e5b4dabcb3cb4c7f7343, type: 3}
-  - {fileID: 21300000, guid: 0a47a10db97a9f54e9fa9d137c103f18, type: 3}
-  - {fileID: 21300000, guid: 46f99abbb3dfa32479c92613e2756321, type: 3}
-  _onCompliteIdle:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: -7257853996536725095}
-        m_TargetAssemblyTypeName: Scripts.Components.DestroyObjectComponent, Assembly-CSharp
-        m_MethodName: DestroyObject
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  _hitFrameRate: 0
-  _hitLoop: 0
-  _hitSprites: []
-  _onCompliteHit:
-    m_PersistentCalls:
-      m_Calls: []
-  _destFrameRate: 0
-  _destLoop: 0
-  _destSprites: []
-  _onCompliteDest:
-    m_PersistentCalls:
-      m_Calls: []
+  _clips:
+  - name: Idle
+    sprites:
+    - {fileID: 21300000, guid: eca51df7945752e4392aa35bdfc32c35, type: 3}
+    - {fileID: 21300000, guid: 751ad08fabf2836459685aed208e80db, type: 3}
+    - {fileID: 21300000, guid: f04ba0ff67e4e5b4dabcb3cb4c7f7343, type: 3}
+    - {fileID: 21300000, guid: 0a47a10db97a9f54e9fa9d137c103f18, type: 3}
+    - {fileID: 21300000, guid: 46f99abbb3dfa32479c92613e2756321, type: 3}
+    frameRate: 10
+    loop: 0
+    onComplete:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: -7257853996536725095}
+          m_TargetAssemblyTypeName: Scripts.Components.DestroyObjectComponent, Assembly-CSharp
+          m_MethodName: DestroyObject
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  _defaultClipName: Idle
 --- !u!114 &-7257853996536725095
 MonoBehaviour:
   m_ObjectHideFlags: 0
