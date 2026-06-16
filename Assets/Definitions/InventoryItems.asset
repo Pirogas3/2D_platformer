@@ -16,4 +16,4 @@ MonoBehaviour:
   - _id: Sword
   - _id: Coin
   - _id: Key
-  - _id: SmallPotion
+  - _id: HealPotion

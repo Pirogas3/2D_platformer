@@ -173,6 +173,15 @@ namespace Scripts.Creatures
             }
         }
 
+        public void UsePotionOfHealth()
+        {
+            if (_gameSession.PlayerData.Inventory.Count("HealPotion") > 0)
+            {
+                _gameSession.PlayerData.Hp += 5; //востановить 5 здоровья
+                _gameSession.PlayerData.Inventory.Remove("HealPotion", 1); //и удалить 1 зелье, потом это надо поменять все
+            }
+        }
+
         public void ChangeArmedOrUnarmed()
         {
             _animator.runtimeAnimatorController = _gameSession.PlayerData.IsArmed ? _heroArmed : _heroUnarmed;

@@ -287,6 +287,22 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: e9b641d4-9dc0-4fa1-9cf5-357986b05dbb
     m_ActionName: Hero/DistAttack[/Mouse/rightButton]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 4312153819627111551}
+        m_TargetAssemblyTypeName: Scripts.Creatures.Hero, Assembly-CSharp
+        m_MethodName: UsePotionOfHealth
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 58de6247-da0b-46e7-9690-8a17e3349833
+    m_ActionName: Hero/UsePotionQ[/Keyboard/q]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Hero
@@ -322,7 +338,6 @@ MonoBehaviour:
   _jumpPower: 10
   _maxExtraJumps: 1
   _groundCheck: {fileID: 4804697892880738580}
-  _attackDamage: 0
   _attackHitbox: {fileID: 4256680600277974716}
   _interactionRadius: 1
   _interactionLayer:

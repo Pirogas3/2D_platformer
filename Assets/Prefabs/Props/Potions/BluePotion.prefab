@@ -161,29 +161,6 @@ MonoBehaviour:
     onComplete:
       m_PersistentCalls:
         m_Calls: []
-  - name: Collected
-    sprites:
-    - {fileID: 21300000, guid: 1e409399bba8a4b47b5afe0378f1ff1c, type: 3}
-    - {fileID: 21300000, guid: eafaa75f0a96f8a4a8c3e25c37d926e2, type: 3}
-    - {fileID: 21300000, guid: 977fb55df01b56d4c9f480e9641f98c2, type: 3}
-    - {fileID: 21300000, guid: 50232152c699a5641924d5f98b015089, type: 3}
-    frameRate: 10
-    loop: 0
-    onComplete:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 6554433254040437}
-          m_TargetAssemblyTypeName: Scripts.Components.DestroyObjectComponent, Assembly-CSharp
-          m_MethodName: DestroyObject
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
   _defaultClipName: Idle
 --- !u!114 &8189619821551330406
 MonoBehaviour:
@@ -201,23 +178,11 @@ MonoBehaviour:
   _action:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1349106580568505236}
-        m_TargetAssemblyTypeName: Assets.Scripts.Components.SpriteAnimationComponent,
+      - m_Target: {fileID: 4900834301656130366}
+        m_TargetAssemblyTypeName: Assets.Scripts.Components.InventoryAddComponent,
           Assembly-CSharp
-        m_MethodName: Play
-        m_Mode: 5
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: Collected
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 6581198943494108898}
-        m_TargetAssemblyTypeName: UnityEngine.Behaviour, UnityEngine
-        m_MethodName: set_enabled
-        m_Mode: 6
+        m_MethodName: Add
+        m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -226,11 +191,10 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 4900834301656130366}
-        m_TargetAssemblyTypeName: Assets.Scripts.Components.InventoryAddComponent,
-          Assembly-CSharp
-        m_MethodName: Add
-        m_Mode: 0
+      - m_Target: {fileID: 6554433254040437}
+        m_TargetAssemblyTypeName: Scripts.Components.DestroyObjectComponent, Assembly-CSharp
+        m_MethodName: DestroyObject
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -264,5 +228,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17697f03c75f68b499b27221ae50d0fb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _id: SmallPotion
+  _id: HealPotion
   _count: 1

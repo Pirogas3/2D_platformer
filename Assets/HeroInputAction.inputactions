@@ -50,6 +50,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "UsePotionQ",
+                    "type": "Button",
+                    "id": "58de6247-da0b-46e7-9690-8a17e3349833",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -193,6 +202,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "DistAttack",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "db606a36-90aa-446f-97e5-d98d6e22a725",
+                    "path": "<Keyboard>/q",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "UsePotionQ",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
