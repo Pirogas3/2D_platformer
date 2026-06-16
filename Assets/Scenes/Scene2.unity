@@ -3477,11 +3477,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2436004517893708542, guid: eae03007536467843acf881624ff9f36, type: 3}
       propertyPath: _speed
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2436004517893708542, guid: eae03007536467843acf881624ff9f36, type: 3}
       propertyPath: _jumpPower
-      value: 1
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 4382454010009607809, guid: eae03007536467843acf881624ff9f36, type: 3}
       propertyPath: m_Layer
@@ -3549,7 +3549,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7946140655443365790, guid: eae03007536467843acf881624ff9f36, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.405
+      value: -0.42
       objectReference: {fileID: 0}
     - target: {fileID: 7946140655443365790, guid: eae03007536467843acf881624ff9f36, type: 3}
       propertyPath: m_LocalPosition.z
@@ -3584,7 +3584,27 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8727551027723587032, guid: eae03007536467843acf881624ff9f36, type: 3}
+      propertyPath: m_Mass
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 8727551027723587032, guid: eae03007536467843acf881624ff9f36, type: 3}
       propertyPath: m_BodyType
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8727551027723587032, guid: eae03007536467843acf881624ff9f36, type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 6200000, guid: ffc0bf45fb2672041b489608bfb211d4, type: 2}
+    - target: {fileID: 8727551027723587032, guid: eae03007536467843acf881624ff9f36, type: 3}
+      propertyPath: m_LinearDrag
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8727551027723587032, guid: eae03007536467843acf881624ff9f36, type: 3}
+      propertyPath: m_Constraints
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8727551027723587032, guid: eae03007536467843acf881624ff9f36, type: 3}
+      propertyPath: m_GravityScale
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []

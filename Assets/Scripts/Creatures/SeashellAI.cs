@@ -14,39 +14,25 @@ namespace Assets.Scripts.Creatures
 
         protected override IEnumerator Attacking()
         {
-            while (true)
+            while (_vision.IsTouchingLayer && !_isDead)
             {
-                // Если мёртв или цель пропала – выходим
-                if (_isDead || _target == null || !_vision.IsTouchingLayer)
+                if (_vision.IsTouchingLayer && !_attackRange.IsTouchingLayer)
                 {
-                    _creature.SetMovementDirection(Vector2.zero);
-                    yield return new WaitForSeconds(_alarmDelay);
-                    StartState(Patrolling());
-                    yield break;
+                    _creature.ThrowAttack(0f); //holdTime не используем
                 }
-
-                // Если в радиусе ближней атаки – бьём
-                if (_attackRange.IsTouchingLayer)
+                else if (_vision.IsTouchingLayer && _attackRange.IsTouchingLayer)
                 {
-                    _creature.SetMovementDirection(Vector2.zero);
                     _creature.Attack();
                 }
-                // Иначе если в поле зрения – стреляем
-                else if (_vision.IsTouchingLayer)
-                {
-                    _creature.SetMovementDirection(Vector2.zero);
-                    _creature.ThrowAttack(0f); // holdTime не используем
-                }
-
                 yield return new WaitForSeconds(_attackCooldown);
             }
+            StartState(Patrolling());
         }
 
         protected override IEnumerator Patrolling()
         {
             while (true)
             {
-                _creature.SetMovementDirection(Vector2.zero);
                 yield return null;
             }
         }
