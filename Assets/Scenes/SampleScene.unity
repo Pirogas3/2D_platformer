@@ -10371,6 +10371,10 @@ PrefabInstance:
       value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 6958666155233098242, guid: 433b7621dadcc76479fe5a6a56d3b448, type: 3}
+      propertyPath: _playerData.MaxHp
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 6958666155233098242, guid: 433b7621dadcc76479fe5a6a56d3b448, type: 3}
       propertyPath: _playerData.Money
       value: 0
       objectReference: {fileID: 0}
@@ -10392,10 +10396,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6958666155233098242, guid: 433b7621dadcc76479fe5a6a56d3b448, type: 3}
       propertyPath: _playerData._inventory._inventory.Array.data[0].Value
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6958666155233098242, guid: 433b7621dadcc76479fe5a6a56d3b448, type: 3}
       propertyPath: _playerData._inventory._inventory.Array.data[1].Value
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6958666155233098242, guid: 433b7621dadcc76479fe5a6a56d3b448, type: 3}
+      propertyPath: _playerData._inventory._inventory.Array.data[2].Value
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -10924,8 +10932,16 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5497593437322912615, guid: c646fb0185f243a4998e71256f2cc66a, type: 3}
+      propertyPath: orthographic size
+      value: 2.8125
+      objectReference: {fileID: 0}
+    - target: {fileID: 5497593437322912615, guid: c646fb0185f243a4998e71256f2cc66a, type: 3}
       propertyPath: m_NormalizedViewPortRect.y
       value: 0.1651206
+      objectReference: {fileID: 0}
+    - target: {fileID: 5497593437322912615, guid: c646fb0185f243a4998e71256f2cc66a, type: 3}
+      propertyPath: m_NormalizedViewPortRect.width
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5497593437322912615, guid: c646fb0185f243a4998e71256f2cc66a, type: 3}
       propertyPath: m_NormalizedViewPortRect.height

@@ -1,4 +1,5 @@
 ﻿using Assets.Scripts.Model.Data;
+using Scripts.Creatures;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -10,69 +11,110 @@ namespace Assets.Scripts.Model
         public PlayerData PlayerData => _playerData;
 
         private PlayerData _sceneStartState; // состояние на начало текущей сцены
-        private PlayerData _checkpointState; //состояние на момент чекпоинта
+
+        public static GameSession Instance { get; private set; }
 
         private void Awake()
         {
-            if (IsSessionExit())
+            if (Instance != null && Instance != this)
             {
                 DestroyImmediate(gameObject);
                 return;
             }
-
+            Instance = this;
             DontDestroyOnLoad(this);
 
-            // При первом запуске – запоминаем состояние как начало первой сцены
             SaveSceneStartState();
-
-            // Подписываемся на загрузку сцен, чтобы обновлять "начало сцены" при переходе
             SceneManager.sceneLoaded += OnSceneLoaded;
         }
 
         private void OnDestroy()
         {
-            // Отписываемся, чтобы избежать утечек
             SceneManager.sceneLoaded -= OnSceneLoaded;
         }
 
         private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
         {
-            // При загрузке любой новой сцены запоминаем текущее состояние как "начало сцены"
-            // Это позволяет переходить между уровнями, сохраняя прогресс (инвентарь, здоровье)
+            // При загрузке новой сцены обновляем "начало сцены"
             SaveSceneStartState();
         }
 
+        // Сохранить состояние на начало сцены
         public void SaveSceneStartState()
         {
             _sceneStartState = _playerData.Clone();
         }
 
-        // Восстановить состояние до начала сцены (для рестарта уровня)
+        // Восстановить состояние до начала сцены (рестарт уровня)
         public void ResetToSceneStartState()
         {
             if (_sceneStartState != null)
                 _playerData = _sceneStartState.Clone();
         }
 
-        public void SaveCheckpoint()
-        {
-            _checkpointState = _playerData.Clone();
-        }
+#if UNITY_EDITOR
+        [ContextMenu("Quick Save")]
+        public void QuickSave() => SaveToSlot("QuickSave");
 
-        public void LoadCheckpoint()
-        {
-            if (_checkpointState != null)
-                _playerData = _checkpointState.Clone();
-        }
+        [ContextMenu("Quick Load")]
+        public void QuickLoad() => LoadFromSlot("QuickSave");
+#endif
 
-        private bool IsSessionExit()
+        // Сохранение в слот
+        public void SaveToSlot(string slotName)
         {
-            var sessions = FindObjectsOfType<GameSession>();
-            foreach (var session in sessions)
+            // Обновляем текущую сцену перед сохранением
+            _playerData.CurrentScene = SceneManager.GetActiveScene().name;
+
+            var hero = FindObjectOfType<Hero>();
+            if (hero != null)
             {
-                if (session != this) return true;
+                _playerData.PosX = hero.transform.position.x;
+                _playerData.PosY = hero.transform.position.y;
             }
-            return false;
+
+            SaveManager.SaveToFile(_playerData, slotName);
+            Debug.Log($"Игра сохранена в слот '{slotName}'.");
+        }
+
+        // Загрузка из слота
+        public void LoadFromSlot(string slotName)
+        {
+            var loadedData = SaveManager.LoadFromFile<PlayerData>(slotName);
+            if (loadedData == null)
+            {
+                Debug.LogWarning($"Слот '{slotName}' не найден или повреждён.");
+                return;
+            }
+
+            // Восстанавливаем данные
+            _playerData = loadedData;
+
+            // Загружаем сохранённую сцену
+            SceneManager.LoadScene(_playerData.CurrentScene);
+            Debug.Log($"Загружен слот '{slotName}'.");
+        }
+
+        // Загрузка последнего сделанного сохранения
+        public void LoadLastSlot()
+        {
+            string latestSlot = SaveManager.GetLatestSlot();
+            if (!string.IsNullOrEmpty(latestSlot))
+            {
+                LoadFromSlot(latestSlot);
+            }
+            else
+            {
+                // Если сохранений нет
+                Debug.Log("Нет сохранений.");
+                return;
+            }
+        }
+
+        // Удаление слота
+        public void DeleteSlot(string slotName)
+        {
+            SaveManager.DeleteSlot(slotName);
         }
     }
 }
