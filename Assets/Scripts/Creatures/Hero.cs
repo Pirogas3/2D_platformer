@@ -1,4 +1,6 @@
 using Assets.Scripts.Model;
+using Assets.Scripts.Model.Data;
+using Assets.Scripts.Props.Traps;
 using Scripts.Components;
 using System.Collections;
 using UnityEditor.Animations;
@@ -6,7 +8,7 @@ using UnityEngine;
 
 namespace Scripts.Creatures
 {
-    public class Hero : Creature
+    public class Hero : Creature, ICanAddInInventory
     {
         //Данные для игрока
         private GameSession _gameSession;
@@ -116,7 +118,7 @@ namespace Scripts.Creatures
         public override void Attack()
         {
             if (!_gameSession.PlayerData.IsArmed) return;
-            base.Attack();
+            _animator.SetTrigger(AttackKey);
         }
 
         public override void ThrowAttack(float holdTime)
@@ -150,6 +152,7 @@ namespace Scripts.Creatures
             {
                 _animator.SetTrigger(ThrowKey);
                 _particles.Spawn("Throw");
+                if (_sounds != null) _sounds.PlayClip("Range");
 
                 if (i < throwCount - 1)
                     yield return new WaitForSeconds(0.2f);

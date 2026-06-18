@@ -164,8 +164,8 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 4996425058894717883}
-        m_TargetAssemblyTypeName: Assets.Scripts.Creatures.Traps.Spikes, Assembly-CSharp
-        m_MethodName: TakeDamageFromSpikes
+        m_TargetAssemblyTypeName: Assets.Scripts.Props.Traps.Spikes, Assembly-CSharp
+        m_MethodName: ApplyDamageFromSpikes
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

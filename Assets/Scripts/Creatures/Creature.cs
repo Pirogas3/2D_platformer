@@ -1,10 +1,12 @@
+using Assets.Scripts.Audio;
 using Assets.Scripts.Components;
+using Assets.Scripts.Props.Traps;
 using Scripts.Components;
 using UnityEngine;
 
 namespace Scripts.Creatures
 {
-    public class Creature : MonoBehaviour
+    public class Creature : MonoBehaviour, IDamageFromSpikes
     {
         //Партикл анимации
         [Header("Particles")]
@@ -27,6 +29,7 @@ namespace Scripts.Creatures
         private Vector2 _moveDirection;
         protected Rigidbody2D _rigidbody;
         protected Animator _animator;
+        protected PlaySoundsComponent _sounds;
         private int _jumpsLeft;
         private bool _jumpRequested;
         private bool _doubleJumpUsedThisAirborne;
@@ -44,6 +47,7 @@ namespace Scripts.Creatures
         {
             _rigidbody = GetComponent<Rigidbody2D>();
             _animator = GetComponent<Animator>();
+            _sounds = GetComponent<PlaySoundsComponent>();
         }
 
         protected virtual void Start()
@@ -142,6 +146,7 @@ namespace Scripts.Creatures
         {
             _rigidbody.velocity = new Vector2(_rigidbody.velocity.x, 0f);
             _rigidbody.AddForce(Vector2.up * _jumpPower, ForceMode2D.Impulse);
+            if (_sounds != null) _sounds.PlayClip("Jump");
         }
 
         public void JumpRequest()
@@ -191,12 +196,14 @@ namespace Scripts.Creatures
         public virtual void Attack()
         {
             _animator.SetTrigger(AttackKey);
+            if (_sounds != null) _sounds.PlayClip("Melee");
         }
 
         public virtual void ThrowAttack(float holdTime)
         {
             _animator.SetTrigger(ThrowKey);
             _particles.Spawn("Throw");
+            if (_sounds != null) _sounds.PlayClip("Range");
         }
 
         public void PerformDamage()

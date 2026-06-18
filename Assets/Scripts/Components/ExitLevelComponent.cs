@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-namespace Scripts.Components
+namespace Assets.Scripts.Components
 {
     public class ExitLevelComponent : MonoBehaviour
     {

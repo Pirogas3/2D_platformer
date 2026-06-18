@@ -2,20 +2,20 @@ using Assets.Scripts.Model;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-namespace Scripts.Components
+namespace Assets.Scripts.Components
 {
     public class ReloadLevelComponent : MonoBehaviour
     {
+
         public void Reload()
         {
             var session = FindObjectOfType<GameSession>();
             if (session != null)
             {
-                session.ResetToInitialState();
+                session.ResetToSceneStartState(); // ← восстановление начала сцены
             }
 
-            var scene = SceneManager.GetActiveScene();
-            SceneManager.LoadScene(scene.name);
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
     }
 }

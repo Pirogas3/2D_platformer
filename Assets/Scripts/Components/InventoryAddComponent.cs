@@ -1,4 +1,6 @@
-﻿using Assets.Scripts.Model.Definitions;
+﻿using Assets.Scripts.Model.Data;
+using Assets.Scripts.Model.Definitions;
+using Assets.Scripts.Utils;
 using Scripts.Creatures;
 using UnityEngine;
 
@@ -11,11 +13,8 @@ namespace Assets.Scripts.Components
 
         public void Add(GameObject go)
         {
-            var hero = go.GetComponent<Hero>();
-            if (hero != null)
-            {
-                hero.AddInInventory(_id, _count);
-            }
+            var hero = go.GetInterface<ICanAddInInventory>();
+            hero?.AddInInventory(_id, _count);
         }
     }
 }
