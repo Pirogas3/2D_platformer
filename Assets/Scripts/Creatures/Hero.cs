@@ -1,6 +1,5 @@
 using Assets.Scripts.Model;
 using Assets.Scripts.Model.Data;
-using Assets.Scripts.Props.Traps;
 using Scripts.Components;
 using System.Collections;
 using UnityEditor.Animations;
@@ -178,10 +177,10 @@ namespace Scripts.Creatures
 
         public void UsePotionOfHealth()
         {
-            if (_gameSession.PlayerData.Inventory.Count("HealPotion") > 0)
+            if (_gameSession.PlayerData.Inventory.Count("BluePotion") > 0)
             {
                 _gameSession.PlayerData.Hp += 5; //востановить 5 здоровья
-                _gameSession.PlayerData.Inventory.Remove("HealPotion", 1); //и удалить 1 зелье, потом это надо поменять все
+                _gameSession.PlayerData.Inventory.Remove("BluePotion", 1); //и удалить 1 зелье, потом это надо поменять все
             }
         }
 

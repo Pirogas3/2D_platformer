@@ -8420,11 +8420,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c16c9c600787ee548aee0bfe48516b04, type: 3}
---- !u!1 &1386881340 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2773358274999582965, guid: 3eed152a018666943ad19c4049049091, type: 3}
-  m_PrefabInstance: {fileID: 4041967275178199655}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1386881342 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5130552442721590256, guid: 3eed152a018666943ad19c4049049091, type: 3}
@@ -8564,17 +8559,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bcd498b709d8d874996e58441c5d6346, type: 3}
---- !u!114 &1570861744 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 6341255740886284395, guid: f7c78537a310de746bb6e1b0b1af8b2a, type: 3}
-  m_PrefabInstance: {fileID: 1236262014998085541}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2fa02adb4be7053419f066151a9ad91f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1591495328
 GameObject:
   m_ObjectHideFlags: 0
@@ -9862,6 +9846,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: PotionSmall
       objectReference: {fileID: 0}
+    - target: {fileID: 4900834301656130366, guid: b96e15854e63c7a418ce05fd342f0e72, type: 3}
+      propertyPath: _id
+      value: BluePotion
+      objectReference: {fileID: 0}
     - target: {fileID: 6263575487755842903, guid: b96e15854e63c7a418ce05fd342f0e72, type: 3}
       propertyPath: m_LocalPosition.x
       value: 7.5
@@ -9902,10 +9890,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8189619821551330406, guid: b96e15854e63c7a418ce05fd342f0e72, type: 3}
-      propertyPath: _action.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgument
-      value: 
-      objectReference: {fileID: 1386881340}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -10090,6 +10074,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 28788084411703577, guid: e60e73bb62d80244087cf97a26ee77eb, type: 3}
+      propertyPath: _id
+      value: GoldKey
+      objectReference: {fileID: 0}
     - target: {fileID: 7531445103470980165, guid: e60e73bb62d80244087cf97a26ee77eb, type: 3}
       propertyPath: m_LocalPosition.x
       value: -9
@@ -10305,10 +10293,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5585551586713403144, guid: 3eed152a018666943ad19c4049049091, type: 3}
-      propertyPath: _onDie.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 1570861744}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -10379,8 +10363,16 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6958666155233098242, guid: 433b7621dadcc76479fe5a6a56d3b448, type: 3}
+      propertyPath: _playerData._inventory._items.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6958666155233098242, guid: 433b7621dadcc76479fe5a6a56d3b448, type: 3}
       propertyPath: _playerData._inventory._inventory.Array.size
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6958666155233098242, guid: 433b7621dadcc76479fe5a6a56d3b448, type: 3}
+      propertyPath: _playerData._inventory._items.Array.data[0].Id
+      value: Sword
       objectReference: {fileID: 0}
     - target: {fileID: 6958666155233098242, guid: 433b7621dadcc76479fe5a6a56d3b448, type: 3}
       propertyPath: _playerData._inventory._inventory.Array.data[0].Id
@@ -10404,6 +10396,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6958666155233098242, guid: 433b7621dadcc76479fe5a6a56d3b448, type: 3}
       propertyPath: _playerData._inventory._inventory.Array.data[2].Value
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6958666155233098242, guid: 433b7621dadcc76479fe5a6a56d3b448, type: 3}
+      propertyPath: _playerData._inventory._items.Array.data[0]._containerContent._items.Array.size
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -10651,10 +10647,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 206805995268256706, guid: 0fda28e740e75634e8f70e6180a4de25, type: 3}
-      propertyPath: _required.Array.data[2].Value
-      value: 10
-      objectReference: {fileID: 0}
     - target: {fileID: 1240962442226803882, guid: 0fda28e740e75634e8f70e6180a4de25, type: 3}
       propertyPath: m_Name
       value: TeleportExit

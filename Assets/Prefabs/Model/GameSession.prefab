@@ -45,6 +45,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _playerData:
-    Money: 5
-    Hp: 10
-    IsArmed: 0
+    _inventory:
+      _items: []
+    Hp: 0
+    MaxHp: 0
+    PosX: 0
+    PosY: 0
+    CurrentScene: 

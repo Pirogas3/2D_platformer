@@ -2,6 +2,6 @@
 {
     public interface ICanAddInInventory
     {
-        public void AddInInventory(string id, int value);
+        public void AddInInventory(string id, int value); //интерфейс для добавлений предметов в инвентарь
     }
 }

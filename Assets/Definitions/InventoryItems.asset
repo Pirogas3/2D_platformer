@@ -14,6 +14,46 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _items:
   - _id: Sword
+    _name: Simple Sword
+    _description: 
+    _icon: {fileID: 0}
+    _weight: 10
+    _baseValue: 10
+    _maxStack: 1
+    _category: 1
+    _containerConfig:
+      _acceptedCategories: 
+      _weightMultiplier: 0
   - _id: Coin
-  - _id: Key
-  - _id: HealPotion
+    _name: Coins
+    _description: 
+    _icon: {fileID: 0}
+    _weight: 0.1
+    _baseValue: 1
+    _maxStack: 1000000
+    _category: 4
+    _containerConfig:
+      _acceptedCategories: 
+      _weightMultiplier: 0
+  - _id: GoldKey
+    _name: Gold Key
+    _description: 
+    _icon: {fileID: 0}
+    _weight: 0.2
+    _baseValue: 1
+    _maxStack: 10
+    _category: 4
+    _containerConfig:
+      _acceptedCategories: 
+      _weightMultiplier: 0
+  - _id: BluePotion
+    _name: Blue Potion
+    _description: Small heal potion
+    _icon: {fileID: 0}
+    _weight: 1
+    _baseValue: 5
+    _maxStack: 10
+    _category: 6
+    _containerConfig:
+      _acceptedCategories: 
+      _weightMultiplier: 0

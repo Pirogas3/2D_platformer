@@ -1,5 +1,6 @@
 ﻿using Assets.Scripts.Model;
-using Assets.Scripts.Model.Data;
+using Assets.Scripts.Model.Definitions;
+using System;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -7,7 +8,7 @@ namespace Assets.Scripts.Components
 {
     public class RequireItemComponent : MonoBehaviour
     {
-        [SerializeField] private InventoryItemData[] _required;
+        [SerializeField] private RequiredItem[] _required;
         [SerializeField] private bool _removeAfterUse;
 
         [SerializeField] private UnityEvent _onSuccess;
@@ -16,25 +17,27 @@ namespace Assets.Scripts.Components
         public void Check()
         {
             var session = FindObjectOfType<GameSession>();
+            var inventory = session.PlayerData.Inventory;
             var areAllRequirementsMet = true;
 
-            foreach (var item in _required)
+            foreach (var req in _required)
             {
-                var numItems = session.PlayerData.Inventory.Count(item.Id);
-                if(numItems < item.Value)
+                if (inventory.Count(req.Id) < req.Amount)
+                {
                     areAllRequirementsMet = false;
+                    break;
+                }
             }
 
             if (areAllRequirementsMet)
             {
                 if (_removeAfterUse)
                 {
-                    foreach (var item in _required)
+                    foreach (var req in _required)
                     {
-                        session.PlayerData.Inventory.Remove(item.Id, item.Value);
+                        inventory.Remove(req.Id, req.Amount);
                     }
                 }
-
                 _onSuccess?.Invoke();
             }
             else
@@ -43,5 +46,12 @@ namespace Assets.Scripts.Components
                 _onFail?.Invoke();
             }
         }
+    }
+
+    [Serializable]
+    public class RequiredItem
+    {
+        [InventoryId] public string Id;
+        public int Amount;
     }
 }

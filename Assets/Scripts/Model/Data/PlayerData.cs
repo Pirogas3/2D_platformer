@@ -6,8 +6,11 @@ namespace Assets.Scripts.Model.Data
     [Serializable]
     public class PlayerData
     {
-        [SerializeField] private InventoryData _inventory;
+        [SerializeField] private InventoryData _inventory = new InventoryData();
         public InventoryData Inventory => _inventory;
+
+        [SerializeField] private InventoryRegistry _containerRegistry = new InventoryRegistry();
+        public InventoryRegistry ContainerRegistry => _containerRegistry;
 
         public int Hp;
         public int MaxHp;

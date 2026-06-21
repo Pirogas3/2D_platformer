@@ -1,7 +1,6 @@
 ﻿using Assets.Scripts.Model.Data;
 using Assets.Scripts.Model.Definitions;
 using Assets.Scripts.Utils;
-using Scripts.Creatures;
 using UnityEngine;
 
 namespace Assets.Scripts.Components

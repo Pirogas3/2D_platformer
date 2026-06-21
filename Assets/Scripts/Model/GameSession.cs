@@ -52,13 +52,11 @@ namespace Assets.Scripts.Model
                 _playerData = _sceneStartState.Clone();
         }
 
-#if UNITY_EDITOR
         [ContextMenu("Quick Save")]
         public void QuickSave() => SaveToSlot("QuickSave");
 
         [ContextMenu("Quick Load")]
         public void QuickLoad() => LoadFromSlot("QuickSave");
-#endif
 
         // Сохранение в слот
         public void SaveToSlot(string slotName)

@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 8063115973884423587}
   - component: {fileID: 208410950840253488}
   - component: {fileID: 4078620390937899594}
-  - component: {fileID: 206805995268256706}
+  - component: {fileID: 9036381970201745256}
   m_Layer: 7
   m_Name: TeleportExit
   m_TagString: Untagged
@@ -139,7 +139,7 @@ MonoBehaviour:
   _action:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 206805995268256706}
+      - m_Target: {fileID: 9036381970201745256}
         m_TargetAssemblyTypeName: Assets.Scripts.Components.RequireItemComponent,
           Assembly-CSharp
         m_MethodName: Check
@@ -165,7 +165,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _sceneName: Scene2
---- !u!114 &206805995268256706
+--- !u!114 &9036381970201745256
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -179,17 +179,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _required:
   - Id: Sword
-    Value: 1
-  - Id: Key
-    Value: 1
+    Amount: 1
   - Id: Coin
-    Value: 30
+    Amount: 2
   _removeAfterUse: 1
   _onSuccess:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 4078620390937899594}
-        m_TargetAssemblyTypeName: Scripts.Components.ExitLevelComponent, Assembly-CSharp
+        m_TargetAssemblyTypeName: Assets.Scripts.Components.ExitLevelComponent, Assembly-CSharp
         m_MethodName: Exit
         m_Mode: 1
         m_Arguments:

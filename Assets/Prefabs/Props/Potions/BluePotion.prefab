@@ -228,5 +228,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17697f03c75f68b499b27221ae50d0fb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _id: HealPotion
+  _id: BluePotion
   _count: 1
