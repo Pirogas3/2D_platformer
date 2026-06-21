@@ -57,3 +57,14 @@ MonoBehaviour:
     _containerConfig:
       _acceptedCategories: 
       _weightMultiplier: 0
+  - _id: Purse
+    _name: Purse
+    _description: A purse for money
+    _icon: {fileID: 0}
+    _weight: 1
+    _baseValue: 2
+    _maxStack: 1
+    _category: 7
+    _containerConfig:
+      _acceptedCategories: 04000000
+      _weightMultiplier: 0.1

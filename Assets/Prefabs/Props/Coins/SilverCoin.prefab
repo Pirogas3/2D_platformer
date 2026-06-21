@@ -191,7 +191,7 @@ MonoBehaviour:
       - m_Target: {fileID: 8631234695455853190}
         m_TargetAssemblyTypeName: Assets.Scripts.Components.InventoryAddComponent,
           Assembly-CSharp
-        m_MethodName: Add
+        m_MethodName: SmartAdd
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

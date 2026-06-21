@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace Assets.Scripts.Components
 {
-    public class CollectorComponent : MonoBehaviour, ICanAddInInventory
+    public class CollectorComponent : MonoBehaviour
     {
         [SerializeField] private List<InventoryItemData> _items = new List<InventoryItemData>();
 

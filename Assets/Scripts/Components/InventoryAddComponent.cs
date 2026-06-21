@@ -15,5 +15,11 @@ namespace Assets.Scripts.Components
             var hero = go.GetInterface<ICanAddInInventory>();
             hero?.AddInInventory(_id, _count);
         }
+
+        public void SmartAdd(GameObject go)
+        {
+            var hero = go.GetInterface<ICanAddInInventory>();
+            hero?.SmartAddInInventory(_id, _count);
+        }
     }
 }

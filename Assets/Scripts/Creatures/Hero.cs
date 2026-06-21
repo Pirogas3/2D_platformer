@@ -62,8 +62,9 @@ namespace Scripts.Creatures
 
         private void SpawnCoins()
         {
-            var numCoinsToDispose = Mathf.Min(_gameSession.PlayerData.Inventory.Count("Coin"), 5);
-            _gameSession.PlayerData.Inventory.Remove("Coin", numCoinsToDispose);
+            Debug.Log($"{_gameSession.PlayerData.Inventory.CountTotal("Coin", _gameSession.PlayerData.ContainerRegistry)}");
+            var numCoinsToDispose = Mathf.Min(_gameSession.PlayerData.Inventory.CountTotal("Coin", _gameSession.PlayerData.ContainerRegistry), 5);
+            _gameSession.PlayerData.Inventory.RemoveFromAll("Coin", numCoinsToDispose, _gameSession.PlayerData.ContainerRegistry);
 
             var burst = _hitParticles.emission.GetBurst(0);
             burst.count = numCoinsToDispose;
@@ -72,14 +73,24 @@ namespace Scripts.Creatures
             _hitParticles.Play();
         }
 
-        public void AddInInventory(string id, int value)
+        public void AddInInventory(string id, int amount)
         {
             if (id == "Sword" && _gameSession.PlayerData.Inventory.Count("Sword") < 1)
             {
-                _gameSession.PlayerData.Inventory.Add(id, value);
+                _gameSession.PlayerData.Inventory.Add(id, amount);
                 ChangeArmedOrUnarmed();
             }
-            else _gameSession.PlayerData.Inventory.Add(id, value);
+            else _gameSession.PlayerData.Inventory.Add(id, amount);
+        }
+
+        public void SmartAddInInventory(string id, int amount)
+        {
+            if (id == "Sword" && _gameSession.PlayerData.Inventory.Count("Sword") < 1)
+            {
+                _gameSession.PlayerData.Inventory.Add(id, amount);
+                ChangeArmedOrUnarmed();
+            }
+            else _gameSession.PlayerData.Inventory.AddToSuitableContainer(id, amount, _gameSession.PlayerData.ContainerRegistry);
         }
 
         public void Interact()
@@ -168,11 +179,7 @@ namespace Scripts.Creatures
         public override void TakeDamageFromSpikes()
         {
             base.TakeDamageFromSpikes();
-
-            if (_gameSession.PlayerData.Inventory.Count("Coin") > 0)
-            {
-                SpawnCoins();
-            }
+            SpawnCoins();
         }
 
         public void UsePotionOfHealth()
