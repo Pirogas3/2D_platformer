@@ -48,7 +48,7 @@ namespace Assets.Scripts.Creatures
                 StopCoroutine(_currentCoroutine);
 
             _isDead = true;
-            _animator.SetBool(IsDeadKey, _isDead);
+            _animator.SetTrigger(IsDeadKey);
             _particles.Spawn("Dead");
         }
     }

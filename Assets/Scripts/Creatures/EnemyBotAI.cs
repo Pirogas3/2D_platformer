@@ -21,7 +21,7 @@ namespace Scripts.Creatures
         protected Animator _animator;
         protected bool _isDead = false;
 
-        protected static readonly int IsDeadKey = Animator.StringToHash("is_dead");
+        protected static readonly int IsDeadKey = Animator.StringToHash("die");
 
         protected virtual void Awake()
         {
@@ -131,7 +131,7 @@ namespace Scripts.Creatures
                 StopCoroutine(_currentCoroutine);
 
             _isDead = true;
-            _animator.SetBool(IsDeadKey, _isDead);
+            _animator.SetTrigger(IsDeadKey);
         }
     }
 }

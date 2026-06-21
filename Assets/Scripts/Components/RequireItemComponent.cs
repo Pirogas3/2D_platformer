@@ -17,12 +17,20 @@ namespace Assets.Scripts.Components
         public void Check()
         {
             var session = FindObjectOfType<GameSession>();
+            if (session == null)
+            {
+                Debug.LogError("GameSession не найден!");
+                return;
+            }
+
             var inventory = session.PlayerData.Inventory;
+            var registry = session.PlayerData.ContainerRegistry;
             var areAllRequirementsMet = true;
 
+            // Проверяем наличие всех требуемых предметов (с учётом содержимого сумок)
             foreach (var req in _required)
             {
-                if (inventory.Count(req.Id) < req.Amount)
+                if (inventory.CountTotal(req.Id, registry) < req.Amount)
                 {
                     areAllRequirementsMet = false;
                     break;
@@ -33,9 +41,10 @@ namespace Assets.Scripts.Components
             {
                 if (_removeAfterUse)
                 {
+                    // Удаляем предметы (сначала из сумок, потом из основного инвентаря)
                     foreach (var req in _required)
                     {
-                        inventory.Remove(req.Id, req.Amount);
+                        inventory.RemoveFromAll(req.Id, req.Amount, registry);
                     }
                 }
                 _onSuccess?.Invoke();

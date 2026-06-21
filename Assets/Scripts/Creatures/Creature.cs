@@ -42,6 +42,7 @@ namespace Scripts.Creatures
         protected static readonly int Hit = Animator.StringToHash("hit");
         protected static readonly int AttackKey = Animator.StringToHash("attack");
         protected static readonly int ThrowKey = Animator.StringToHash("throw");
+        protected static readonly int Die = Animator.StringToHash("die");
 
         protected virtual void Awake()
         {

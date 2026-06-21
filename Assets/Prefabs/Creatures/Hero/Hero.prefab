@@ -19,6 +19,7 @@ GameObject:
   - component: {fileID: 44946075099930308}
   - component: {fileID: 5585551586713403144}
   - component: {fileID: 8563921720509421390}
+  - component: {fileID: 1971226096677818884}
   m_Layer: 9
   m_Name: Hero
   m_TagString: Player
@@ -401,7 +402,19 @@ MonoBehaviour:
         m_CallState: 2
   _onDie:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 6948727606871584072}
+        m_TargetAssemblyTypeName: UnityEngine.Animator, UnityEngine
+        m_MethodName: SetTrigger
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: die
+          m_BoolArgument: 0
+        m_CallState: 2
   _onHeal:
     m_PersistentCalls:
       m_Calls: []
@@ -442,6 +455,18 @@ MonoBehaviour:
     _clip: {fileID: 8300000, guid: e2b73858a337b8c4a8f761e94f3e6421, type: 3}
   - _id: Hurt
     _clip: {fileID: 8300000, guid: da14f0bc1a74e5e4da1fae98fd41ae2e, type: 3}
+--- !u!114 &1971226096677818884
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2773358274999582965}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2fa02adb4be7053419f066151a9ad91f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &3056616548998766116
 GameObject:
   m_ObjectHideFlags: 0
