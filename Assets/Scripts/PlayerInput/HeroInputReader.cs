@@ -1,6 +1,6 @@
+using Assets.Scripts.Creatures;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using Scripts.Creatures;
 
 namespace Assets.Scripts.PlayerInput
 {

@@ -1,10 +1,10 @@
 using Assets.Scripts.Audio;
 using Assets.Scripts.Components;
+using Assets.Scripts.Creatures.Weapon;
 using Assets.Scripts.Props.Traps;
-using Scripts.Components;
 using UnityEngine;
 
-namespace Scripts.Creatures
+namespace Assets.Scripts.Creatures
 {
     public class Creature : MonoBehaviour, IDamageFromSpikes
     {

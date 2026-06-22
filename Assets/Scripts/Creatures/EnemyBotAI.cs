@@ -1,9 +1,8 @@
 using Assets.Scripts.Components;
-using Assets.Scripts.Creatures;
 using System.Collections;
 using UnityEngine;
 
-namespace Scripts.Creatures
+namespace Assets.Scripts.Creatures
 {
     public class EnemyBotAI : MonoBehaviour
     {

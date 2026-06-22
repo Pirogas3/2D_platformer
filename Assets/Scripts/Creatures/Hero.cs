@@ -1,11 +1,11 @@
+using Assets.Scripts.Components;
 using Assets.Scripts.Model;
 using Assets.Scripts.Model.Data;
-using Scripts.Components;
 using System.Collections;
 using UnityEditor.Animations;
 using UnityEngine;
 
-namespace Scripts.Creatures
+namespace Assets.Scripts.Creatures
 {
     public class Hero : Creature, ICanAddInInventory
     {

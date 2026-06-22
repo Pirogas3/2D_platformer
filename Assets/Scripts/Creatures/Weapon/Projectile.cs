@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Scripts.Creatures.Weapons
+namespace Assets.Scripts.Creatures.Weapon
 {
     public class Projectile : MonoBehaviour
     {

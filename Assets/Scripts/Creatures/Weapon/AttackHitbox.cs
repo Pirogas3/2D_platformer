@@ -1,7 +1,8 @@
+using Assets.Scripts.Components;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Scripts.Components
+namespace Assets.Scripts.Creatures.Weapon
 {
     public enum HitShape
     {

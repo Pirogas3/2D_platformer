@@ -4,7 +4,7 @@ using System;
 using UnityEngine;
 using UnityEngine.Events;
 
-namespace Assets.Scripts.Components
+namespace Assets.Scripts.Components.InventoryComponents
 {
     public class RequireItemComponent : MonoBehaviour
     {

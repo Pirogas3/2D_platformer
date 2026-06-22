@@ -1,6 +1,4 @@
-﻿using Assets.Scripts.Model.Data;
-using Assets.Scripts.Utils;
-using Scripts.Creatures;
+﻿using Assets.Scripts.Utils;
 using UnityEngine;
 
 namespace Assets.Scripts.Props.Traps

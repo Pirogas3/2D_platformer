@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEngine.Events;
 using WSWhitehouse.TagSelector;
 
-namespace Scripts.Components
+namespace Assets.Scripts.Components
 {
     public class EnterCollisionComponent : MonoBehaviour
     {

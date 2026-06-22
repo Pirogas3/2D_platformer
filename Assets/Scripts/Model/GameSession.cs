@@ -1,5 +1,5 @@
 ﻿using Assets.Scripts.Model.Data;
-using Scripts.Creatures;
+using Assets.Scripts.Creatures;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 

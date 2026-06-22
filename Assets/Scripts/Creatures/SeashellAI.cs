@@ -1,5 +1,4 @@
-﻿using Scripts.Creatures;
-using System.Collections;
+﻿using System.Collections;
 using UnityEngine;
 
 namespace Assets.Scripts.Creatures

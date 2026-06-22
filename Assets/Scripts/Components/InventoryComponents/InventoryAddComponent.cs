@@ -3,7 +3,7 @@ using Assets.Scripts.Model.Definitions;
 using Assets.Scripts.Utils;
 using UnityEngine;
 
-namespace Assets.Scripts.Components
+namespace Assets.Scripts.Components.InventoryComponents
 {
     public class InventoryAddComponent : MonoBehaviour
     {
