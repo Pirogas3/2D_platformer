@@ -136,6 +136,7 @@ namespace Assets.Scripts.Creatures.Weapon
                 }
                 else
                 {
+                    //Debug.Log($"Добавлена цель: {go.name}, тег: {go.tag}");
                     results.Add(go);
                 }
             }
@@ -147,6 +148,45 @@ namespace Assets.Scripts.Creatures.Weapon
             var targets = GetTargets();
             foreach (var target in targets)
             {
+                if (_damageComponent != null)
+                {
+                    _damageComponent.ApplyDamage(target);
+                }
+                else
+                {
+                    // если DamageComponent всё же не найден, напрямую бьём по HealthComponent и выводим сообщение, что _damageComponent не найден
+                    var health = target.GetComponent<HealthComponent>();
+                    if (health != null) health.TakeDamage(0);
+                    Debug.Log($"У {name} не найден {_damageComponent} поэтому урон равен 0");
+                }
+            }
+        }
+
+        public void Attack(GameObject target)
+        {
+            if (_damageComponent != null)
+            {
+                _damageComponent.ApplyDamage(target);
+            }
+            else
+            {
+                // если DamageComponent всё же не найден, напрямую бьём по HealthComponent и выводим сообщение, что _damageComponent не найден
+                var health = target.GetComponent<HealthComponent>();
+                if (health != null) health.TakeDamage(0);
+                Debug.Log($"У {name} не найден {_damageComponent} поэтому урон равен 0");
+            }
+        }
+
+        public void Attack(bool push)
+        {
+            var targets = GetTargets();
+            foreach (var target in targets)
+            {
+                var hero = target.GetComponent<Hero>();
+                if (push == true && hero != null)
+                {
+                    hero.TakeDamageFromExplosion();
+                }
                 if (_damageComponent != null)
                 {
                     _damageComponent.ApplyDamage(target);

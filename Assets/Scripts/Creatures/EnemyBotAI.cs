@@ -21,6 +21,7 @@ namespace Assets.Scripts.Creatures
         protected bool _isDead = false;
 
         protected static readonly int IsDeadKey = Animator.StringToHash("die");
+        protected static readonly string Agro = "Exclamation";
 
         protected virtual void Awake()
         {
@@ -59,7 +60,7 @@ namespace Assets.Scripts.Creatures
 
         protected virtual IEnumerator AgroToHero()
         {
-            _particles.Spawn("Exclamation");
+            _particles.Spawn(Agro);
             yield return new WaitForSeconds(_alarmDelay);
             StartState(GoToHero());
         }

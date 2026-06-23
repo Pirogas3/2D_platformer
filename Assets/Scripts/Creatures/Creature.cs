@@ -24,9 +24,9 @@ namespace Assets.Scripts.Creatures
 
         //Настройка атаки
         [Header("Attack settings")]
-        [SerializeField] private AttackHitbox _attackHitbox;
+        [SerializeField] protected AttackHitbox _attackHitbox;
 
-        private Vector2 _moveDirection;
+        protected Vector2 _moveDirection;
         protected Rigidbody2D _rigidbody;
         protected Animator _animator;
         protected PlaySoundsComponent _sounds;
@@ -59,7 +59,7 @@ namespace Assets.Scripts.Creatures
         protected virtual void FixedUpdate()
         {
             //горизонтальное движение
-            _rigidbody.velocity = new Vector2(_moveDirection.x * _speed, _rigidbody.velocity.y);
+            Move();
 
             //обработка прыжка и логики падения
             JumpCalc();
@@ -92,6 +92,11 @@ namespace Assets.Scripts.Creatures
             }
         }
 
+        protected virtual void Move()
+        {
+            _rigidbody.velocity = new Vector2(_moveDirection.x * _speed, _rigidbody.velocity.y);
+        }
+
         protected bool IsGrounded()
         {
             return _groundCheck.IsTouchingLayer;
@@ -113,7 +118,7 @@ namespace Assets.Scripts.Creatures
             }
         }
 
-        public void SetMovementDirection(Vector2 direction)
+        public virtual void SetMovementDirection(Vector2 direction)
         {
             _moveDirection = direction;
         }
@@ -207,7 +212,7 @@ namespace Assets.Scripts.Creatures
             if (_sounds != null) _sounds.PlayClip("Range");
         }
 
-        public void PerformDamage()
+        public virtual void PerformDamage()
         {
             if (_attackHitbox != null)
                 _attackHitbox.Attack();
