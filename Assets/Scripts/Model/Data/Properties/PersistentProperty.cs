@@ -4,7 +4,7 @@ namespace Assets.Scripts.Model.Data.Properties
 {
     public abstract class PersistentProperty<TPropertyType>
     {
-        [SerializeField] private TPropertyType _value;
+        [SerializeField] protected TPropertyType _value;
         private TPropertyType _stored;
         private TPropertyType _defaultValue;
 

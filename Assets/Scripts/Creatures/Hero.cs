@@ -186,8 +186,9 @@ namespace Assets.Scripts.Creatures
         {
             if (_gameSession.PlayerData.Inventory.Count("BluePotion") > 0)
             {
-                _gameSession.PlayerData.Hp += 5; //востановить 5 здоровья
-                _gameSession.PlayerData.Inventory.Remove("BluePotion", 1); //и удалить 1 зелье, потом это надо поменять все
+                var healthComponent = GetComponent<HealthComponent>();
+                healthComponent.TakeHeal(5);
+                _gameSession.PlayerData.Inventory.Remove("BluePotion", 1);
             }
         }
 

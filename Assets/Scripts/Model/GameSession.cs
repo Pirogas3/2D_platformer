@@ -16,6 +16,8 @@ namespace Assets.Scripts.Model
 
         private void Awake()
         {
+            LoadHud();
+
             if (Instance != null && Instance != this)
             {
                 DestroyImmediate(gameObject);
@@ -31,6 +33,11 @@ namespace Assets.Scripts.Model
         private void OnDestroy()
         {
             SceneManager.sceneLoaded -= OnSceneLoaded;
+        }
+
+        private void LoadHud()
+        {
+            SceneManager.LoadScene("Hud", LoadSceneMode.Additive);
         }
 
         private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
@@ -50,6 +57,8 @@ namespace Assets.Scripts.Model
         {
             if (_sceneStartState != null)
                 _playerData = _sceneStartState.Clone();
+
+            //LoadHud();
         }
 
         [ContextMenu("Quick Save")]
@@ -91,6 +100,8 @@ namespace Assets.Scripts.Model
             // Загружаем сохранённую сцену
             SceneManager.LoadScene(_playerData.CurrentScene);
             Debug.Log($"Загружен слот '{slotName}'.");
+
+            //LoadHud();
         }
 
         // Загрузка последнего сделанного сохранения
