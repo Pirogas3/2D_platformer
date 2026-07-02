@@ -282,11 +282,101 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7900038899719055729, guid: 879d69fad49a8c246867df4fe1609c26, type: 3}
+      propertyPath: _slots.Array.data[0]
+      value: 
+      objectReference: {fileID: 693565325}
+    - target: {fileID: 7900038899719055729, guid: 879d69fad49a8c246867df4fe1609c26, type: 3}
+      propertyPath: _slots.Array.data[1]
+      value: 
+      objectReference: {fileID: 693565324}
+    - target: {fileID: 7900038899719055729, guid: 879d69fad49a8c246867df4fe1609c26, type: 3}
+      propertyPath: _slots.Array.data[2]
+      value: 
+      objectReference: {fileID: 693565323}
+    - target: {fileID: 7900038899719055729, guid: 879d69fad49a8c246867df4fe1609c26, type: 3}
+      propertyPath: _slots.Array.data[3]
+      value: 
+      objectReference: {fileID: 693565322}
+    - target: {fileID: 7900038899719055729, guid: 879d69fad49a8c246867df4fe1609c26, type: 3}
+      propertyPath: _slots.Array.data[4]
+      value: 
+      objectReference: {fileID: 693565321}
+    - target: {fileID: 7900038899719055729, guid: 879d69fad49a8c246867df4fe1609c26, type: 3}
+      propertyPath: _slots.Array.data[5]
+      value: 
+      objectReference: {fileID: 693565320}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 879d69fad49a8c246867df4fe1609c26, type: 3}
+--- !u!114 &693565320 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1290076680253780665, guid: 879d69fad49a8c246867df4fe1609c26, type: 3}
+  m_PrefabInstance: {fileID: 693565319}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d931038a97e3fb4085d96ed3fe85efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &693565321 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 918537453802826365, guid: 879d69fad49a8c246867df4fe1609c26, type: 3}
+  m_PrefabInstance: {fileID: 693565319}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d931038a97e3fb4085d96ed3fe85efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &693565322 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2020069524085393609, guid: 879d69fad49a8c246867df4fe1609c26, type: 3}
+  m_PrefabInstance: {fileID: 693565319}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d931038a97e3fb4085d96ed3fe85efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &693565323 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6112298737276094659, guid: 879d69fad49a8c246867df4fe1609c26, type: 3}
+  m_PrefabInstance: {fileID: 693565319}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d931038a97e3fb4085d96ed3fe85efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &693565324 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8733212883054794699, guid: 879d69fad49a8c246867df4fe1609c26, type: 3}
+  m_PrefabInstance: {fileID: 693565319}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d931038a97e3fb4085d96ed3fe85efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &693565325 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4613347777091364440, guid: 879d69fad49a8c246867df4fe1609c26, type: 3}
+  m_PrefabInstance: {fileID: 693565319}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d931038a97e3fb4085d96ed3fe85efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

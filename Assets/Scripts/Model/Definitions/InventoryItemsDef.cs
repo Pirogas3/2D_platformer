@@ -88,7 +88,7 @@ namespace Assets.Scripts.Model.Data
     [Serializable]
     public enum ItemCategory
     {
-        Misc, Weapon, Armor, Arrow, Money, Food, Potion, Container // Добавляются по небходимости
+        Misc, Weapon, Armor, Money, Food, Potion, Container // Добавляются по небходимости
     }
 
     /// <summary>

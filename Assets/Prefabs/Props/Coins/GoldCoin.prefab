@@ -264,8 +264,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17697f03c75f68b499b27221ae50d0fb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _id: Coin
-  _count: 10
+  _id: GoldCoin
+  _count: 1
 --- !u!82 &1604911026917039421
 AudioSource:
   m_ObjectHideFlags: 0

@@ -37,6 +37,8 @@ namespace Assets.Scripts.Model
 
         private void LoadHud()
         {
+            var currentScene = SceneManager.GetActiveScene();
+            if (currentScene.name == "MainMenu") return;
             SceneManager.LoadScene("Hud", LoadSceneMode.Additive);
         }
 

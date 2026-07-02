@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Assets.Scripts.UI.Hud
 {
-    public class HudController : MonoBehaviour
+    public class HealthHudController : MonoBehaviour
     {
         [SerializeField] private ProgresBarWidget _healthBar;
         private GameSession _session;

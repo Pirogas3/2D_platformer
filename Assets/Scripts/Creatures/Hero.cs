@@ -1,6 +1,7 @@
 using Assets.Scripts.Components;
 using Assets.Scripts.Model;
 using Assets.Scripts.Model.Data;
+using Assets.Scripts.Model.Definitions;
 using System.Collections;
 using UnityEditor.Animations;
 using UnityEngine;
@@ -195,6 +196,43 @@ namespace Assets.Scripts.Creatures
         public void ChangeArmedOrUnarmed()
         {
             _animator.runtimeAnimatorController = _gameSession.PlayerData.IsArmed ? _heroArmed : _heroUnarmed;
+        }
+
+        public void UseItem(string itemId)
+        {
+            var def = DefsFacade.Instance.Items.Get(itemId);
+            if (def.IsVoid)
+            {
+                Debug.LogWarning($"Предмет {itemId} не найден в определениях.");
+                return;
+            }
+
+            // Проверяем категорию предмета и выполняем действие
+            switch (def.Category)
+            {
+                case ItemCategory.Potion:
+                    // Пример: лечение
+                    _gameSession.PlayerData.Hp += 10;
+                    _gameSession.PlayerData.Inventory.Remove(itemId, 1);
+                    Debug.Log($"Вы выпили зелье! +10 HP. Текущее здоровье: {_gameSession.PlayerData.Hp}");
+                    break;
+
+                case ItemCategory.Food:
+                    // Восстановление здоровья или другого ресурса
+                    _gameSession.PlayerData.Hp += 5;
+                    _gameSession.PlayerData.Inventory.Remove(itemId, 1);
+                    Debug.Log($"Вы съели {def.Name}! +5 HP.");
+                    break;
+
+                case ItemCategory.Container:
+                    // Открытие контейнера (сумки) – пока просто вывод
+                    Debug.Log($"Открытие контейнера {def.Name} (пока не реализовано).");
+                    break;
+
+                default:
+                    Debug.Log($"Использование предмета {def.Name} не реализовано.");
+                    break;
+            }
         }
     }
 }

@@ -13,47 +13,58 @@ MonoBehaviour:
   m_Name: InventoryItems
   m_EditorClassIdentifier: 
   _items:
-  - _id: Sword
-    _name: Simple Sword
-    _description: 
-    _icon: {fileID: 0}
-    _weight: 10
+  - _id: GoldCoin
+    _name: Gold Coin
+    _description: GoldCoin
+    _icon: {fileID: 21300000, guid: 6149c047563045b438fdef31526affa9, type: 3}
+    _weight: 0.2
     _baseValue: 10
-    _maxStack: 1
-    _category: 1
+    _maxStack: 100
+    _category: 3
+    _containerConfig:
+      _acceptedCategories: 
+      _weightMultiplier: 0.1
+  - _id: SilverCoin
+    _name: Silver Coin
+    _description: Silver Coin
+    _icon: {fileID: 21300000, guid: 5514f945069ae694cb48460e9f351697, type: 3}
+    _weight: 0.2
+    _baseValue: 1
+    _maxStack: 100
+    _category: 3
     _containerConfig:
       _acceptedCategories: 
       _weightMultiplier: 0
-  - _id: Coin
-    _name: Coins
-    _description: 
-    _icon: {fileID: 0}
-    _weight: 0.1
-    _baseValue: 1
-    _maxStack: 1000000
-    _category: 4
+  - _id: Sword
+    _name: Simple Sword
+    _description: Simple iron sword
+    _icon: {fileID: 21300000, guid: 03de91effead8a346b7d4ecb9feeb409, type: 3}
+    _weight: 6
+    _baseValue: 10
+    _maxStack: 10
+    _category: 1
     _containerConfig:
       _acceptedCategories: 
       _weightMultiplier: 0
   - _id: GoldKey
     _name: Gold Key
-    _description: 
-    _icon: {fileID: 0}
-    _weight: 0.2
-    _baseValue: 1
-    _maxStack: 10
-    _category: 4
+    _description: Gold Key
+    _icon: {fileID: 21300000, guid: e0753557ddddff84ab7dde4e18c28b02, type: 3}
+    _weight: 0.5
+    _baseValue: 15
+    _maxStack: 1
+    _category: 3
     _containerConfig:
       _acceptedCategories: 
       _weightMultiplier: 0
   - _id: BluePotion
     _name: Blue Potion
     _description: Small heal potion
-    _icon: {fileID: 0}
+    _icon: {fileID: 21300000, guid: 5d361ea9433b9ad4282e1b39e2e52e94, type: 3}
     _weight: 1
-    _baseValue: 5
+    _baseValue: 8
     _maxStack: 10
-    _category: 6
+    _category: 5
     _containerConfig:
       _acceptedCategories: 
       _weightMultiplier: 0
@@ -62,9 +73,9 @@ MonoBehaviour:
     _description: A purse for money
     _icon: {fileID: 0}
     _weight: 1
-    _baseValue: 2
+    _baseValue: 5
     _maxStack: 1
-    _category: 7
+    _category: 6
     _containerConfig:
       _acceptedCategories: 04000000
       _weightMultiplier: 0.1
