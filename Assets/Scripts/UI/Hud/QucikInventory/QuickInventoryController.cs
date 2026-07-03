@@ -1,5 +1,6 @@
 ﻿using Assets.Scripts.Model;
 using Assets.Scripts.Model.Data;
+using Assets.Scripts.UI.Hud.Inventory;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -13,6 +14,7 @@ namespace Assets.Scripts.UI.Hud.QucikInventory
         [Header("Input")]
         [SerializeField] private InputActionReference[] _slotKeyActions; // 6 действий для клавиш 1-6
 
+        private InventoryWindowController _iventoryController;
         private GameSession _session;
         private InventoryData _inventory;
         private InventoryItemData[] _quickItems = new InventoryItemData[6]; // данные быстрых слотов
@@ -29,6 +31,12 @@ namespace Assets.Scripts.UI.Hud.QucikInventory
             _inventory = _session.PlayerData.Inventory;
             _inventory.OnChanged += OnInventoryChanged;
 
+            _iventoryController = GetComponent<InventoryWindowController>();
+            if (_iventoryController == null)
+            {
+                Debug.LogError("InventoryWindowController не найден, скролл ячеек быстрого доступа будет работать всегда!");
+            }
+
             // Инициализация слотов
             for (int i = 0; i < _slots.Length; i++)
             {
@@ -39,8 +47,11 @@ namespace Assets.Scripts.UI.Hud.QucikInventory
             // Подписка на действия клавиш
             for (int i = 0; i < _slotKeyActions.Length && i < 6; i++)
             {
-                if (_slotKeyActions[i] != null)
-                    _slotKeyActions[i].action.performed += ctx => SelectSlot(i);
+                if (_slotKeyActions[i] != null && _slotKeyActions[i].action != null)
+                {
+                    int slotIndex = i; // локальная копия
+                    _slotKeyActions[i].action.performed += ctx => SelectSlot(slotIndex);
+                }
             }
 
             RefreshUI();
@@ -54,8 +65,11 @@ namespace Assets.Scripts.UI.Hud.QucikInventory
 
             for (int i = 0; i < _slotKeyActions.Length && i < 6; i++)
             {
-                if (_slotKeyActions[i] != null)
-                    _slotKeyActions[i].action.performed -= ctx => SelectSlot(i);
+                if (_slotKeyActions[i] != null && _slotKeyActions[i].action != null)
+                {
+                    int slotIndex = i; // локальная копия
+                    _slotKeyActions[i].action.performed -= ctx => SelectSlot(slotIndex);
+                }
             }
         }
 
@@ -74,10 +88,11 @@ namespace Assets.Scripts.UI.Hud.QucikInventory
 
         private bool IsInventoryOpen()
         {
-            // Можно проверить, активно ли окно инвентаря (например, через InventoryWindowController)
-            // Для простоты оставим заглушку: всегда разрешаем скролл (пока не реализовано)
-            // Позже можно добавить проверку.
-            return false;
+            if (_iventoryController != null)
+            {
+                return _iventoryController.IsOpen;
+            }
+            else return false;
         }
 
         private void OnInventoryChanged()
@@ -132,16 +147,14 @@ namespace Assets.Scripts.UI.Hud.QucikInventory
         public bool TryAssignItem(int slotIndex, InventoryItemData itemData)
         {
             if (slotIndex < 0 || slotIndex >= _slots.Length) return false;
-            if (_quickItems[slotIndex] != null) return false; // слот занят
-
-            // Копируем данные (создаём новый объект, чтобы не ссылаться на оригинал)
+            // Просто присваиваем, даже если занят
             _quickItems[slotIndex] = new InventoryItemData(itemData.Id, itemData.Value);
             RefreshUI();
-            SelectSlot(_selectedIndex); // сохраняем выделение
+            SelectSlot(_selectedIndex);
             return true;
         }
 
-        // Метод для очистки слота (можно вызвать по ПКМ, но пока не реализовано)
+        // Метод для очистки слота
         public void ClearSlot(int slotIndex)
         {
             if (slotIndex < 0 || slotIndex >= _slots.Length) return;
@@ -150,11 +163,17 @@ namespace Assets.Scripts.UI.Hud.QucikInventory
             SelectSlot(_selectedIndex);
         }
 
-        // Метод для получения данных слота (для перетаскивания из быстрого слота обратно в инвентарь – пока не используется)
-        public InventoryItemData GetSlotData(int slotIndex)
+        //// Метод для получения данных слота (для перетаскивания из быстрого слота обратно в инвентарь – пока не используется)
+        //public InventoryItemData GetSlotData(int slotIndex)
+        //{
+        //    if (slotIndex < 0 || slotIndex >= _slots.Length) return null;
+        //    return _quickItems[slotIndex];
+        //}
+
+        public InventoryItemData GetSelectedSlotData()
         {
-            if (slotIndex < 0 || slotIndex >= _slots.Length) return null;
-            return _quickItems[slotIndex];
+            if (_selectedIndex < 0 || _selectedIndex >= _quickItems.Length) return null;
+            return _quickItems[_selectedIndex];
         }
     }
 }

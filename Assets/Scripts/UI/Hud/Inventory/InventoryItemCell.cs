@@ -119,9 +119,21 @@ namespace Assets.Scripts.UI.Hud.Inventory
         // --- Клик ---
         public void OnPointerClick(PointerEventData eventData)
         {
-            if (_itemData == null) return;
-            var hero = FindObjectOfType<Hero>();
-            if (hero != null) hero.UseItem(_itemData.Id);
+            if (eventData.button == PointerEventData.InputButton.Right)
+            {
+                if (_itemData != null && _controller != null)
+                {
+                    ContextMenuManager.ShowMenu(
+                        eventData.position,
+                        _itemData,
+                        this,
+                        _slotIndex,
+                        _controller,
+                        null
+                    );
+                }
+                return;
+            }
         }
 
         // --- Подсветка при наведении ---

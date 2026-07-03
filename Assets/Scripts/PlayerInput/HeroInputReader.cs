@@ -1,5 +1,6 @@
 using Assets.Scripts.Creatures;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 
 namespace Assets.Scripts.PlayerInput
@@ -36,6 +37,9 @@ namespace Assets.Scripts.PlayerInput
         {
             if (context.performed)
             {
+                // Если курсор над UI – игнорируем атаку
+                if (EventSystem.current != null && EventSystem.current.IsPointerOverGameObject())
+                    return;
                 _hero.Attack();
             }
         }
@@ -49,10 +53,22 @@ namespace Assets.Scripts.PlayerInput
             }
             else if (context.canceled && _isChargingThrow)
             {
+                // Если курсор над UI – игнорируем бросок
+                if (EventSystem.current != null && EventSystem.current.IsPointerOverGameObject())
+                {
+                    _isChargingThrow = false;
+                    return;
+                }
                 float holdTime = Time.time - _throwPressStartTime;
                 _hero.ThrowAttack(holdTime);
                 _isChargingThrow = false;
             }
+        }
+
+        public void OnUseQuickSlot(InputAction.CallbackContext context)
+        {
+            if (context.performed)
+                _hero.UseQuickSlot();
         }
     }
 }

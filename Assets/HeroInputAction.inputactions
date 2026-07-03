@@ -52,7 +52,7 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "UsePotionQ",
+                    "name": "UseQucikInvSlot",
                     "type": "Button",
                     "id": "58de6247-da0b-46e7-9690-8a17e3349833",
                     "expectedControlType": "",
@@ -64,6 +64,60 @@
                     "name": "ToggleInventory",
                     "type": "Button",
                     "id": "1fe29226-b6a8-4ba9-9e6f-cc6feb7d235d",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Slot1",
+                    "type": "Button",
+                    "id": "c0c30b0f-1507-4a36-8e87-431547ed1006",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Slot2",
+                    "type": "Button",
+                    "id": "368b5707-f4e0-42d9-b127-7a563046bed0",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Slot3",
+                    "type": "Button",
+                    "id": "18eceabb-9ed3-451c-9c2b-976b5240c9a7",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Slot4",
+                    "type": "Button",
+                    "id": "7eaae2f1-8971-477d-a19d-43cd02cbb54f",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Slot5",
+                    "type": "Button",
+                    "id": "d4f795c6-b798-4348-8a3c-b5761f936983",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Slot6",
+                    "type": "Button",
+                    "id": "37e934f5-7dab-4a3d-9f75-420ea12d4246",
                     "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
@@ -221,7 +275,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "UsePotionQ",
+                    "action": "UseQucikInvSlot",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -233,6 +287,72 @@
                     "processors": "",
                     "groups": "",
                     "action": "ToggleInventory",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "9443b2b6-4fbe-4eb7-8588-58fea8ea2640",
+                    "path": "<Keyboard>/1",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Slot1",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "13472cf5-6884-419a-b999-4f2d2dfeb533",
+                    "path": "<Keyboard>/2",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Slot2",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "916afd00-b910-461d-ace2-d3367c063f98",
+                    "path": "<Keyboard>/3",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Slot3",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "29c58d50-aea3-47eb-80e2-71a5c3031c07",
+                    "path": "<Keyboard>/4",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Slot4",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "93f793e1-d82a-404d-86b4-a73a4c4734a2",
+                    "path": "<Keyboard>/5",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Slot5",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "58f8f860-d526-4862-bbd7-c67f117bd194",
+                    "path": "<Keyboard>/6",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Slot6",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

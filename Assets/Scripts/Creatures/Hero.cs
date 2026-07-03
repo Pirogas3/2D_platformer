@@ -2,9 +2,11 @@ using Assets.Scripts.Components;
 using Assets.Scripts.Model;
 using Assets.Scripts.Model.Data;
 using Assets.Scripts.Model.Definitions;
+using Assets.Scripts.UI.Hud.QucikInventory;
 using System.Collections;
 using UnityEditor.Animations;
 using UnityEngine;
+using static UnityEditor.Progress;
 
 namespace Assets.Scripts.Creatures
 {
@@ -12,6 +14,7 @@ namespace Assets.Scripts.Creatures
     {
         //Данные для игрока
         private GameSession _gameSession;
+        private QuickInventoryController _quickInventoryController;
 
         //Интерактивность
         [Header("Interaction settings")]
@@ -49,6 +52,10 @@ namespace Assets.Scripts.Creatures
             {
                 health.SetHealth(_gameSession.PlayerData.Hp);
             }
+
+            _quickInventoryController = FindObjectOfType<QuickInventoryController>();
+            if (_quickInventoryController == null)
+                Debug.LogWarning("QuickInventoryController not found in scene!");
         }
 
         protected override void FixedUpdate()
@@ -183,14 +190,22 @@ namespace Assets.Scripts.Creatures
             SpawnCoins();
         }
 
-        public void UsePotionOfHealth()
+        public void UseQuickSlot()
         {
-            if (_gameSession.PlayerData.Inventory.Count("BluePotion") > 0)
+            if (_quickInventoryController == null)
             {
-                var healthComponent = GetComponent<HealthComponent>();
-                healthComponent.TakeHeal(5);
-                _gameSession.PlayerData.Inventory.Remove("BluePotion", 1);
+                Debug.LogWarning("QuickInventoryController not assigned!");
+                return;
             }
+
+            var itemData = _quickInventoryController.GetSelectedSlotData();
+            if (itemData == null)
+            {
+                Debug.Log("Quick slot is empty.");
+                return;
+            }
+
+            UseItem(itemData.Id);
         }
 
         public void ChangeArmedOrUnarmed()
@@ -211,27 +226,41 @@ namespace Assets.Scripts.Creatures
             switch (def.Category)
             {
                 case ItemCategory.Potion:
-                    // Пример: лечение
-                    _gameSession.PlayerData.Hp += 10;
-                    _gameSession.PlayerData.Inventory.Remove(itemId, 1);
-                    Debug.Log($"Вы выпили зелье! +10 HP. Текущее здоровье: {_gameSession.PlayerData.Hp}");
+                    ApplyPotion(itemId);
                     break;
 
                 case ItemCategory.Food:
-                    // Восстановление здоровья или другого ресурса
-                    _gameSession.PlayerData.Hp += 5;
-                    _gameSession.PlayerData.Inventory.Remove(itemId, 1);
-                    Debug.Log($"Вы съели {def.Name}! +5 HP.");
+                    Debug.Log($"Использование еды {def.Name} (пока не реализовано).");
                     break;
 
                 case ItemCategory.Container:
-                    // Открытие контейнера (сумки) – пока просто вывод
                     Debug.Log($"Открытие контейнера {def.Name} (пока не реализовано).");
                     break;
 
                 default:
                     Debug.Log($"Использование предмета {def.Name} не реализовано.");
                     break;
+            }
+        }
+
+        private void ApplyPotion(string itemId)
+        {
+            var def = DefsFacade.Instance.Properties.Get(itemId);
+            if (def.SpeedBoost > 0)
+            {
+                // потом реализуем зелье ускорения
+            }
+            if (def.Healing > 0)
+            {
+                if (_gameSession.PlayerData.Hp == _gameSession.PlayerData.MaxHp)
+                {
+                    Debug.Log($"HP максимальное - зелье здоровья не использовано!");
+                    return;
+                }
+
+                _gameSession.PlayerData.Hp += def.Healing;
+                _gameSession.PlayerData.Inventory.Remove(itemId, 1);
+                Debug.Log($"Вы выпили зелье! + {def.Healing} HP. Текущее здоровье: {_gameSession.PlayerData.Hp}");
             }
         }
     }

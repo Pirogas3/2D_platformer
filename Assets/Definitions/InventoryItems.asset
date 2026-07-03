@@ -13,6 +13,17 @@ MonoBehaviour:
   m_Name: InventoryItems
   m_EditorClassIdentifier: 
   _items:
+  - _id: Purse
+    _name: Purse
+    _description: A purse for money
+    _icon: {fileID: 0}
+    _weight: 1
+    _baseValue: 5
+    _maxStack: 1
+    _category: 6
+    _containerConfig:
+      _acceptedCategories: 04000000
+      _weightMultiplier: 0.1
   - _id: GoldCoin
     _name: Gold Coin
     _description: GoldCoin
@@ -68,14 +79,25 @@ MonoBehaviour:
     _containerConfig:
       _acceptedCategories: 
       _weightMultiplier: 0
-  - _id: Purse
-    _name: Purse
-    _description: A purse for money
-    _icon: {fileID: 0}
-    _weight: 1
-    _baseValue: 5
-    _maxStack: 1
-    _category: 6
+  - _id: RedPotion
+    _name: Red Potion
+    _description: Large heal potion
+    _icon: {fileID: 21300000, guid: abea79242737e754a8108502513eb8cd, type: 3}
+    _weight: 1.5
+    _baseValue: 15
+    _maxStack: 10
+    _category: 5
     _containerConfig:
-      _acceptedCategories: 04000000
-      _weightMultiplier: 0.1
+      _acceptedCategories: 
+      _weightMultiplier: 0
+  - _id: GreenPotion
+    _name: Green Potion
+    _description: Speed potion
+    _icon: {fileID: 21300000, guid: abea79242737e754a8108502513eb8cd, type: 3}
+    _weight: 2
+    _baseValue: 20
+    _maxStack: 10
+    _category: 5
+    _containerConfig:
+      _acceptedCategories: 
+      _weightMultiplier: 0

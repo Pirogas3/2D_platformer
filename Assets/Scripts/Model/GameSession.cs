@@ -1,5 +1,7 @@
-﻿using Assets.Scripts.Model.Data;
-using Assets.Scripts.Creatures;
+﻿using Assets.Scripts.Creatures;
+using Assets.Scripts.Model.Data;
+using Assets.Scripts.UI.Hud;
+using Assets.Scripts.UI.Hud.Inventory;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -28,6 +30,20 @@ namespace Assets.Scripts.Model
 
             SaveSceneStartState();
             SceneManager.sceneLoaded += OnSceneLoaded;
+        }
+
+        private void Update()
+        {
+            // Закрытие контекстного меню по клику левой кнопкой мыши вне его
+            if (Input.GetMouseButtonDown(0))
+            {
+                ContextMenuManager.HandleGlobalClick();
+            }
+
+            if (Input.GetKeyDown(KeyCode.Escape) && ContextMenuManager.IsMenuOpen)
+            {
+                ContextMenuManager.CloseMenu();
+            }
         }
 
         private void OnDestroy()

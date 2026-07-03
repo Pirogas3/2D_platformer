@@ -11,7 +11,7 @@ namespace Assets.Scripts.UI.Hud.QucikInventory
     {
         [SerializeField] private Image _icon;
         [SerializeField] private Text _countText;
-        [SerializeField] private Image _selectionImage; // рамка выделения (активный слот)
+        [SerializeField] private Image _selectedImage; // рамка выделения (активный слот)
         [SerializeField] private Image _hoverOverlay;
         [SerializeField] private float _hoverAlpha = 0.5f;
 
@@ -44,6 +44,10 @@ namespace Assets.Scripts.UI.Hud.QucikInventory
 
             _icon.sprite = _itemDef.Icon;
             _icon.enabled = true;
+            // Устанавливаем нормальную прозрачность (непрозрачный)
+            Color c = _icon.color;
+            c.a = 1f;
+            _icon.color = c;
 
             if (_itemData.Value > 1)
             {
@@ -64,10 +68,16 @@ namespace Assets.Scripts.UI.Hud.QucikInventory
         public void Clear()
         {
             _icon.sprite = null;
-            _icon.enabled = false;
+            _icon.enabled = true; // всегда включён, чтобы принимать события мыши
+                                  // Делаем иконку полностью прозрачной
+            Color c = _icon.color;
+            c.a = 0f;
+            _icon.color = c;
+
             _countText.gameObject.SetActive(false);
             _itemData = null;
             _itemDef = null;
+
             SetSelected(false);
             if (_hoverOverlay != null)
                 _hoverOverlay.gameObject.SetActive(false);
@@ -75,16 +85,31 @@ namespace Assets.Scripts.UI.Hud.QucikInventory
 
         public void SetSelected(bool selected)
         {
-            if (_selectionImage != null)
-                _selectionImage.gameObject.SetActive(selected);
+            if (_selectedImage != null)
+                _selectedImage.gameObject.SetActive(selected);
         }
 
         public void OnPointerClick(PointerEventData eventData)
         {
+            if (eventData.button == PointerEventData.InputButton.Right)
+            {
+                if (_itemData != null && _controller != null)
+                {
+                    ContextMenuManager.ShowMenu(
+                        eventData.position,
+                        _itemData,
+                        this,
+                        _slotIndex,
+                        null,
+                        _controller
+                    );
+                }
+                return;
+            }
+
             if (_itemData == null) return;
             var hero = FindObjectOfType<Hero>();
-            if (hero != null)
-                hero.UseItem(_itemData.Id);
+            if (hero != null) hero.UseItem(_itemData.Id);
         }
 
         public void OnPointerEnter(PointerEventData eventData)

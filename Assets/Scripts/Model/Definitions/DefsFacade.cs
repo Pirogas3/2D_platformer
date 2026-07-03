@@ -11,6 +11,7 @@ namespace Assets.Scripts.Model.Definitions
     public class DefsFacade : ScriptableObject
     {
         [SerializeField] private InventoryItemsDef _items;
+        [SerializeField] private ItemPropertiesDef _properties;
 
         private static DefsFacade _instance;
         /// <summary>
@@ -20,6 +21,7 @@ namespace Assets.Scripts.Model.Definitions
 
         /// <summary>Определения всех предметов инвентаря.</summary>
         public InventoryItemsDef Items => _items;
+        public ItemPropertiesDef Properties => _properties;
 
         /// <summary>
         /// Загрузить фасад из Resources.

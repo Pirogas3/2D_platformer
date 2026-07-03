@@ -17,7 +17,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1908463273002368580
 RectTransform:
   m_ObjectHideFlags: 0
@@ -34,8 +34,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 13, y: 13}
+  m_AnchoredPosition: {x: 0, y: 0.5000005}
+  m_SizeDelta: {x: 13, y: 14}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5485545679091247789
 CanvasRenderer:
@@ -92,7 +92,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &4585358587140316314
 RectTransform:
   m_ObjectHideFlags: 0
@@ -153,7 +153,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 15
+  m_Text: 
 --- !u!1 &5019167329050850569
 GameObject:
   m_ObjectHideFlags: 0
@@ -166,12 +166,12 @@ GameObject:
   - component: {fileID: 7252942880008465087}
   - component: {fileID: 1232187339301958232}
   m_Layer: 5
-  m_Name: Selection
+  m_Name: HoveOverley
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &2905767630044944271
 RectTransform:
   m_ObjectHideFlags: 0
@@ -188,8 +188,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 13, y: 13}
+  m_AnchoredPosition: {x: 0, y: 0.5000005}
+  m_SizeDelta: {x: 13, y: 14}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7252942880008465087
 CanvasRenderer:
@@ -283,7 +283,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _icon: {fileID: 2709219650338227092}
   _countText: {fileID: 2090353184611307475}
-  _selectionImage: {fileID: 4226573710632372779}
+  _selectedImage: {fileID: 4226573710632372779}
   _hoverOverlay: {fileID: 1232187339301958232}
   _hoverAlpha: 0.3
 --- !u!1 &7127031385213166481

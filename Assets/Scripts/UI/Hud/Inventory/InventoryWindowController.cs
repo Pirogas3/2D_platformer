@@ -13,6 +13,8 @@ namespace Assets.Scripts.UI.Hud.Inventory
         [SerializeField] private GameObject _window; // само окно
         [SerializeField] private Transform _content; // объект с GridLayoutGroup
         [SerializeField] private GameObject _itemPrefab; // префаб ячейки
+        [SerializeField] private GameObject _contextMenuPrefab; // префаб контекстного меню
+        [SerializeField] private Canvas _dynamicCanvas;
 
         [Header("Input")]
         [SerializeField] private InputActionReference _toggleAction; // действие для открытия/закрытия
@@ -21,6 +23,8 @@ namespace Assets.Scripts.UI.Hud.Inventory
         private InventoryData _inventory;
         private bool _isOpen = false;
         private int _dragFromIndex = -1;
+
+        public bool IsOpen => _isOpen;
 
         private void OnEnable()
         {
@@ -41,6 +45,8 @@ namespace Assets.Scripts.UI.Hud.Inventory
                 _inventory.OnChanged += RefreshInventoryUI;
             _window.SetActive(false);
             _isOpen = false;
+
+            ContextMenuManager.Initialize(_contextMenuPrefab, _dynamicCanvas);
         }
 
         private void OnDestroy()
