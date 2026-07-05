@@ -18,7 +18,7 @@ namespace Assets.Scripts.Creatures.Weapon
 
         [Header("Common")]
         [SerializeField] private Vector2 _offset = Vector2.zero; // смещение от позиции объекта
-        [SerializeField] private LayerMask _targetLayers = 0;    // какие слои можно атаковать (если не заданы, то ищем по тегу "enemy")
+        [SerializeField] private LayerMask _targetLayers = 0;    // какие слои можно атаковать (если не заданы, то ищем по тегу)
         [SerializeField] private bool _useTagInsteadOfLayer = true;
         [SerializeField] private string _targetTag = "Enemy";
 
@@ -143,61 +143,47 @@ namespace Assets.Scripts.Creatures.Weapon
             return results;
         }
 
-        public void Attack()
+        /// <summary>
+        /// Обычный метод нанесения урона через хитбокс, необязательно, но можно передать конкретный урон который надо нанести
+        /// </summary>
+        /// <param name="damage">Конкретный переданный урон (необязателен)</param>
+        public void Attack(int damage = 0)
         {
+
             var targets = GetTargets();
             foreach (var target in targets)
             {
-                if (_damageComponent != null)
+                if (_damageComponent != null && damage == 0)
                 {
                     _damageComponent.ApplyDamage(target);
                 }
                 else
                 {
-                    // если DamageComponent всё же не найден, напрямую бьём по HealthComponent и выводим сообщение, что _damageComponent не найден
+                    // если DamageComponent не найден или передан конкретный урон, напрямую бьём по HealthComponent
                     var health = target.GetComponent<HealthComponent>();
-                    if (health != null) health.TakeDamage(0);
-                    Debug.Log($"У {name} не найден {_damageComponent} поэтому урон равен 0");
+                    if (health != null) health.TakeDamage(damage);
+                    Debug.Log($"Юнитом: {name} - нанесён урон равный = {_damageComponent}");
                 }
             }
         }
 
-        public void Attack(GameObject target)
+        /// <summary>
+        /// Метод нанесения урона конкретной переданной цели, также можно передать конкретный урон
+        /// </summary>
+        /// <param name="target">Конкретная цель для нанесения урона</param>
+        /// <param name="damage">Конкретный переданный урон (необязателен)</param>
+        public void Attack(GameObject target, int damage = 0)
         {
-            if (_damageComponent != null)
+            if (_damageComponent != null && damage == 0)
             {
                 _damageComponent.ApplyDamage(target);
             }
             else
             {
-                // если DamageComponent всё же не найден, напрямую бьём по HealthComponent и выводим сообщение, что _damageComponent не найден
+                // если DamageComponent не найден или передан конкретный урон, напрямую бьём по HealthComponent
                 var health = target.GetComponent<HealthComponent>();
-                if (health != null) health.TakeDamage(0);
-                Debug.Log($"У {name} не найден {_damageComponent} поэтому урон равен 0");
-            }
-        }
-
-        public void Attack(bool push)
-        {
-            var targets = GetTargets();
-            foreach (var target in targets)
-            {
-                var hero = target.GetComponent<Hero>();
-                if (push == true && hero != null)
-                {
-                    hero.TakeDamageFromExplosion();
-                }
-                if (_damageComponent != null)
-                {
-                    _damageComponent.ApplyDamage(target);
-                }
-                else
-                {
-                    // если DamageComponent всё же не найден, напрямую бьём по HealthComponent и выводим сообщение, что _damageComponent не найден
-                    var health = target.GetComponent<HealthComponent>();
-                    if (health != null) health.TakeDamage(0);
-                    Debug.Log($"У {name} не найден {_damageComponent} поэтому урон равен 0");
-                }
+                if (health != null) health.TakeDamage(damage);
+                Debug.Log($"Юнитом: {name} - нанесён урон равный = {_damageComponent}");
             }
         }
     }

@@ -12,6 +12,8 @@ namespace Assets.Scripts.UI.Hud.Inventory
     {
         [Header("Buttons")]
         [SerializeField] private Button _useButton;
+        [SerializeField] private Button _equipUnquipButton;
+        [SerializeField] private Text _equipUnquipText;
         [SerializeField] private Button _dropButton;
         [SerializeField] private Button _clearSlotButton;
         [SerializeField] public RectTransform PanelRect;
@@ -46,19 +48,29 @@ namespace Assets.Scripts.UI.Hud.Inventory
                 return;
             }
 
-            // Настройка видимости кнопок
             bool canUse = _itemDef.Category == ItemCategory.Food ||
                           _itemDef.Category == ItemCategory.Potion ||
                           _itemDef.IsContainer;
             _useButton.gameObject.SetActive(canUse);
 
-            _dropButton.gameObject.SetActive(true);
-
             bool isQuickSlot = source is QuickInventorySlot;
+            _dropButton.gameObject.SetActive(!isQuickSlot);
             _clearSlotButton.gameObject.SetActive(isQuickSlot);
 
-            // Подписка на кнопки
+            bool canEquip = _itemDef.Category == ItemCategory.Weapon ||
+                            _itemDef.Category == ItemCategory.Armor;
+            _equipUnquipButton.gameObject.SetActive(canEquip);
+            if (canEquip)
+            {
+                var session = FindObjectOfType<GameSession>();
+                if (_itemData.Id == session.PlayerData.WeaponItemId)
+                {
+                    _equipUnquipText.text = "Unequip";
+                }
+            }
+
             _useButton.onClick.AddListener(OnUse);
+            _equipUnquipButton.onClick.AddListener(OnUse);
             _dropButton.onClick.AddListener(OnDrop);
             _clearSlotButton.onClick.AddListener(OnClearSlot);
         }
@@ -77,10 +89,6 @@ namespace Assets.Scripts.UI.Hud.Inventory
             if (session != null)
             {
                 session.PlayerData.Inventory.Remove(_itemData.Id, _itemData.Value);
-            }
-            if (_source is QuickInventorySlot quickSlot && _quickController != null)
-            {
-                _quickController.ClearSlot(quickSlot.GetSlotIndex());
             }
             CloseMenu();
         }

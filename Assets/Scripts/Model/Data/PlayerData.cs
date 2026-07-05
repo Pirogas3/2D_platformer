@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Assets.Scripts.Model.Definitions;
+using System;
 using UnityEngine;
 
 namespace Assets.Scripts.Model.Data
@@ -43,8 +44,35 @@ namespace Assets.Scripts.Model.Data
         // Пока что не используются просто записываются при сохранении
         public float PosX;
         public float PosY;
-        // Правило вооружен или нет
-        public bool IsArmed => Inventory.Count("Sword") >= 1 ? true : false;
+        // Правило вооружен или нет и сохраняем id предмета которым вооружен
+        [SerializeField] private bool _isArmed = false;
+        [SerializeField][InventoryId] private string _weaponItemId = null;
+        public bool IsArmed => _isArmed;
+        public string WeaponItemId => _weaponItemId;
+
+        // Команда одеть экпипированное оружие
+        public void EquipWeapon(string itemId)
+        {
+            // Если пытаемся одеть тот же самый предмет - значит это команда его снять
+            if (_weaponItemId == itemId)
+            {
+                _isArmed = false;
+                _weaponItemId = null;
+                return;
+            }
+
+            _isArmed = true;
+            _weaponItemId = itemId;
+        }
+
+        //// Команда снять экипированное оружие
+        //public void UnequipWeapon()
+        //{
+        //    _isArmed = false;
+        //    _weaponItemId = null;
+        //}
+
+        //public bool IsArmed => Inventory.Count("Sword") >= 1 ? true : false;
 
         [Header("Scene")]
         public string CurrentScene; // используется для сохранений и загрузки

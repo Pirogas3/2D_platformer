@@ -55,6 +55,8 @@ MonoBehaviour:
   _window: {fileID: 465433617063952771}
   _content: {fileID: 8238124164166531386}
   _itemPrefab: {fileID: 4295762430756761116, guid: ca7ef59b36c973b4c8ccef36069f419a, type: 3}
+  _contextMenuPrefab: {fileID: 1314705098542618130, guid: 989fd7b270ce4964190cc5538e412c88, type: 3}
+  _dynamicCanvas: {fileID: 0}
   _toggleAction: {fileID: -4874034012912340672, guid: 978b6656f5a97a14d9340ce06bb571b0, type: 3}
 --- !u!114 &3935542797657910287
 MonoBehaviour:

@@ -92,8 +92,8 @@ MonoBehaviour:
       _weightMultiplier: 0
   - _id: GreenPotion
     _name: Green Potion
-    _description: Speed potion
-    _icon: {fileID: 21300000, guid: abea79242737e754a8108502513eb8cd, type: 3}
+    _description: The potion of speed
+    _icon: {fileID: 21300000, guid: b1003f19d2c364e458289938ed043a46, type: 3}
     _weight: 2
     _baseValue: 20
     _maxStack: 10

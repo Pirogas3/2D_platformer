@@ -26,7 +26,8 @@ namespace Assets.Scripts.Model.Definitions
     [Serializable]
     public class ItemProperties
     {
-        public int Damage;
+        public int MeleeDamage;
+        public int RangeDamage;
         public int Healing;
         public int SpeedBoost;
         public float Duration;

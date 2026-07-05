@@ -6,7 +6,6 @@ using Assets.Scripts.UI.Hud.QucikInventory;
 using System.Collections;
 using UnityEditor.Animations;
 using UnityEngine;
-using static UnityEditor.Progress;
 
 namespace Assets.Scripts.Creatures
 {
@@ -28,9 +27,9 @@ namespace Assets.Scripts.Creatures
         [SerializeField] private AnimatorController _heroUnarmed;
         [SerializeField] private AnimatorController _heroArmed;
 
-        //Дальняя атака
-        [Header("Dist Attack")]
-        [SerializeField] private float _throwCooldown = 0.5f;
+        private int _meleeDamage = 0;
+        private int _rangeDamage = 0;
+        private float _throwCooldown = 0f;
         private float _lastThrowTime;
 
         protected override void Awake()
@@ -42,10 +41,7 @@ namespace Assets.Scripts.Creatures
         {
             _gameSession = FindObjectOfType<GameSession>();
 
-            if (_gameSession.PlayerData.IsArmed)
-                _animator.runtimeAnimatorController = _heroArmed;
-            else
-                _animator.runtimeAnimatorController = _heroUnarmed;
+            ChangeArmedOrUnarmed(_gameSession.PlayerData.WeaponItemId);
 
             HealthComponent health = GetComponent<HealthComponent>();
             if (health != null)
@@ -86,7 +82,6 @@ namespace Assets.Scripts.Creatures
             if (id == "Sword" && _gameSession.PlayerData.Inventory.Count("Sword") < 1)
             {
                 _gameSession.PlayerData.Inventory.Add(id, amount);
-                ChangeArmedOrUnarmed();
             }
             else _gameSession.PlayerData.Inventory.Add(id, amount);
         }
@@ -96,7 +91,6 @@ namespace Assets.Scripts.Creatures
             if (id == "Sword" && _gameSession.PlayerData.Inventory.Count("Sword") < 1)
             {
                 _gameSession.PlayerData.Inventory.Add(id, amount);
-                ChangeArmedOrUnarmed();
             }
             else _gameSession.PlayerData.Inventory.AddToSuitableContainer(id, amount, _gameSession.PlayerData.ContainerRegistry);
         }
@@ -139,8 +133,16 @@ namespace Assets.Scripts.Creatures
             _animator.SetTrigger(AttackKey);
         }
 
+        public override void PerformDamage()
+        {
+            if (_attackHitbox != null)
+                _attackHitbox.Attack(_meleeDamage);
+        }
+
         public override void ThrowAttack(float holdTime)
         {
+            if (_gameSession.PlayerData.IsArmed == false || _rangeDamage == 0) return;
+
             if (_gameSession.PlayerData.Inventory.Count("Sword") <= 1 || Time.time < _lastThrowTime + _throwCooldown)
             {
                 Debug.Log("Бросок не готов");
@@ -148,14 +150,14 @@ namespace Assets.Scripts.Creatures
             }
             _lastThrowTime = Time.time;
 
-            if (holdTime > 1.0f && _gameSession.PlayerData.Inventory.Count("Sword") >= 4)
+            if (holdTime > 1.0f && _gameSession.PlayerData.Inventory.Count(_gameSession.PlayerData.WeaponItemId) >= 4)
             {
-                _gameSession.PlayerData.Inventory.Remove("Sword", 3);
+                _gameSession.PlayerData.Inventory.Remove(_gameSession.PlayerData.WeaponItemId, 3);
                 StartCoroutine(MultiThrowAttack(holdTime));
             }
             else
             {
-                _gameSession.PlayerData.Inventory.Remove("Sword", 1);
+                _gameSession.PlayerData.Inventory.Remove(_gameSession.PlayerData.WeaponItemId, 1);
                 base.ThrowAttack(holdTime);
             }
         }
@@ -208,9 +210,25 @@ namespace Assets.Scripts.Creatures
             UseItem(itemData.Id);
         }
 
-        public void ChangeArmedOrUnarmed()
+        public void ChangeArmedOrUnarmed(string itemId)
         {
-            _animator.runtimeAnimatorController = _gameSession.PlayerData.IsArmed ? _heroArmed : _heroUnarmed;
+            if (itemId == null || _gameSession.PlayerData.IsArmed == false)
+            {
+                _meleeDamage = 0;
+                _rangeDamage = 0;
+                _throwCooldown = 0f;
+                _animator.runtimeAnimatorController = _heroUnarmed;
+                return;
+            }
+
+            if (_gameSession.PlayerData.IsArmed)
+            {
+                var def = DefsFacade.Instance.Properties.Get(itemId);
+                _meleeDamage = def.MeleeDamage;
+                _rangeDamage = def.RangeDamage;
+                _throwCooldown = def.ThrowCooldown;
+                _animator.runtimeAnimatorController = _heroArmed;
+            }
         }
 
         public void UseItem(string itemId)
@@ -225,6 +243,9 @@ namespace Assets.Scripts.Creatures
             // Проверяем категорию предмета и выполняем действие
             switch (def.Category)
             {
+                case ItemCategory.Weapon:
+                    EquipWeapon(itemId);
+                    break;
                 case ItemCategory.Potion:
                     ApplyPotion(itemId);
                     break;
@@ -241,6 +262,12 @@ namespace Assets.Scripts.Creatures
                     Debug.Log($"Использование предмета {def.Name} не реализовано.");
                     break;
             }
+        }
+
+        private void EquipWeapon(string itemId)
+        {
+            _gameSession.PlayerData.EquipWeapon(itemId);
+            ChangeArmedOrUnarmed(itemId);
         }
 
         private void ApplyPotion(string itemId)
