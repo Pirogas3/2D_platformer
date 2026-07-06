@@ -60,7 +60,10 @@ namespace Assets.Scripts.UI.Hud.Inventory
             if (_session == null)
                 _session = FindObjectOfType<GameSession>();
             if (_session != null && _inventory == null)
+            {
                 _inventory = _session.PlayerData.Inventory;
+                _session.InvWindowController = this;
+            }
         }
 
         private void OnTogglePerformed(InputAction.CallbackContext context)

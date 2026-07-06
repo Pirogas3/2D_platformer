@@ -25,6 +25,14 @@ namespace Assets.Scripts.UI.Hud.Inventory
         private InventoryWindowController _inventoryController;
         private QuickInventoryController _quickController;
 
+        private void OnDestroy()
+        {
+            _useButton.onClick.RemoveListener(OnUse);
+            _equipUnquipButton.onClick.RemoveListener(OnUse);
+            _dropButton.onClick.RemoveListener(OnDrop);
+            _clearSlotButton.onClick.RemoveListener(OnClearSlot);
+        }
+
         public void Setup(InventoryItemData itemData, object source, int slotIndex,
                           InventoryWindowController inventoryController,
                           QuickInventoryController quickController)

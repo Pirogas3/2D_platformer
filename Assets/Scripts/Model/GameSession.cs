@@ -13,6 +13,8 @@ namespace Assets.Scripts.Model
         public PlayerData PlayerData => _playerData;
 
         private PlayerData _sceneStartState; // состояние на начало текущей сцены
+        private InventoryWindowController _invWindowController;
+        public InventoryWindowController InvWindowController { get => _invWindowController; set { _invWindowController = value; } }
 
         public static GameSession Instance { get; private set; }
 
@@ -40,9 +42,18 @@ namespace Assets.Scripts.Model
                 ContextMenuManager.HandleGlobalClick();
             }
 
-            if (Input.GetKeyDown(KeyCode.Escape) && ContextMenuManager.IsMenuOpen)
+            if (Input.GetKeyDown(KeyCode.Escape) && (ContextMenuManager.IsMenuOpen || _invWindowController.IsOpen))
             {
-                ContextMenuManager.CloseMenu();
+                if (ContextMenuManager.IsMenuOpen)
+                {
+                    ContextMenuManager.CloseMenu();
+                    return;
+                }
+                else if (_invWindowController.IsOpen)
+                {
+                    _invWindowController.ToggleWindow();
+                    return;
+                }
             }
         }
 
@@ -56,6 +67,8 @@ namespace Assets.Scripts.Model
             var currentScene = SceneManager.GetActiveScene();
             if (currentScene.name == "MainMenu") return;
             SceneManager.LoadScene("Hud", LoadSceneMode.Additive);
+            //_invWindowController = FindObjectOfType<InventoryWindowController>();
+            //if (_invWindowController == null) Debug.Log("не найден");
         }
 
         private void OnSceneLoaded(Scene scene, LoadSceneMode mode)

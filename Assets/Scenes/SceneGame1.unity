@@ -13718,6 +13718,63 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4388820039703356558, guid: cc814c566d86ae4468dc3292e677f0ee, type: 3}
   m_PrefabInstance: {fileID: 1790026501}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &193298896835232605
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 3880847579447186690, guid: 23bd20173cf902a419727544eb06899a, type: 3}
+      propertyPath: m_Name
+      value: WoodenDoor
+      objectReference: {fileID: 0}
+    - target: {fileID: 6231778162479612881, guid: 23bd20173cf902a419727544eb06899a, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -6.828391
+      objectReference: {fileID: 0}
+    - target: {fileID: 6231778162479612881, guid: 23bd20173cf902a419727544eb06899a, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -2.043787
+      objectReference: {fileID: 0}
+    - target: {fileID: 6231778162479612881, guid: 23bd20173cf902a419727544eb06899a, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.04150267
+      objectReference: {fileID: 0}
+    - target: {fileID: 6231778162479612881, guid: 23bd20173cf902a419727544eb06899a, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6231778162479612881, guid: 23bd20173cf902a419727544eb06899a, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6231778162479612881, guid: 23bd20173cf902a419727544eb06899a, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6231778162479612881, guid: 23bd20173cf902a419727544eb06899a, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6231778162479612881, guid: 23bd20173cf902a419727544eb06899a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6231778162479612881, guid: 23bd20173cf902a419727544eb06899a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6231778162479612881, guid: 23bd20173cf902a419727544eb06899a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 23bd20173cf902a419727544eb06899a, type: 3}
 --- !u!1001 &5403127247105916446
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -13876,3 +13933,4 @@ SceneRoots:
   - {fileID: 215781540}
   - {fileID: 1470771610}
   - {fileID: 423650813}
+  - {fileID: 193298896835232605}

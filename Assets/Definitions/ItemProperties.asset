@@ -15,28 +15,32 @@ MonoBehaviour:
   _entries:
   - Id: Sword
     Properties:
-      Damage: 3
+      MeleeDamage: 4
+      RangeDamage: 3
       Healing: 0
       SpeedBoost: 0
       Duration: 0
       ThrowCooldown: 0.4
   - Id: BluePotion
     Properties:
-      Damage: 0
+      MeleeDamage: 0
+      RangeDamage: 0
       Healing: 5
       SpeedBoost: 0
       Duration: 0
       ThrowCooldown: 0
   - Id: RedPotion
     Properties:
-      Damage: 0
+      MeleeDamage: 0
+      RangeDamage: 0
       Healing: 15
       SpeedBoost: 0
       Duration: 0
       ThrowCooldown: 0
   - Id: GreenPotion
     Properties:
-      Damage: 0
+      MeleeDamage: 0
+      RangeDamage: 0
       Healing: 0
       SpeedBoost: 2
       Duration: 0
