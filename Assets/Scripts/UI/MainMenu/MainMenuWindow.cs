@@ -8,9 +8,16 @@ namespace Assets.Scripts.UI.MainMenu
     {
         private Action _closeAction;
 
-        public void OnShowSetting()
+        public void OnShowSettingsMenu()
         {
             var window = Resources.Load<GameObject>("UI/SettingsWindow");
+            var canvas = FindObjectOfType<Canvas>();
+            Instantiate(window, canvas.transform);
+        }
+
+        public void OnShowLoadMenu()
+        {
+            var window = Resources.Load<GameObject>("UI/LoadWindow");
             var canvas = FindObjectOfType<Canvas>();
             Instantiate(window, canvas.transform);
         }

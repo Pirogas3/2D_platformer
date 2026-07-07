@@ -1,5 +1,4 @@
-﻿using Assets.Scripts.Model.Definitions;
-using System;
+﻿using System;
 using UnityEngine;
 
 namespace Assets.Scripts.Model.Data
@@ -46,7 +45,7 @@ namespace Assets.Scripts.Model.Data
         public float PosY;
         // Правило вооружен или нет и сохраняем id предмета которым вооружен
         [SerializeField] private bool _isArmed = false;
-        [SerializeField][InventoryId] private string _weaponItemId = null;
+        [SerializeField] private string _weaponItemId = null;
         public bool IsArmed => _isArmed;
         public string WeaponItemId => _weaponItemId;
 

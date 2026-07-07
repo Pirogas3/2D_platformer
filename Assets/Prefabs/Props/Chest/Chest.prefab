@@ -262,6 +262,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _data:
     _items:
-    - Id: Coin
-      Value: 100
+    - Id: Sword
+      Value: 1
+      _containerId: 
+    - Id: GoldKey
+      Value: 1
+      _containerId: 
+    - Id: GreenPotion
+      Value: 1
       _containerId: 

@@ -2,6 +2,7 @@
 using Assets.Scripts.Model.Data;
 using Assets.Scripts.UI.Hud;
 using Assets.Scripts.UI.Hud.Inventory;
+using SheetXExample;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -13,15 +14,13 @@ namespace Assets.Scripts.Model
         public PlayerData PlayerData => _playerData;
 
         private PlayerData _sceneStartState; // состояние на начало текущей сцены
-        private InventoryWindowController _invWindowController;
+        private InventoryWindowController _invWindowController; // он устанавливается самим InventoryWindowController-ом при его загрузке
         public InventoryWindowController InvWindowController { get => _invWindowController; set { _invWindowController = value; } }
 
         public static GameSession Instance { get; private set; }
 
         private void Awake()
         {
-            LoadHud();
-
             if (Instance != null && Instance != this)
             {
                 DestroyImmediate(gameObject);
@@ -29,6 +28,10 @@ namespace Assets.Scripts.Model
             }
             Instance = this;
             DontDestroyOnLoad(this);
+
+            // Инициализация локализации, получаем сохранённый язык (по умолчанию english)
+            string savedLanguage = PlayerPrefs.GetString("Language", "english");
+            LocalizationsManager.Init(savedLanguage);
 
             SaveSceneStartState();
             SceneManager.sceneLoaded += OnSceneLoaded;
@@ -42,6 +45,7 @@ namespace Assets.Scripts.Model
                 ContextMenuManager.HandleGlobalClick();
             }
 
+            // Закрытие контекстного меню и инвентаря по Esc
             if (Input.GetKeyDown(KeyCode.Escape) && (ContextMenuManager.IsMenuOpen || _invWindowController.IsOpen))
             {
                 if (ContextMenuManager.IsMenuOpen)
@@ -64,15 +68,29 @@ namespace Assets.Scripts.Model
 
         private void LoadHud()
         {
-            var currentScene = SceneManager.GetActiveScene();
-            if (currentScene.name == "MainMenu") return;
+            // Проверяем, загружена ли сцена с именем "Hud"
+            Scene hudScene = SceneManager.GetSceneByName("Hud");
+            if (hudScene.isLoaded)
+            {
+                Debug.Log("Hud уже загружена, пропускаем.");
+                return;
+            }
+
+            // Не загружаем в MainMenu
+            if (SceneManager.GetActiveScene().name == "MainMenu")
+                return;
+
             SceneManager.LoadScene("Hud", LoadSceneMode.Additive);
-            //_invWindowController = FindObjectOfType<InventoryWindowController>();
-            //if (_invWindowController == null) Debug.Log("не найден");
         }
 
         private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
         {
+            // Если загружена игровая сцена (не MainMenu) и HUD ещё не загружен
+            if (scene.name != "MainMenu")
+            {
+                LoadHud();
+            }
+
             // При загрузке новой сцены обновляем "начало сцены"
             SaveSceneStartState();
         }

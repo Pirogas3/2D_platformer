@@ -3,9 +3,9 @@ using UnityEditor.UI;
 
 namespace Assets.Scripts.UI.Widgets.Editor
 {
-    [CustomEditor(typeof(CustonButton), true)]
+    [CustomEditor(typeof(CustomButton), true)]
     [CanEditMultipleObjects]
-    public class CustonButtonEditor : ButtonEditor
+    public class CustomButtonEditor : ButtonEditor
     {
         public override void OnInspectorGUI()
         {

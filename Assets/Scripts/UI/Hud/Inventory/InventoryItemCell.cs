@@ -1,5 +1,4 @@
-﻿using Assets.Scripts.Creatures;
-using Assets.Scripts.Model.Data;
+﻿using Assets.Scripts.Model.Data;
 using Assets.Scripts.Model.Definitions;
 using Assets.Scripts.UI.Hud.QucikInventory;
 using UnityEngine;

@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 974425760294728175}
   - component: {fileID: 8937840692306985475}
   m_Layer: 5
-  m_Name: heakthValue
+  m_Name: healthValue
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -66,7 +66,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 12800000, guid: b5b15f8088eacac4585e0c03ddcf35d0, type: 3}
+    m_Font: {fileID: 12800000, guid: 9d67c73df9994a14c955a30ea0e32ce2, type: 3}
     m_FontSize: 14
     m_FontStyle: 0
     m_BestFit: 0

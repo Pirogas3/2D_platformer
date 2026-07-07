@@ -1,0 +1,1 @@
+﻿["main menu","new game","load game","options","exit","quick save","english","russian","ok","audio","settings","load slot","save slot","language","use","drop","clear","equip","unequip"]

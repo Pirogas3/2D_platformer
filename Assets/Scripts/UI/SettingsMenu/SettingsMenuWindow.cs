@@ -1,25 +1,19 @@
-﻿using Assets.Scripts.Model.Data;
-using Assets.Scripts.UI.Widgets;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace Assets.Scripts.UI.SettingsMenu
 {
     public class SettingsMenuWindow : AnimatedWindow
     {
-        [SerializeField] private AudioSettingsWidget _music;
-        [SerializeField] private AudioSettingsWidget _sfx;
-
-        protected override void Start()
+        public void OnShowAudioMenu()
         {
-            base.Start();
-
-            _music.SetModel(GameSettings.I.Music);
-            _sfx.SetModel(GameSettings.I.SFX);
+            var window = Resources.Load<GameObject>("UI/AudioSettingsWindow");
+            var canvas = FindObjectOfType<Canvas>();
+            Instantiate(window, canvas.transform);
         }
 
-        public void OnShowMainMenu()
+        public void OnShowLanguesMenu()
         {
-            var window = Resources.Load<GameObject>("UI/MainMenuWindow");
+            var window = Resources.Load<GameObject>("UI/LanguesSettingsWindow");
             var canvas = FindObjectOfType<Canvas>();
             Instantiate(window, canvas.transform);
         }

@@ -3,7 +3,7 @@ using UnityEngine.UI;
 
 namespace Assets.Scripts.UI.Widgets
 {
-    public class CustonButton : Button
+    public class CustomButton : Button
     {
         [SerializeField] private GameObject _normal;
         [SerializeField] private GameObject _pressed;

@@ -3,7 +3,6 @@ using Assets.Scripts.Model.Data;
 using Assets.Scripts.Model.Definitions;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityEngine.UI;
 
 namespace Assets.Scripts.UI.Hud.Inventory
 {

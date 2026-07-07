@@ -3,6 +3,7 @@ using Assets.Scripts.Model;
 using Assets.Scripts.Model.Data;
 using Assets.Scripts.Model.Definitions;
 using Assets.Scripts.UI.Hud.QucikInventory;
+using SheetXExample;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -66,15 +67,14 @@ namespace Assets.Scripts.UI.Hud.Inventory
             _clearSlotButton.gameObject.SetActive(isQuickSlot);
 
             bool canEquip = _itemDef.Category == ItemCategory.Weapon ||
-                            _itemDef.Category == ItemCategory.Armor;
+                _itemDef.Category == ItemCategory.Armor;
             _equipUnquipButton.gameObject.SetActive(canEquip);
             if (canEquip)
             {
                 var session = FindObjectOfType<GameSession>();
-                if (_itemData.Id == session.PlayerData.WeaponItemId)
-                {
-                    _equipUnquipText.text = "Unequip";
-                }
+                bool isEquipped = (_itemData.Id == session.PlayerData.WeaponItemId);
+                string key = isEquipped ? "HUD_Unequip" : "HUD_Equip";
+                _equipUnquipText.text = LocalizationUI.Get(key).ToString();
             }
 
             _useButton.onClick.AddListener(OnUse);
