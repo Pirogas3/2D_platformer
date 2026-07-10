@@ -13,9 +13,6 @@ namespace Assets.Scripts.Model
         [SerializeField] private PlayerData _playerData;
         public PlayerData PlayerData => _playerData;
 
-        [SerializeField] private EnviromentData _enviromentData;
-        public EnviromentData EnviromentData => _enviromentData;
-
         private PlayerData _sceneStartState; // состояние на начало текущей сцены
         private InventoryWindowController _invWindowController; // он устанавливается самим InventoryWindowController-ом при его загрузке
         public InventoryWindowController InvWindowController { get => _invWindowController; set { _invWindowController = value; } }

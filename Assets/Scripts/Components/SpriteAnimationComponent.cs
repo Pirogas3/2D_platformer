@@ -25,6 +25,7 @@ namespace Assets.Scripts.Components
         private Dictionary<string, SpriteAnimationClip> _clipDict;
         private SpriteAnimationClip _currentClip;
         private bool _isPlaying;
+        private bool _isAnimationSet = false;
         private int _currentSpriteIndex;
         private float _nextFrameTime;
 
@@ -36,7 +37,8 @@ namespace Assets.Scripts.Components
 
         private void Start()
         {
-            Play(_defaultClipName);
+            if (!_isAnimationSet)
+                Play(_defaultClipName);
         }
 
         private void Update()
@@ -83,6 +85,7 @@ namespace Assets.Scripts.Components
                 Debug.LogError($"Animation clip '{clipName}' not found!");
                 return;
             }
+            _isAnimationSet = true;
 
             _currentClip = clip;
             _currentSpriteIndex = 0;

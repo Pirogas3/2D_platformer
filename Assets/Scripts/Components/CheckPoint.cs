@@ -28,10 +28,13 @@ namespace Assets.Scripts.Components
                 return;
             }
 
-            _isActivated = _gameSession.EnviromentData.IsCheckPointActivated(_id);
+            _isActivated = _gameSession.PlayerData.EnviromentData.IsCheckPointActivated(_id);
 
             if (_isActivated)
+            {
                 _animation.Play("Idle");
+                Debug.Log("Работает?");
+            }
             else
                 _animation.Play("NoFlag");
         }
@@ -44,7 +47,7 @@ namespace Assets.Scripts.Components
                 return;
             }
 
-            _gameSession.EnviromentData.ActivateCheckPoint(_id);
+            _gameSession.PlayerData.EnviromentData.ActivateCheckPoint(_id);
             _isActivated = true;
 
             _gameSession.AutoSave();

@@ -13,6 +13,10 @@ namespace Assets.Scripts.Model.Data
         [SerializeField] private InventoryRegistry _containerRegistry = new InventoryRegistry();
         public InventoryRegistry ContainerRegistry => _containerRegistry;
 
+        [Header("Enviroment")]
+        [SerializeField] private EnviromentData _enviromentData = new EnviromentData();
+        public EnviromentData EnviromentData => _enviromentData;
+
         [Header("Physical parameters")]
         [SerializeField] private int _maxHp = 20;
         public int MaxHp => _maxHp;
