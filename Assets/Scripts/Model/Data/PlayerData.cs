@@ -64,15 +64,6 @@ namespace Assets.Scripts.Model.Data
             _weaponItemId = itemId;
         }
 
-        //// Команда снять экипированное оружие
-        //public void UnequipWeapon()
-        //{
-        //    _isArmed = false;
-        //    _weaponItemId = null;
-        //}
-
-        //public bool IsArmed => Inventory.Count("Sword") >= 1 ? true : false;
-
         [Header("Scene")]
         public string CurrentScene; // используется для сохранений и загрузки
 

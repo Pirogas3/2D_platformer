@@ -42,19 +42,28 @@ TagManager:
   - 
   - 
   m_SortingLayers:
-  - name: Background
-    uniqueID: 4248796525
-    locked: 0
   - name: "\u0421louds"
     uniqueID: 2707650503
+    locked: 0
+  - name: Watter
+    uniqueID: 1456604387
     locked: 0
   - name: BackTrees
     uniqueID: 1565004295
     locked: 0
+  - name: Background
+    uniqueID: 4248796525
+    locked: 0
   - name: Ground
     uniqueID: 3128645105
     locked: 0
-  - name: Player
+  - name: Trash
+    uniqueID: 90146023
+    locked: 0
+  - name: Props
+    uniqueID: 2500026367
+    locked: 0
+  - name: Creatures
     uniqueID: 2821704273
     locked: 0
   - name: Grass

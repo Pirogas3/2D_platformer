@@ -13,6 +13,9 @@ namespace Assets.Scripts.Model
         [SerializeField] private PlayerData _playerData;
         public PlayerData PlayerData => _playerData;
 
+        [SerializeField] private EnviromentData _enviromentData;
+        public EnviromentData EnviromentData => _enviromentData;
+
         private PlayerData _sceneStartState; // состояние на начало текущей сцены
         private InventoryWindowController _invWindowController; // он устанавливается самим InventoryWindowController-ом при его загрузке
         public InventoryWindowController InvWindowController { get => _invWindowController; set { _invWindowController = value; } }
@@ -85,7 +88,7 @@ namespace Assets.Scripts.Model
 
         private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
         {
-            // Если загружена игровая сцена (не MainMenu) и HUD ещё не загружен
+            // Если загружена игровая сцена (не MainMenu)
             if (scene.name != "MainMenu")
             {
                 LoadHud();
@@ -106,8 +109,6 @@ namespace Assets.Scripts.Model
         {
             if (_sceneStartState != null)
                 _playerData = _sceneStartState.Clone();
-
-            //LoadHud();
         }
 
         [ContextMenu("Quick Save")]
@@ -115,6 +116,12 @@ namespace Assets.Scripts.Model
 
         [ContextMenu("Quick Load")]
         public void QuickLoad() => LoadFromSlot("QuickSave");
+
+        [ContextMenu("Auto Save")]
+        public void AutoSave() => SaveToSlot("AutoSave");
+
+        [ContextMenu("Auto Load")]
+        public void AutoLoad() => LoadFromSlot("AutoSave");
 
         // Сохранение в слот
         public void SaveToSlot(string slotName)
@@ -149,8 +156,6 @@ namespace Assets.Scripts.Model
             // Загружаем сохранённую сцену
             SceneManager.LoadScene(_playerData.CurrentScene);
             Debug.Log($"Загружен слот '{slotName}'.");
-
-            //LoadHud();
         }
 
         // Загрузка последнего сделанного сохранения
