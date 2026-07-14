@@ -10,6 +10,11 @@ namespace Assets.Scripts.Components
         [SerializeField] private UnityEvent _onDie;
         [SerializeField] private UnityEvent _onHeal;
         [SerializeField] private UnityEvent<int> OnHealthChanged;
+        [SerializeField] private int _defense = 0;
+
+        public virtual int Defense => _defense;
+
+        public void SetDefense(int value) => _defense = value;
 
         public void TakeDamage(int damage)
         {

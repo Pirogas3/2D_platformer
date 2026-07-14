@@ -64,6 +64,7 @@ GameObject:
   - component: {fileID: -7257853996536725095}
   - component: {fileID: 3105911794195584057}
   - component: {fileID: 6947489128948035986}
+  - component: {fileID: 380667418858412712}
   m_Layer: 0
   m_Name: SwordProjectile
   m_TagString: Untagged
@@ -243,8 +244,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 6947489128948035986}
-        m_TargetAssemblyTypeName: Scripts.Components.DamageComponent, Assembly-CSharp
-        m_MethodName: ApplyDamage
+        m_TargetAssemblyTypeName: Assets.Scripts.Components.DamageComponent, Assembly-CSharp
+        m_MethodName: NewApplyDamage
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -347,3 +348,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _damage: 2
+  _attack: 0
+--- !u!114 &380667418858412712
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8810187064220961209}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 55d9cc03cca24a94697a5df89e87f1ad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _delay: 6
+  _destroyOnDisable: 0

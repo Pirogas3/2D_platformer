@@ -494,15 +494,43 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6958666155233098242, guid: 433b7621dadcc76479fe5a6a56d3b448, type: 3}
       propertyPath: _playerData._hp
-      value: 5
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 6958666155233098242, guid: 433b7621dadcc76479fe5a6a56d3b448, type: 3}
+      propertyPath: _perks.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6958666155233098242, guid: 433b7621dadcc76479fe5a6a56d3b448, type: 3}
+      propertyPath: _perks.Array.data[0].Id
+      value: DoubleJump
+      objectReference: {fileID: 0}
+    - target: {fileID: 6958666155233098242, guid: 433b7621dadcc76479fe5a6a56d3b448, type: 3}
+      propertyPath: _perks.Array.data[0].Cost
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 6958666155233098242, guid: 433b7621dadcc76479fe5a6a56d3b448, type: 3}
       propertyPath: _playerData._weaponItemId
       value: 
       objectReference: {fileID: 0}
     - target: {fileID: 6958666155233098242, guid: 433b7621dadcc76479fe5a6a56d3b448, type: 3}
+      propertyPath: _playerData._levelData._level
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6958666155233098242, guid: 433b7621dadcc76479fe5a6a56d3b448, type: 3}
+      propertyPath: _playerData._levelData._currentExp
+      value: 350
+      objectReference: {fileID: 0}
+    - target: {fileID: 6958666155233098242, guid: 433b7621dadcc76479fe5a6a56d3b448, type: 3}
+      propertyPath: _playerData._levelData._availablePoints
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 6958666155233098242, guid: 433b7621dadcc76479fe5a6a56d3b448, type: 3}
       propertyPath: _playerData._inventory._items.Array.size
-      value: 19
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 6958666155233098242, guid: 433b7621dadcc76479fe5a6a56d3b448, type: 3}
+      propertyPath: _playerData._perkData._entries.Array.size
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6958666155233098242, guid: 433b7621dadcc76479fe5a6a56d3b448, type: 3}
       propertyPath: _playerData._inventory._items.Array.data[0].Id
@@ -526,7 +554,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6958666155233098242, guid: 433b7621dadcc76479fe5a6a56d3b448, type: 3}
       propertyPath: _playerData._inventory._items.Array.data[5].Id
-      value: Sword
+      value: GoldCoin
       objectReference: {fileID: 0}
     - target: {fileID: 6958666155233098242, guid: 433b7621dadcc76479fe5a6a56d3b448, type: 3}
       propertyPath: _playerData._inventory._items.Array.data[6].Id
@@ -581,6 +609,10 @@ PrefabInstance:
       value: Sword
       objectReference: {fileID: 0}
     - target: {fileID: 6958666155233098242, guid: 433b7621dadcc76479fe5a6a56d3b448, type: 3}
+      propertyPath: _playerData._perkData._entries.Array.data[0].Id
+      value: DoubleJump
+      objectReference: {fileID: 0}
+    - target: {fileID: 6958666155233098242, guid: 433b7621dadcc76479fe5a6a56d3b448, type: 3}
       propertyPath: _playerData._inventory._items.Array.data[0].Value
       value: 10
       objectReference: {fileID: 0}
@@ -602,7 +634,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6958666155233098242, guid: 433b7621dadcc76479fe5a6a56d3b448, type: 3}
       propertyPath: _playerData._inventory._items.Array.data[5].Value
-      value: 10
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 6958666155233098242, guid: 433b7621dadcc76479fe5a6a56d3b448, type: 3}
       propertyPath: _playerData._inventory._items.Array.data[6].Value
@@ -655,6 +687,10 @@ PrefabInstance:
     - target: {fileID: 6958666155233098242, guid: 433b7621dadcc76479fe5a6a56d3b448, type: 3}
       propertyPath: _playerData._inventory._items.Array.data[18].Value
       value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 6958666155233098242, guid: 433b7621dadcc76479fe5a6a56d3b448, type: 3}
+      propertyPath: _playerData._perkData._entries.Array.data[0].IsUnlocked
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -731,6 +767,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 594321737}
     m_Modifications:
+    - target: {fileID: 1669538027177349295, guid: b47ca083c0b9f884daaa2f61dca07251, type: 3}
+      propertyPath: m_SpriteState.m_HighlightedSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 03c7787be1582c149ba362aa08780a66, type: 3}
     - target: {fileID: 2343337138321451615, guid: b47ca083c0b9f884daaa2f61dca07251, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -843,6 +883,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4170859910115653511, guid: b47ca083c0b9f884daaa2f61dca07251, type: 3}
+      propertyPath: m_SpriteState.m_HighlightedSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 03c7787be1582c149ba362aa08780a66, type: 3}
     - target: {fileID: 4359457782569809478, guid: b47ca083c0b9f884daaa2f61dca07251, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -859,6 +903,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5239187753719451672, guid: b47ca083c0b9f884daaa2f61dca07251, type: 3}
+      propertyPath: m_SpriteState.m_HighlightedSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 03c7787be1582c149ba362aa08780a66, type: 3}
     - target: {fileID: 5278726493973950889, guid: b47ca083c0b9f884daaa2f61dca07251, type: 3}
       propertyPath: m_Name
       value: MainMenuWindow
@@ -879,6 +927,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 9094377568179334543, guid: b47ca083c0b9f884daaa2f61dca07251, type: 3}
+      propertyPath: m_SpriteState.m_HighlightedSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 03c7787be1582c149ba362aa08780a66, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

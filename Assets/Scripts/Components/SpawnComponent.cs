@@ -13,5 +13,18 @@ namespace Assets.Scripts.Components
             var instantiate = Instantiate(_prefab, _target.position, Quaternion.identity);
             instantiate.transform.localScale = _target.lossyScale;
         }
+
+        public void Spawn(int damage, int attack)
+        {
+            var instantiate = Instantiate(_prefab, _target.position, Quaternion.identity);
+            instantiate.transform.localScale = _target.lossyScale;
+
+            var damageComponent = instantiate.GetComponent<DamageComponent>();
+            if (damageComponent != null)
+            {
+                damageComponent.SetDamage(damage);
+                damageComponent.SetAttack(attack);
+            }
+        }
     }
 }

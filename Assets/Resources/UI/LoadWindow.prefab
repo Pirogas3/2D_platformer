@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 957828231463767166}
   - component: {fileID: 6235275489821231297}
   - component: {fileID: 9075792176807484890}
-  - component: {fileID: 6855125964031692268}
   m_Layer: 5
   m_Name: QuickLoad(text)(pressed)
   m_TagString: Untagged
@@ -80,26 +79,6 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: quick save
---- !u!114 &6855125964031692268
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 887157473194935078}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fdfab207ec86e974e807b18f00c7da3c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_TxtPro: {fileID: 0}
-  m_TxtPro3D: {fileID: 0}
-  m_Txt: {fileID: 9075792176807484890}
-  m_LocalizedIDString: UI_QuickSave
-  m_CaseType: 0
-  m_Args: []
-  m_IgnoredLangs: []
-  m_LocalizedEnumId: -1
 --- !u!1 &1957954194185997871
 GameObject:
   m_ObjectHideFlags: 0
@@ -354,7 +333,7 @@ MonoBehaviour:
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
-    m_HighlightedSprite: {fileID: 0}
+    m_HighlightedSprite: {fileID: 21300000, guid: 03c7787be1582c149ba362aa08780a66, type: 3}
     m_PressedSprite: {fileID: 21300000, guid: e5d6de7f4bb010441a0af16312a21ac7, type: 3}
     m_SelectedSprite: {fileID: 21300000, guid: 03c7787be1582c149ba362aa08780a66, type: 3}
     m_DisabledSprite: {fileID: 21300000, guid: 11a267c658f8c784e82f6de43a66c1a1, type: 3}
@@ -462,7 +441,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: slot name
+  m_Text: auto save
 --- !u!1 &5083572948635245170
 GameObject:
   m_ObjectHideFlags: 0
@@ -571,7 +550,7 @@ MonoBehaviour:
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
-    m_HighlightedSprite: {fileID: 0}
+    m_HighlightedSprite: {fileID: 21300000, guid: 03c7787be1582c149ba362aa08780a66, type: 3}
     m_PressedSprite: {fileID: 21300000, guid: e5d6de7f4bb010441a0af16312a21ac7, type: 3}
     m_SelectedSprite: {fileID: 21300000, guid: 03c7787be1582c149ba362aa08780a66, type: 3}
     m_DisabledSprite: {fileID: 21300000, guid: 11a267c658f8c784e82f6de43a66c1a1, type: 3}
@@ -770,7 +749,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: slot name
+  m_Text: auto save
 --- !u!1 &5765097305827322997
 GameObject:
   m_ObjectHideFlags: 0
@@ -782,7 +761,6 @@ GameObject:
   - component: {fileID: 7931969773214620171}
   - component: {fileID: 6926600894614447909}
   - component: {fileID: 7934314014410571972}
-  - component: {fileID: 132291108065120742}
   m_Layer: 5
   m_Name: QuickLoad(text)
   m_TagString: Untagged
@@ -851,26 +829,6 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: quick save
---- !u!114 &132291108065120742
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5765097305827322997}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fdfab207ec86e974e807b18f00c7da3c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_TxtPro: {fileID: 0}
-  m_TxtPro3D: {fileID: 0}
-  m_Txt: {fileID: 7934314014410571972}
-  m_LocalizedIDString: UI_QuickSave
-  m_CaseType: 0
-  m_Args: []
-  m_IgnoredLangs: []
-  m_LocalizedEnumId: -1
 --- !u!1 &5943031204035228121
 GameObject:
   m_ObjectHideFlags: 0
@@ -1179,7 +1137,7 @@ MonoBehaviour:
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
-    m_HighlightedSprite: {fileID: 0}
+    m_HighlightedSprite: {fileID: 21300000, guid: 03c7787be1582c149ba362aa08780a66, type: 3}
     m_PressedSprite: {fileID: 21300000, guid: e5d6de7f4bb010441a0af16312a21ac7, type: 3}
     m_SelectedSprite: {fileID: 21300000, guid: 03c7787be1582c149ba362aa08780a66, type: 3}
     m_DisabledSprite: {fileID: 21300000, guid: 11a267c658f8c784e82f6de43a66c1a1, type: 3}
@@ -1496,7 +1454,7 @@ MonoBehaviour:
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
-    m_HighlightedSprite: {fileID: 0}
+    m_HighlightedSprite: {fileID: 21300000, guid: 03c7787be1582c149ba362aa08780a66, type: 3}
     m_PressedSprite: {fileID: 21300000, guid: e5d6de7f4bb010441a0af16312a21ac7, type: 3}
     m_SelectedSprite: {fileID: 21300000, guid: 03c7787be1582c149ba362aa08780a66, type: 3}
     m_DisabledSprite: {fileID: 21300000, guid: 11a267c658f8c784e82f6de43a66c1a1, type: 3}
@@ -1634,7 +1592,7 @@ MonoBehaviour:
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
-    m_HighlightedSprite: {fileID: 0}
+    m_HighlightedSprite: {fileID: 21300000, guid: 03c7787be1582c149ba362aa08780a66, type: 3}
     m_PressedSprite: {fileID: 21300000, guid: e5d6de7f4bb010441a0af16312a21ac7, type: 3}
     m_SelectedSprite: {fileID: 21300000, guid: 03c7787be1582c149ba362aa08780a66, type: 3}
     m_DisabledSprite: {fileID: 21300000, guid: 11a267c658f8c784e82f6de43a66c1a1, type: 3}

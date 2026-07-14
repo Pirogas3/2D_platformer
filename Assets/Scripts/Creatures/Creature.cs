@@ -18,6 +18,8 @@ namespace Assets.Scripts.Creatures
         [SerializeField] protected float _jumpPower;
         [SerializeField] protected int _maxExtraJumps;
 
+        protected virtual float MoveSpeed => _speed;
+
         //Чекеры
         [Header("Checkers")]
         [SerializeField] private LayerCheck _groundCheck;
@@ -94,7 +96,7 @@ namespace Assets.Scripts.Creatures
 
         protected virtual void Move()
         {
-            _rigidbody.velocity = new Vector2(_moveDirection.x * _speed, _rigidbody.velocity.y);
+            _rigidbody.velocity = new Vector2(_moveDirection.x * MoveSpeed, _rigidbody.velocity.y);
         }
 
         protected bool IsGrounded()

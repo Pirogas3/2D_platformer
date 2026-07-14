@@ -232,6 +232,7 @@ MonoBehaviour:
   OnHealthChanged:
     m_PersistentCalls:
       m_Calls: []
+  _defense: 1
 --- !u!114 &44946075099930308
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -480,6 +481,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 5130552442721590256}
     m_Modifications:
+    - target: {fileID: 2449505088188320637, guid: c16c8cda6874d0b47bdef42f3520b31d, type: 3}
+      propertyPath: _attack
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2449505088188320637, guid: c16c8cda6874d0b47bdef42f3520b31d, type: 3}
       propertyPath: _damage
       value: 1

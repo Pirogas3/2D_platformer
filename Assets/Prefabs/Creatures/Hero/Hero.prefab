@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 4048117732655476751}
   - component: {fileID: 4312153819627111551}
   - component: {fileID: 44946075099930308}
-  - component: {fileID: 5585551586713403144}
+  - component: {fileID: 8002637944302478329}
   - component: {fileID: 8563921720509421390}
   - component: {fileID: 1971226096677818884}
   m_Layer: 9
@@ -377,7 +377,6 @@ MonoBehaviour:
   _hitParticles: {fileID: 5111943393226388899}
   _heroUnarmed: {fileID: 9100000, guid: b7c98743ed47ae3478a3049915aa9d67, type: 2}
   _heroArmed: {fileID: 9100000, guid: 97cc849b47b4b89498e4a05846dd6f74, type: 2}
-  _throwCooldown: 0.4
 --- !u!114 &44946075099930308
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -399,7 +398,7 @@ MonoBehaviour:
     Component: {fileID: 5125542322684180014}
   - ID: Throw
     Component: {fileID: 3754475101025034199}
---- !u!114 &5585551586713403144
+--- !u!114 &8002637944302478329
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -408,15 +407,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 2773358274999582965}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c1e452d9552c6ca40956b60e53545a9f, type: 3}
+  m_Script: {fileID: 11500000, guid: 8c8c84eb78429014391a944d50b991e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _health: 2
+  _health: 20
   _onDamage:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 4312153819627111551}
-        m_TargetAssemblyTypeName: Scripts.Creatures.Creature, Assembly-CSharp
+        m_TargetAssemblyTypeName: Assets.Scripts.Creatures.Hero, Assembly-CSharp
         m_MethodName: TakeDamageSimple
         m_Mode: 1
         m_Arguments:
@@ -449,7 +448,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 4312153819627111551}
-        m_TargetAssemblyTypeName: Scripts.Hero, Assembly-CSharp
+        m_TargetAssemblyTypeName: Assets.Scripts.Creatures.Hero, Assembly-CSharp
         m_MethodName: OnHeroHealthChanged
         m_Mode: 0
         m_Arguments:
@@ -460,6 +459,8 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  _defense: 2
+  _hero: {fileID: 4312153819627111551}
 --- !u!114 &8563921720509421390
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -741,11 +742,35 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 9
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 2449505088188320637, guid: 1e450e33324d20b4b9f9ca30dc550c0a, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 8289536652461932417, guid: 1e450e33324d20b4b9f9ca30dc550c0a, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 8657246528551431990}
   m_SourcePrefab: {fileID: 100100000, guid: 1e450e33324d20b4b9f9ca30dc550c0a, type: 3}
+--- !u!1 &3138872113037961919 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8289536652461932417, guid: 1e450e33324d20b4b9f9ca30dc550c0a, type: 3}
+  m_PrefabInstance: {fileID: 6378744295655150910}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &8657246528551431990
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3138872113037961919}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8f22626776e32aa4987b1d45d18b466b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _damage: 3
+  _attack: 1
+  _hero: {fileID: 4312153819627111551}
 --- !u!114 &4256680600277974716 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7176237894314388354, guid: 1e450e33324d20b4b9f9ca30dc550c0a, type: 3}

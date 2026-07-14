@@ -136,7 +136,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7307957734296412590, guid: eae03007536467843acf881624ff9f36, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7946140655443365790, guid: eae03007536467843acf881624ff9f36, type: 3}
       propertyPath: m_LocalScale.x
@@ -676,7 +676,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3070285938646712266, guid: 91323ca9ecde24f4196a4ef027c7eb50, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 5.8802085
+      value: -18.119791
       objectReference: {fileID: 0}
     - target: {fileID: 3070285938646712266, guid: 91323ca9ecde24f4196a4ef027c7eb50, type: 3}
       propertyPath: m_LocalPosition.y
@@ -835,6 +835,10 @@ PrefabInstance:
     - target: {fileID: 6958666155233098242, guid: 433b7621dadcc76479fe5a6a56d3b448, type: 3}
       propertyPath: _playerData.Hp
       value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 6958666155233098242, guid: 433b7621dadcc76479fe5a6a56d3b448, type: 3}
+      propertyPath: _playerData._attack
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6958666155233098242, guid: 433b7621dadcc76479fe5a6a56d3b448, type: 3}
       propertyPath: _playerData._weaponItemId
@@ -1152,10 +1156,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Sharky
       objectReference: {fileID: 0}
-    - target: {fileID: 2773358274999582965, guid: b3290f7ac29b0ec40baa6827d3286d5b, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 5130552442721590256, guid: b3290f7ac29b0ec40baa6827d3286d5b, type: 3}
       propertyPath: m_LocalPosition.x
       value: 15.75
@@ -1366,7 +1366,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &708973452
 Transform:
   m_ObjectHideFlags: 0
@@ -1601,7 +1601,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3070285938646712266, guid: 91323ca9ecde24f4196a4ef027c7eb50, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 6.6732354
+      value: -17.326765
       objectReference: {fileID: 0}
     - target: {fileID: 3070285938646712266, guid: 91323ca9ecde24f4196a4ef027c7eb50, type: 3}
       propertyPath: m_LocalPosition.y
@@ -1658,7 +1658,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3070285938646712266, guid: 91323ca9ecde24f4196a4ef027c7eb50, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 6.2234044
+      value: -17.776596
       objectReference: {fileID: 0}
     - target: {fileID: 3070285938646712266, guid: 91323ca9ecde24f4196a4ef027c7eb50, type: 3}
       propertyPath: m_LocalPosition.y
@@ -1901,7 +1901,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3070285938646712266, guid: 91323ca9ecde24f4196a4ef027c7eb50, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 7.9438615
+      value: -16.056139
       objectReference: {fileID: 0}
     - target: {fileID: 3070285938646712266, guid: 91323ca9ecde24f4196a4ef027c7eb50, type: 3}
       propertyPath: m_LocalPosition.y
@@ -2125,7 +2125,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7307957734296412590, guid: eae03007536467843acf881624ff9f36, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7946140655443365790, guid: eae03007536467843acf881624ff9f36, type: 3}
       propertyPath: m_LocalScale.x
@@ -5376,10 +5376,6 @@ PrefabInstance:
     - target: {fileID: 2773358274999582965, guid: 3eed152a018666943ad19c4049049091, type: 3}
       propertyPath: m_Name
       value: Hero
-      objectReference: {fileID: 0}
-    - target: {fileID: 2773358274999582965, guid: 3eed152a018666943ad19c4049049091, type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5130552442721590256, guid: 3eed152a018666943ad19c4049049091, type: 3}
       propertyPath: m_LocalPosition.x

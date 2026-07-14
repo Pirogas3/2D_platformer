@@ -32,6 +32,39 @@ namespace Assets.Scripts.Creatures
         private float _throwCooldown = 0f;
         private float _lastThrowTime;
 
+        protected override float MoveSpeed
+        {
+            get
+            {
+                if (_gameSession != null)
+                    return _gameSession.PlayerData.MoveSpeed;
+                else
+                    return base.MoveSpeed;
+            }
+        }
+
+        public int attack
+        {
+            get
+            {
+                if (_gameSession != null)
+                    return _gameSession.PlayerData.Attack;
+                else
+                    return 0;
+            }
+        }
+
+        public int defense
+        {
+            get
+            {
+                if (_gameSession != null)
+                    return _gameSession.PlayerData.Defense;
+                else
+                    return 0;
+            }
+        }
+
         protected override void Awake()
         {
             base.Awake();
@@ -136,7 +169,7 @@ namespace Assets.Scripts.Creatures
         public override void PerformDamage()
         {
             if (_attackHitbox != null)
-                _attackHitbox.Attack(_meleeDamage);
+                _attackHitbox.Attack(_meleeDamage, attack);
         }
 
         public override void ThrowAttack(float holdTime)
@@ -158,7 +191,10 @@ namespace Assets.Scripts.Creatures
             else
             {
                 _gameSession.PlayerData.Inventory.Remove(_gameSession.PlayerData.WeaponItemId, 1);
-                base.ThrowAttack(holdTime);
+                _animator.SetTrigger(ThrowKey);
+                _particles.Spawn("Throw", _rangeDamage, attack); // передаём урон и атаку
+                if (_sounds != null) _sounds.PlayClip("Range");
+                //base.ThrowAttack(holdTime);
             }
         }
 
@@ -171,7 +207,7 @@ namespace Assets.Scripts.Creatures
             for (int i = 0; i < throwCount; i++)
             {
                 _animator.SetTrigger(ThrowKey);
-                _particles.Spawn("Throw");
+                _particles.Spawn("Throw", _rangeDamage, attack); // передаём урон и атаку
                 if (_sounds != null) _sounds.PlayClip("Range");
 
                 if (i < throwCount - 1)
@@ -289,6 +325,17 @@ namespace Assets.Scripts.Creatures
                 _gameSession.PlayerData.Inventory.Remove(itemId, 1);
                 Debug.Log($"Вы выпили зелье! + {def.Healing} HP. Текущее здоровье: {_gameSession.PlayerData.Hp}");
             }
+        }
+
+        public void AddExperience(int amount)
+        {
+            if (_gameSession == null) return;
+            _gameSession.PlayerData.LevelData.AddExp(amount);
+        }
+
+        public void SetExtraJumps(int extraJumps)
+        {
+            _maxExtraJumps = extraJumps;
         }
     }
 }

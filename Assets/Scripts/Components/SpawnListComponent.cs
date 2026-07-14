@@ -14,6 +14,12 @@ namespace Assets.Scripts.Components
             spawner?.Component.Spawn();
         }
 
+        public void Spawn(string id, int damage, int attack)
+        {
+            var spawner = _spawners.FirstOrDefault(element => element.ID == id);
+            spawner?.Component.Spawn(damage, attack);
+        }
+
         [Serializable]
         public class SpawnData
         {

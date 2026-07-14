@@ -122,6 +122,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "CharacterWindow",
+                    "type": "Button",
+                    "id": "f157a7c4-e788-476c-86cf-874bc1b0734e",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -353,6 +362,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "Slot6",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "b8aeebf1-1559-4c7b-a877-34905f4f2aa1",
+                    "path": "<Keyboard>/k",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "CharacterWindow",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
