@@ -1,6 +1,7 @@
 ﻿using Assets.Scripts.Creatures;
 using Assets.Scripts.Model;
 using Assets.Scripts.Model.Data;
+using Assets.Scripts.Model.Definitions;
 using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -13,19 +14,29 @@ namespace Assets.Scripts.UI.Widgets
         [SerializeField] private string _perkId;
         [SerializeField] private TextMeshProUGUI _costText;
         [SerializeField] private Button _buyButton;
-        [SerializeField] private GameObject _boughtText;          // надпись "Куплен"
+        [SerializeField] private GameObject _boughtText;          // надпись "Макс." или "Куплен"
+        [SerializeField] private GameObject _levelTextObject;     // объект с текстом уровня (опционально)
+        [SerializeField] private TextMeshProUGUI _levelText;      // текст уровня
         [SerializeField] private GameObject _unlockedOverlay;     // оверлей при наведении (доступно)
         [SerializeField] private GameObject _notEnoughOverlay;    // оверлей при наведении (недостаточно ресурсов)
 
         private GameSession _session;
         private PlayerData _playerData;
         private bool _isPointerOver = false;
+        private PerkDef _perkDef;
 
         private void Start()
         {
             _session = FindObjectOfType<GameSession>();
             if (_session == null) return;
             _playerData = _session.PlayerData;
+
+            _perkDef = DefsFacade.Instance.Perks.Get(_perkId);
+            if (_perkDef == null || _perkDef.IsVoid)
+            {
+                Debug.LogError($"Perk with id '{_perkId}' not found in PerksDef!");
+                return;
+            }
 
             _playerData.Inventory.OnChanged += UpdateUI;
             UpdateUI();
@@ -51,13 +62,16 @@ namespace Assets.Scripts.UI.Widgets
 
         public void OnBuyClick()
         {
-            if (_playerData.PerkData.IsUnlocked(_perkId))
+            if (_perkDef == null) return;
+
+            int currentLevel = _playerData.PerkData.GetLevel(_perkId);
+            if (currentLevel >= _perkDef.MaxLevel)
             {
-                Debug.Log("Perk already unlocked!");
+                Debug.Log("Perk already at max level!");
                 return;
             }
 
-            int cost = _session.GetPerkCost(_perkId);
+            int cost = _perkDef.Cost;
             if (cost <= 0)
             {
                 Debug.Log("Invalid perk cost!");
@@ -70,9 +84,13 @@ namespace Assets.Scripts.UI.Widgets
                 return;
             }
 
+            // Снимаем монеты
             _playerData.Inventory.Remove("GoldCoin", cost);
-            _playerData.PerkData.Unlock(_perkId);
+            // Увеличиваем уровень перка
+            _playerData.PerkData.AddLevel(_perkId, 1);
+            // Применяем эффект
             ApplyPerkEffect();
+            // Обновляем UI
             UpdateUI();
         }
 
@@ -81,28 +99,46 @@ namespace Assets.Scripts.UI.Widgets
             var hero = FindObjectOfType<Hero>();
             if (hero == null) return;
 
-            if (_perkId == "DoubleJump")
-                hero.SetExtraJumps(1);
-            // Добавляйте другие перки по мере необходимости
+            // Для каждого типа перка своя логика
+            // Например, DoubleJump увеличивает количество дополнительных прыжков на 1 за каждый уровень
+            switch (_perkId)
+            {
+                case "DoubleJump":
+                    hero.AddExtraJump(1);
+                    break;
+            }
         }
 
         private void UpdateUI()
         {
-            bool isUnlocked = _playerData.PerkData.IsUnlocked(_perkId);
-            int cost = _session.GetPerkCost(_perkId);
+            if (_perkDef == null) return;
+
+            int currentLevel = _playerData.PerkData.GetLevel(_perkId);
+            int maxLevel = _perkDef.MaxLevel;
+            int cost = _perkDef.Cost;
             int coins = _playerData.Inventory.Count("GoldCoin");
             bool canAfford = coins >= cost;
 
-            // ---- Состояние "Куплен" ----
-            if (isUnlocked)
+            bool isMaxLevel = currentLevel >= maxLevel;
+
+            // ---- Состояние "Максимальный уровень" ----
+            if (isMaxLevel)
             {
                 if (_boughtText != null)
+                {
                     _boughtText.SetActive(true);
+                    var txt = _boughtText.GetComponentInChildren<TextMeshProUGUI>();
+                    if (txt != null) txt.text = "Макс.";
+                }
                 if (_costText != null)
                 {
                     _costText.text = string.Empty;
                     _costText.gameObject.SetActive(false);
                 }
+                if (_levelText != null)
+                    _levelText.text = $"{currentLevel}/{maxLevel}";
+                if (_levelTextObject != null)
+                    _levelTextObject.SetActive(true);
                 if (_buyButton != null)
                     _buyButton.interactable = false;
                 if (_unlockedOverlay != null)
@@ -112,16 +148,22 @@ namespace Assets.Scripts.UI.Widgets
                 return;
             }
 
-            // ---- Состояние "Не куплен" ----
+            // ---- Состояние "Не максимальный" ----
             if (_boughtText != null)
                 _boughtText.SetActive(false);
+
             if (_costText != null)
             {
                 _costText.text = cost.ToString();
                 _costText.gameObject.SetActive(true);
             }
 
-            // Кнопка всегда интерактивна, если не куплена
+            if (_levelText != null)
+                _levelText.text = $"{currentLevel}/{maxLevel}";
+            if (_levelTextObject != null)
+                _levelTextObject.SetActive(true);
+
+            // Кнопка всегда интерактивна, если не максимальный уровень
             if (_buyButton != null)
                 _buyButton.interactable = true;
 

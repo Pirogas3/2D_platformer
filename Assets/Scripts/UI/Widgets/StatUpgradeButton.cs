@@ -80,6 +80,7 @@ namespace Assets.Scripts.UI.Widgets
             {
                 case StatType.MaxHp:
                     _playerData.MaxHp += _hpBonus;
+                    _playerData.Hp = _playerData.MaxHp;
                     break;
                 case StatType.Attack:
                     _playerData.Attack += _attackBonus;

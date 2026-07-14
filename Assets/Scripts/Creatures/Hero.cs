@@ -85,6 +85,8 @@ namespace Assets.Scripts.Creatures
             _quickInventoryController = FindObjectOfType<QuickInventoryController>();
             if (_quickInventoryController == null)
                 Debug.LogWarning("QuickInventoryController not found in scene!");
+
+            ApplyPerks();
         }
 
         protected override void FixedUpdate()
@@ -333,9 +335,26 @@ namespace Assets.Scripts.Creatures
             _gameSession.PlayerData.LevelData.AddExp(amount);
         }
 
-        public void SetExtraJumps(int extraJumps)
+        [ContextMenu("Add500XP")]
+        public void AddExperience()
         {
-            _maxExtraJumps = extraJumps;
+            if (_gameSession == null) return;
+            _gameSession.PlayerData.LevelData.AddExp(500);
+        }
+
+        private void ApplyPerks()
+        {
+            var perkData = _gameSession.PlayerData.PerkData;
+            int doubleJumpLevel = perkData.GetLevel("DoubleJump");
+            if (doubleJumpLevel > 0)
+            {
+                _maxExtraJumps += doubleJumpLevel;
+            }
+        }
+
+        public void AddExtraJump(int amount)
+        {
+            _maxExtraJumps += amount;
         }
     }
 }

@@ -334,6 +334,10 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: 37e934f5-7dab-4a3d-9f75-420ea12d4246
     m_ActionName: Hero/Slot6[/Keyboard/6]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: f157a7c4-e788-476c-86cf-874bc1b0734e
+    m_ActionName: Hero/CharacterWindow[/Keyboard/k]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Hero
@@ -365,9 +369,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _particles: {fileID: 44946075099930308}
-  _speed: 4.5
-  _jumpPower: 10
-  _maxExtraJumps: 1
+  _speed: 3
+  _jumpPower: 8
+  _maxExtraJumps: 0
   _groundCheck: {fileID: 4804697892880738580}
   _attackHitbox: {fileID: 4256680600277974716}
   _interactionRadius: 1
@@ -459,7 +463,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  _defense: 2
+  _defense: 0
   _hero: {fileID: 4312153819627111551}
 --- !u!114 &8563921720509421390
 MonoBehaviour:

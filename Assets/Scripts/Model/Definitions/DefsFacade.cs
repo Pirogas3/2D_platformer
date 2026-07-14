@@ -12,6 +12,7 @@ namespace Assets.Scripts.Model.Definitions
     {
         [SerializeField] private InventoryItemsDef _items;
         [SerializeField] private ItemPropertiesDef _properties;
+        [SerializeField] private PerksDef _perks;
 
         private static DefsFacade _instance;
         /// <summary>
@@ -21,7 +22,10 @@ namespace Assets.Scripts.Model.Definitions
 
         /// <summary>Определения всех предметов инвентаря.</summary>
         public InventoryItemsDef Items => _items;
+        /// <summary>Определения доп свойств предметов инвентаря.</summary>
         public ItemPropertiesDef Properties => _properties;
+        /// <summary>Определения всех перков в игре.</summary>
+        public PerksDef Perks => _perks;
 
         /// <summary>
         /// Загрузить фасад из Resources.

@@ -3,7 +3,6 @@ using Assets.Scripts.Model.Data;
 using Assets.Scripts.UI.Hud;
 using Assets.Scripts.UI.Hud.Inventory;
 using SheetXExample;
-using System;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -19,25 +18,6 @@ namespace Assets.Scripts.Model
         public InventoryWindowController InvWindowController { get => _invWindowController; set { _invWindowController = value; } }
 
         public static GameSession Instance { get; private set; }
-
-        [Header("Perks")]
-        [SerializeField] private PerkDef[] _perks;
-        public PerkDef[] Perks => _perks;
-
-        public int GetPerkCost(string perkId)
-        {
-            foreach (var perk in _perks)
-                if (perk.Id == perkId)
-                    return perk.Cost;
-            return -1;
-        }
-
-        [Serializable]
-        public class PerkDef
-        {
-            public string Id;
-            public int Cost;
-        }
 
         private void Awake()
         {
