@@ -28,6 +28,8 @@ namespace Assets.Scripts.UI.Hud.Inventory
         private bool _isDragging;
         private bool _isPointerOver = false;
 
+        public InventoryItemData GetItemData() => _itemData;
+
         public void Initialize(int slotIndex, InventoryWindowController controller)
         {
             _slotIndex = slotIndex;

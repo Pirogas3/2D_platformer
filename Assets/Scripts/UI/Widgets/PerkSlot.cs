@@ -25,6 +25,8 @@ namespace Assets.Scripts.UI.Widgets
         private bool _isPointerOver = false;
         private PerkDef _perkDef;
 
+        public string GetPerkId() => _perkId;
+
         private void Start()
         {
             _session = FindObjectOfType<GameSession>();
@@ -127,8 +129,6 @@ namespace Assets.Scripts.UI.Widgets
                 if (_boughtText != null)
                 {
                     _boughtText.SetActive(true);
-                    var txt = _boughtText.GetComponentInChildren<TextMeshProUGUI>();
-                    if (txt != null) txt.text = "Макс.";
                 }
                 if (_costText != null)
                 {

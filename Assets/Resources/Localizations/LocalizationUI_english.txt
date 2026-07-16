@@ -1,1 +1,1 @@
-﻿["main menu","new game","load game","options","exit","quick save","english","russian","ok","audio","settings","load slot","save slot","language","use","drop","clear","equip","unequip"]
+﻿["main menu","new game","load game","options","exit","quick save","english","russian","ok","audio","settings","load slot","save slot","language","use","drop","clear","equip","unequip","Health","Cost: One characters point","Adds 10 to the character's maximum health. It also restores the current health to its maximum."]

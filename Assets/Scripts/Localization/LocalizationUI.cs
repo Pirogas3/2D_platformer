@@ -23,13 +23,13 @@
 		public enum ID 
 		{
 			NONE = -1,
-			UI_MainMenu = 0, UI_NewGame, UI_LoadGame, UI_Options, UI_Exit, UI_QuickSave, UI_Eng, UI_Rus, UI_Ok, UI_Audio, UI_Settings, UI_LoadSlot, UI_SaveSlot, UI_Language, HUD_Use, HUD_Drop, HUD_Clear, HUD_Equip, HUD_Unequip,
+			UI_MainMenu = 0, UI_NewGame, UI_LoadGame, UI_Options, UI_Exit, UI_QuickSave, UI_Eng, UI_Rus, UI_Ok, UI_Audio, UI_Settings, UI_LoadSlot, UI_SaveSlot, UI_Language, HUD_Use, HUD_Drop, HUD_Clear, HUD_Equip, HUD_Unequip, Health_Header, Health_Cost, Health_Description,
 		}
 		public const int
-			UI_MainMenu = 0, UI_NewGame = 1, UI_LoadGame = 2, UI_Options = 3, UI_Exit = 4, UI_QuickSave = 5, UI_Eng = 6, UI_Rus = 7, UI_Ok = 8, UI_Audio = 9, UI_Settings = 10, UI_LoadSlot = 11, UI_SaveSlot = 12, UI_Language = 13, HUD_Use = 14, HUD_Drop = 15, HUD_Clear = 16, HUD_Equip = 17, HUD_Unequip = 18;
+			UI_MainMenu = 0, UI_NewGame = 1, UI_LoadGame = 2, UI_Options = 3, UI_Exit = 4, UI_QuickSave = 5, UI_Eng = 6, UI_Rus = 7, UI_Ok = 8, UI_Audio = 9, UI_Settings = 10, UI_LoadSlot = 11, UI_SaveSlot = 12, UI_Language = 13, HUD_Use = 14, HUD_Drop = 15, HUD_Clear = 16, HUD_Equip = 17, HUD_Unequip = 18, Health_Header = 19, Health_Cost = 20, Health_Description = 21;
 		public static readonly string[] idString = new string[]
 		{
-			"UI_MainMenu", "UI_NewGame", "UI_LoadGame", "UI_Options", "UI_Exit", "UI_QuickSave", "UI_Eng", "UI_Rus", "UI_Ok", "UI_Audio", "UI_Settings", "UI_LoadSlot", "UI_SaveSlot", "UI_Language", "HUD_Use", "HUD_Drop", "HUD_Clear", "HUD_Equip", "HUD_Unequip",
+			"UI_MainMenu", "UI_NewGame", "UI_LoadGame", "UI_Options", "UI_Exit", "UI_QuickSave", "UI_Eng", "UI_Rus", "UI_Ok", "UI_Audio", "UI_Settings", "UI_LoadSlot", "UI_SaveSlot", "UI_Language", "HUD_Use", "HUD_Drop", "HUD_Clear", "HUD_Equip", "HUD_Unequip", "Health_Header", "Health_Cost", "Health_Description",
 		};
 		public static readonly Dictionary<string, string> LanguageFiles = new Dictionary<string, string>() {  { "english", "LocalizationUI_english" }, { "russian", "LocalizationUI_russian" }, };
 		public static readonly string DefaultLanguage = "english";
