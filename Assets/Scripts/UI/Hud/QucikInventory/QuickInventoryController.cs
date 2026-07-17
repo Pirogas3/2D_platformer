@@ -163,13 +163,6 @@ namespace Assets.Scripts.UI.Hud.QucikInventory
             SelectSlot(_selectedIndex);
         }
 
-        //// Метод для получения данных слота (для перетаскивания из быстрого слота обратно в инвентарь – пока не используется)
-        //public InventoryItemData GetSlotData(int slotIndex)
-        //{
-        //    if (slotIndex < 0 || slotIndex >= _slots.Length) return null;
-        //    return _quickItems[slotIndex];
-        //}
-
         public InventoryItemData GetSelectedSlotData()
         {
             if (_selectedIndex < 0 || _selectedIndex >= _quickItems.Length) return null;

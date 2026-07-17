@@ -1,4 +1,5 @@
-﻿using Assets.Scripts.UI.Widgets;
+﻿using Assets.Scripts.Model;
+using Assets.Scripts.UI.Widgets;
 using UnityEngine;
 using UnityEngine.UI;
 

@@ -49,6 +49,7 @@ namespace Assets.Scripts.UI.Hud.CharacterWindow
                 return;
             }
 
+            _session.CharacterWindowController = this;
             _playerData = _session.PlayerData;
             _levelData = _playerData.LevelData;
 

@@ -12,8 +12,10 @@ GameObject:
   - component: {fileID: 2056258173253092990}
   - component: {fileID: 7175651034162207059}
   - component: {fileID: 7192774264062594498}
-  - component: {fileID: 2204181441593833398}
   - component: {fileID: 4640660185350501409}
+  - component: {fileID: 7347140076025896991}
+  - component: {fileID: 4488943903047729977}
+  - component: {fileID: 2406171871090730188}
   m_Layer: 7
   m_Name: Chest
   m_TagString: Untagged
@@ -109,9 +111,9 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: -1473263023
-  m_SortingLayer: -2
-  m_SortingOrder: -1
+  m_SortingLayerID: -1794940929
+  m_SortingLayer: -3
+  m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 69f667bc4a983f748866d04f151bd363, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -179,19 +181,6 @@ MonoBehaviour:
             m_StringArgument: Opened
             m_BoolArgument: 0
           m_CallState: 2
-        - m_Target: {fileID: 4640660185350501409}
-          m_TargetAssemblyTypeName: Assets.Scripts.Components.InventoryComponents.InventoryComponent,
-            Assembly-CSharp
-          m_MethodName: MoveAllTo
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: Opened
-            m_BoolArgument: 0
-          m_CallState: 2
   - name: Closing
     sprites:
     - {fileID: 21300000, guid: 0f30c0feb656bcb48a44579dd60c475b, type: 3}
@@ -220,34 +209,6 @@ MonoBehaviour:
             m_BoolArgument: 0
           m_CallState: 2
   _defaultClipName: Closed
---- !u!114 &2204181441593833398
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 874845366049347550}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3bfb505d6df20524a8e7650218745e80, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _action:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 7192774264062594498}
-        m_TargetAssemblyTypeName: Assets.Scripts.Components.SpriteAnimationComponent,
-          Assembly-CSharp
-        m_MethodName: Play
-        m_Mode: 5
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: Opening
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!114 &4640660185350501409
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -265,9 +226,122 @@ MonoBehaviour:
     - Id: Sword
       Value: 1
       _containerId: 
-    - Id: GoldKey
-      Value: 1
+    - Id: GoldCoin
+      Value: 3
       _containerId: 
     - Id: GreenPotion
       Value: 1
       _containerId: 
+--- !u!114 &7347140076025896991
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 874845366049347550}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6249ce3baff24648adfc5c609c31b5d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _action:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 4488943903047729977}
+        m_TargetAssemblyTypeName: Assets.Scripts.Components.InventoryComponents.RequireItemComponent,
+          Assembly-CSharp
+        m_MethodName: Check
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  _inventoryComponent: {fileID: 4640660185350501409}
+  _closeDistance: 2
+  _onOpened:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 4488943903047729977}
+        m_TargetAssemblyTypeName: Assets.Scripts.Components.InventoryComponents.RequireItemComponent,
+          Assembly-CSharp
+        m_MethodName: ResetRequiredItem
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  _isOpened: 0
+  _animationComponent: {fileID: 7192774264062594498}
+--- !u!114 &4488943903047729977
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 874845366049347550}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f47279b5e15236b4693eb184370ddc4e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _required:
+  - Id: GoldKey
+    Amount: 1
+  _removeAfterUse: 1
+  _onSuccess:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 7347140076025896991}
+        m_TargetAssemblyTypeName: Assets.Scripts.Components.InventoryComponents.ChestComponent,
+          Assembly-CSharp
+        m_MethodName: OpenChest
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Opening
+          m_BoolArgument: 0
+        m_CallState: 2
+  _onFail:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2406171871090730188}
+        m_TargetAssemblyTypeName: Assets.Scripts.Components.DialogComponents.ShowDialogComponent,
+          Assembly-CSharp
+        m_MethodName: Show
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &2406171871090730188
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 874845366049347550}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4cdf1e93878c4da40a73e4ed85861183, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _mode: 0
+  _bound:
+    _sentences:
+    - You need a key to open the chest!
+  _external: {fileID: 0}

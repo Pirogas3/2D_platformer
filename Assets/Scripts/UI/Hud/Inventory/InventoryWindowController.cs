@@ -6,7 +6,7 @@ using UnityEngine.InputSystem;
 
 namespace Assets.Scripts.UI.Hud.Inventory
 {
-    public class InventoryWindowController : MonoBehaviour
+    public class InventoryWindowController : MonoBehaviour, IInventoryController
     {
         [Header("UI References")]
         [SerializeField] private GameObject _window; // само окно
@@ -24,6 +24,9 @@ namespace Assets.Scripts.UI.Hud.Inventory
         private int _dragFromIndex = -1;
 
         public bool IsOpen => _isOpen;
+        public GameObject Window => _window;
+        public InventoryData GetInventoryData() => _inventory;
+        public void RefreshUI() => RefreshInventoryUI();
 
         private void OnEnable()
         {
@@ -163,6 +166,13 @@ namespace Assets.Scripts.UI.Hud.Inventory
             // Иначе меняем местами
             _inventory.Swap(fromIndex, toIndex);
             RefreshInventoryUI();
+        }
+
+        // --- Перетаскивание извне (из игрока или другого сундука) ---
+        public void MoveFromOutside(InventoryData sourceInventory, int fromIndex, int toIndex = -1)
+        {
+            if (_inventory == null || sourceInventory == null) return;
+            sourceInventory.MoveTo(_inventory, fromIndex, toIndex);
         }
     }
 }

@@ -23,7 +23,7 @@ namespace Assets.Scripts.UI.Hud.Inventory
         private ItemDef _itemDef;
         private object _source; // InventoryItemCell или QuickInventorySlot
         private int _slotIndex;
-        private InventoryWindowController _inventoryController;
+        private IInventoryController _inventoryController;
         private QuickInventoryController _quickController;
 
         private void OnDestroy()
@@ -35,8 +35,8 @@ namespace Assets.Scripts.UI.Hud.Inventory
         }
 
         public void Setup(InventoryItemData itemData, object source, int slotIndex,
-                          InventoryWindowController inventoryController,
-                          QuickInventoryController quickController)
+                  IInventoryController inventoryController,
+                  QuickInventoryController quickController)
         {
             _itemData = itemData;
             _source = source;
@@ -66,8 +66,8 @@ namespace Assets.Scripts.UI.Hud.Inventory
             _dropButton.gameObject.SetActive(!isQuickSlot);
             _clearSlotButton.gameObject.SetActive(isQuickSlot);
 
-            bool canEquip = _itemDef.Category == ItemCategory.Weapon ||
-                _itemDef.Category == ItemCategory.Armor;
+            bool canEquip = (_itemDef.Category == ItemCategory.Weapon || _itemDef.Category == ItemCategory.Armor)
+                && !(_inventoryController is ChestInventoryController);
             _equipUnquipButton.gameObject.SetActive(canEquip);
             if (canEquip)
             {
@@ -98,6 +98,11 @@ namespace Assets.Scripts.UI.Hud.Inventory
             {
                 session.PlayerData.Inventory.Remove(_itemData.Id, _itemData.Value);
             }
+            if (_source is QuickInventorySlot quickSlot && _quickController != null)
+            {
+                _quickController.ClearSlot(quickSlot.GetSlotIndex());
+            }
+            _inventoryController?.RefreshUI();
             CloseMenu();
         }
 
@@ -107,6 +112,7 @@ namespace Assets.Scripts.UI.Hud.Inventory
             {
                 _quickController.ClearSlot(quickSlot.GetSlotIndex());
             }
+            _inventoryController?.RefreshUI();
             CloseMenu();
         }
 

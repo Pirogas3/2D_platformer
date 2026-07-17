@@ -1,6 +1,7 @@
 ﻿using Assets.Scripts.Creatures;
 using Assets.Scripts.Model.Data;
 using Assets.Scripts.UI.Hud;
+using Assets.Scripts.UI.Hud.CharacterWindow;
 using Assets.Scripts.UI.Hud.Inventory;
 using SheetXExample;
 using UnityEngine;
@@ -16,6 +17,8 @@ namespace Assets.Scripts.Model
         private PlayerData _sceneStartState; // состояние на начало текущей сцены
         private InventoryWindowController _invWindowController; // он устанавливается самим InventoryWindowController-ом при его загрузке
         public InventoryWindowController InvWindowController { get => _invWindowController; set { _invWindowController = value; } }
+        private CharacterWindowController _characterWindowController; // он устанавливается самим CharacterWindowController-ом при его загрузке
+        public CharacterWindowController CharacterWindowController { get => _characterWindowController; set { _characterWindowController = value; } }
 
         public static GameSession Instance { get; private set; }
 
@@ -46,7 +49,7 @@ namespace Assets.Scripts.Model
             }
 
             // Закрытие контекстного меню и инвентаря по Esc
-            if (Input.GetKeyDown(KeyCode.Escape) && (ContextMenuManager.IsMenuOpen || _invWindowController.IsOpen))
+            if (Input.GetKeyDown(KeyCode.Escape))
             {
                 if (ContextMenuManager.IsMenuOpen)
                 {
@@ -56,6 +59,11 @@ namespace Assets.Scripts.Model
                 else if (_invWindowController.IsOpen)
                 {
                     _invWindowController.ToggleWindow();
+                    return;
+                }
+                else if (_characterWindowController.IsOpen)
+                {
+                    _characterWindowController.ToggleWindow();
                     return;
                 }
             }

@@ -20,7 +20,7 @@ namespace Assets.Scripts.UI.Hud
         }
 
         public static void ShowMenu(Vector2 screenPosition, InventoryItemData itemData, object source, int slotIndex,
-                            InventoryWindowController inventoryController,
+                            IInventoryController inventoryController,
                             QuickInventoryController quickController)
         {
             CloseMenu();

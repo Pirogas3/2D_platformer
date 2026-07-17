@@ -14,6 +14,11 @@ namespace Assets.Scripts.Components.InventoryComponents
         [SerializeField] private UnityEvent _onSuccess;
         [SerializeField] private UnityEvent _onFail;
 
+        public void ResetRequiredItem()
+        {
+            _required = new RequiredItem[0];
+        }
+
         public void Check()
         {
             var session = FindObjectOfType<GameSession>();

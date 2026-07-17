@@ -21,7 +21,7 @@ namespace Assets.Scripts.UI.Hud.Inventory
         private InventoryItemData _itemData;
         private ItemDef _itemDef;
         private int _slotIndex;
-        private InventoryWindowController _controller;
+        private IInventoryController _controller;
         private Canvas _canvas;
         private RectTransform _rectTransform;
         private GameObject _dragGhost;
@@ -30,7 +30,7 @@ namespace Assets.Scripts.UI.Hud.Inventory
 
         public InventoryItemData GetItemData() => _itemData;
 
-        public void Initialize(int slotIndex, InventoryWindowController controller)
+        public void Initialize(int slotIndex, IInventoryController controller)
         {
             _slotIndex = slotIndex;
             _controller = controller;
@@ -202,66 +202,77 @@ namespace Assets.Scripts.UI.Hud.Inventory
         {
             if (!_isDragging) return;
 
-            // Восстанавливаем прозрачность
             SetAlpha(1f);
             _isDragging = false;
 
-            // Уничтожаем призрак
             if (_dragGhost != null)
             {
                 Destroy(_dragGhost);
                 _dragGhost = null;
             }
 
-            // Поиск целевого объекта (ячейка инвентаря или слот быстрого доступа)
-            InventoryItemCell targetCell = null;
-            QuickInventorySlot quickSlot = null;
-            QuickInventoryController quickController = null;
-
-            foreach (var go in eventData.hovered)
+            GameObject targetObject = eventData.pointerEnter;
+            if (targetObject == null)
             {
-                // Проверяем, не является ли объект или его родитель ячейкой инвентаря
-                if (targetCell == null)
-                {
-                    var cell = go.GetComponent<InventoryItemCell>();
-                    if (cell == null) cell = go.GetComponentInParent<InventoryItemCell>();
-                    if (cell != null && cell != this) targetCell = cell;
-                }
-
-                // Проверяем, не является ли объект или его родитель слотом быстрого доступа
-                if (quickSlot == null)
-                {
-                    var slot = go.GetComponent<QuickInventorySlot>();
-                    if (slot == null) slot = go.GetComponentInParent<QuickInventorySlot>();
-                    if (slot != null)
-                    {
-                        quickSlot = slot;
-                        quickController = slot.GetComponentInParent<QuickInventoryController>();
-                    }
-                }
-
-                // Если нашли и то, и другое – можно выйти раньше
-                if (targetCell != null && quickSlot != null) break;
+                _controller.OnEndDrag();
+                if (_selectionImage != null) _selectionImage.gameObject.SetActive(false);
+                return;
             }
 
-            // Если нашли ячейку инвентаря – вызываем обработку в контроллере инвентаря
-            if (targetCell != null)
+            // Поиск компонентов
+            InventoryItemCell targetCell = targetObject.GetComponent<InventoryItemCell>();
+            if (targetCell == null) targetCell = targetObject.GetComponentInParent<InventoryItemCell>();
+
+            QuickInventorySlot quickSlot = targetObject.GetComponent<QuickInventorySlot>();
+            if (quickSlot == null) quickSlot = targetObject.GetComponentInParent<QuickInventorySlot>();
+
+            ChestInventoryController chestController = targetObject.GetComponentInParent<ChestInventoryController>();
+            InventoryWindowController playerController = targetObject.GetComponentInParent<InventoryWindowController>();
+
+            QuickInventoryController quickController = quickSlot?.GetComponentInParent<QuickInventoryController>();
+
+            // Определяем, над каким окном находится мышь
+            bool isOverChest = chestController != null &&
+                               (targetObject == chestController.Window ||
+                                targetObject.transform.IsChildOf(chestController.Window.transform));
+
+            bool isOverPlayer = playerController != null &&
+                                (targetObject == playerController.Window ||
+                                 targetObject.transform.IsChildOf(playerController.Window.transform));
+
+            // Приоритет: ячейка внутри инвентаря > быстрый слот > сундук > инвентарь игрока
+            if (targetCell != null && targetCell != this)
             {
+                // Обмен внутри одного инвентаря
                 _controller.OnDrop(_slotIndex, targetCell._slotIndex);
             }
-            // Иначе если нашли слот быстрого доступа – пытаемся назначить предмет в него
             else if (quickSlot != null && quickController != null)
             {
-                if (_itemData != null)
+                // Быстрый слот (только из инвентаря игрока)
+                if (!(_controller is ChestInventoryController) && _itemData != null)
                 {
                     quickController.TryAssignItem(quickSlot.GetSlotIndex(), _itemData);
                 }
             }
+            else if (isOverChest)
+            {
+                // Перемещение в сундук
+                if (_itemData != null)
+                {
+                    chestController.MoveFromOutside(_controller.GetInventoryData(), _slotIndex);
+                }
+            }
+            else if (isOverPlayer)
+            {
+                // Перемещение в инвентарь игрока (из сундука или другого источника)
+                if (!ReferenceEquals(_controller, playerController) && _itemData != null)
+                {
+                    playerController.MoveFromOutside(_controller.GetInventoryData(), _slotIndex);
+                }
+            }
+            // Иначе ничего не делаем
 
-            // Уведомляем контроллер инвентаря, что перетаскивание завершено
             _controller.OnEndDrag();
-
-            // Сбрасываем подсветку (если была включена)
             if (_selectionImage != null)
                 _selectionImage.gameObject.SetActive(false);
         }
