@@ -365,6 +365,7 @@ MonoBehaviour:
   _headerText: {fileID: 5668928630869112895}
   _descriptionText: {fileID: 732375865068164712}
   _costText: {fileID: 3949199067201023485}
+  _costContainer: {fileID: 4534767794301546214}
 --- !u!1 &4534767794301546214
 GameObject:
   m_ObjectHideFlags: 0

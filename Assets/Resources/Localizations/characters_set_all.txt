@@ -1,1 +1,1 @@
-﻿ "',.01:ACHIO[]acdeghiklmnopqrstuvwxАЗПСабвгдежзийклмнопрстухчщыьюя
+﻿ "'+,.0125:ACDEHILMOPSTY[]abcdefghijklmnopqrstuvwxyАДЗИМОПСУабвгдежзийклмнопрстухчшщыьюя
