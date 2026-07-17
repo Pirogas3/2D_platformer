@@ -1,5 +1,4 @@
 ﻿using TMPro;
-using UnityEngine.UI;
 using UnityEngine;
 
 namespace Assets.Scripts.UI.Widgets
@@ -13,13 +12,13 @@ namespace Assets.Scripts.UI.Widgets
 
         [Header("Containers")]
         [SerializeField] private GameObject _costContainer;
+        [SerializeField] private GameObject _descriptionContainer;
 
         private RectTransform _panel;
 
         public void SetData(string header, string description, string cost)
         {
             _headerText.text = header;
-            _descriptionText.text = description;
 
             if (!string.IsNullOrEmpty(cost))
             {
@@ -35,6 +34,22 @@ namespace Assets.Scripts.UI.Widgets
                     _costContainer.SetActive(false);
 
                 _costText.gameObject.SetActive(false);
+            }
+
+            if (!string.IsNullOrEmpty(description))
+            {
+                if (_descriptionContainer != null)
+                    _descriptionContainer.SetActive(true);
+
+                _descriptionText.text = description;
+                _descriptionText.gameObject.SetActive(true);
+            }
+            else
+            {
+                if (_descriptionContainer != null)
+                    _descriptionContainer.SetActive(false);
+
+                _descriptionText.gameObject.SetActive(false);
             }
         }
 

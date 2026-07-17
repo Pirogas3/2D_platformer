@@ -1,5 +1,4 @@
-﻿using Assets.Scripts.Model.Definitions;
-using Assets.Scripts.UI.Hud.Inventory;
+﻿using Assets.Scripts.UI.Hud.Inventory;
 using SheetXExample;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -9,56 +8,25 @@ namespace Assets.Scripts.UI.Widgets
     public class AutoTooltipTrigger : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     {
         [Header("Settings")]
-        [SerializeField]
-        private float _delay = 0.3f;
-        [SerializeField]
-        private bool _showCost = true;
+        [SerializeField] private float _delay = 0.3f;
+        [SerializeField] private bool _showCost = true;
 
-        private string _id;
         private float _hoverStartTime;
         private bool _isHovering = false;
 
+        private InventoryItemCell _itemCell;
+        private PerkSlot _perkSlot;
+        private string _id;
+
         private void Awake()
         {
-            // Пытаемся определить, что за объект
-            var itemCell = GetComponent<InventoryItemCell>();
-            if (itemCell != null)
-            {
-                // Предмет инвентаря
-                var itemData = itemCell.GetItemData();
-                if (itemData != null)
-                {
-                    _id = itemData.Id;
-                    var itemDef = DefsFacade.Instance.Items.Get(_id);
-                    if (itemDef != null && !itemDef.IsVoid)
-                    {
-                        //
-                    }
-                }
-                return;
-            }
-
-            var perkSlot = GetComponent<PerkSlot>();
-            if (perkSlot != null)
-            {
-                // Перк
-                _id = perkSlot.GetPerkId(); // нужно добавить публичный метод GetPerkId в PerkSlot
-                var perkDef = DefsFacade.Instance.Perks.Get(_id);
-                if (perkDef != null && !perkDef.IsVoid)
-                {
-                    //
-                }
-                return;
-            }
-
-            // Если ничего не найдено, отключаем себя
-            Debug.LogWarning($"AutoTooltipTrigger on {gameObject.name} couldn't find any supported component.");
-            enabled = false;
+            _itemCell = GetComponent<InventoryItemCell>();
+            _perkSlot = GetComponent<PerkSlot>();
         }
 
         public void OnPointerEnter(PointerEventData eventData)
         {
-            if (string.IsNullOrEmpty(_id)) return;
+            if (!TryGetId()) return; // если не удалось получить ID, не показываем
 
             _isHovering = true;
             _hoverStartTime = Time.unscaledTime;
@@ -74,6 +42,32 @@ namespace Assets.Scripts.UI.Widgets
                 TooltipManager.Instance.HideTooltip();
         }
 
+        private bool TryGetId()
+        {
+            if (!string.IsNullOrEmpty(_id)) return true;
+
+            // Пытаемся получить ID из ячейки инвентаря
+            if (_itemCell != null)
+            {
+                var itemData = _itemCell.GetItemData();
+                if (itemData != null)
+                {
+                    _id = itemData.Id;
+                    return true;
+                }
+            }
+
+            // Пытаемся получить ID из слота перка
+            if (_perkSlot != null)
+            {
+                _id = _perkSlot.GetPerkId();
+                if (!string.IsNullOrEmpty(_id))
+                    return true;
+            }
+
+            return false;
+        }
+
         private void ShowTooltip()
         {
             if (!_isHovering || string.IsNullOrEmpty(_id)) return;
@@ -86,9 +80,8 @@ namespace Assets.Scripts.UI.Widgets
             string description = LocalizationUI.Get(descriptionKey).ToString();
             string cost = _showCost ? LocalizationUI.Get(costKey).ToString() : "";
 
-            // Если какой-то ключ не найден, можно использовать fallback
             if (string.IsNullOrEmpty(header))
-                header = _id; // или название из Defs
+                header = _id; // fallback, показываем название как id предмета, если не заполнена локализация
 
             if (TooltipManager.Instance != null)
             {

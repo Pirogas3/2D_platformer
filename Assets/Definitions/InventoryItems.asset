@@ -51,7 +51,7 @@ MonoBehaviour:
     _description: Simple iron sword
     _icon: {fileID: 21300000, guid: 03de91effead8a346b7d4ecb9feeb409, type: 3}
     _weight: 6
-    _baseValue: 10
+    _baseValue: 5
     _maxStack: 10
     _category: 1
     _containerConfig:
@@ -84,7 +84,7 @@ MonoBehaviour:
     _description: Large heal potion
     _icon: {fileID: 21300000, guid: abea79242737e754a8108502513eb8cd, type: 3}
     _weight: 1.5
-    _baseValue: 15
+    _baseValue: 16
     _maxStack: 10
     _category: 5
     _containerConfig:
@@ -95,7 +95,7 @@ MonoBehaviour:
     _description: The potion of speed
     _icon: {fileID: 21300000, guid: b1003f19d2c364e458289938ed043a46, type: 3}
     _weight: 2
-    _baseValue: 20
+    _baseValue: 15
     _maxStack: 10
     _category: 5
     _containerConfig:
