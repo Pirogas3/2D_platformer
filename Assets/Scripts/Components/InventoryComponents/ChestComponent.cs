@@ -65,6 +65,7 @@ namespace Assets.Scripts.Components.InventoryComponents
                 _animationComponent.Play("Closing");
 
             _isOpened = false;
+            _hero = null;
             if (_chestUIController.IsOpen)
                 _chestUIController.Close();
         }
