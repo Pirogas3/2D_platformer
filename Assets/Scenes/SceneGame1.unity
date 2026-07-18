@@ -5617,17 +5617,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 735373237934739257, guid: 42a252710ca87a6458e8a55e23148d13, type: 3}
+      propertyPath: _mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 735373237934739257, guid: 42a252710ca87a6458e8a55e23148d13, type: 3}
+      propertyPath: _external
+      value: 
+      objectReference: {fileID: 11400000, guid: e1b7f9c12862aab4e8b44230abcf9c5e, type: 2}
     - target: {fileID: 3540922507533362059, guid: 42a252710ca87a6458e8a55e23148d13, type: 3}
       propertyPath: m_Name
       value: Sharky(NPC)
-      objectReference: {fileID: 0}
-    - target: {fileID: 5962794134997942788, guid: 42a252710ca87a6458e8a55e23148d13, type: 3}
-      propertyPath: m_SortingLayer
-      value: -2
-      objectReference: {fileID: 0}
-    - target: {fileID: 5962794134997942788, guid: 42a252710ca87a6458e8a55e23148d13, type: 3}
-      propertyPath: m_SortingLayerID
-      value: -1473263023
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

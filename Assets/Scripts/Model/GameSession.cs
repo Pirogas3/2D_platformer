@@ -89,12 +89,13 @@ namespace Assets.Scripts.Model
                 return;
 
             SceneManager.LoadScene("Hud", LoadSceneMode.Additive);
+            Debug.Log("Hud загружена");
         }
 
         private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
         {
             // Если загружена игровая сцена (не MainMenu)
-            if (scene.name != "MainMenu")
+            if (scene.name != "MainMenu" && scene.name != "Hud")
             {
                 LoadHud();
             }

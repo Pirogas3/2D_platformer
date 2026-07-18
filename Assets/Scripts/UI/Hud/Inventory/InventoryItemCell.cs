@@ -26,7 +26,7 @@ namespace Assets.Scripts.UI.Hud.Inventory
         private RectTransform _rectTransform;
         private GameObject _dragGhost;
         private bool _isDragging;
-        private bool _isPointerOver = false;
+        //private bool _isPointerOver = false;
 
         public InventoryItemData GetItemData() => _itemData;
 
@@ -140,7 +140,7 @@ namespace Assets.Scripts.UI.Hud.Inventory
         // --- Подсветка при наведении ---
         public void OnPointerEnter(PointerEventData eventData)
         {
-            _isPointerOver = true;
+            //_isPointerOver = true;
             if (_selectionImage == null) return;
 
             if (!_isDragging)
@@ -163,7 +163,7 @@ namespace Assets.Scripts.UI.Hud.Inventory
 
         public void OnPointerExit(PointerEventData eventData)
         {
-            _isPointerOver = false;
+            //_isPointerOver = false;
             if (_selectionImage != null)
                 _selectionImage.gameObject.SetActive(false);
         }

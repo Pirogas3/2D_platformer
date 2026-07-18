@@ -34,6 +34,7 @@
 			if (languages.Contains(pLang))
 				PlayerPrefs.SetString("CurrentLanguage", pLang);
 			LocalizationUI.Init();
+			LocalizationDialogue.Init();
 	        OnLanguageChanged?.Invoke();
 	    }
 	
@@ -42,17 +43,20 @@
 			if (languages.Contains(pLang))
 				PlayerPrefs.SetString("CurrentLanguage", pLang);
 			yield return LocalizationUI.InitAsync();
+			yield return LocalizationDialogue.InitAsync();
 	        OnLanguageChanged?.Invoke();
 	    }
 		
 		public static void SetFolder(string pFolder)
 		{
 			LocalizationUI.Folder = pFolder;
+			LocalizationDialogue.Folder = pFolder;
 		}
 	
 	    public static void UseAddressable(bool pValue)
 	    {
 			LocalizationUI.Addressable = pValue;
+			LocalizationDialogue.Addressable = pValue;
 	    }
 	
 	    public static string GetSystemLanguage()

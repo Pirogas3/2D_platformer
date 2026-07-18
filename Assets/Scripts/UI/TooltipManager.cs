@@ -1,7 +1,5 @@
-﻿using Assets.Scripts.Model;
-using Assets.Scripts.UI.Widgets;
+﻿using Assets.Scripts.UI.Widgets;
 using UnityEngine;
-using UnityEngine.UI;
 
 namespace Assets.Scripts.UI
 {
@@ -22,7 +20,6 @@ namespace Assets.Scripts.UI
                 return;
             }
             Instance = this;
-            DontDestroyOnLoad(gameObject);
 
             // Создаём экземпляр тултипа сразу и выключаем
             _tooltipInstance = Instantiate(_tooltipPrefab, transform);

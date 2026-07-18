@@ -11,7 +11,8 @@ namespace Assets.Scripts.UI.Hud.Dialogue
         [SerializeField] private GameObject _container;
         [SerializeField] private Animator _animator;
 
-        [Space][SerializeField] private float _textSpeed = 0.09f;
+        [Space]
+        [SerializeField] private float _textSpeed = 0.09f;
 
         [Header("Sounds")]
         [SerializeField] private AudioClip _typing;
@@ -22,11 +23,16 @@ namespace Assets.Scripts.UI.Hud.Dialogue
         [Header("Test")]
         [SerializeField] private DialogData _testData;
 
-        private static readonly int IsOpen = Animator.StringToHash("IsOpen");
+        private static readonly int _isOpen = Animator.StringToHash("IsOpen");
 
         private DialogData _data;
+        private string[] _sentencesToShow;
         private int _currentSentence;
         private Coroutine _typingRoutine;
+        private bool _isTyping;
+        private bool _isClosing;
+
+        public bool IsOpen => _container.activeSelf;
 
         private void Awake()
         {
@@ -35,88 +41,113 @@ namespace Assets.Scripts.UI.Hud.Dialogue
 
         public void ShowDialog(DialogData data)
         {
+            // Если диалог уже открыт или закрывается, не открываем новый
+            if (_container.activeSelf || _isClosing) return;
+
             _data = data;
+            _sentencesToShow = data.GetSentences();
             _currentSentence = 0;
             _text.text = string.Empty;
+            _isTyping = false;
 
             _container.SetActive(true);
             _sfxSource?.PlayOneShot(_open);
-            _animator.SetBool(IsOpen, true);
+            _animator.SetBool(_isOpen, true);
         }
 
         public void CloseDialog()
         {
-            _animator.SetBool(IsOpen, false);
+            if (_isClosing) return;
+
+            _isClosing = true;
+            _isTyping = false;
+            if (_typingRoutine != null)
+            {
+                StopCoroutine(_typingRoutine);
+                _typingRoutine = null;
+            }
+            _text.text = string.Empty;
+            _animator.SetBool(_isOpen, false);
             _sfxSource?.PlayOneShot(_close);
         }
 
         public void OnSkip()
         {
-            if (_typingRoutine == null) return;
-
-            StopTypeAnimation();
-            _text.text = _data.Sentences[_currentSentence];
+            if (!_isTyping) return;
+            _isTyping = false;
+            if (_typingRoutine != null)
+            {
+                StopCoroutine(_typingRoutine);
+                _typingRoutine = null;
+            }
+            _text.text = _sentencesToShow[_currentSentence];
         }
 
         public void OnContinue()
         {
-            StopTypeAnimation();
+            if (_isTyping) return;
             _currentSentence++;
-
-            var isDialogComplited = _currentSentence >= _data.Sentences.Length;
-            if (isDialogComplited)
+            if (_currentSentence >= _sentencesToShow.Length)
             {
                 CloseDialog();
             }
             else
             {
-                OnStartDialogAnimation();
+                StartTypingCurrentSentence();
             }
         }
 
         public void OnClick()
         {
-            if (_typingRoutine != null)
-            {
+            if (_isTyping)
                 OnSkip();
-            }
             else
-            {
                 OnContinue();
-            }
         }
 
-        private void StopTypeAnimation()
+        private void StartTypingCurrentSentence()
         {
+            _text.text = string.Empty;
+            _isTyping = true;
             if (_typingRoutine != null)
             {
                 StopCoroutine(_typingRoutine);
+                _typingRoutine = null;
             }
-            _typingRoutine = null;
-        }
-
-        private void OnStartDialogAnimation()
-        {
             _typingRoutine = StartCoroutine(TypeDialogText());
-        }
-
-        private void OnCloseDialogAnimation()
-        {
-
         }
 
         private IEnumerator TypeDialogText()
         {
-            _text.text = string.Empty;
-            var sentences = _data.Sentences[_currentSentence];
-            foreach (var letter in sentences)
+            string sentence = _sentencesToShow[_currentSentence];
+            foreach (char letter in sentence)
             {
+                if (!_isTyping)
+                {
+                    yield break;
+                }
                 _text.text += letter;
                 _sfxSource?.PlayOneShot(_typing);
                 yield return new WaitForSeconds(_textSpeed);
             }
-
+            _isTyping = false;
             _typingRoutine = null;
+        }
+
+        public void OnStartDialogAnimation()
+        {
+            if (_sentencesToShow != null && _sentencesToShow.Length > 0)
+            {
+                StartTypingCurrentSentence();
+            }
+        }
+
+        public void OnCloseDialogAnimation()
+        {
+            // Вызывается из анимации закрытия
+            _isClosing = false;
+            _container.SetActive(false);
+            _text.text = string.Empty;
         }
 
         [ContextMenu("TestShowDialog")]

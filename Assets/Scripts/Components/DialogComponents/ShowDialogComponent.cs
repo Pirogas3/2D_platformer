@@ -14,12 +14,27 @@ namespace Assets.Scripts.Components.DialogComponents
 
         private DialogBoxController _dialogBox;
 
+        private void Start()
+        {
+            _dialogBox = FindObjectOfType<DialogBoxController>();
+        }
+
         public void Show()
         {
             if (_dialogBox == null)
-                _dialogBox = FindObjectOfType<DialogBoxController>();
+            {
+                Debug.LogWarning("DialogBoxController not found!");
+                return;
+            }
 
-            _dialogBox.ShowDialog(Data);
+            if (_dialogBox.IsOpen)
+            {
+                _dialogBox.CloseDialog();
+            }
+            else
+            {
+                _dialogBox.ShowDialog(Data);
+            }
         }
 
         public DialogData Data
