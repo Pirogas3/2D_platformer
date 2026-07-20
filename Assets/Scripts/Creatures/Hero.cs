@@ -101,9 +101,9 @@ namespace Assets.Scripts.Creatures
 
         private void SpawnCoins()
         {
-            Debug.Log($"{_gameSession.PlayerData.Inventory.CountTotal("Coin", _gameSession.PlayerData.ContainerRegistry)}");
-            var numCoinsToDispose = Mathf.Min(_gameSession.PlayerData.Inventory.CountTotal("Coin", _gameSession.PlayerData.ContainerRegistry), 5);
-            _gameSession.PlayerData.Inventory.RemoveFromAll("Coin", numCoinsToDispose, _gameSession.PlayerData.ContainerRegistry);
+            Debug.Log($"{_gameSession.PlayerData.Inventory.CountTotal("SilverCoin", _gameSession.PlayerData.ContainerRegistry)}");
+            var numCoinsToDispose = Mathf.Min(_gameSession.PlayerData.Inventory.CountTotal("SilverCoin", _gameSession.PlayerData.ContainerRegistry), 5);
+            _gameSession.PlayerData.Inventory.RemoveFromAll("SilverCoin", numCoinsToDispose, _gameSession.PlayerData.ContainerRegistry);
 
             var burst = _hitParticles.emission.GetBurst(0);
             burst.count = numCoinsToDispose;
@@ -227,7 +227,8 @@ namespace Assets.Scripts.Creatures
         public override void TakeDamageFromSpikes()
         {
             base.TakeDamageFromSpikes();
-            SpawnCoins();
+            if (_hitParticles != null)
+                SpawnCoins();
         }
 
         public void UseQuickSlot()

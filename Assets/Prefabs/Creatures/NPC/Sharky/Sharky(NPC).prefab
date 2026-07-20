@@ -202,10 +202,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4cdf1e93878c4da40a73e4ed85861183, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _mode: 0
+  _mode: 1
   _bound:
     _sentences:
     - Hello!
     - I am good sharky.
     - But there are also evil sharks. They don't have a hat like mine.
-  _external: {fileID: 0}
+    _keys: []
+  _external: {fileID: 11400000, guid: e1b7f9c12862aab4e8b44230abcf9c5e, type: 2}

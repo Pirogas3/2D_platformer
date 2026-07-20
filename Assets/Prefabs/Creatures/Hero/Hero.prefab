@@ -370,7 +370,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _particles: {fileID: 44946075099930308}
   _speed: 3
-  _jumpPower: 8
+  _jumpPower: 9
   _maxExtraJumps: 0
   _groundCheck: {fileID: 4804697892880738580}
   _attackHitbox: {fileID: 4256680600277974716}
@@ -378,7 +378,7 @@ MonoBehaviour:
   _interactionLayer:
     serializedVersion: 2
     m_Bits: 128
-  _hitParticles: {fileID: 5111943393226388899}
+  _hitParticles: {fileID: 0}
   _heroUnarmed: {fileID: 9100000, guid: b7c98743ed47ae3478a3049915aa9d67, type: 2}
   _heroArmed: {fileID: 9100000, guid: 97cc849b47b4b89498e4a05846dd6f74, type: 2}
 --- !u!114 &44946075099930308
@@ -599,11 +599,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b9fac3d55e0881a4f9696135827e4efa, type: 3}
---- !u!198 &5111943393226388899 stripped
-ParticleSystem:
-  m_CorrespondingSourceObject: {fileID: 4864729917056579740, guid: b9fac3d55e0881a4f9696135827e4efa, type: 3}
-  m_PrefabInstance: {fileID: 392863731001232703}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &8275133131000957667 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8621181365671839708, guid: b9fac3d55e0881a4f9696135827e4efa, type: 3}
