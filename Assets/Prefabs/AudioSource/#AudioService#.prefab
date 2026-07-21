@@ -45,6 +45,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SFXAudioSource
       objectReference: {fileID: 0}
+    - target: {fileID: 2763340551868740385, guid: 9aeb22d2f5183364b81c1a76f96e2e71, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5570623716944841520, guid: 9aeb22d2f5183364b81c1a76f96e2e71, type: 3}
       propertyPath: m_LocalPosition.x
       value: -1123.2676
@@ -105,6 +109,14 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1958931045410234629, guid: db95ede124159c841bebf87dcb0f557a, type: 3}
       propertyPath: m_Name
+      value: MusicAudioSource
+      objectReference: {fileID: 0}
+    - target: {fileID: 1958931045410234629, guid: db95ede124159c841bebf87dcb0f557a, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1958931045410234629, guid: db95ede124159c841bebf87dcb0f557a, type: 3}
+      propertyPath: m_TagString
       value: MusicAudioSource
       objectReference: {fileID: 0}
     - target: {fileID: 5749546849830684950, guid: db95ede124159c841bebf87dcb0f557a, type: 3}

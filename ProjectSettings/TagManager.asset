@@ -8,6 +8,7 @@ TagManager:
   - Enemy
   - EnvironmentObject
   - SFXAudioSource
+  - MusicAudioSource
   layers:
   - Default
   - TransparentFX

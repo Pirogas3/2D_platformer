@@ -242,6 +242,7 @@ MonoBehaviour:
   OnHealthChanged:
     m_PersistentCalls:
       m_Calls: []
+  _defense: 0
 --- !u!114 &1772035558185099709
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -331,7 +332,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4802470210878066240, guid: ef8576aa51e17714a9f95d7b5e40414e, type: 3}
       propertyPath: _layer.m_Bits
-      value: 2624
+      value: 6656
       objectReference: {fileID: 0}
     - target: {fileID: 4802470210878066240, guid: ef8576aa51e17714a9f95d7b5e40414e, type: 3}
       propertyPath: _action.m_PersistentCalls.m_Calls.Array.size
@@ -597,7 +598,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8712590336918708009, guid: e996ecfbceb5a234d8b087acc1dbe20b, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 3.039
+      value: 3.65
       objectReference: {fileID: 0}
     - target: {fileID: 8712590336918708009, guid: e996ecfbceb5a234d8b087acc1dbe20b, type: 3}
       propertyPath: m_LocalPosition.y

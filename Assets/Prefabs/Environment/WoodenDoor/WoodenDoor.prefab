@@ -76,8 +76,8 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1166322191
-  m_SortingLayer: -3
-  m_SortingOrder: 0
+  m_SortingLayer: -5
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: 23f58f571b948c446b8db4e894e2bd60, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -215,6 +215,7 @@ MonoBehaviour:
     _sentences:
     - Hey! I need a key.
     - Give it to me!
+    _keys: []
   _external: {fileID: 0}
 --- !u!114 &5555221959257502755
 MonoBehaviour:

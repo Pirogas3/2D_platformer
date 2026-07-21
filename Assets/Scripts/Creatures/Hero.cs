@@ -14,6 +14,7 @@ namespace Assets.Scripts.Creatures
         //Данные для игрока
         private GameSession _gameSession;
         private QuickInventoryController _quickInventoryController;
+        private HeroHealthComponent _heroHealthComponent;
 
         //Интерактивность
         [Header("Interaction settings")]
@@ -76,10 +77,10 @@ namespace Assets.Scripts.Creatures
 
             ChangeArmedOrUnarmed(_gameSession.PlayerData.WeaponItemId);
 
-            HealthComponent health = GetComponent<HealthComponent>();
-            if (health != null)
+            _heroHealthComponent = GetComponent<HeroHealthComponent>();
+            if (_heroHealthComponent != null)
             {
-                health.SetHealth(_gameSession.PlayerData.Hp);
+                _heroHealthComponent.SetHealth(_gameSession.PlayerData.Hp);
             }
 
             _quickInventoryController = FindObjectOfType<QuickInventoryController>();
@@ -325,6 +326,7 @@ namespace Assets.Scripts.Creatures
                 }
 
                 _gameSession.PlayerData.Hp += def.Healing;
+                _heroHealthComponent.SetHealth(_gameSession.PlayerData.Hp);
                 _gameSession.PlayerData.Inventory.Remove(itemId, 1);
                 Debug.Log($"Вы выпили зелье! + {def.Healing} HP. Текущее здоровье: {_gameSession.PlayerData.Hp}");
             }

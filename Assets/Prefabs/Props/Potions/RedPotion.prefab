@@ -18,7 +18,7 @@ GameObject:
   - component: {fileID: 6312386004049890970}
   - component: {fileID: 8341143521842674311}
   m_Layer: 0
-  m_Name: BluePotion
+  m_Name: RedPotion
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -80,7 +80,7 @@ SpriteRenderer:
   m_SortingLayerID: -1794940929
   m_SortingLayer: -3
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 5d361ea9433b9ad4282e1b39e2e52e94, type: 3}
+  m_Sprite: {fileID: 21300000, guid: abea79242737e754a8108502513eb8cd, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -151,13 +151,13 @@ MonoBehaviour:
   _clips:
   - name: Idle
     sprites:
-    - {fileID: 21300000, guid: 5d361ea9433b9ad4282e1b39e2e52e94, type: 3}
-    - {fileID: 21300000, guid: 1e3f018f3a729fc44a9a72da4ffae50f, type: 3}
-    - {fileID: 21300000, guid: cd450607a4afe06409fd0a7b17752638, type: 3}
-    - {fileID: 21300000, guid: 240b8bfa26ce7214d81922c1831c1a4c, type: 3}
-    - {fileID: 21300000, guid: acf4b2c15eecbb341bc50810ab3e46b1, type: 3}
-    - {fileID: 21300000, guid: 3f0b9e64c25648c4890fa3ca485d7b90, type: 3}
-    - {fileID: 21300000, guid: 87604517c688a06429895da312cdad13, type: 3}
+    - {fileID: 21300000, guid: abea79242737e754a8108502513eb8cd, type: 3}
+    - {fileID: 21300000, guid: 648ae0d9de819044f9103b15df874f46, type: 3}
+    - {fileID: 21300000, guid: fc3295fea7dcbd044a98f4dbade312e7, type: 3}
+    - {fileID: 21300000, guid: 7086f19d9225b8f43b6ac71dc3c47856, type: 3}
+    - {fileID: 21300000, guid: efa5cc81278f49d4bb43f97c0f59dee1, type: 3}
+    - {fileID: 21300000, guid: 998cfc0fa4b8d8e4d9d80ea6d121db3b, type: 3}
+    - {fileID: 21300000, guid: 3528f7fe4dadd7344919fefe8a36566c, type: 3}
     frameRate: 10
     loop: 1
     onComplete:
@@ -279,7 +279,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17697f03c75f68b499b27221ae50d0fb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _id: BluePotion
+  _id: RedPotion
   _count: 1
 --- !u!82 &6312386004049890970
 AudioSource:

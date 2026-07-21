@@ -138,6 +138,10 @@ PrefabInstance:
       value: WatterBackground
       objectReference: {fileID: 0}
     - target: {fileID: 5953415376599978027, guid: c7258886b0563444ab983f9f69febcce, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5953415376599978027, guid: c7258886b0563444ab983f9f69febcce, type: 3}
       propertyPath: _autoScrollSpeed
       value: 0
       objectReference: {fileID: 0}

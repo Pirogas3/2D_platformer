@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 5141539192100205009}
   - component: {fileID: 7524090088692122632}
   - component: {fileID: 1110867476347020544}
-  m_Layer: 6
+  m_Layer: 12
   m_Name: DestBarrel
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -76,9 +76,9 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: -1166322191
+  m_SortingLayerID: -1794940929
   m_SortingLayer: -3
-  m_SortingOrder: 1
+  m_SortingOrder: -1
   m_Sprite: {fileID: 21300000, guid: 514b5321e67ba3a4789af2a86a882f71, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -319,3 +319,4 @@ MonoBehaviour:
   OnHealthChanged:
     m_PersistentCalls:
       m_Calls: []
+  _defense: 0
