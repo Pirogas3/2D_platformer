@@ -32,6 +32,12 @@ namespace Assets.Scripts.Model
             Instance = this;
             DontDestroyOnLoad(this);
 
+            // Загружаем сцену с экраном загрузки, если она ещё не загружена
+            if (!SceneManager.GetSceneByName("LoadingScreen").isLoaded)
+            {
+                SceneManager.LoadScene("LoadingScreen", LoadSceneMode.Additive);
+            }
+
             // Инициализация локализации, получаем сохранённый язык (по умолчанию english)
             string savedLanguage = PlayerPrefs.GetString("Language", "english");
             LocalizationsManager.Init(savedLanguage);

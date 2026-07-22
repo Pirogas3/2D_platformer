@@ -35,7 +35,8 @@ Transform:
   m_LocalPosition: {x: 0.4508512, y: 4.515868, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 4639983521032071874}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!58 &2056258173253092990
@@ -223,14 +224,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _data:
     _items:
-    - Id: Sword
-      Value: 1
-      _containerId: 
     - Id: GoldCoin
-      Value: 3
+      Value: 9
       _containerId: 
-    - Id: GreenPotion
-      Value: 1
+    - Id: SilverCoin
+      Value: 17
       _containerId: 
 --- !u!114 &7347140076025896991
 MonoBehaviour:
@@ -261,7 +259,7 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
   _inventoryComponent: {fileID: 4640660185350501409}
-  _closeDistance: 2
+  _closeDistance: 1.5
   _onOpened:
     m_PersistentCalls:
       m_Calls:
@@ -278,7 +276,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  _isOpened: 0
   _animationComponent: {fileID: 7192774264062594498}
 --- !u!114 &4488943903047729977
 MonoBehaviour:
@@ -304,6 +301,19 @@ MonoBehaviour:
           Assembly-CSharp
         m_MethodName: OpenChest
         m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Opening
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 6653616332358390928}
+        m_TargetAssemblyTypeName: Assets.Scripts.Components.SpriteAnimationComponent,
+          Assembly-CSharp
+        m_MethodName: Play
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -344,4 +354,78 @@ MonoBehaviour:
   _bound:
     _sentences:
     - You need a key to open the chest!
+    _keys: []
   _external: {fileID: 0}
+--- !u!1001 &4752416788541946481
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 5519324959308281738}
+    m_Modifications:
+    - target: {fileID: 114685172224184499, guid: e5464eebf3f417b4ba6b5bc26f15eeaa, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.12500024
+      objectReference: {fileID: 0}
+    - target: {fileID: 114685172224184499, guid: e5464eebf3f417b4ba6b5bc26f15eeaa, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.4538679
+      objectReference: {fileID: 0}
+    - target: {fileID: 114685172224184499, guid: e5464eebf3f417b4ba6b5bc26f15eeaa, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114685172224184499, guid: e5464eebf3f417b4ba6b5bc26f15eeaa, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114685172224184499, guid: e5464eebf3f417b4ba6b5bc26f15eeaa, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114685172224184499, guid: e5464eebf3f417b4ba6b5bc26f15eeaa, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114685172224184499, guid: e5464eebf3f417b4ba6b5bc26f15eeaa, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114685172224184499, guid: e5464eebf3f417b4ba6b5bc26f15eeaa, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114685172224184499, guid: e5464eebf3f417b4ba6b5bc26f15eeaa, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114685172224184499, guid: e5464eebf3f417b4ba6b5bc26f15eeaa, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1507822076624892009, guid: e5464eebf3f417b4ba6b5bc26f15eeaa, type: 3}
+      propertyPath: m_Name
+      value: GoldLook
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: e5464eebf3f417b4ba6b5bc26f15eeaa, type: 3}
+--- !u!4 &4639983521032071874 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 114685172224184499, guid: e5464eebf3f417b4ba6b5bc26f15eeaa, type: 3}
+  m_PrefabInstance: {fileID: 4752416788541946481}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &6653616332358390928 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2136286421303996129, guid: e5464eebf3f417b4ba6b5bc26f15eeaa, type: 3}
+  m_PrefabInstance: {fileID: 4752416788541946481}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 60e005b8982562d4eb3b251d17dce057, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

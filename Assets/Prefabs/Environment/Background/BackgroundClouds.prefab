@@ -27,7 +27,7 @@ Transform:
   m_GameObject: {fileID: 34224091620514895}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.83, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -100,7 +100,7 @@ MonoBehaviour:
   _parallaxSpeed: 0
   _parallaxDirection: 1
   _cameraTransform: {fileID: 0}
-  _autoScrollSpeed: 0.005
+  _autoScrollSpeed: 0.003
   _autoScrollDirection: -1
 --- !u!1 &620799749262647764
 GameObject:
@@ -298,7 +298,7 @@ Transform:
   m_GameObject: {fileID: 1180068118690390538}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 2.76, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.15, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -390,7 +390,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1857082957630752072
 Transform:
   m_ObjectHideFlags: 0
@@ -501,8 +501,8 @@ Transform:
   m_GameObject: {fileID: 4403514573427129520}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.03999999, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0, y: -2.7511, z: 0}
+  m_LocalScale: {x: 1, y: 1.2431293, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1347545482247334833}
@@ -552,7 +552,7 @@ SpriteRenderer:
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
-  m_DrawMode: 2
+  m_DrawMode: 0
   m_Size: {x: 18, y: 3.71875}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0

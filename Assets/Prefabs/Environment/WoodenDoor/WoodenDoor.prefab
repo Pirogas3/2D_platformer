@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 3185132086090528965}
   - component: {fileID: 354132966803009725}
   - component: {fileID: 5555221959257502755}
+  - component: {fileID: 6394802292016472223}
   m_Layer: 7
   m_Name: WoodenDoor
   m_TagString: Untagged
@@ -75,8 +76,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: -1166322191
-  m_SortingLayer: -5
+  m_SortingLayerID: 1565004295
+  m_SortingLayer: -6
   m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: 23f58f571b948c446b8db4e894e2bd60, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -113,7 +114,20 @@ MonoBehaviour:
     loop: 0
     onComplete:
       m_PersistentCalls:
-        m_Calls: []
+        m_Calls:
+        - m_Target: {fileID: 6394802292016472223}
+          m_TargetAssemblyTypeName: Assets.Scripts.Components.ExitLevelComponent,
+            Assembly-CSharp
+          m_MethodName: Exit
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
   - name: Closing
     sprites:
     - {fileID: 21300000, guid: c517237f8c41f8049abb98c7220b4e11, type: 3}
@@ -213,8 +227,7 @@ MonoBehaviour:
   _mode: 0
   _bound:
     _sentences:
-    - Hey! I need a key.
-    - Give it to me!
+    - You need a key.
     _keys: []
   _external: {fileID: 0}
 --- !u!114 &5555221959257502755
@@ -229,10 +242,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f47279b5e15236b4693eb184370ddc4e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _required:
-  - Id: GoldKey
-    Amount: 1
-  _removeAfterUse: 1
+  _required: []
+  _removeAfterUse: 0
   _onSuccess:
     m_PersistentCalls:
       m_Calls:
@@ -265,3 +276,16 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &6394802292016472223
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3880847579447186690}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 47dd0186c12c4404fa5031b84017844e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _sceneName: 
