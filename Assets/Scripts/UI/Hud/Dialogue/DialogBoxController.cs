@@ -32,6 +32,9 @@ namespace Assets.Scripts.UI.Hud.Dialogue
         private bool _isTyping;
         private bool _isClosing;
 
+        public event System.Action OnDialogOpened;
+        public event System.Action OnDialogClosed;
+
         public bool IsOpen => _container.activeSelf;
 
         private void Awake()
@@ -53,6 +56,8 @@ namespace Assets.Scripts.UI.Hud.Dialogue
             _container.SetActive(true);
             _sfxSource?.PlayOneShot(_open);
             _animator.SetBool(_isOpen, true);
+
+            OnDialogOpened?.Invoke();
         }
 
         public void CloseDialog()
@@ -69,6 +74,8 @@ namespace Assets.Scripts.UI.Hud.Dialogue
             _text.text = string.Empty;
             _animator.SetBool(_isOpen, false);
             _sfxSource?.PlayOneShot(_close);
+
+            OnDialogClosed?.Invoke();
         }
 
         public void OnSkip()

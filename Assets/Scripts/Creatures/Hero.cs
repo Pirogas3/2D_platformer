@@ -2,6 +2,7 @@ using Assets.Scripts.Components;
 using Assets.Scripts.Model;
 using Assets.Scripts.Model.Data;
 using Assets.Scripts.Model.Definitions;
+using Assets.Scripts.UI.Hud.Dialogue;
 using Assets.Scripts.UI.Hud.QucikInventory;
 using System.Collections;
 using UnityEditor.Animations;
@@ -27,6 +28,10 @@ namespace Assets.Scripts.Creatures
         [SerializeField] private ParticleSystem _hitParticles;
         [SerializeField] private AnimatorController _heroUnarmed;
         [SerializeField] private AnimatorController _heroArmed;
+
+        [Header("Player Input")]
+        [SerializeField] private UnityEngine.InputSystem.PlayerInput _playerInput;
+        private DialogBoxController _dialogBoxController;
 
         private int _meleeDamage = 0;
         private int _rangeDamage = 0;
@@ -88,11 +93,46 @@ namespace Assets.Scripts.Creatures
                 Debug.LogWarning("QuickInventoryController not found in scene!");
 
             ApplyPerks();
+
+            _dialogBoxController = FindObjectOfType<DialogBoxController>();
+            if (_dialogBoxController != null)
+            {
+                _dialogBoxController.OnDialogOpened += OnDialogOpened;
+                _dialogBoxController.OnDialogClosed += OnDialogClosed;
+            }
+            else
+            {
+                Debug.LogWarning("DialogBoxController not found!");
+            }
         }
 
         protected override void FixedUpdate()
         {
             base.FixedUpdate();
+        }
+
+        private void OnDestroy()
+        {
+            if (_dialogBoxController != null)
+            {
+                _dialogBoxController.OnDialogOpened -= OnDialogOpened;
+                _dialogBoxController.OnDialogClosed -= OnDialogClosed;
+            }
+        }
+
+        private void OnDialogOpened()
+        {
+            if (_playerInput != null)
+                _playerInput.DeactivateInput(); // или _playerInput.enabled = false;
+
+            SetMovementDirection(Vector2.zero);
+            _rigidbody.velocity = Vector2.zero;
+        }
+
+        private void OnDialogClosed()
+        {
+            if (_playerInput != null)
+                _playerInput.ActivateInput(); // или _playerInput.enabled = true;
         }
 
         public void OnHeroHealthChanged(int newHealth)

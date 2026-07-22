@@ -381,6 +381,7 @@ MonoBehaviour:
   _hitParticles: {fileID: 0}
   _heroUnarmed: {fileID: 9100000, guid: b7c98743ed47ae3478a3049915aa9d67, type: 2}
   _heroArmed: {fileID: 9100000, guid: 97cc849b47b4b89498e4a05846dd6f74, type: 2}
+  _playerInput: {fileID: 946119232345141262}
 --- !u!114 &44946075099930308
 MonoBehaviour:
   m_ObjectHideFlags: 0

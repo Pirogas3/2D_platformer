@@ -15,13 +15,16 @@ EditorBuildSettings:
     path: Assets/Scenes/Hud.unity
     guid: 1d2c251526595cd4fb395f7ed9c59745
   - enabled: 1
-    path: Assets/Scenes/SampleScene.unity
+    path: Assets/Scenes/SceneGame1.unity
+    guid: c68a70846817f664daae0af01f7bfae6
+  - enabled: 1
+    path: Assets/Scenes/_old1.unity
+    guid: e6b9fbc99c028714db75596224fe5abd
+  - enabled: 1
+    path: Assets/Scenes/_old2.unity
     guid: 8c9cfa26abfee488c85f1582747f6a02
   - enabled: 1
-    path: Assets/Scenes/Scene2.unity
+    path: Assets/Scenes/_old3.unity
     guid: 000b0c11730744e46950adcd370fb5e5
-  - enabled: 1
-    path: Assets/Scenes/SceneGame1.unity
-    guid: e6b9fbc99c028714db75596224fe5abd
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: 371f0b529b4a76342bc9193c859ab7c1, type: 2}

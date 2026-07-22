@@ -5,6 +5,7 @@ using Assets.Scripts.UI.Hud.CharacterWindow;
 using Assets.Scripts.UI.Hud.Inventory;
 using SheetXExample;
 using UnityEngine;
+using UnityEngine.Rendering;
 using UnityEngine.SceneManagement;
 
 namespace Assets.Scripts.Model
@@ -101,7 +102,7 @@ namespace Assets.Scripts.Model
         private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
         {
             // Если загружена игровая сцена (не MainMenu)
-            if (scene.name != "MainMenu" && scene.name != "Hud")
+            if (scene.name != "MainMenu" && scene.name != "Hud" && scene.name != "LoadingScreen")
             {
                 LoadHud();
             }
