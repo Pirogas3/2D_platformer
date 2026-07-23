@@ -8,12 +8,21 @@ namespace Assets.Scripts.Components
     {
         [TagSelector][SerializeField] private string _tag;
         [SerializeField] private UnityEvent<GameObject> _action;
+        [SerializeField] private UnityEvent<GameObject> _OnExitAction;
 
         private void OnTriggerEnter2D(Collider2D other)
         {
             if (other.gameObject.CompareTag(_tag))
             {
                 _action?.Invoke(other.gameObject);
+            }
+        }
+
+        private void OnTriggerExit2D(Collider2D other)
+        {
+            if (other.gameObject.CompareTag(_tag))
+            {
+                _OnExitAction?.Invoke(other.gameObject);
             }
         }
     }

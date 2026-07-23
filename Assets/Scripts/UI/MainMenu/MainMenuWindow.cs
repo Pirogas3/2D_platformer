@@ -8,9 +8,22 @@ namespace Assets.Scripts.UI.MainMenu
     {
         private Action _closeAction;
 
+        private void Awake()
+        {
+            if (_windowsContainer == null)
+                _windowsContainer = GameObject.Find("MenuContainer").transform;
+        }
+
         public void OnShowSettingsMenu()
         {
             var window = Resources.Load<GameObject>("UI/SettingsWindow");
+
+            if (_windowsContainer != null)
+            {
+                Instantiate(window, _windowsContainer);
+                return;
+            }
+
             var canvas = FindObjectOfType<Canvas>();
             Instantiate(window, canvas.transform);
         }
@@ -18,6 +31,13 @@ namespace Assets.Scripts.UI.MainMenu
         public void OnShowLoadMenu()
         {
             var window = Resources.Load<GameObject>("UI/LoadWindow");
+
+            if (_windowsContainer != null)
+            {
+                Instantiate(window, _windowsContainer);
+                return;
+            }
+
             var canvas = FindObjectOfType<Canvas>();
             Instantiate(window, canvas.transform);
         }

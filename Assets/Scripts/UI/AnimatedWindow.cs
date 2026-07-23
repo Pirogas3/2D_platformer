@@ -4,6 +4,8 @@ namespace Assets.Scripts.UI
 {
     public class AnimatedWindow : MonoBehaviour
     {
+        [SerializeField] protected Transform _windowsContainer;
+
         protected Animator _animator;
         protected static readonly int Show = Animator.StringToHash("Show");
         protected static readonly int Hide = Animator.StringToHash("Hide");

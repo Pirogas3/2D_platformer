@@ -6,13 +6,18 @@ namespace Assets.Scripts.Components
 {
     public class ReloadLevelComponent : MonoBehaviour
     {
+        private GameSession _session;
+
+        private void Start()
+        {
+            _session = FindObjectOfType<GameSession>();
+        }
 
         public void Reload()
         {
-            var session = FindObjectOfType<GameSession>();
-            if (session != null)
+            if (_session != null)
             {
-                session.ResetToSceneStartState(); // ← восстановление начала сцены
+                _session.ResetToSceneStartState(); // ← восстановление начала сцены
             }
 
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);

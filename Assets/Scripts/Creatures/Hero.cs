@@ -1,4 +1,5 @@
 using Assets.Scripts.Components;
+using Assets.Scripts.Components.CameraComponents;
 using Assets.Scripts.Model;
 using Assets.Scripts.Model.Data;
 using Assets.Scripts.Model.Definitions;
@@ -31,6 +32,10 @@ namespace Assets.Scripts.Creatures
 
         [Header("Player Input")]
         [SerializeField] private UnityEngine.InputSystem.PlayerInput _playerInput;
+
+        [Header("Camera Zoom")]
+        [SerializeField] private CameraZoomPPU _cameraZoom;
+
         private DialogBoxController _dialogBoxController;
 
         private int _meleeDamage = 0;
@@ -94,6 +99,9 @@ namespace Assets.Scripts.Creatures
 
             ApplyPerks();
 
+            if (_cameraZoom == null)
+                _cameraZoom = FindObjectOfType<CameraZoomPPU>();
+
             _dialogBoxController = FindObjectOfType<DialogBoxController>();
             if (_dialogBoxController != null)
             {
@@ -127,12 +135,18 @@ namespace Assets.Scripts.Creatures
 
             SetMovementDirection(Vector2.zero);
             _rigidbody.velocity = Vector2.zero;
+
+            if (_cameraZoom != null)
+                _cameraZoom.ZoomIn();
         }
 
         private void OnDialogClosed()
         {
             if (_playerInput != null)
                 _playerInput.ActivateInput(); // или _playerInput.enabled = true;
+
+            if (_cameraZoom != null)
+                _cameraZoom.ZoomOut();
         }
 
         public void OnHeroHealthChanged(int newHealth)

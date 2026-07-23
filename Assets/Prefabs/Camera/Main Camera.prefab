@@ -85,6 +85,7 @@ GameObject:
   - component: {fileID: 4069123965572865859}
   - component: {fileID: 167677986567087609}
   - component: {fileID: 8254279633884990285}
+  - component: {fileID: 3075103875445803658}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -143,7 +144,7 @@ Camera:
   far clip plane: 1000
   field of view: 34
   orthographic: 1
-  orthographic size: 2.8125
+  orthographic size: 4.1666665
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -216,10 +217,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_ComponentVersion: 1
-  m_AssetsPPU: 32
+  m_AssetsPPU: 24
   m_RefResolutionX: 320
   m_RefResolutionY: 180
-  m_CropFrame: 3
+  m_CropFrame: 0
   m_GridSnapping: 0
   m_FilterMode: 1
   m_UpscaleRT: 0
@@ -261,6 +262,21 @@ MonoBehaviour:
   m_CameraActivatedEvent:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &3075103875445803658
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6439881246084097168}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5e5787414a222f74b8bfa7e79172ae1e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _pixelPerfectCamera: {fileID: 167677986567087609}
+  _zoomDuration: 0.5
+  _zoomedPPU: 46
 --- !u!1 &7663279438461798731
 GameObject:
   m_ObjectHideFlags: 0
