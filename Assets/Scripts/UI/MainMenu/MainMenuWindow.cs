@@ -8,8 +8,10 @@ namespace Assets.Scripts.UI.MainMenu
     {
         private Action _closeAction;
 
-        private void Awake()
+        protected override void Awake()
         {
+            base.Awake();
+
             if (_windowsContainer == null)
                 _windowsContainer = GameObject.Find("MenuContainer").transform;
         }

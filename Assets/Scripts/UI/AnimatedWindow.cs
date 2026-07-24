@@ -1,3 +1,4 @@
+using Assets.Scripts.UI.Hud;
 using UnityEngine;
 
 namespace Assets.Scripts.UI
@@ -5,10 +6,18 @@ namespace Assets.Scripts.UI
     public class AnimatedWindow : MonoBehaviour
     {
         [SerializeField] protected Transform _windowsContainer;
+        protected EscController _escController;
 
         protected Animator _animator;
         protected static readonly int Show = Animator.StringToHash("Show");
         protected static readonly int Hide = Animator.StringToHash("Hide");
+
+        protected virtual void Awake()
+        {
+            _escController = GetComponentInParent<EscController>();
+            if (_escController != null)
+                _escController.RegisterWindow(gameObject);
+        }
 
         protected virtual void Start()
         {
@@ -24,6 +33,12 @@ namespace Assets.Scripts.UI
 
         public virtual void OnCloseAnimationComplete()
         {
+            if (_escController != null)
+            {
+                _escController.CloseWindow(gameObject);
+                return;
+            }
+
             Destroy(gameObject);
         }
     }

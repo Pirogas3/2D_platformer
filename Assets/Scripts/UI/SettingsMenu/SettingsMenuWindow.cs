@@ -4,8 +4,10 @@ namespace Assets.Scripts.UI.SettingsMenu
 {
     public class SettingsMenuWindow : AnimatedWindow
     {
-        private void Awake()
+        protected override void Awake()
         {
+            base.Awake();
+
             if (_windowsContainer == null)
                 _windowsContainer = GameObject.Find("MenuContainer").transform;
         }
