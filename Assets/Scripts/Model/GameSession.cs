@@ -5,7 +5,6 @@ using Assets.Scripts.UI.Hud.CharacterWindow;
 using Assets.Scripts.UI.Hud.Inventory;
 using SheetXExample;
 using UnityEngine;
-using UnityEngine.Rendering;
 using UnityEngine.SceneManagement;
 
 namespace Assets.Scripts.Model
@@ -131,7 +130,11 @@ namespace Assets.Scripts.Model
         public void QuickLoad() => LoadFromSlot("QuickSave");
 
         [ContextMenu("Auto Save")]
-        public void AutoSave() => SaveToSlot("AutoSave");
+        public void AutoSave()
+        {
+            string slotName = SaveManager.GetNextAutoSaveSlot();
+            SaveToSlot(slotName);
+        }
 
         [ContextMenu("Auto Load")]
         public void AutoLoad() => LoadFromSlot("AutoSave");

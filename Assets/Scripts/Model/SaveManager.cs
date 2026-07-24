@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
 
@@ -6,6 +7,10 @@ namespace Assets.Scripts.Model
 {
     public static class SaveManager
     {
+        private const string AutoSavePrefix = "AutoSave_";
+        private const int AutoSaveCount = 3;
+        private const string NextAutoSaveIndexKey = "NextAutoSaveIndex";
+
         // Корневая папка сохранений: Documents/Treasure Hunters/
         public static string RootFolder
         {
@@ -99,6 +104,39 @@ namespace Assets.Scripts.Model
             for (int i = 0; i < files.Length; i++)
                 files[i] = Path.GetFileNameWithoutExtension(files[i]);
             return files;
+        }
+
+        /// <summary>
+        /// Возвращает имя следующего автослота для перезаписи (циклически).
+        /// </summary>
+        public static string GetNextAutoSaveSlot()
+        {
+            int index = PlayerPrefs.GetInt(NextAutoSaveIndexKey, 0);
+            string slotName = $"{AutoSavePrefix}{index + 1}";
+            // Увеличиваем индекс по кругу
+            int nextIndex = (index + 1) % AutoSaveCount;
+            PlayerPrefs.SetInt(NextAutoSaveIndexKey, nextIndex);
+            PlayerPrefs.Save();
+            return slotName;
+        }
+
+        /// <summary>
+        /// Возвращает список всех существующих автослотов с их временем последнего изменения.
+        /// </summary>
+        public static List<(string slotName, DateTime lastWriteTime)> GetAutoSaveSlotsWithTime()
+        {
+            var result = new List<(string, DateTime)>();
+            for (int i = 1; i <= AutoSaveCount; i++)
+            {
+                string slotName = $"{AutoSavePrefix}{i}";
+                string path = GetSlotPath(slotName);
+                if (File.Exists(path))
+                {
+                    DateTime time = File.GetLastWriteTime(path);
+                    result.Add((slotName, time));
+                }
+            }
+            return result;
         }
     }
 }
