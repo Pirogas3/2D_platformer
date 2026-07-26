@@ -101,3 +101,14 @@ MonoBehaviour:
     _containerConfig:
       _acceptedCategories: 
       _weightMultiplier: 0
+  - _id: Emerald
+    _name: Emerald
+    _description: Emerald
+    _icon: {fileID: 21300000, guid: 559d4940cf43ce64881848c4d16ef952, type: 3}
+    _weight: 3
+    _baseValue: 200
+    _maxStack: 10
+    _category: 3
+    _containerConfig:
+      _acceptedCategories: 
+      _weightMultiplier: 0

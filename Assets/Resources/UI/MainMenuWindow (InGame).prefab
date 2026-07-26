@@ -495,7 +495,7 @@ MonoBehaviour:
   m_TxtPro: {fileID: 0}
   m_TxtPro3D: {fileID: 0}
   m_Txt: {fileID: 8316566041170280485}
-  m_LocalizedIDString: 
+  m_LocalizedIDString: UI_Continue
   m_CaseType: 0
   m_Args: []
   m_IgnoredLangs: []
@@ -795,7 +795,7 @@ MonoBehaviour:
   m_TxtPro: {fileID: 0}
   m_TxtPro3D: {fileID: 0}
   m_Txt: {fileID: 3333105228023731823}
-  m_LocalizedIDString: 
+  m_LocalizedIDString: UI_Continue
   m_CaseType: 0
   m_Args: []
   m_IgnoredLangs: []

@@ -3,6 +3,7 @@ using Assets.Scripts.Model.Data;
 using Assets.Scripts.UI.Hud;
 using Assets.Scripts.UI.Hud.CharacterWindow;
 using Assets.Scripts.UI.Hud.Inventory;
+using Assets.Scripts.UI.Hud.QucikInventory;
 using SheetXExample;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -17,6 +18,8 @@ namespace Assets.Scripts.Model
         private PlayerData _sceneStartState; // состояние на начало текущей сцены
         private InventoryWindowController _invWindowController; // он устанавливается самим InventoryWindowController-ом при его загрузке
         public InventoryWindowController InvWindowController { get => _invWindowController; set { _invWindowController = value; } }
+        private EscController _escController; // он устанавливается самим EscController-ом при его загрузке
+        public EscController EscController { get => _escController; set { _escController = value; } }
         private CharacterWindowController _characterWindowController; // он устанавливается самим CharacterWindowController-ом при его загрузке
         public CharacterWindowController CharacterWindowController { get => _characterWindowController; set { _characterWindowController = value; } }
 

@@ -15,7 +15,7 @@ MonoBehaviour:
   _perks:
   - _id: DoubleJump
     _description: DoubleJump
-    _cost: 10
+    _cost: 85
     _maxLevel: 2
   - _id: Jump
     _description: Jump

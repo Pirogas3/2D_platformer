@@ -75,9 +75,9 @@ namespace Assets.Scripts.UI.Hud.QucikInventory
 
         private void Update()
         {
-            // Обработка скролла мыши (только если окно инвентаря не активно)
+            // Обработка скролла мыши
             float scroll = Input.GetAxis("Mouse ScrollWheel");
-            if (scroll != 0 && !IsInventoryOpen())
+            if (scroll != 0 && !IsInventoryOpen() && !_session.EscController.IsMenuOpen && !_session.CharacterWindowController.IsOpen)
             {
                 int delta = scroll > 0 ? -1 : 1;
                 int newIndex = Mathf.Clamp(_selectedIndex + delta, 0, 5);

@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using Assets.Scripts.Model;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace Assets.Scripts.UI.Hud
@@ -10,6 +11,17 @@ namespace Assets.Scripts.UI.Hud
 
         private List<GameObject> _openedWindows = new List<GameObject>(); // стек окон
         private bool _isMenuOpen = false;
+        public bool IsMenuOpen => _isMenuOpen;
+
+        private void Start()
+        {
+            var session = GameSession.Instance;
+            session.EscController = this;
+            if (session.EscController == null)
+            {
+                Debug.LogError("GameSession не найден! и EscController в нём не установлен");
+            }
+        }
 
         private void Update()
         {

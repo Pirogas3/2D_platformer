@@ -928,7 +928,7 @@ MonoBehaviour:
   m_TxtPro: {fileID: 0}
   m_TxtPro3D: {fileID: 0}
   m_Txt: {fileID: 4944502035395453901}
-  m_LocalizedIDString: 
+  m_LocalizedIDString: UI_Controls
   m_CaseType: 0
   m_Args: []
   m_IgnoredLangs: []
