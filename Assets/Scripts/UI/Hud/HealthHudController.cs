@@ -15,7 +15,7 @@ namespace Assets.Scripts.UI.Hud
 
         private void Start()
         {
-            _session = FindObjectOfType<GameSession>();
+            _session = GameSession.Instance;
             _session.PlayerData.HpOnChanged += OnHealthChanged;
 
             OnHealthChanged(_session.PlayerData.Hp);

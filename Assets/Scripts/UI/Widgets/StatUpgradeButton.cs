@@ -35,7 +35,7 @@ namespace Assets.Scripts.UI.Widgets
             if (_button == null)
                 Debug.LogError("StatUpgradeButton requires Button component!");
 
-            _session = FindObjectOfType<GameSession>();
+            _session = GameSession.Instance;
             if (_session == null)
             {
                 Debug.LogError("GameSession not found!");

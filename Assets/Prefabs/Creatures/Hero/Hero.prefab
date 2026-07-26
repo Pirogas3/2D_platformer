@@ -20,6 +20,7 @@ GameObject:
   - component: {fileID: 8002637944302478329}
   - component: {fileID: 8563921720509421390}
   - component: {fileID: 1971226096677818884}
+  - component: {fileID: 6120497292023170089}
   m_Layer: 9
   m_Name: Hero
   m_TagString: Player
@@ -374,7 +375,7 @@ MonoBehaviour:
   _maxExtraJumps: 0
   _groundCheck: {fileID: 4804697892880738580}
   _attackHitbox: {fileID: 4256680600277974716}
-  _interactionRadius: 1
+  _interactionRadius: 0.5
   _interactionLayer:
     serializedVersion: 2
     m_Bits: 128
@@ -382,6 +383,8 @@ MonoBehaviour:
   _heroUnarmed: {fileID: 9100000, guid: b7c98743ed47ae3478a3049915aa9d67, type: 2}
   _heroArmed: {fileID: 9100000, guid: 97cc849b47b4b89498e4a05846dd6f74, type: 2}
   _playerInput: {fileID: 946119232345141262}
+  _cameraZoom: {fileID: 0}
+  _usePotions: {fileID: 6120497292023170089}
 --- !u!114 &44946075099930308
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -499,6 +502,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2fa02adb4be7053419f066151a9ad91f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &6120497292023170089
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2773358274999582965}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f7d1f15358f58894493d6411e6efb5e5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _hero: {fileID: 4312153819627111551}
+  _heroHealthComponent: {fileID: 8002637944302478329}
 --- !u!1 &4087300089855272566
 GameObject:
   m_ObjectHideFlags: 0

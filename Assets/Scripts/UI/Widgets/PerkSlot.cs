@@ -29,7 +29,7 @@ namespace Assets.Scripts.UI.Widgets
 
         private void Start()
         {
-            _session = FindObjectOfType<GameSession>();
+            _session = GameSession.Instance;
             if (_session == null) return;
             _playerData = _session.PlayerData;
 

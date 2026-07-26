@@ -21,7 +21,7 @@ namespace Assets.Scripts.Components.InventoryComponents
 
         public void Check()
         {
-            var session = FindObjectOfType<GameSession>();
+            var session = GameSession.Instance;
             if (session == null)
             {
                 Debug.LogError("GameSession не найден!");

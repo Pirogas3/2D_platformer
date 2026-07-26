@@ -60,7 +60,7 @@ namespace Assets.Scripts.UI.Hud.Inventory
         private void TryInitialize()
         {
             if (_session == null)
-                _session = FindObjectOfType<GameSession>();
+                _session = GameSession.Instance;
             if (_session != null && _inventory == null)
             {
                 _inventory = _session.PlayerData.Inventory;

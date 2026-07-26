@@ -1,4 +1,5 @@
-﻿using Assets.Scripts.Model.Data;
+﻿using Assets.Scripts.Model;
+using Assets.Scripts.Model.Data;
 using UnityEngine;
 
 namespace Assets.Scripts.UI.Hud.Inventory
@@ -11,12 +12,18 @@ namespace Assets.Scripts.UI.Hud.Inventory
         [SerializeField] private GameObject _itemPrefab;      // префаб ячейки (можно переиспользовать InventoryItemCell)
 
         private InventoryData _inventoryData;
+        private GameSession _session;
         private bool _isOpen = false;
         private int _dragFromIndex = -1;
 
         public GameObject Window => _window;
         public bool IsOpen => _isOpen;
         public InventoryData GetInventoryData() => _inventoryData;
+
+        private void Awake()
+        {
+            _session = GameSession.Instance;
+        }
 
         public void Open(InventoryData inventoryData)
         {
@@ -91,6 +98,14 @@ namespace Assets.Scripts.UI.Hud.Inventory
         {
             if (_inventoryData == null || targetInventory == null) return;
             _inventoryData.MoveAllTo(targetInventory);
+        }
+
+        public void TakeAll()
+        {
+            if (_session == null)
+                return;
+
+            MoveAllTo(_session.PlayerData.Inventory);
         }
 
         private void OnDestroy()

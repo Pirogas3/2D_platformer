@@ -39,5 +39,19 @@ namespace Assets.Scripts.UI.SettingsMenu
             var canvas = FindObjectOfType<Canvas>();
             Instantiate(window, canvas.transform);
         }
+
+        public void OnShowControlsMenu()
+        {
+            var window = Resources.Load<GameObject>("UI/ControlsMenuWindow");
+
+            if (_windowsContainer != null)
+            {
+                Instantiate(window, _windowsContainer);
+                return;
+            }
+
+            var canvas = FindObjectOfType<Canvas>();
+            Instantiate(window, canvas.transform);
+        }
     }
 }

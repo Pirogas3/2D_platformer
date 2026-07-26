@@ -42,7 +42,7 @@ namespace Assets.Scripts.UI.Hud.CharacterWindow
 
         private void Start()
         {
-            _session = FindObjectOfType<GameSession>();
+            _session = GameSession.Instance;
             if (_session == null)
             {
                 Debug.LogError("GameSession not found!");

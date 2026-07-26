@@ -1,5 +1,6 @@
 using Assets.Scripts.Components;
 using Assets.Scripts.Components.CameraComponents;
+using Assets.Scripts.Components.InventoryComponents;
 using Assets.Scripts.Model;
 using Assets.Scripts.Model.Data;
 using Assets.Scripts.Model.Definitions;
@@ -35,6 +36,9 @@ namespace Assets.Scripts.Creatures
 
         [Header("Camera Zoom")]
         [SerializeField] private CameraZoomPPU _cameraZoom;
+
+        [Header("Use Potion")]
+        [SerializeField] private UsePotions _usePotions;
 
         private DialogBoxController _dialogBoxController;
 
@@ -83,7 +87,7 @@ namespace Assets.Scripts.Creatures
 
         protected override void Start()
         {
-            _gameSession = FindObjectOfType<GameSession>();
+            _gameSession = GameSession.Instance;
 
             ChangeArmedOrUnarmed(_gameSession.PlayerData.WeaponItemId);
 
@@ -251,7 +255,6 @@ namespace Assets.Scripts.Creatures
                 _animator.SetTrigger(ThrowKey);
                 _particles.Spawn("Throw", _rangeDamage, attack); // передаём урон и атаку
                 if (_sounds != null) _sounds.PlayClip("Range");
-                //base.ThrowAttack(holdTime);
             }
         }
 
@@ -341,7 +344,10 @@ namespace Assets.Scripts.Creatures
                     EquipWeapon(itemId);
                     break;
                 case ItemCategory.Potion:
-                    ApplyPotion(itemId);
+                    if (_usePotions != null)
+                        _usePotions.ApplyPotionEffects(itemId);
+                    else
+                        Debug.LogWarning("UsePotions component not found!");
                     break;
 
                 case ItemCategory.Food:
@@ -362,28 +368,6 @@ namespace Assets.Scripts.Creatures
         {
             _gameSession.PlayerData.EquipWeapon(itemId);
             ChangeArmedOrUnarmed(itemId);
-        }
-
-        private void ApplyPotion(string itemId)
-        {
-            var def = DefsFacade.Instance.Properties.Get(itemId);
-            if (def.SpeedBoost > 0)
-            {
-                // потом реализуем зелье ускорения
-            }
-            if (def.Healing > 0)
-            {
-                if (_gameSession.PlayerData.Hp == _gameSession.PlayerData.MaxHp)
-                {
-                    Debug.Log($"HP максимальное - зелье здоровья не использовано!");
-                    return;
-                }
-
-                _gameSession.PlayerData.Hp += def.Healing;
-                _heroHealthComponent.SetHealth(_gameSession.PlayerData.Hp);
-                _gameSession.PlayerData.Inventory.Remove(itemId, 1);
-                Debug.Log($"Вы выпили зелье! + {def.Healing} HP. Текущее здоровье: {_gameSession.PlayerData.Hp}");
-            }
         }
 
         public void AddExperience(int amount)

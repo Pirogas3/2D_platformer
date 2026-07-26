@@ -528,11 +528,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6958666155233098242, guid: 433b7621dadcc76479fe5a6a56d3b448, type: 3}
       propertyPath: _playerData._inventory._items.Array.size
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6958666155233098242, guid: 433b7621dadcc76479fe5a6a56d3b448, type: 3}
       propertyPath: _playerData._inventory._items.Array.data[0].Id
-      value: Sword
+      value: BluePotion
       objectReference: {fileID: 0}
     - target: {fileID: 6958666155233098242, guid: 433b7621dadcc76479fe5a6a56d3b448, type: 3}
       propertyPath: _playerData._inventory._items.Array.data[1].Id
@@ -544,7 +544,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6958666155233098242, guid: 433b7621dadcc76479fe5a6a56d3b448, type: 3}
       propertyPath: _playerData._inventory._items.Array.data[0].Value
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6958666155233098242, guid: 433b7621dadcc76479fe5a6a56d3b448, type: 3}
       propertyPath: _playerData._inventory._items.Array.data[1].Value
@@ -11390,10 +11390,6 @@ PrefabInstance:
       propertyPath: _cameraZoom
       value: 
       objectReference: {fileID: 1752003039}
-    - target: {fileID: 4312153819627111551, guid: 3eed152a018666943ad19c4049049091, type: 3}
-      propertyPath: _interactionRadius
-      value: 0.5
-      objectReference: {fileID: 0}
     - target: {fileID: 5130552442721590256, guid: 3eed152a018666943ad19c4049049091, type: 3}
       propertyPath: m_LocalPosition.x
       value: -11.32

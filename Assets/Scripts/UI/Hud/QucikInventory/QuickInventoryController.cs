@@ -22,7 +22,7 @@ namespace Assets.Scripts.UI.Hud.QucikInventory
 
         private void Start()
         {
-            _session = FindObjectOfType<GameSession>();
+            _session = GameSession.Instance;
             if (_session == null)
             {
                 Debug.LogError("GameSession не найден!");

@@ -71,7 +71,7 @@ namespace Assets.Scripts.UI.Hud.Inventory
             _equipUnquipButton.gameObject.SetActive(canEquip);
             if (canEquip)
             {
-                var session = FindObjectOfType<GameSession>();
+                var session = GameSession.Instance;
                 bool isEquipped = (_itemData.Id == session.PlayerData.WeaponItemId);
                 string key = isEquipped ? "HUD_Unequip" : "HUD_Equip";
                 _equipUnquipText.text = LocalizationUI.Get(key).ToString();
@@ -93,7 +93,7 @@ namespace Assets.Scripts.UI.Hud.Inventory
 
         private void OnDrop()
         {
-            var session = FindObjectOfType<GameSession>();
+            var session = GameSession.Instance;
             if (session != null)
             {
                 session.PlayerData.Inventory.Remove(_itemData.Id, _itemData.Value);

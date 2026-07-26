@@ -21,7 +21,7 @@ namespace Assets.Scripts.Components
 
         protected void Start()
         {
-            _gameSession = FindObjectOfType<GameSession>();
+            _gameSession = GameSession.Instance;
             if (_gameSession == null)
             {
                 Debug.LogError("GameSession not found!");

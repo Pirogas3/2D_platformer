@@ -19,6 +19,11 @@ namespace Assets.Scripts.Creatures
         [SerializeField] protected int _maxExtraJumps;
 
         protected virtual float MoveSpeed => _speed;
+        public virtual float JumpPower
+        {
+            get => _jumpPower;
+            set => _jumpPower = value;
+        }
 
         //Чекеры
         [Header("Checkers")]

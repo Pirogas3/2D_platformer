@@ -29,7 +29,7 @@ namespace Assets.Scripts.Model.Definitions
         public int MeleeDamage;
         public int RangeDamage;
         public int Healing;
-        public int SpeedBoost;
+        public int JumpBoost;
         public float Duration;
         public float ThrowCooldown;
     }
