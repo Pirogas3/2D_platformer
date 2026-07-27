@@ -85,6 +85,7 @@ namespace Assets.Scripts.UI.Hud
             {
                 Object.Destroy(_currentMenu.gameObject);
                 _currentMenu = null;
+                EventSystem.current?.SetSelectedGameObject(null);
             }
         }
 

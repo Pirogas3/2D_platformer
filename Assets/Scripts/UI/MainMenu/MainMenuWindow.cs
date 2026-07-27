@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Assets.Scripts.Model;
+using System;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -48,6 +49,12 @@ namespace Assets.Scripts.UI.MainMenu
         {
             _closeAction = () =>
             {
+                var session = GameSession.Instance;
+                if (session != null)
+                {
+                    session.ResetPlayerData();
+                }
+
                 SceneManager.LoadScene("SceneGame1");
             };
             Close();

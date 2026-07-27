@@ -2,6 +2,7 @@
 using Assets.Scripts.Model.Data;
 using Assets.Scripts.Model.Definitions;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 
 namespace Assets.Scripts.UI.Hud.Inventory
@@ -80,6 +81,7 @@ namespace Assets.Scripts.UI.Hud.Inventory
             _isOpen = !_isOpen;
             _window.SetActive(_isOpen);
             if (_isOpen) RefreshInventoryUI();
+            EventSystem.current?.SetSelectedGameObject(null);
         }
 
         private void RefreshInventoryUI()

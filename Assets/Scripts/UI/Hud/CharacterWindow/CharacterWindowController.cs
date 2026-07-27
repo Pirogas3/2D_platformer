@@ -3,6 +3,7 @@ using Assets.Scripts.Model.Data;
 using Assets.Scripts.UI.Widgets;
 using TMPro;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 
 namespace Assets.Scripts.UI.Hud.CharacterWindow
@@ -87,6 +88,7 @@ namespace Assets.Scripts.UI.Hud.CharacterWindow
             _window.SetActive(_isOpen);
             if (_isOpen)
                 RefreshUI();
+            EventSystem.current?.SetSelectedGameObject(null);
         }
 
         private void RefreshUI()

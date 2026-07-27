@@ -14,6 +14,13 @@ namespace Assets.Scripts.Model.Data
 
         public event Action OnChanged; // Событие, вызываемое при любом изменении содержимого инвентаря (для обновления UI)
 
+        public void CopyFrom(InventoryData other)
+        {
+            _items.Clear();
+            foreach (var item in other._items)
+                _items.Add(item);
+        }
+
         // ------------------------------------------------------------
         // Базовые операции с предметами
         // ------------------------------------------------------------

@@ -47,8 +47,28 @@ MonoBehaviour:
   _playerData:
     _inventory:
       _items: []
-    Hp: 0
-    MaxHp: 0
+    _containerRegistry:
+      _entries: []
+    _enviromentData:
+      _checkPointIds: []
+      _chests: []
+      _objectStates: []
+      _destroyedIds: []
+    _levelData:
+      _currentExp: 0
+      _level: 1
+      _availablePoints: 0
+    _statUpgradeData:
+      _entries: []
+    _perkData:
+      _entries: []
+    _maxHp: 20
+    _hp: 5
+    _attack: 0
+    _defense: 0
+    _moveSpeed: 3
+    _isArmed: 0
+    _weaponItemId: 
     PosX: 0
     PosY: 0
     CurrentScene: 

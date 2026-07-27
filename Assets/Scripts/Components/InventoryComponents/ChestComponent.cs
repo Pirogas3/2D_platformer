@@ -10,12 +10,23 @@ namespace Assets.Scripts.Components.InventoryComponents
         [SerializeField] private float _closeDistance;
         [SerializeField] private UnityEvent _onOpened;
         [SerializeField] SpriteAnimationComponent _animationComponent;
+        [SerializeField] private string _uniqueId;
 
         private bool _isOpened;
-
         private ChestInventoryController _chestUIController;
-
         private GameObject _hero;
+
+        public InventoryComponent InventoryComponent => _inventoryComponent;
+        public string UniqueId => _uniqueId;
+
+        private void Awake()
+        {
+            if (string.IsNullOrEmpty(_uniqueId))
+            {
+                // Генерируем ID на основе позиции (округляем до 1 знака)
+                _uniqueId = $"Chest_{transform.position.x:F1}_{transform.position.y:F1}";
+            }
+        }
 
         private void Start()
         {

@@ -1,5 +1,6 @@
 using Assets.Scripts.UI.Hud;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 namespace Assets.Scripts.UI
 {
@@ -40,6 +41,7 @@ namespace Assets.Scripts.UI
             }
 
             Destroy(gameObject);
+            EventSystem.current?.SetSelectedGameObject(null);
         }
     }
 }

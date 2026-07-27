@@ -5,7 +5,7 @@ namespace Assets.Scripts.Components
 {
     public class CheckPoint : InteractableComponent
     {
-        [SerializeField] protected int _id;
+        [SerializeField] protected string _id;
         [SerializeField] protected SpriteAnimationComponent _animation;
 
         protected bool _isActivated = false;
@@ -13,10 +13,12 @@ namespace Assets.Scripts.Components
 
         protected void Awake()
         {
+            // Если ID не задан, генерируем на основе позиции
+            if (string.IsNullOrEmpty(_id))
+                _id = $"{gameObject.name}_{transform.position.x:F1}_{transform.position.y:F1}";
+
             if (_animation == null)
-            {
                 _animation = GetComponent<SpriteAnimationComponent>();
-            }
         }
 
         protected void Start()
@@ -33,7 +35,7 @@ namespace Assets.Scripts.Components
             if (_isActivated)
             {
                 _animation.Play("Idle");
-                Debug.Log("Работает?");
+                Debug.Log("Checkpoint activated");
             }
             else
                 _animation.Play("NoFlag");

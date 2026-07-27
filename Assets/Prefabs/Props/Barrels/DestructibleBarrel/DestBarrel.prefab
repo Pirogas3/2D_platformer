@@ -14,7 +14,8 @@ GameObject:
   - component: {fileID: 2463668878501599030}
   - component: {fileID: 4251716805386082309}
   - component: {fileID: 5141539192100205009}
-  - component: {fileID: 7524090088692122632}
+  - component: {fileID: 3646528472332076102}
+  - component: {fileID: 2147545336279184658}
   - component: {fileID: 1110867476347020544}
   m_Layer: 12
   m_Name: DestBarrel
@@ -147,10 +148,10 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 2
+  m_Mass: 10
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 2
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -228,8 +229,9 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
-        - m_Target: {fileID: 7524090088692122632}
-          m_TargetAssemblyTypeName: Scripts.Components.DestroyObjectComponent, Assembly-CSharp
+        - m_Target: {fileID: 2147545336279184658}
+          m_TargetAssemblyTypeName: Assets.Scripts.Components.DestroyAndRegistry,
+            Assembly-CSharp
           m_MethodName: DestroyObject
           m_Mode: 1
           m_Arguments:
@@ -255,7 +257,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _target: {fileID: 3070285938646712266}
   _prefab: {fileID: 4417734851672603461, guid: 0c17b7d6be088114e87f8cb1913d0ed9, type: 3}
---- !u!114 &7524090088692122632
+--- !u!114 &3646528472332076102
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -264,10 +266,28 @@ MonoBehaviour:
   m_GameObject: {fileID: 3424981314179792056}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: feab1597610da484d8bfc8ce95f7e033, type: 3}
+  m_Script: {fileID: 11500000, guid: 5e0b26d19f23120409acc95c70857f6e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _uniqueId: 
+  _destroyOnDeactivate: 0
+  _isActiveOnStart: 1
+--- !u!114 &2147545336279184658
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3424981314179792056}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 438ddf7dec50567489b45e3ed7d34f73, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _objectToDestroy: {fileID: 3424981314179792056}
+  _action:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &1110867476347020544
 MonoBehaviour:
   m_ObjectHideFlags: 0

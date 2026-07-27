@@ -1,6 +1,7 @@
 ﻿using Assets.Scripts.Model;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 namespace Assets.Scripts.UI.Hud
 {
@@ -102,6 +103,7 @@ namespace Assets.Scripts.UI.Hud
             {
                 _isMenuOpen = false;
                 _windowsContainer.SetActive(false);
+                EventSystem.current?.SetSelectedGameObject(null);
             }
         }
 
@@ -118,6 +120,7 @@ namespace Assets.Scripts.UI.Hud
                 {
                     _isMenuOpen = false;
                     _windowsContainer.SetActive(false);
+                    EventSystem.current?.SetSelectedGameObject(null);
                 }
             }
         }

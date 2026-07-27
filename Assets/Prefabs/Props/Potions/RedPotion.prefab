@@ -13,10 +13,11 @@ GameObject:
   - component: {fileID: 6581198943494108898}
   - component: {fileID: 1349106580568505236}
   - component: {fileID: 8189619821551330406}
-  - component: {fileID: 6554433254040437}
   - component: {fileID: 4900834301656130366}
   - component: {fileID: 6312386004049890970}
   - component: {fileID: 8341143521842674311}
+  - component: {fileID: 8893729387380250818}
+  - component: {fileID: 1623401916305253476}
   m_Layer: 0
   m_Name: RedPotion
   m_TagString: Untagged
@@ -174,8 +175,8 @@ MonoBehaviour:
     onComplete:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 6554433254040437}
-          m_TargetAssemblyTypeName: Assets.Scripts.Components.DestroyObjectComponent,
+        - m_Target: {fileID: 1623401916305253476}
+          m_TargetAssemblyTypeName: Assets.Scripts.Components.DestroyAndRegistry,
             Assembly-CSharp
           m_MethodName: DestroyObject
           m_Mode: 1
@@ -254,19 +255,9 @@ MonoBehaviour:
           m_StringArgument: Collect
           m_BoolArgument: 0
         m_CallState: 2
---- !u!114 &6554433254040437
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 990935028746794081}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: feab1597610da484d8bfc8ce95f7e033, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _objectToDestroy: {fileID: 990935028746794081}
+  _OnExitAction:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &4900834301656130366
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -390,3 +381,34 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _mode: 1
+--- !u!114 &8893729387380250818
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 990935028746794081}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d4dfdca918883854f95ccf27c716a629, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _uniqueId: 
+  _destroyOnDeactivate: 1
+  _isActiveOnStart: 1
+--- !u!114 &1623401916305253476
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 990935028746794081}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 438ddf7dec50567489b45e3ed7d34f73, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _objectToDestroy: {fileID: 990935028746794081}
+  _action:
+    m_PersistentCalls:
+      m_Calls: []

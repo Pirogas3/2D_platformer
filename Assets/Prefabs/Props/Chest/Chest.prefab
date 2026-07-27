@@ -225,10 +225,16 @@ MonoBehaviour:
   _data:
     _items:
     - Id: GoldCoin
-      Value: 9
+      Value: 83
       _containerId: 
     - Id: SilverCoin
-      Value: 17
+      Value: 37
+      _containerId: 
+    - Id: GreenPotion
+      Value: 1
+      _containerId: 
+    - Id: Emerald
+      Value: 3
       _containerId: 
 --- !u!114 &7347140076025896991
 MonoBehaviour:
@@ -277,6 +283,7 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
   _animationComponent: {fileID: 7192774264062594498}
+  _uniqueId: Chest1
 --- !u!114 &4488943903047729977
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -408,22 +415,86 @@ PrefabInstance:
       propertyPath: m_Name
       value: GoldLook
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 2136286421303996129, guid: e5464eebf3f417b4ba6b5bc26f15eeaa, type: 3}
+      propertyPath: _clips.Array.data[2].onComplete.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 4253061645947107234}
+    - target: {fileID: 2136286421303996129, guid: e5464eebf3f417b4ba6b5bc26f15eeaa, type: 3}
+      propertyPath: _clips.Array.data[2].onComplete.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: Assets.Scripts.Components.DestroyAndRegistry, Assembly-CSharp
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 2868369361333971714, guid: e5464eebf3f417b4ba6b5bc26f15eeaa, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 1507822076624892009, guid: e5464eebf3f417b4ba6b5bc26f15eeaa, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 4253061645947107234}
+    - targetCorrespondingSourceObject: {fileID: 1507822076624892009, guid: e5464eebf3f417b4ba6b5bc26f15eeaa, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 5846019224979786049}
   m_SourcePrefab: {fileID: 100100000, guid: e5464eebf3f417b4ba6b5bc26f15eeaa, type: 3}
 --- !u!4 &4639983521032071874 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 114685172224184499, guid: e5464eebf3f417b4ba6b5bc26f15eeaa, type: 3}
   m_PrefabInstance: {fileID: 4752416788541946481}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &6133662807080749592 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1507822076624892009, guid: e5464eebf3f417b4ba6b5bc26f15eeaa, type: 3}
+  m_PrefabInstance: {fileID: 4752416788541946481}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &4253061645947107234
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6133662807080749592}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 438ddf7dec50567489b45e3ed7d34f73, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _objectToDestroy: {fileID: 6133662807080749592}
+  _action:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 4488943903047729977}
+        m_TargetAssemblyTypeName: Assets.Scripts.Components.InventoryComponents.RequireItemComponent,
+          Assembly-CSharp
+        m_MethodName: ResetRequiredItem
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &5846019224979786049
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6133662807080749592}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d4dfdca918883854f95ccf27c716a629, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _uniqueId: 
+  _destroyOnDeactivate: 1
+  _isActiveOnStart: 1
 --- !u!114 &6653616332358390928 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2136286421303996129, guid: e5464eebf3f417b4ba6b5bc26f15eeaa, type: 3}
   m_PrefabInstance: {fileID: 4752416788541946481}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 6133662807080749592}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 60e005b8982562d4eb3b251d17dce057, type: 3}

@@ -1,9 +1,9 @@
-﻿using Assets.Scripts.Creatures;
+﻿using Assets.Scripts.Components.InventoryComponents;
+using Assets.Scripts.Creatures;
 using Assets.Scripts.Model.Data;
 using Assets.Scripts.UI.Hud;
 using Assets.Scripts.UI.Hud.CharacterWindow;
 using Assets.Scripts.UI.Hud.Inventory;
-using Assets.Scripts.UI.Hud.QucikInventory;
 using SheetXExample;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -24,6 +24,8 @@ namespace Assets.Scripts.Model
         public CharacterWindowController CharacterWindowController { get => _characterWindowController; set { _characterWindowController = value; } }
 
         public static GameSession Instance { get; private set; }
+
+        public event System.Action OnSaved;
 
         private void Awake()
         {
@@ -107,6 +109,22 @@ namespace Assets.Scripts.Model
             if (scene.name != "MainMenu" && scene.name != "Hud" && scene.name != "LoadingScreen")
             {
                 LoadHud();
+
+                // Восстанавливаем позицию игрока
+                var hero = FindObjectOfType<Hero>();
+                if (hero != null && _playerData.PosX != 0 && _playerData.PosY != 0)
+                {
+                    hero.transform.position = new Vector3(_playerData.PosX, _playerData.PosY, 0f);
+                }
+
+                // Восстанавливаем сундуки
+                _playerData.EnviromentData.LoadChests();
+
+                // Применяем состояния объектов
+                _playerData.EnviromentData.ApplyObjectStates();
+
+                // Удаляем уничтоженные объекты
+                _playerData.EnviromentData.ApplyDestroyedObjects();
             }
 
             // При загрузке новой сцены обновляем "начало сцены"
@@ -145,15 +163,22 @@ namespace Assets.Scripts.Model
         // Сохранение в слот
         public void SaveToSlot(string slotName)
         {
+            OnSaved?.Invoke();
+
             // Обновляем текущую сцену перед сохранением
             _playerData.CurrentScene = SceneManager.GetActiveScene().name;
 
+            // Сохраняем позиция игрока
             var hero = FindObjectOfType<Hero>();
             if (hero != null)
             {
                 _playerData.PosX = hero.transform.position.x;
                 _playerData.PosY = hero.transform.position.y;
             }
+
+            // Сохраняем сундуки
+            var chests = FindObjectsOfType<ChestComponent>();
+            _playerData.EnviromentData.SaveChests(chests);
 
             SaveManager.SaveToFile(_playerData, slotName);
             Debug.Log($"Игра сохранена в слот '{slotName}'.");
@@ -197,6 +222,16 @@ namespace Assets.Scripts.Model
         public void DeleteSlot(string slotName)
         {
             SaveManager.DeleteSlot(slotName);
+        }
+
+        public void ClearEnviromentData()
+        {
+            _playerData.EnviromentData.ClearAll();
+        }
+
+        public void ResetPlayerData()
+        {
+            _playerData = new PlayerData();
         }
     }
 }

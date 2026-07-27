@@ -32,7 +32,7 @@ namespace Assets.Scripts.Model.Data
         [SerializeField] private int _maxHp = 20;
         public int MaxHp { get => _maxHp; set => _maxHp = value; }
 
-        [SerializeField] private int _hp = 10;
+        [SerializeField] private int _hp = 5;
         public event Action<int> HpOnChanged;
         public int Hp
         {
@@ -72,12 +72,11 @@ namespace Assets.Scripts.Model.Data
         public string WeaponItemId => _weaponItemId;
 
         [Header("Position")]
-        // Пока что не используются просто записываются при сохранении
         public float PosX;
         public float PosY;
 
         [Header("Scene")]
-        public string CurrentScene; // используется для сохранений и загрузки
+        public string CurrentScene;
 
         // Команда одеть экпипированное оружие
         public void EquipWeapon(string itemId)

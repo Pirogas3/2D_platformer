@@ -17,31 +17,48 @@ namespace Assets.Scripts.Components.Audio
             _source = GetComponent<AudioSource>();
 
             _model = FindProperty();
-            _model.OnChanged += OnSoundSettingChanged;
-            OnSoundSettingChanged(_model.Value, _model.Value);
+            if (_model != null)
+            {
+                _model.OnChanged += OnSoundSettingChanged;
+                OnSoundSettingChanged(_model.Value, _model.Value);
+            }
+            else
+            {
+                Debug.LogWarning($"AudioSettingComponent: модель для {_mode} не найдена. Громкость не будет применена.");
+            }
         }
 
         private void OnSoundSettingChanged(float newValue, float oldValue)
         {
-            _source.volume = newValue;
+            if (_source != null)
+                _source.volume = newValue;
         }
 
         private FloatPersistentProperty FindProperty()
         {
+            var settings = GameSettings.I;
+            if (settings == null)
+            {
+                Debug.LogError("GameSettings not found!");
+                return null;
+            }
+
             switch (_mode)
             {
                 case SoundSetting.Music:
-                    return GameSettings.I.Music;
+                    return settings.Music;
                 case SoundSetting.SFX:
-                    return GameSettings.I.SFX;
+                    return settings.SFX;
+                default:
+                    Debug.LogError($"Unknown SoundSetting: {_mode}");
+                    return null;
             }
-
-            throw new ArgumentException("Undefined mode");
         }
 
         private void OnDestroy()
         {
-            _model.OnChanged -= OnSoundSettingChanged;
+            if (_model != null)
+                _model.OnChanged -= OnSoundSettingChanged;
         }
     }
 }

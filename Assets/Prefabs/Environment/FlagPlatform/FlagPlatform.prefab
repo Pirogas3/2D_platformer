@@ -297,7 +297,7 @@ PrefabInstance:
       objectReference: {fileID: 21300000, guid: 017c89c6b6559b8418ef83af974bea01, type: 3}
     - target: {fileID: 4882456784402748139, guid: f178431eef82df04cab9a7d88d828922, type: 3}
       propertyPath: m_SortingLayer
-      value: -7
+      value: -6
       objectReference: {fileID: 0}
     - target: {fileID: 4882456784402748139, guid: f178431eef82df04cab9a7d88d828922, type: 3}
       propertyPath: m_SortingLayerID
@@ -382,7 +382,7 @@ MonoBehaviour:
           m_StringArgument: Raising
           m_BoolArgument: 0
         m_CallState: 2
-  _id: 1
+  _id: 
   _animation: {fileID: 9153876890214647510}
 --- !u!4 &7905931423016277434 stripped
 Transform:
