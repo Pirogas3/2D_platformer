@@ -56,6 +56,7 @@ namespace Assets.Scripts.UI.MainMenu
                 }
 
                 SceneManager.LoadScene("SceneGame1");
+                session.SaveSceneStartState();
             };
             Close();
         }

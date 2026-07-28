@@ -15,6 +15,7 @@ namespace Assets.Scripts.Components
             session.PlayerData.PosY = 0;
             session.ClearEnviromentData();
             SceneManager.LoadScene(_sceneName);
+            session.SaveSceneStartState();
         }
     }
 }

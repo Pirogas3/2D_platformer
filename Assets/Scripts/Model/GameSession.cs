@@ -128,7 +128,7 @@ namespace Assets.Scripts.Model
             }
 
             // При загрузке новой сцены обновляем "начало сцены"
-            SaveSceneStartState();
+            //SaveSceneStartState();
         }
 
         // Сохранить состояние на начало сцены
