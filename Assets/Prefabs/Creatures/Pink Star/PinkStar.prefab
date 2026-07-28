@@ -15,9 +15,10 @@ GameObject:
   - component: {fileID: 3539001755761387732}
   - component: {fileID: 5397622473710188609}
   - component: {fileID: 1772035558185099709}
-  - component: {fileID: 2103416379810189018}
   - component: {fileID: 4239581034086715569}
   - component: {fileID: 5719284665219830249}
+  - component: {fileID: 5328340642516215910}
+  - component: {fileID: 5061444633136760893}
   m_Layer: 10
   m_Name: PinkStar
   m_TagString: Enemy
@@ -157,8 +158,8 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.0000104904175, y: -0.011625946}
-  m_Size: {x: 0.69210386, y: 0.7691437}
+  m_Offset: {x: -0.0000104904175, y: -0.025252998}
+  m_Size: {x: 0.69210386, y: 0.7963978}
   m_Direction: 0
 --- !u!95 &3539001755761387732
 Animator:
@@ -193,7 +194,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c1e452d9552c6ca40956b60e53545a9f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _health: 10
+  _health: 15
   _onDamage:
     m_PersistentCalls:
       m_Calls:
@@ -242,7 +243,7 @@ MonoBehaviour:
   OnHealthChanged:
     m_PersistentCalls:
       m_Calls: []
-  _defense: 0
+  _defense: 5
 --- !u!114 &1772035558185099709
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -262,19 +263,6 @@ MonoBehaviour:
     Component: {fileID: 7094388567801235380}
   - ID: AttackEffect
     Component: {fileID: 7094388567801235380}
---- !u!114 &2103416379810189018
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 91416434419338391}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: feab1597610da484d8bfc8ce95f7e033, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _objectToDestroy: {fileID: 91416434419338391}
 --- !u!114 &4239581034086715569
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -314,6 +302,37 @@ MonoBehaviour:
   _meleeAttackCooldown: 2
   _lostInterestTime: 8
   _chargeDuration: 2
+--- !u!114 &5328340642516215910
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 91416434419338391}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5e0b26d19f23120409acc95c70857f6e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _uniqueId: 
+  _destroyOnDeactivate: 1
+  _isActiveOnStart: 1
+--- !u!114 &5061444633136760893
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 91416434419338391}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 438ddf7dec50567489b45e3ed7d34f73, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _objectToDestroy: {fileID: 91416434419338391}
+  _action:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1001 &1600457059382898999
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -329,6 +348,14 @@ PrefabInstance:
     - target: {fileID: 980664737202805128, guid: ef8576aa51e17714a9f95d7b5e40414e, type: 3}
       propertyPath: m_Radius
       value: 0.45
+      objectReference: {fileID: 0}
+    - target: {fileID: 3136916881810212074, guid: ef8576aa51e17714a9f95d7b5e40414e, type: 3}
+      propertyPath: _attack
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3136916881810212074, guid: ef8576aa51e17714a9f95d7b5e40414e, type: 3}
+      propertyPath: _damage
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 4802470210878066240, guid: ef8576aa51e17714a9f95d7b5e40414e, type: 3}
       propertyPath: _layer.m_Bits
@@ -687,7 +714,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3064914452897589526, guid: 6c8f07788dd5ec941bf11d7f1c41979c, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.0076
+      value: -0.014
       objectReference: {fileID: 0}
     - target: {fileID: 3064914452897589526, guid: 6c8f07788dd5ec941bf11d7f1c41979c, type: 3}
       propertyPath: m_LocalPosition.z

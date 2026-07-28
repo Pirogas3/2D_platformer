@@ -17,7 +17,8 @@ GameObject:
   - component: {fileID: 5696522371018653988}
   - component: {fileID: 2436004517893708542}
   - component: {fileID: 511174432184673243}
-  - component: {fileID: 2412422938946006287}
+  - component: {fileID: 5132234606532628954}
+  - component: {fileID: 8404834372634801941}
   m_Layer: 10
   m_Name: Seashell
   m_TagString: Enemy
@@ -202,7 +203,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c1e452d9552c6ca40956b60e53545a9f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _health: 10
+  _health: 12
   _onDamage:
     m_PersistentCalls:
       m_Calls:
@@ -239,6 +240,7 @@ MonoBehaviour:
   OnHealthChanged:
     m_PersistentCalls:
       m_Calls: []
+  _defense: 10
 --- !u!114 &5696522371018653988
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -293,7 +295,7 @@ MonoBehaviour:
   _patrol: {fileID: 0}
   _alarmDelay: 0.5
   _attackCooldown: 1
---- !u!114 &2412422938946006287
+--- !u!114 &5132234606532628954
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -302,10 +304,28 @@ MonoBehaviour:
   m_GameObject: {fileID: 7307957734296412590}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: feab1597610da484d8bfc8ce95f7e033, type: 3}
+  m_Script: {fileID: 11500000, guid: 5e0b26d19f23120409acc95c70857f6e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _uniqueId: 
+  _destroyOnDeactivate: 1
+  _isActiveOnStart: 1
+--- !u!114 &8404834372634801941
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7307957734296412590}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 438ddf7dec50567489b45e3ed7d34f73, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _objectToDestroy: {fileID: 7307957734296412590}
+  _action:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1001 &5521301250764953516
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -591,6 +611,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  _OnExitAction:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &7719641871794575434 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 461291151112928640, guid: e996ecfbceb5a234d8b087acc1dbe20b, type: 3}

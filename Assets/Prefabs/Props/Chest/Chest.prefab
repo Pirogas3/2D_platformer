@@ -154,7 +154,19 @@ MonoBehaviour:
     loop: 0
     onComplete:
       m_PersistentCalls:
-        m_Calls: []
+        m_Calls:
+        - m_Target: {fileID: 0}
+          m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_MethodName: 
+          m_Mode: 6
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 1
+          m_CallState: 2
   - name: Opening
     sprites:
     - {fileID: 21300000, guid: 69f667bc4a983f748866d04f151bd363, type: 3}
@@ -283,7 +295,7 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
   _animationComponent: {fileID: 7192774264062594498}
-  _uniqueId: Chest1
+  _uniqueId: 
 --- !u!114 &4488943903047729977
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -321,6 +333,18 @@ MonoBehaviour:
           Assembly-CSharp
         m_MethodName: Play
         m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Opening
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 3914247474367512128}
+        m_TargetAssemblyTypeName: Assets.Scripts.Creatures.ExpAdd, Assembly-CSharp
+        m_MethodName: FindAndAdd
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -434,6 +458,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 1507822076624892009, guid: e5464eebf3f417b4ba6b5bc26f15eeaa, type: 3}
       insertIndex: -1
       addedObject: {fileID: 5846019224979786049}
+    - targetCorrespondingSourceObject: {fileID: 1507822076624892009, guid: e5464eebf3f417b4ba6b5bc26f15eeaa, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 3914247474367512128}
   m_SourcePrefab: {fileID: 100100000, guid: e5464eebf3f417b4ba6b5bc26f15eeaa, type: 3}
 --- !u!4 &4639983521032071874 stripped
 Transform:
@@ -489,6 +516,19 @@ MonoBehaviour:
   _uniqueId: 
   _destroyOnDeactivate: 1
   _isActiveOnStart: 1
+--- !u!114 &3914247474367512128
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6133662807080749592}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8eeba550ba7aa494d8806550ddab8b3a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _amount: 335
 --- !u!114 &6653616332358390928 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2136286421303996129, guid: e5464eebf3f417b4ba6b5bc26f15eeaa, type: 3}

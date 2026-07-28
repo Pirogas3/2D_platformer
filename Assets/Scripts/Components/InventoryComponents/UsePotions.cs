@@ -14,6 +14,7 @@ namespace Assets.Scripts.Components.InventoryComponents
     {
         [SerializeField] private Hero _hero;
         [SerializeField] private HeroHealthComponent _heroHealthComponent;
+        [SerializeField] private SpawnListComponent _spawnListComponent;
 
         private GameSession _gameSession;
         private float _baseJumpPower;
@@ -67,6 +68,10 @@ namespace Assets.Scripts.Components.InventoryComponents
             }
 
             // Здесь можно добавить другие эффекты (ускорение, защита и т.д.)
+
+            // Партикл эффект
+            if (_spawnListComponent != null)
+                _spawnListComponent.Spawn("PotionEffect");
         }
 
         private void ApplyHealing(int healingAmount, string itemId)

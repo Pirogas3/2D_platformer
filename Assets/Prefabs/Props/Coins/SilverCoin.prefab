@@ -18,6 +18,7 @@ GameObject:
   - component: {fileID: 6979364600785436322}
   - component: {fileID: 8809490260804051470}
   - component: {fileID: 2508544705708530004}
+  - component: {fileID: 5824755271958638825}
   m_Layer: 0
   m_Name: SilverCoin
   m_TagString: Untagged
@@ -241,6 +242,18 @@ MonoBehaviour:
           m_StringArgument: Collected
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 5824755271958638825}
+        m_TargetAssemblyTypeName: Assets.Scripts.Creatures.ExpAdd, Assembly-CSharp
+        m_MethodName: Add
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Collected
+          m_BoolArgument: 0
+        m_CallState: 2
   _OnExitAction:
     m_PersistentCalls:
       m_Calls: []
@@ -398,3 +411,16 @@ MonoBehaviour:
   _action:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &5824755271958638825
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6565619797014053952}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8eeba550ba7aa494d8806550ddab8b3a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _amount: 1

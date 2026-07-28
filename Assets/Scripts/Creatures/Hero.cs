@@ -4,6 +4,7 @@ using Assets.Scripts.Components.InventoryComponents;
 using Assets.Scripts.Model;
 using Assets.Scripts.Model.Data;
 using Assets.Scripts.Model.Definitions;
+using Assets.Scripts.UI;
 using Assets.Scripts.UI.Hud.Dialogue;
 using Assets.Scripts.UI.Hud.QucikInventory;
 using System.Collections;
@@ -12,7 +13,7 @@ using UnityEngine;
 
 namespace Assets.Scripts.Creatures
 {
-    public class Hero : Creature, ICanAddInInventory
+    public class Hero : Creature, ICanAddInInventory, IAddExp
     {
         //Данные для игрока
         private GameSession _gameSession;
@@ -39,6 +40,16 @@ namespace Assets.Scripts.Creatures
 
         [Header("Use Potion")]
         [SerializeField] private UsePotions _usePotions;
+
+        [Header("Dragging")]
+        [SerializeField] private float _dragRadius = 1.5f;          // радиус поиска объекта
+        [SerializeField] private float _targetDragDistance = 1.2f;  // желаемое расстояние до объекта
+        [SerializeField] private LayerMask _draggableLayer;        // опционально, если хотите фильтровать по слою
+
+        private DraggableObject _draggedObject;
+        private bool _isDragging = false;
+        private Vector2 _dragDirection; // направление от героя к объекту (нормализованное)
+
 
         private DialogBoxController _dialogBoxController;
 
@@ -121,6 +132,21 @@ namespace Assets.Scripts.Creatures
         protected override void FixedUpdate()
         {
             base.FixedUpdate();
+
+            // Обновление перетаскивания
+            if (_isDragging && _draggedObject != null)
+            {
+                // Если герой оторвался от земли, прерываем перетаскивание
+                if (!IsGrounded())
+                {
+                    StopDragging();
+                    return;
+                }
+
+                // Целевая позиция = позиция героя + направление * желаемое расстояние
+                Vector2 targetPos = (Vector2)transform.position + _dragDirection * _targetDragDistance;
+                _draggedObject.Drag(targetPos);
+            }
         }
 
         private void OnDestroy()
@@ -156,6 +182,56 @@ namespace Assets.Scripts.Creatures
         public void OnHeroHealthChanged(int newHealth)
         {
             _gameSession.PlayerData.Hp = newHealth;
+        }
+
+        public void StartDragging()
+        {
+            // Нельзя начать перетаскивание, если герой не на земле
+            if (!IsGrounded()) return;
+            if (_isDragging) return;
+
+            // Поиск ближайшего перетаскиваемого объекта
+            var draggables = FindObjectsOfType<DraggableObject>();
+            DraggableObject closest = null;
+            float minDist = float.MaxValue;
+
+            foreach (var d in draggables)
+            {
+                // Можно отфильтровать по слою, если нужно
+                if (_draggableLayer != 0 && ((1 << d.gameObject.layer) & _draggableLayer) == 0)
+                    continue;
+
+                float dist = Vector2.Distance(transform.position, d.transform.position);
+                if (dist < _dragRadius && dist < minDist)
+                {
+                    closest = d;
+                    minDist = dist;
+                }
+            }
+
+            if (closest != null)
+            {
+                _draggedObject = closest;
+                _draggedObject.StartDrag();
+                _isDragging = true;
+
+                // Вычисляем направление от героя к объекту
+                Vector2 dir = (Vector2)closest.transform.position - (Vector2)transform.position;
+                _dragDirection = dir.normalized;
+
+                Debug.Log("Начат перетаскивание объекта");
+            }
+        }
+
+        public void StopDragging()
+        {
+            if (_isDragging && _draggedObject != null)
+            {
+                _draggedObject.StopDrag();
+                _draggedObject = null;
+                _isDragging = false;
+                Debug.Log("Перетаскивание остановлено");
+            }
         }
 
         private void SpawnCoins()
@@ -372,15 +448,19 @@ namespace Assets.Scripts.Creatures
 
         public void AddExperience(int amount)
         {
-            if (_gameSession == null) return;
             _gameSession.PlayerData.LevelData.AddExp(amount);
+            // Показываем текст над головой
+            if (FloatingTextManager.Instance != null)
+            {
+                Vector3 pos = transform.position + Vector3.up * 1f; // над головой
+                FloatingTextManager.Instance.ShowFloatingText($"+{amount} XP", pos, Color.yellow);
+            }
         }
 
         [ContextMenu("Add500XP")]
-        public void AddExperience()
+        public void Add500Exp()
         {
-            if (_gameSession == null) return;
-            _gameSession.PlayerData.LevelData.AddExp(500);
+            AddExperience(500);
         }
 
         private void ApplyPerks()

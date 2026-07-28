@@ -42,6 +42,6 @@ MonoBehaviour:
       MeleeDamage: 0
       RangeDamage: 0
       Healing: 0
-      JumpBoost: 2
-      Duration: 10
+      JumpBoost: 4
+      Duration: 15
       ThrowCooldown: 0

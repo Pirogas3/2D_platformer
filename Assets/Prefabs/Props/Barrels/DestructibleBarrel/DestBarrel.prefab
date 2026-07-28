@@ -17,6 +17,7 @@ GameObject:
   - component: {fileID: 3646528472332076102}
   - component: {fileID: 2147545336279184658}
   - component: {fileID: 1110867476347020544}
+  - component: {fileID: 3519414747556694359}
   m_Layer: 12
   m_Name: DestBarrel
   m_TagString: Enemy
@@ -162,7 +163,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!114 &4251716805386082309
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -340,3 +341,22 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   _defense: 0
+--- !u!114 &3519414747556694359
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3424981314179792056}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5c92044a6d09a044b8eff0bdd545ee1d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _followSpeed: 4
+  _checkRadius: 0.3
+  _checkOffset: {x: 0, y: 0.45}
+  _obstacleMask:
+    serializedVersion: 2
+    m_Bits: 7232
+  _dragGravityScale: 0

@@ -45,6 +45,7 @@ Transform:
   - {fileID: 1394191115477439867}
   - {fileID: 2007230798879075954}
   - {fileID: 6526349709560493519}
+  - {fileID: 7992073247122679646}
   - {fileID: 8275133131000957667}
   - {fileID: 923253938723380118}
   - {fileID: 7411913656131508736}
@@ -339,6 +340,34 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: f157a7c4-e788-476c-86cf-874bc1b0734e
     m_ActionName: Hero/CharacterWindow[/Keyboard/k]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 86160613-ef14-4343-ba29-841c9ca988b4
+    m_ActionName: Hero/F5 - QuickSave[/Keyboard/f5]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 72e405d2-39dc-4a2b-8bbe-bed9da423055
+    m_ActionName: Hero/F9 - QuickLoad[/Keyboard/f9]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 4048117732655476751}
+        m_TargetAssemblyTypeName: Assets.Scripts.PlayerInput.HeroInputReader, Assembly-CSharp
+        m_MethodName: OnDrag
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: ff1e3441-3714-4a6f-8d50-b1847a66a326
+    m_ActionName: Hero/F - MoveObj[/Keyboard/f]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 6df626a3-f171-4526-b3c6-13fe44e4c1dd
+    m_ActionName: Hero/C - Deffense[/Keyboard/c]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Hero
@@ -385,6 +414,11 @@ MonoBehaviour:
   _playerInput: {fileID: 946119232345141262}
   _cameraZoom: {fileID: 0}
   _usePotions: {fileID: 6120497292023170089}
+  _dragRadius: 1
+  _targetDragDistance: 0.25
+  _draggableLayer:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!114 &44946075099930308
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -406,6 +440,8 @@ MonoBehaviour:
     Component: {fileID: 5125542322684180014}
   - ID: Throw
     Component: {fileID: 3754475101025034199}
+  - ID: PotionEffect
+    Component: {fileID: 3730127506185239416}
 --- !u!114 &8002637944302478329
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -516,6 +552,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _hero: {fileID: 4312153819627111551}
   _heroHealthComponent: {fileID: 8002637944302478329}
+  _spawnListComponent: {fileID: 44946075099930308}
 --- !u!1 &4087300089855272566
 GameObject:
   m_ObjectHideFlags: 0
@@ -953,6 +990,79 @@ MonoBehaviour:
 Transform:
   m_CorrespondingSourceObject: {fileID: 5563638434504972539, guid: bb145ce25f0001946ac9981282a40c85, type: 3}
   m_PrefabInstance: {fileID: 6804704579128184192}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &7912023499093572447
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 5130552442721590256}
+    m_Modifications:
+    - target: {fileID: 226494128209632257, guid: e0043faf10cc02a4a9c236247826591e, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 226494128209632257, guid: e0043faf10cc02a4a9c236247826591e, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.24
+      objectReference: {fileID: 0}
+    - target: {fileID: 226494128209632257, guid: e0043faf10cc02a4a9c236247826591e, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 226494128209632257, guid: e0043faf10cc02a4a9c236247826591e, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 226494128209632257, guid: e0043faf10cc02a4a9c236247826591e, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 226494128209632257, guid: e0043faf10cc02a4a9c236247826591e, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 226494128209632257, guid: e0043faf10cc02a4a9c236247826591e, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 226494128209632257, guid: e0043faf10cc02a4a9c236247826591e, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 226494128209632257, guid: e0043faf10cc02a4a9c236247826591e, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 226494128209632257, guid: e0043faf10cc02a4a9c236247826591e, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2619883163327153604, guid: e0043faf10cc02a4a9c236247826591e, type: 3}
+      propertyPath: m_Name
+      value: PotionEffectPos
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: e0043faf10cc02a4a9c236247826591e, type: 3}
+--- !u!114 &3730127506185239416 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6776004597310177319, guid: e0043faf10cc02a4a9c236247826591e, type: 3}
+  m_PrefabInstance: {fileID: 7912023499093572447}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f82868b17f636fa4dbb12a6aa1bb4cee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &7992073247122679646 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 226494128209632257, guid: e0043faf10cc02a4a9c236247826591e, type: 3}
+  m_PrefabInstance: {fileID: 7912023499093572447}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &8130387399478380407
 PrefabInstance:

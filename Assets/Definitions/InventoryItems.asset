@@ -112,3 +112,25 @@ MonoBehaviour:
     _containerConfig:
       _acceptedCategories: 
       _weightMultiplier: 0
+  - _id: Diamond
+    _name: Diamond
+    _description: Diamond
+    _icon: {fileID: 21300000, guid: fed95e3c7498ae74e83e503acbcc57e4, type: 3}
+    _weight: 5
+    _baseValue: 600
+    _maxStack: 10
+    _category: 3
+    _containerConfig:
+      _acceptedCategories: 
+      _weightMultiplier: 0
+  - _id: Ruby
+    _name: Ruby
+    _description: Ruby
+    _icon: {fileID: 21300000, guid: ff911bb8016cadd4a9299bc895b9867b, type: 3}
+    _weight: 4
+    _baseValue: 400
+    _maxStack: 10
+    _category: 3
+    _containerConfig:
+      _acceptedCategories: 
+      _weightMultiplier: 0

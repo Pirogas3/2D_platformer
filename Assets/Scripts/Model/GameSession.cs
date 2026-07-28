@@ -1,6 +1,7 @@
 ﻿using Assets.Scripts.Components.InventoryComponents;
 using Assets.Scripts.Creatures;
 using Assets.Scripts.Model.Data;
+using Assets.Scripts.UI;
 using Assets.Scripts.UI.Hud;
 using Assets.Scripts.UI.Hud.CharacterWindow;
 using Assets.Scripts.UI.Hud.Inventory;

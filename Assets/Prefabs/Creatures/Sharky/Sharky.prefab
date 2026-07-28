@@ -15,10 +15,11 @@ GameObject:
   - component: {fileID: 6948727606871584072}
   - component: {fileID: 5585551586713403144}
   - component: {fileID: 44946075099930308}
-  - component: {fileID: 1542057918080749297}
   - component: {fileID: 8658165533631541474}
   - component: {fileID: 405669221662529752}
   - component: {fileID: 7121311215274575714}
+  - component: {fileID: 5855675676150969950}
+  - component: {fileID: 1159249597744659904}
   m_Layer: 10
   m_Name: Sharky
   m_TagString: Enemy
@@ -232,7 +233,7 @@ MonoBehaviour:
   OnHealthChanged:
     m_PersistentCalls:
       m_Calls: []
-  _defense: 1
+  _defense: 2
 --- !u!114 &44946075099930308
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -254,19 +255,6 @@ MonoBehaviour:
     Component: {fileID: 5125542322684180014}
   - ID: Exclamation
     Component: {fileID: 5126514758415658583}
---- !u!114 &1542057918080749297
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2773358274999582965}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: feab1597610da484d8bfc8ce95f7e033, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _objectToDestroy: {fileID: 2773358274999582965}
 --- !u!114 &8658165533631541474
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -319,6 +307,37 @@ MonoBehaviour:
   - {fileID: 0}
   pauseBetweenPoints: 1
   reachDistance: 0.2
+--- !u!114 &5855675676150969950
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2773358274999582965}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5e0b26d19f23120409acc95c70857f6e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _uniqueId: 
+  _destroyOnDeactivate: 1
+  _isActiveOnStart: 1
+--- !u!114 &1159249597744659904
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2773358274999582965}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 438ddf7dec50567489b45e3ed7d34f73, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _objectToDestroy: {fileID: 2773358274999582965}
+  _action:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1001 &1508863027675943374
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -483,11 +502,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2449505088188320637, guid: c16c8cda6874d0b47bdef42f3520b31d, type: 3}
       propertyPath: _attack
-      value: 1
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 2449505088188320637, guid: c16c8cda6874d0b47bdef42f3520b31d, type: 3}
       propertyPath: _damage
-      value: 1
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 4492817916408287038, guid: c16c8cda6874d0b47bdef42f3520b31d, type: 3}
       propertyPath: m_LocalPosition.x
@@ -703,6 +722,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  _OnExitAction:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1001 &6804704579128184192
 PrefabInstance:
   m_ObjectHideFlags: 0

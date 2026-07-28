@@ -70,5 +70,13 @@ namespace Assets.Scripts.PlayerInput
             if (context.performed)
                 _hero.UseQuickSlot();
         }
+
+        public void OnDrag(InputAction.CallbackContext context)
+        {
+            if (context.performed)
+                _hero.StartDragging();
+            else if (context.canceled)
+                _hero.StopDragging();
+        }
     }
 }

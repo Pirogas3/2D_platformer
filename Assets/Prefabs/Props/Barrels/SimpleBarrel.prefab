@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 7791807259017663769}
   - component: {fileID: 2463668878501599030}
   - component: {fileID: 4378421809451063790}
+  - component: {fileID: 8514129115354085038}
   m_Layer: 12
   m_Name: SimpleBarrel
   m_TagString: Untagged
@@ -174,3 +175,22 @@ MonoBehaviour:
   _uniqueId: 
   _destroyOnDeactivate: 0
   _isActiveOnStart: 1
+--- !u!114 &8514129115354085038
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3424981314179792056}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5c92044a6d09a044b8eff0bdd545ee1d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _followSpeed: 4
+  _checkRadius: 0.3
+  _checkOffset: {x: 0, y: 0.45}
+  _obstacleMask:
+    serializedVersion: 2
+    m_Bits: 7232
+  _dragGravityScale: 0

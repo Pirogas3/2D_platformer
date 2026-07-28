@@ -131,6 +131,42 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "F5 - QuickSave",
+                    "type": "Button",
+                    "id": "86160613-ef14-4343-ba29-841c9ca988b4",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "F9 - QuickLoad",
+                    "type": "Button",
+                    "id": "72e405d2-39dc-4a2b-8bbe-bed9da423055",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "F - MoveObj",
+                    "type": "Button",
+                    "id": "ff1e3441-3714-4a6f-8d50-b1847a66a326",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "C - Deffense",
+                    "type": "Button",
+                    "id": "6df626a3-f171-4526-b3c6-13fe44e4c1dd",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -373,6 +409,50 @@
                     "processors": "",
                     "groups": "",
                     "action": "CharacterWindow",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "078ab560-b4db-4dd0-8017-c57a52dd6177",
+                    "path": "<Keyboard>/f5",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "F5 - QuickSave",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "42b9a056-2658-4d1c-ad1e-b536b4a229c7",
+                    "path": "<Keyboard>/f9",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "F9 - QuickLoad",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "1f5fdda0-aa0b-424e-af7c-23d68769b905",
+                    "path": "<Keyboard>/f",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "F - MoveObj",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "7f10a9e8-ed0f-4f26-9a62-7d65663e8ec3",
+                    "path": "<Keyboard>/c",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "C - Deffense",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
