@@ -40,7 +40,7 @@ namespace Assets.Scripts.UI.Widgets
 
         private void OnEnable()
         {
-            if (_isPlaying)
+            if (_playOnAwake)
                 Play();
         }
 

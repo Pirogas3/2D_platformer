@@ -8,7 +8,6 @@ using Assets.Scripts.UI;
 using Assets.Scripts.UI.Hud.Dialogue;
 using Assets.Scripts.UI.Hud.QucikInventory;
 using System.Collections;
-using UnityEditor.Animations;
 using UnityEngine;
 
 namespace Assets.Scripts.Creatures
@@ -29,8 +28,8 @@ namespace Assets.Scripts.Creatures
         //Анимации
         [Header("Animations")]
         [SerializeField] private ParticleSystem _hitParticles;
-        [SerializeField] private AnimatorController _heroUnarmed;
-        [SerializeField] private AnimatorController _heroArmed;
+        [SerializeField] private RuntimeAnimatorController _heroUnarmed;
+        [SerializeField] private RuntimeAnimatorController _heroArmed;
 
         [Header("Player Input")]
         [SerializeField] private UnityEngine.InputSystem.PlayerInput _playerInput;

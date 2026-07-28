@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 namespace Assets.Scripts.Components
@@ -25,6 +26,18 @@ namespace Assets.Scripts.Components
                 damageComponent.SetDamage(damage);
                 damageComponent.SetAttack(attack);
             }
+        }
+
+        public void SpawnDelayed(float delay)
+        {
+            StartCoroutine(SpawnRoutine(delay));
+        }
+
+        protected IEnumerator SpawnRoutine(float delay)
+        {
+            yield return new WaitForSeconds(delay);
+
+            Spawn();
         }
     }
 }

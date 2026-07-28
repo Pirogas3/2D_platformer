@@ -290,6 +290,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b2993be2ee2faea49897e2cf0a176972, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _exp: 35
   _vision: {fileID: 7719641871794575434}
   _attackRange: {fileID: 8480951757363248000}
   _patrol: {fileID: 0}

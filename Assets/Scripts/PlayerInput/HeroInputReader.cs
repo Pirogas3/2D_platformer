@@ -21,6 +21,9 @@ namespace Assets.Scripts.PlayerInput
 
         public void OnJump(InputAction.CallbackContext context)
         {
+            if (Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.DownArrow))
+                return;
+
             if (context.performed)
                 _hero.JumpRequest();
         }

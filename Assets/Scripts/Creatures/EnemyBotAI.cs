@@ -1,4 +1,5 @@
 using Assets.Scripts.Components;
+using Assets.Scripts.Utils;
 using System.Collections;
 using UnityEngine;
 
@@ -6,6 +7,10 @@ namespace Assets.Scripts.Creatures
 {
     public class EnemyBotAI : MonoBehaviour
     {
+        [Header("EXP")]
+        [SerializeField] protected int _exp = 50;
+
+        [Header("Parameters")]
         [SerializeField] protected LayerCheck _vision;
         [SerializeField] protected LayerCheck _attackRange;
         [SerializeField] protected Patrol _patrol;
@@ -129,6 +134,10 @@ namespace Assets.Scripts.Creatures
         {
             if (_currentCoroutine != null)
                 StopCoroutine(_currentCoroutine);
+
+            var addExp = _target.GetInterface<IAddExp>();
+            if (addExp != null)
+                addExp.AddExperience(_exp);
 
             _isDead = true;
             _animator.SetTrigger(IsDeadKey);
