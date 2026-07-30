@@ -126,9 +126,6 @@ namespace Assets.Scripts.Model
                 // Удаляем уничтоженные объекты
                 _playerData.EnviromentData.ApplyDestroyedObjects();
             }
-
-            // При загрузке новой сцены обновляем "начало сцены"
-            //SaveSceneStartState();
         }
 
         // Сохранить состояние на начало сцены

@@ -11,13 +11,13 @@ namespace Assets.Scripts.Model
         private const int AutoSaveCount = 3;
         private const string NextAutoSaveIndexKey = "NextAutoSaveIndex";
 
-        // Корневая папка сохранений: Documents/Treasure Hunters/
+        // Корневая папка сохранений: Documents/Golden Wake/
         public static string RootFolder
         {
             get
             {
                 string documents = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
-                string gameFolder = Path.Combine(documents, "Treasure Hunters");
+                string gameFolder = Path.Combine(documents, "Golden Wake");
                 if (!Directory.Exists(gameFolder))
                     Directory.CreateDirectory(gameFolder);
                 return gameFolder;

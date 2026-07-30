@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3206784506204670926}
   - component: {fileID: 2484922382211548199}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: StuckedSpawnPos
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -65,7 +65,7 @@ GameObject:
   - component: {fileID: 3105911794195584057}
   - component: {fileID: 6947489128948035986}
   - component: {fileID: 380667418858412712}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: SwordProjectile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -267,6 +267,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  _OnExitAction:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &4756360026200476577
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -322,6 +325,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _objectToDestroy: {fileID: 8810187064220961209}
+  _action:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &3105911794195584057
 MonoBehaviour:
   m_ObjectHideFlags: 0

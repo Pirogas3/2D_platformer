@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 8471475884894495341}
   - component: {fileID: 3804840445342721653}
   m_Layer: 14
-  m_Name: PerlProjectile
+  m_Name: TotemProjectile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -83,9 +83,9 @@ SpriteRenderer:
   m_SortingLayerID: -1473263023
   m_SortingLayer: -2
   m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: 06c63999dff7bf242afa1f5255259597, type: 3}
+  m_Sprite: {fileID: 21300000, guid: a962750c3ad4d8a4892b8851a7d86131, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_FlipX: 0
+  m_FlipX: 1
   m_FlipY: 0
   m_DrawMode: 0
   m_Size: {x: 0.5, y: 0.5}
@@ -109,7 +109,7 @@ MonoBehaviour:
   _clips:
   - name: Idle
     sprites:
-    - {fileID: 21300000, guid: 06c63999dff7bf242afa1f5255259597, type: 3}
+    - {fileID: 21300000, guid: a962750c3ad4d8a4892b8851a7d86131, type: 3}
     frameRate: 10
     loop: 0
     onComplete:
@@ -117,7 +117,7 @@ MonoBehaviour:
         m_Calls: []
   - name: Dest
     sprites:
-    - {fileID: 21300000, guid: 022f13587014011489520e39ef07e1a7, type: 3}
+    - {fileID: 21300000, guid: 2ee3b4095262d844ab89a39bdbdb2bde, type: 3}
     frameRate: 10
     loop: 0
     onComplete:
@@ -156,7 +156,7 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2161274784696385018}
-  m_BodyType: 0
+  m_BodyType: 1
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
@@ -324,7 +324,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1fedc3d1d583e0a4b971cc58a3affe54, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _speed: 0.15
+  _speed: 0.2
 --- !u!114 &7682904499994009077
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -338,7 +338,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _target: {fileID: 5545424090957217050}
-  _prefab: {fileID: 8759539343407755538, guid: 736c31182388e5043a2d9b1882a965b0, type: 3}
+  _prefab: {fileID: 6028669558774982237, guid: bdb22b91cb911484287fe506355d16dc, type: 3}
 --- !u!114 &8471475884894495341
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -352,7 +352,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _damage: 2
-  _attack: 0
+  _attack: 1
 --- !u!114 &3804840445342721653
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -365,5 +365,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55d9cc03cca24a94697a5df89e87f1ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _delay: 6
+  _delay: 5
   _destroyOnDisable: 0
