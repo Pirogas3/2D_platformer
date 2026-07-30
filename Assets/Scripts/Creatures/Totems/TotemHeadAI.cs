@@ -7,10 +7,8 @@ namespace Assets.Scripts.Creatures.Totems
     {
         [SerializeField] protected LayerCheck _vision;
         [SerializeField] protected SpawnListComponent _spawner;
-        [SerializeField] protected float _attackCooldown = 0.5f;
 
         protected Animator _animator;
-        protected bool _isDead = false;
 
         protected static readonly int Attacking = Animator.StringToHash("Attacking");
 
@@ -21,8 +19,6 @@ namespace Assets.Scripts.Creatures.Totems
 
         protected void Update()
         {
-            if (_isDead) return;
-
             if (_vision.IsTouchingLayer)
             {
                 _animator.SetBool(Attacking, true);

@@ -1,0 +1,67 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &7009136222536288592
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 636853382918033342, guid: fb8b12a13c63f59439237bc07ecd04c0, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 22100000, guid: d7286ce0548881e41bbe5caa2fefee78, type: 2}
+    - target: {fileID: 1928609419062179110, guid: fb8b12a13c63f59439237bc07ecd04c0, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 3.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1928609419062179110, guid: fb8b12a13c63f59439237bc07ecd04c0, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1928609419062179110, guid: fb8b12a13c63f59439237bc07ecd04c0, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1928609419062179110, guid: fb8b12a13c63f59439237bc07ecd04c0, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1928609419062179110, guid: fb8b12a13c63f59439237bc07ecd04c0, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1928609419062179110, guid: fb8b12a13c63f59439237bc07ecd04c0, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1928609419062179110, guid: fb8b12a13c63f59439237bc07ecd04c0, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1928609419062179110, guid: fb8b12a13c63f59439237bc07ecd04c0, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1928609419062179110, guid: fb8b12a13c63f59439237bc07ecd04c0, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1928609419062179110, guid: fb8b12a13c63f59439237bc07ecd04c0, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7105702507780906899, guid: fb8b12a13c63f59439237bc07ecd04c0, type: 3}
+      propertyPath: m_Name
+      value: TotemHeadRed (Mid) Variant
+      objectReference: {fileID: 0}
+    - target: {fileID: 7169754373192519929, guid: fb8b12a13c63f59439237bc07ecd04c0, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: a01329b5f12a5654382f771ab057a3c3, type: 3}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: fb8b12a13c63f59439237bc07ecd04c0, type: 3}

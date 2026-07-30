@@ -145,30 +145,22 @@ namespace Assets.Scripts.Creatures.Weapon
         }
 
         /// <summary>
-        /// Обычный метод нанесения урона через хитбокс, необязательно, но можно передать конкретный урон который надо нанести
+        /// Обычный метод нанесения урона через хитбокс
         /// </summary>
         /// <param name="damage">Конкретный переданный урон (необязателен)</param>
         /// <param name="attack">Конкретный переданный показатель атаки (необязателен)</param>
         public void Attack(int damage = 0, int attack = 0)
         {
-
             var targets = GetTargets();
             foreach (var target in targets)
             {
-                if (_damageComponent != null && damage == 0)
+                if (_damageComponent != null && damage != 0)
+                {
+                    _damageComponent.NewApplyDamage(target, damage, attack);
+                }
+                else if (_damageComponent != null)
                 {
                     _damageComponent.NewApplyDamage(target);
-                }
-                else
-                {
-                    // если DamageComponent не найден или передан конкретный урон, напрямую бьём по HealthComponent
-                    var health = target.GetComponent<HealthComponent>();
-                    if (health != null)
-                    {
-                        var calcDamage = DamageCalc.CalculateDamage(damage, attack, health.Defense);
-                        health.TakeDamage(calcDamage);
-                        Debug.Log($"Юнитом: {name} - нанесён урон равный = {calcDamage}");
-                    }
                 }
             }
         }
@@ -183,18 +175,7 @@ namespace Assets.Scripts.Creatures.Weapon
         {
             if (_damageComponent != null && damage == 0)
             {
-                _damageComponent.NewApplyDamage(target);
-            }
-            else
-            {
-                // если DamageComponent не найден или передан конкретный урон, напрямую бьём по HealthComponent
-                var health = target.GetComponent<HealthComponent>();
-                if (health != null)
-                {
-                    var calcDamage = DamageCalc.CalculateDamage(damage, attack, health.Defense);
-                    health.TakeDamage(calcDamage);
-                    Debug.Log($"Юнитом: {name} - нанесён урон равный = {calcDamage}");
-                }
+                _damageComponent.NewApplyDamage(target, damage, attack);
             }
         }
     }

@@ -1,3 +1,4 @@
+using Assets.Scripts.Creatures.Totems;
 using Assets.Scripts.Utils;
 using UnityEngine;
 
@@ -31,6 +32,29 @@ namespace Assets.Scripts.Components
                 var calcDamage = DamageCalc.CalculateDamage(_damage, Attack, healthComponent.Defense);
                 healthComponent.TakeDamage(calcDamage);
                 Debug.Log($"Юнитом: {name} - нанесён урон равный = {calcDamage}");
+            }
+
+            var totemGroup = target.GetComponent<TotemGroupAI>();
+            if (totemGroup != null)
+            {
+                totemGroup.DistributeDamage(_damage, Attack);
+            }
+        }
+
+        public void NewApplyDamage(GameObject target, int baseDamage, int attack)
+        {
+            var healthComponent = target.GetComponent<HealthComponent>();
+            if (healthComponent != null)
+            {
+                var calcDamage = DamageCalc.CalculateDamage(baseDamage, attack, healthComponent.Defense);
+                healthComponent.TakeDamage(calcDamage);
+                Debug.Log($"Юнитом: {name} - нанесён урон равный = {calcDamage}");
+            }
+
+            var totemGroup = target.GetComponent<TotemGroupAI>();
+            if (totemGroup != null)
+            {
+                totemGroup.DistributeDamage(baseDamage, attack);
             }
         }
 

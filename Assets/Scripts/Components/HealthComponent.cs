@@ -13,6 +13,7 @@ namespace Assets.Scripts.Components
         [SerializeField] private int _defense = 0;
 
         public virtual int Defense => _defense;
+        public virtual int Health => _health;
 
         public void SetDefense(int value) => _defense = value;
 
