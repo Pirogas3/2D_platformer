@@ -222,7 +222,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _vision: {fileID: 5502259131263771093}
   _spawner: {fileID: 5523516926588317935}
-  _attackCooldown: 1
 --- !u!114 &5523516926588317935
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -12,6 +12,12 @@ namespace Assets.Scripts.Creatures.Totems
         [SerializeField] protected List<HealthComponent> _heads = new List<HealthComponent>();
         [SerializeField] private UnityEvent _onDie;
 
+        private BoxCollider2D _collider;
+        private Vector2 _initialColliderSize;
+        private Vector2 _initialColliderOffset;
+        private int _initialHeadCount;
+
+
         protected void Awake()
         {
             // Если список не заполнен в инспекторе, находим дочерние объекты с HealthComponent
@@ -21,6 +27,15 @@ namespace Assets.Scripts.Creatures.Totems
                 // Сортировка по Y (сверху вниз) — предполагаем, что верхняя голова имеет больший Y
                 System.Array.Sort(heads, (a, b) => b.transform.position.y.CompareTo(a.transform.position.y));
                 _heads.AddRange(heads);
+            }
+
+            _collider = GetComponent<BoxCollider2D>();
+            if (_collider != null)
+            {
+                _initialColliderSize = _collider.size;
+                _initialColliderOffset = _collider.offset;
+                _initialHeadCount = _heads.Count;
+                UpdateColliderSize();
             }
         }
 
@@ -52,8 +67,41 @@ namespace Assets.Scripts.Creatures.Totems
                 if (target.Health <= 0)
                 {
                     _heads.Remove(target);
+                    UpdateColliderSize();
                 }
             }
+        }
+
+        private void UpdateColliderSize()
+        {
+            if (_collider == null || _initialHeadCount == 0) return;
+
+            int currentCount = _heads.Count;
+            if (currentCount == 0)
+            {
+                _collider.enabled = false;
+                return;
+            }
+
+            float ratio = (float)currentCount / _initialHeadCount;
+
+            // Новая высота
+            float newHeight = _initialColliderSize.y * ratio;
+
+            // Сохраняем нижнюю границу коллайдера неизменной
+            float lowerBound = _initialColliderOffset.y - _initialColliderSize.y / 2f;
+
+            // Новое смещение по Y
+            float newOffsetY = lowerBound + newHeight / 2f;
+
+            // Применяем изменения
+            Vector2 newSize = _collider.size;
+            newSize.y = newHeight;
+            _collider.size = newSize;
+
+            Vector2 newOffset = _collider.offset;
+            newOffset.y = newOffsetY;
+            _collider.offset = newOffset;
         }
     }
 }
