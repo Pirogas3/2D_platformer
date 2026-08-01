@@ -16,8 +16,19 @@ namespace Assets.Scripts.Creatures
 
         public override IEnumerator DoPatrol(Creature creature)
         {
+            // Проверяем, что массив существует и не пуст
             if (waypoints == null || waypoints.Length == 0)
                 yield break;
+
+            // Проверяем, что все точки назначены (не равны null)
+            foreach (var wp in waypoints)
+            {
+                if (wp == null)
+                {
+                    Debug.LogWarning($"SpotPatrol: один из waypoints не назначен! Патрулирование отключено.");
+                    yield break;
+                }
+            }
 
             int index = 0;
             while (true)

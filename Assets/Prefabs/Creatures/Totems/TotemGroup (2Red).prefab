@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 5776076898845025129}
   - component: {fileID: 5123488984919047190}
   - component: {fileID: 684022508076657845}
-  m_Layer: 12
+  m_Layer: 15
   m_Name: TotemGroup (2Red)
   m_TagString: Enemy
   m_Icon: {fileID: 0}

@@ -187,10 +187,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5c92044a6d09a044b8eff0bdd545ee1d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _followSpeed: 4
-  _checkRadius: 0.3
-  _checkOffset: {x: 0, y: 0.45}
-  _obstacleMask:
-    serializedVersion: 2
-    m_Bits: 7232
+  _followSpeed: 10
+  _mouseFollowSpeed: 20
   _dragGravityScale: 0

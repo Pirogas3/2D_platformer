@@ -43,11 +43,7 @@ namespace Assets.Scripts.Creatures
 
         public override void OnDie()
         {
-            if (_currentCoroutine != null)
-                StopCoroutine(_currentCoroutine);
-
-            _isDead = true;
-            _animator.SetTrigger(IsDeadKey);
+            base.OnDie();
             _particles.Spawn("Dead");
         }
     }

@@ -42,6 +42,14 @@ namespace Assets.Scripts.UI.Hud.Dialogue
             _container.SetActive(false);
         }
 
+        private void Update()
+        {
+            if (Input.GetKeyDown(KeyCode.Space) && _container.activeSelf)
+            {
+                OnClick();
+            }
+        }
+
         public void ShowDialog(DialogData data)
         {
             // Если диалог уже открыт или закрывается, не открываем новый

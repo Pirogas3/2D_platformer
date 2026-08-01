@@ -20,11 +20,9 @@ namespace Assets.Scripts.Creatures.Totems
 
         protected void Awake()
         {
-            // Если список не заполнен в инспекторе, находим дочерние объекты с HealthComponent
             if (_heads.Count == 0)
             {
                 var heads = GetComponentsInChildren<HealthComponent>();
-                // Сортировка по Y (сверху вниз) — предполагаем, что верхняя голова имеет больший Y
                 System.Array.Sort(heads, (a, b) => b.transform.position.y.CompareTo(a.transform.position.y));
                 _heads.AddRange(heads);
             }
@@ -49,7 +47,6 @@ namespace Assets.Scripts.Creatures.Totems
         {
             if (_heads.Count == 0) return;
 
-            // Ищем первую живую голову
             HealthComponent target = null;
             for (int i = 0; i < _heads.Count; i++)
             {

@@ -196,7 +196,7 @@ namespace Assets.Scripts.Creatures
 
         public virtual void TakeDamageFromSpikes()
         {
-            _animator.SetTrigger(Hit);
+            //_animator.SetTrigger(Hit);
             _rigidbody.velocity = new Vector2(_rigidbody.velocity.x, 0f);
             _rigidbody.AddForce(Vector2.up * _jumpPower, ForceMode2D.Impulse);
         }

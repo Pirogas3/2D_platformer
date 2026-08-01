@@ -8,9 +8,11 @@ namespace Assets.Scripts.PlayerInput
     public class HeroInputReader : MonoBehaviour
     {
         [SerializeField] private Hero _hero;
+        [SerializeField] private float _meleeAttackCooldown = 0.3f; // задержка между атаками
 
         private float _throwPressStartTime;
         private bool _isChargingThrow;
+        private float _lastAttackTime;
 
         public void OnMovement2D(InputAction.CallbackContext context)
         {
@@ -43,7 +45,13 @@ namespace Assets.Scripts.PlayerInput
                 // Если курсор над UI – игнорируем атаку
                 if (EventSystem.current != null && EventSystem.current.IsPointerOverGameObject())
                     return;
+
+                // Проверяем кулдаун
+                if (Time.time - _lastAttackTime < _meleeAttackCooldown)
+                    return;
+
                 _hero.Attack();
+                _lastAttackTime = Time.time;
             }
         }
 

@@ -1,6 +1,7 @@
 using Assets.Scripts.Components;
 using Assets.Scripts.Utils;
 using System.Collections;
+using Unity.VisualScripting;
 using UnityEngine;
 
 namespace Assets.Scripts.Creatures
@@ -17,6 +18,7 @@ namespace Assets.Scripts.Creatures
 
         [SerializeField] protected float _alarmDelay = 0.5f;
         [SerializeField] protected float _attackCooldown = 1f;
+        [SerializeField] protected float _stopDistance = 0.2f;
 
         protected Coroutine _currentCoroutine;
         protected GameObject _target;
@@ -117,7 +119,14 @@ namespace Assets.Scripts.Creatures
         {
             var direction = _target.transform.position - transform.position;
             direction.y = 0;
-            _creature.SetMovementDirection(direction.normalized);
+            if (Mathf.Abs(direction.x) < _stopDistance)
+            {
+                _creature.SetMovementDirection(Vector2.zero);
+            }
+            else
+            {
+                _creature.SetMovementDirection(direction.normalized);
+            }
         }
 
         public virtual void OnHeroInVision(GameObject target)
@@ -135,9 +144,18 @@ namespace Assets.Scripts.Creatures
             if (_currentCoroutine != null)
                 StopCoroutine(_currentCoroutine);
 
-            var addExp = _target.GetInterface<IAddExp>();
-            if (addExp != null)
-                addExp.AddExperience(_exp);
+            if (_target != null)
+            {
+                var addExp = _target.GetInterface<IAddExp>();
+                if (addExp != null)
+                    addExp.AddExperience(_exp);
+            }
+            else
+            {
+                Hero hero = FindObjectOfType<Hero>();
+                if (hero != null)
+                    hero.AddExperience(_exp);
+            }
 
             _isDead = true;
             _animator.SetTrigger(IsDeadKey);

@@ -5,10 +5,8 @@ namespace Assets.Scripts.Components
     public class DraggableObject : MonoBehaviour
     {
         [SerializeField] private float _followSpeed = 8f;
-        [SerializeField] private float _checkRadius = 0.3f;
-        [SerializeField] private Vector2 _checkOffset = Vector2.zero;
-        [SerializeField] private LayerMask _obstacleMask;
-        [SerializeField] private float _dragGravityScale = 0.1f; // гравитация во время перетаскивания
+        [SerializeField] private float _mouseFollowSpeed = 15f;
+        [SerializeField] private float _dragGravityScale = 0f;
 
         private Rigidbody2D _rb;
         private bool _isDragging = false;
@@ -38,42 +36,14 @@ namespace Assets.Scripts.Components
             _rb.gravityScale = _originalGravityScale;
         }
 
-        public void Drag(Vector2 targetPosition)
+        public void Drag(Vector2 targetPosition, bool useMouseSpeed = false)
         {
             if (!_isDragging) return;
-
-            Vector2 checkPos = (Vector2)transform.position + _checkOffset;
-            if (!IsPositionFree(targetPosition))
-            {
-                Vector2 targetX = new Vector2(targetPosition.x, transform.position.y);
-                if (IsPositionFree(targetX))
-                    targetPosition = targetX;
-                else
-                {
-                    Vector2 targetY = new Vector2(transform.position.x, targetPosition.y);
-                    if (IsPositionFree(targetY))
-                        targetPosition = targetY;
-                    else
-                        return;
-                }
-            }
-
-            Vector2 newPos = Vector2.MoveTowards(transform.position, targetPosition, _followSpeed * Time.deltaTime);
+            float speed = useMouseSpeed ? _mouseFollowSpeed : _followSpeed;
+            Vector2 newPos = Vector2.MoveTowards(transform.position, targetPosition, speed * Time.deltaTime);
             _rb.MovePosition(newPos);
         }
 
-        private bool IsPositionFree(Vector2 position)
-        {
-            Vector2 checkPos = position + _checkOffset;
-            Collider2D hit = Physics2D.OverlapCircle(checkPos, _checkRadius, _obstacleMask);
-            return hit == null;
-        }
-
-        private void OnDrawGizmosSelected()
-        {
-            Gizmos.color = Color.red;
-            Vector2 checkPos = (Vector2)transform.position + _checkOffset;
-            Gizmos.DrawWireSphere(checkPos, _checkRadius);
-        }
+        public bool IsDragging => _isDragging;
     }
 }

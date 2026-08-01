@@ -41,13 +41,17 @@ namespace Assets.Scripts.Creatures
         [SerializeField] private UsePotions _usePotions;
 
         [Header("Dragging")]
-        [SerializeField] private float _dragRadius = 1.5f;          // радиус поиска объекта
-        [SerializeField] private float _targetDragDistance = 1.2f;  // желаемое расстояние до объекта
-        [SerializeField] private LayerMask _draggableLayer;        // опционально, если хотите фильтровать по слою
+        [SerializeField] private float _dragRadius = 1.5f;
+        [SerializeField] private float _targetDragDistance = 1.2f;
+        [SerializeField] private LayerMask _draggableLayer;
+        [SerializeField] private float _mouseDragRadius = 3f; // радиус для захвата мышью
+        [SerializeField] private float _maxMouseDragDistance = 3f; // дальность телекинеза
 
         private DraggableObject _draggedObject;
-        private bool _isDragging = false;
-        private Vector2 _dragDirection; // направление от героя к объекту (нормализованное)
+        private bool _isDraggingWithKey = false;
+        private bool _isDraggingWithMouse = false;
+        private Vector2 _dragDirection;
+        private Vector2 _mouseDragOffset;
 
 
         private DialogBoxController _dialogBoxController;
@@ -132,19 +136,42 @@ namespace Assets.Scripts.Creatures
         {
             base.FixedUpdate();
 
-            // Обновление перетаскивания
-            if (_isDragging && _draggedObject != null)
+            // Обновление перетаскивания через клавишу
+            if (_isDraggingWithKey && _draggedObject != null)
             {
-                // Если герой оторвался от земли, прерываем перетаскивание
                 if (!IsGrounded())
                 {
                     StopDragging();
                     return;
                 }
-
-                // Целевая позиция = позиция героя + направление * желаемое расстояние
                 Vector2 targetPos = (Vector2)transform.position + _dragDirection * _targetDragDistance;
-                _draggedObject.Drag(targetPos);
+                _draggedObject.Drag(targetPos, false);
+            }
+        }
+
+        private void Update()
+        {
+            // Обработка мыши (телекинез)
+            if (Input.GetMouseButtonDown(0))
+            {
+                TryStartDragWithMouse();
+            }
+            else if (Input.GetMouseButton(0) && _isDraggingWithMouse && _draggedObject != null)
+            {
+                Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+                float distance = Vector2.Distance(transform.position, mousePos);
+                if (distance > _maxMouseDragDistance)
+                {
+                    StopDragWithMouse();
+                }
+                else
+                {
+                    _draggedObject.Drag(mousePos + _mouseDragOffset, true);
+                }
+            }
+            else if (Input.GetMouseButtonUp(0) || (_isDraggingWithMouse && !CanUseTelekinesis()))
+            {
+                StopDragWithMouse();
             }
         }
 
@@ -183,20 +210,17 @@ namespace Assets.Scripts.Creatures
             _gameSession.PlayerData.Hp = newHealth;
         }
 
-        public void StartDragging()
+        public void StartDragging() // через клавишу
         {
-            // Нельзя начать перетаскивание, если герой не на земле
-            if (!IsGrounded()) return;
-            if (_isDragging) return;
+            if (_isDraggingWithMouse) return;
+            if (_isDraggingWithKey) return;
 
-            // Поиск ближайшего перетаскиваемого объекта
             var draggables = FindObjectsOfType<DraggableObject>();
             DraggableObject closest = null;
             float minDist = float.MaxValue;
 
             foreach (var d in draggables)
             {
-                // Можно отфильтровать по слою, если нужно
                 if (_draggableLayer != 0 && ((1 << d.gameObject.layer) & _draggableLayer) == 0)
                     continue;
 
@@ -212,25 +236,67 @@ namespace Assets.Scripts.Creatures
             {
                 _draggedObject = closest;
                 _draggedObject.StartDrag();
-                _isDragging = true;
-
-                // Вычисляем направление от героя к объекту
-                Vector2 dir = (Vector2)closest.transform.position - (Vector2)transform.position;
-                _dragDirection = dir.normalized;
-
-                Debug.Log("Начат перетаскивание объекта");
+                _isDraggingWithKey = true;
+                _dragDirection = ((Vector2)closest.transform.position - (Vector2)transform.position).normalized;
             }
         }
 
-        public void StopDragging()
+        public void StopDragging() // через клавишу
         {
-            if (_isDragging && _draggedObject != null)
+            if (_isDraggingWithKey && _draggedObject != null)
             {
                 _draggedObject.StopDrag();
                 _draggedObject = null;
-                _isDragging = false;
-                Debug.Log("Перетаскивание остановлено");
+                _isDraggingWithKey = false;
             }
+        }
+
+        // Методы для мыши
+        public void TryStartDragWithMouse()
+        {
+            if (!CanUseTelekinesis()) return;
+            if (_isDraggingWithKey) return;
+            if (_isDraggingWithMouse) return;
+
+            Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            var draggables = FindObjectsOfType<DraggableObject>();
+            DraggableObject closest = null;
+            float minDist = float.MaxValue;
+
+            foreach (var d in draggables)
+            {
+                float dist = Vector2.Distance(mousePos, d.transform.position);
+                if (dist < _mouseDragRadius && dist < minDist)
+                {
+                    closest = d;
+                    minDist = dist;
+                }
+            }
+
+            if (closest != null)
+            {
+                _draggedObject = closest;
+                _draggedObject.StartDrag();
+                _isDraggingWithMouse = true;
+                _mouseDragOffset = (Vector2)_draggedObject.transform.position - mousePos;
+            }
+        }
+
+        public void StopDragWithMouse()
+        {
+            if (_isDraggingWithMouse && _draggedObject != null)
+            {
+                _draggedObject.StopDrag();
+                _draggedObject = null;
+                _isDraggingWithMouse = false;
+            }
+        }
+
+        private bool CanUseTelekinesis()
+        {
+            if (_gameSession == null) return false;
+            if (_gameSession.PlayerData.IsArmed) return false;
+            return _gameSession.PlayerData.PerkData.GetLevel("Telekinetic") > 0;
         }
 
         private void SpawnCoins()
@@ -299,7 +365,7 @@ namespace Assets.Scripts.Creatures
         public override void Attack()
         {
             if (!_gameSession.PlayerData.IsArmed) return;
-            _animator.SetTrigger(AttackKey);
+            base.Attack();
         }
 
         public override void PerformDamage()

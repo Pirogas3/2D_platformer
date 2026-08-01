@@ -301,9 +301,10 @@ MonoBehaviour:
   _exp: 50
   _vision: {fileID: 6783745402708885024}
   _attackRange: {fileID: 5682953621609710398}
-  _patrol: {fileID: 7121311215274575714}
+  _patrol: {fileID: 0}
   _alarmDelay: 0.5
   _attackCooldown: 1
+  _stopDistance: 0.2
 --- !u!114 &7121311215274575714
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -678,19 +679,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7002335117092344230, guid: e996ecfbceb5a234d8b087acc1dbe20b, type: 3}
       propertyPath: m_Size.x
-      value: 6.003697
+      value: 6.5763674
       objectReference: {fileID: 0}
     - target: {fileID: 7002335117092344230, guid: e996ecfbceb5a234d8b087acc1dbe20b, type: 3}
       propertyPath: m_Size.y
-      value: 3.3799348
+      value: 3.390347
       objectReference: {fileID: 0}
     - target: {fileID: 7002335117092344230, guid: e996ecfbceb5a234d8b087acc1dbe20b, type: 3}
       propertyPath: m_Offset.x
-      value: -2.0335095
+      value: -2.3198447
       objectReference: {fileID: 0}
     - target: {fileID: 7002335117092344230, guid: e996ecfbceb5a234d8b087acc1dbe20b, type: 3}
       propertyPath: m_Offset.y
-      value: 0.9399674
+      value: 0.9451735
       objectReference: {fileID: 0}
     - target: {fileID: 8712590336918708009, guid: e996ecfbceb5a234d8b087acc1dbe20b, type: 3}
       propertyPath: m_LocalPosition.x
