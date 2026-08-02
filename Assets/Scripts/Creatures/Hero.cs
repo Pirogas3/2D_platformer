@@ -118,7 +118,7 @@ namespace Assets.Scripts.Creatures
             ApplyPerks();
 
             if (_cameraZoom == null)
-                _cameraZoom = FindObjectOfType<CameraZoomPPU>();
+                _cameraZoom = Camera.main.GetComponent<CameraZoomPPU>();
 
             _dialogBoxController = FindObjectOfType<DialogBoxController>();
             if (_dialogBoxController != null)
