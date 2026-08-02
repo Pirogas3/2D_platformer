@@ -108,6 +108,9 @@ namespace Assets.Scripts.UI.Widgets
                 case "DoubleJump":
                     hero.AddExtraJump(1);
                     break;
+                case "JumpPower":
+                    _session.PlayerData.JumpPower += 1f;
+                    break;
             }
         }
 

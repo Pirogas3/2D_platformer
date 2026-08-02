@@ -158,7 +158,7 @@ namespace Assets.Scripts.Creatures
         private void PerformJump()
         {
             _rigidbody.velocity = new Vector2(_rigidbody.velocity.x, 0f);
-            _rigidbody.AddForce(Vector2.up * _jumpPower, ForceMode2D.Impulse);
+            _rigidbody.AddForce(Vector2.up * JumpPower, ForceMode2D.Impulse);
             if (_sounds != null) _sounds.PlayClip("Jump");
         }
 
@@ -198,7 +198,7 @@ namespace Assets.Scripts.Creatures
         {
             //_animator.SetTrigger(Hit);
             _rigidbody.velocity = new Vector2(_rigidbody.velocity.x, 0f);
-            _rigidbody.AddForce(Vector2.up * _jumpPower, ForceMode2D.Impulse);
+            _rigidbody.AddForce(Vector2.up * JumpPower, ForceMode2D.Impulse);
         }
 
         public virtual void TakeDamageFromExplosion()

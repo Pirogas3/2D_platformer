@@ -63,6 +63,8 @@ namespace Assets.Scripts.Model.Data
 
         [SerializeField] private float _moveSpeed = 3f;
         public float MoveSpeed { get => _moveSpeed; set => _moveSpeed = value; }
+        [SerializeField] private float _jumpPower = 9;
+        public float JumpPower { get => _jumpPower; set => _jumpPower = value; }
 
         [Header("Equip parameters")]
         // Правило вооружен или нет и сохраняем id предмета которым вооружен

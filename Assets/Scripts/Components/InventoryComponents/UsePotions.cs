@@ -39,7 +39,7 @@ namespace Assets.Scripts.Components.InventoryComponents
             }
 
             // Сохраняем базовую силу прыжка из Creature
-            _baseJumpPower = _hero.JumpPower;
+            _baseJumpPower = _gameSession.PlayerData.JumpPower;
         }
 
         /// <summary>
@@ -90,6 +90,8 @@ namespace Assets.Scripts.Components.InventoryComponents
 
         private void ApplyJumpBoost(int boostAmount, float duration, string itemId)
         {
+            _baseJumpPower = _gameSession.PlayerData.JumpPower;
+
             // Останавливаем предыдущий эффект, если был
             if (_jumpBoostCoroutine != null)
             {

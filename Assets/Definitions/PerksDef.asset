@@ -17,11 +17,15 @@ MonoBehaviour:
     _description: DoubleJump
     _cost: 85
     _maxLevel: 2
-  - _id: Jump
-    _description: Jump
-    _cost: 5
+  - _id: JumpPower
+    _description: JumpPower
+    _cost: 10
     _maxLevel: 1
   - _id: Telekinetic
     _description: Telekinetic
     _cost: 25
+    _maxLevel: 1
+  - _id: MultiShot
+    _description: MultiShot
+    _cost: 20
     _maxLevel: 1

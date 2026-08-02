@@ -72,6 +72,24 @@ namespace Assets.Scripts.Creatures
             }
         }
 
+        public override float JumpPower
+        {
+            get
+            {
+                if (_gameSession != null)
+                    return _gameSession.PlayerData.JumpPower;
+                else
+                    return base.JumpPower;
+            }
+            set
+            {
+                if (_gameSession != null)
+                    _gameSession.PlayerData.JumpPower = value;
+                else
+                    base.JumpPower = value;
+            }
+        }
+
         public int attack
         {
             get
@@ -385,7 +403,7 @@ namespace Assets.Scripts.Creatures
             }
             _lastThrowTime = Time.time;
 
-            if (holdTime > 1.0f && _gameSession.PlayerData.Inventory.Count(_gameSession.PlayerData.WeaponItemId) >= 4)
+            if (holdTime > 1.0f && _gameSession.PlayerData.Inventory.Count(_gameSession.PlayerData.WeaponItemId) >= 4 && _gameSession.PlayerData.PerkData.GetLevel("MultiShot") > 0)
             {
                 _gameSession.PlayerData.Inventory.Remove(_gameSession.PlayerData.WeaponItemId, 3);
                 StartCoroutine(MultiThrowAttack(holdTime));
