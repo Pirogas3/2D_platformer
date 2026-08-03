@@ -157,7 +157,7 @@ MonoBehaviour:
         m_Calls:
         - m_Target: {fileID: 0}
           m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-          m_MethodName: 
+          m_MethodName: SetActive
           m_Mode: 6
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -385,7 +385,8 @@ MonoBehaviour:
   _bound:
     _sentences:
     - You need a key to open the chest!
-    _keys: []
+    _keys:
+    - NeedAKey_Chest
   _external: {fileID: 0}
 --- !u!1001 &4752416788541946481
 PrefabInstance:
@@ -529,6 +530,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _amount: 335
+  _used: 0
 --- !u!114 &6653616332358390928 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2136286421303996129, guid: e5464eebf3f417b4ba6b5bc26f15eeaa, type: 3}

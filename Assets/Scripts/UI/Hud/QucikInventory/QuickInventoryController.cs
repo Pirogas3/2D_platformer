@@ -54,6 +54,7 @@ namespace Assets.Scripts.UI.Hud.QucikInventory
                 }
             }
 
+            LoadQuickSlotsFromData();
             RefreshUI();
             SelectSlot(0); // по умолчанию первый слот активен
         }
@@ -97,7 +98,7 @@ namespace Assets.Scripts.UI.Hud.QucikInventory
 
         private void OnInventoryChanged()
         {
-            // Проверяем, не изменилось ли количество предметов, на которые есть ссылки
+            bool changed = false;
             for (int i = 0; i < _quickItems.Length; i++)
             {
                 if (_quickItems[i] != null)
@@ -105,17 +106,21 @@ namespace Assets.Scripts.UI.Hud.QucikInventory
                     int currentCount = _inventory.Count(_quickItems[i].Id);
                     if (currentCount == 0)
                     {
-                        // Предмет полностью удалён из инвентаря – очищаем слот
                         _quickItems[i] = null;
+                        changed = true;
                     }
                     else if (currentCount != _quickItems[i].Value)
                     {
-                        // Обновляем количество
                         _quickItems[i].Value = currentCount;
+                        changed = true;
                     }
                 }
             }
-            RefreshUI();
+            if (changed)
+            {
+                RefreshUI();
+                SaveQuickSlotsToData();
+            }
         }
 
         public void RefreshUI()
@@ -128,7 +133,7 @@ namespace Assets.Scripts.UI.Hud.QucikInventory
                 else
                     _slots[i].Clear();
             }
-            // После обновления восстанавливаем выделение
+            
             SelectSlot(_selectedIndex);
         }
 
@@ -151,6 +156,7 @@ namespace Assets.Scripts.UI.Hud.QucikInventory
             _quickItems[slotIndex] = new InventoryItemData(itemData.Id, itemData.Value);
             RefreshUI();
             SelectSlot(_selectedIndex);
+            SaveQuickSlotsToData();
             return true;
         }
 
@@ -161,12 +167,51 @@ namespace Assets.Scripts.UI.Hud.QucikInventory
             _quickItems[slotIndex] = null;
             RefreshUI();
             SelectSlot(_selectedIndex);
+            SaveQuickSlotsToData();
         }
 
         public InventoryItemData GetSelectedSlotData()
         {
             if (_selectedIndex < 0 || _selectedIndex >= _quickItems.Length) return null;
             return _quickItems[_selectedIndex];
+        }
+
+        private void SaveQuickSlotsToData()
+        {
+            var quickSlots = _session.PlayerData.QuickSlots;
+            quickSlots.Clear();
+            for (int i = 0; i < _quickItems.Length; i++)
+            {
+                if (_quickItems[i] != null)
+                {
+                    quickSlots.Add(new QuickSlotData
+                    {
+                        ItemId = _quickItems[i].Id,
+                        Value = _quickItems[i].Value
+                    });
+                }
+                else
+                {
+                    quickSlots.Add(null);
+                }
+            }
+        }
+
+        private void LoadQuickSlotsFromData()
+        {
+            var quickSlots = _session.PlayerData.QuickSlots;
+            for (int i = 0; i < quickSlots.Count && i < _quickItems.Length; i++)
+            {
+                var slotData = quickSlots[i];
+                if (slotData != null && !string.IsNullOrEmpty(slotData.ItemId))
+                {
+                    _quickItems[i] = new InventoryItemData(slotData.ItemId, slotData.Value);
+                }
+                else
+                {
+                    _quickItems[i] = null;
+                }
+            }
         }
     }
 }

@@ -1,7 +1,8 @@
 ﻿using Assets.Scripts.Creatures;
-using System.Collections;
 using Assets.Scripts.Model;
 using Assets.Scripts.Model.Definitions;
+using Assets.Scripts.UI;
+using System.Collections;
 using UnityEngine;
 
 namespace Assets.Scripts.Components.InventoryComponents
@@ -78,6 +79,13 @@ namespace Assets.Scripts.Components.InventoryComponents
         {
             if (_gameSession.PlayerData.Hp == _gameSession.PlayerData.MaxHp)
             {
+                Vector3 pos1 = transform.position + Vector3.up * 1f;
+                FloatingTextManager.Instance.ShowFloatingText(
+                    "Full HP — potion not used!",
+                    pos1,
+                    Color.green,
+                    duration: 1.5f
+                );
                 Debug.Log("HP максимальное - зелье здоровья не использовано!");
                 return;
             }
@@ -85,6 +93,14 @@ namespace Assets.Scripts.Components.InventoryComponents
             _gameSession.PlayerData.Hp += healingAmount;
             _heroHealthComponent.SetHealth(_gameSession.PlayerData.Hp);
             _gameSession.PlayerData.Inventory.Remove(itemId, 1);
+
+            Vector3 pos2 = transform.position + Vector3.up * 1f;
+            FloatingTextManager.Instance.ShowFloatingText(
+                $"+ {healingAmount} HP",
+                pos2,
+                Color.green,
+                duration: 1.5f
+            );
             Debug.Log($"Вы выпили зелье! + {healingAmount} HP. Текущее здоровье: {_gameSession.PlayerData.Hp}");
         }
 
@@ -105,6 +121,13 @@ namespace Assets.Scripts.Components.InventoryComponents
             _gameSession.PlayerData.Inventory.Remove(itemId, 1);
             _jumpBoostCoroutine = StartCoroutine(JumpBoostRoutine(duration));
 
+            Vector3 pos = transform.position + Vector3.up * 1f;
+            FloatingTextManager.Instance.ShowFloatingText(
+                "Jump boosted!",
+                pos,
+                Color.green,
+                duration: 1.5f
+            );
             Debug.Log($"Применено зелье усиления прыжка +{boostAmount} на {duration} сек.");
         }
 

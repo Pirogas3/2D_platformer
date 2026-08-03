@@ -228,7 +228,8 @@ MonoBehaviour:
   _bound:
     _sentences:
     - You need a key.
-    _keys: []
+    _keys:
+    - NeedAKey_Door
   _external: {fileID: 0}
 --- !u!114 &5555221959257502755
 MonoBehaviour:
@@ -288,4 +289,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 47dd0186c12c4404fa5031b84017844e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _sceneName: 
+  _sceneName: SceneGame2

@@ -52,10 +52,9 @@ namespace Assets.Scripts.Creatures
         private bool _isDraggingWithMouse = false;
         private Vector2 _dragDirection;
         private Vector2 _mouseDragOffset;
-
-
         private DialogBoxController _dialogBoxController;
 
+        public int defenseBonus = 0;
         private int _meleeDamage = 0;
         private int _rangeDamage = 0;
         private float _throwCooldown = 0f;
@@ -106,7 +105,7 @@ namespace Assets.Scripts.Creatures
             get
             {
                 if (_gameSession != null)
-                    return _gameSession.PlayerData.Defense;
+                    return (_gameSession.PlayerData.Defense + defenseBonus);
                 else
                     return 0;
             }
@@ -434,6 +433,20 @@ namespace Assets.Scripts.Creatures
             }
         }
 
+        public void ShowMultiShotCharged()
+        {
+            if (FloatingTextManager.Instance != null)
+            {
+                Vector3 pos = transform.position + Vector3.up * 1f;
+                FloatingTextManager.Instance.ShowFloatingText(
+                    "Multi-shot ready!",
+                    pos,
+                    Color.yellow,
+                    duration: 1.5f
+                );
+            }
+        }
+
         public override void TakeDamageSimple()
         {
             base.TakeDamageSimple();
@@ -532,10 +545,9 @@ namespace Assets.Scripts.Creatures
         public void AddExperience(int amount)
         {
             _gameSession.PlayerData.LevelData.AddExp(amount);
-            // Показываем текст над головой
             if (FloatingTextManager.Instance != null)
             {
-                Vector3 pos = transform.position + Vector3.up * 1f; // над головой
+                Vector3 pos = transform.position + Vector3.up * 1f;
                 FloatingTextManager.Instance.ShowFloatingText($"+{amount} XP", pos, Color.yellow);
             }
         }

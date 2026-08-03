@@ -1,4 +1,5 @@
 ﻿using Assets.Scripts.Components;
+using Assets.Scripts.Props.Traps;
 using Assets.Scripts.Utils;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,11 +7,14 @@ using UnityEngine.Events;
 
 namespace Assets.Scripts.Creatures.Totems
 {
-    public class TotemGroupAI : MonoBehaviour
+    public class TotemGroupAI : MonoBehaviour, IDamageFromSpikes
     {
         [Header("Heads")]
         [SerializeField] protected List<HealthComponent> _heads = new List<HealthComponent>();
         [SerializeField] private UnityEvent _onDie;
+
+        [Header("Exp")] private int _exp = 20;
+        private int _headsCountInStart = 1;
 
         private BoxCollider2D _collider;
         private Vector2 _initialColliderSize;
@@ -25,6 +29,7 @@ namespace Assets.Scripts.Creatures.Totems
                 var heads = GetComponentsInChildren<HealthComponent>();
                 System.Array.Sort(heads, (a, b) => b.transform.position.y.CompareTo(a.transform.position.y));
                 _heads.AddRange(heads);
+                _headsCountInStart = _heads.Count;
             }
 
             _collider = GetComponent<BoxCollider2D>();
@@ -99,6 +104,15 @@ namespace Assets.Scripts.Creatures.Totems
             Vector2 newOffset = _collider.offset;
             newOffset.y = newOffsetY;
             _collider.offset = newOffset;
+        }
+
+        public void TakeDamageFromSpikes()
+        {
+            Hero hero = FindObjectOfType<Hero>();
+            if (hero != null)
+                hero.AddExperience(_exp * _headsCountInStart);
+
+            _onDie?.Invoke();
         }
     }
 }

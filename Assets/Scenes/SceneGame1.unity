@@ -1088,11 +1088,23 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6958666155233098242, guid: 433b7621dadcc76479fe5a6a56d3b448, type: 3}
+      propertyPath: _playerData._perkData._entries.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6958666155233098242, guid: 433b7621dadcc76479fe5a6a56d3b448, type: 3}
       propertyPath: _playerData._inventory._items.Array.data[0].Id
       value: Sword
       objectReference: {fileID: 0}
     - target: {fileID: 6958666155233098242, guid: 433b7621dadcc76479fe5a6a56d3b448, type: 3}
+      propertyPath: _playerData._perkData._entries.Array.data[0].Id
+      value: Shield
+      objectReference: {fileID: 0}
+    - target: {fileID: 6958666155233098242, guid: 433b7621dadcc76479fe5a6a56d3b448, type: 3}
       propertyPath: _playerData._inventory._items.Array.data[0].Value
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6958666155233098242, guid: 433b7621dadcc76479fe5a6a56d3b448, type: 3}
+      propertyPath: _playerData._perkData._entries.Array.data[0].Level
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -3633,10 +3645,6 @@ PrefabInstance:
     - target: {fileID: 6231778162479612881, guid: 23bd20173cf902a419727544eb06899a, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6394802292016472223, guid: 23bd20173cf902a419727544eb06899a, type: 3}
-      propertyPath: _sceneName
-      value: SceneGame2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -13914,10 +13922,6 @@ PrefabInstance:
       propertyPath: _clips.Array.data[1].onComplete.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1647258561}
-    - target: {fileID: 7192774264062594498, guid: 29437ab4cb17b104f9876f9303c1a263, type: 3}
-      propertyPath: _clips.Array.data[1].onComplete.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: SetActive
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

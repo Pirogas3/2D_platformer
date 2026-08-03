@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace Assets.Scripts.Model.Data
@@ -12,6 +13,9 @@ namespace Assets.Scripts.Model.Data
 
         [SerializeField] private InventoryRegistry _containerRegistry = new InventoryRegistry();
         public InventoryRegistry ContainerRegistry => _containerRegistry;
+
+        [SerializeField] private List<QuickSlotData> _quickSlots = new List<QuickSlotData>();
+        public List<QuickSlotData> QuickSlots => _quickSlots;
 
         [Header("Enviroment data")]
         [SerializeField] private EnviromentData _enviromentData = new EnviromentData();

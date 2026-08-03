@@ -20,6 +20,12 @@ namespace Assets.Scripts.Components
             spawner?.Component.Spawn(damage, attack);
         }
 
+        public void SpawnAsChild(string id)
+        {
+            var spawner = _spawners.FirstOrDefault(element => element.ID == id);
+            spawner?.Component.SpawnAsChild();
+        }
+
         [Serializable]
         public class SpawnData
         {

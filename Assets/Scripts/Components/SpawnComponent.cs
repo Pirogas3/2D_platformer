@@ -28,6 +28,16 @@ namespace Assets.Scripts.Components
             }
         }
 
+        [ContextMenu("Spawn As Child")]
+        public void SpawnAsChild()
+        {
+            Transform parent = _target != null ? _target : transform;
+            var instance = Instantiate(_prefab, parent);
+            instance.transform.localPosition = Vector3.zero;
+            instance.transform.localRotation = Quaternion.identity;
+            instance.transform.localScale = Vector3.one; // или сохранять масштаб родителя
+        }
+
         public void SpawnDelayed(float delay)
         {
             StartCoroutine(SpawnRoutine(delay));

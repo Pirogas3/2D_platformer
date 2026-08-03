@@ -29,3 +29,7 @@ MonoBehaviour:
     _description: MultiShot
     _cost: 20
     _maxLevel: 1
+  - _id: Shield
+    _description: Shield
+    _cost: 95
+    _maxLevel: 1
