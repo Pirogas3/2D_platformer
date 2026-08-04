@@ -15,12 +15,21 @@ namespace Assets.Scripts.Components
 
         public void Reload()
         {
-            if (_session != null)
-            {
-                _session.ResetToSceneStartState(); // ← восстановление начала сцены
-            }
+            if (_session == null) return;
 
-            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            // Проверяем, есть ли сохранения
+            string latestSlot = SaveManager.GetLatestSlot();
+            if (!string.IsNullOrEmpty(latestSlot))
+            {
+                // Загружаем последнее сохранение
+                _session.LoadFromSlot(latestSlot);
+            }
+            else
+            {
+                // Если сохранений нет, сбрасываем состояние до начала сцены и перезагружаем
+                _session.ResetToSceneStartState();
+                SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            }
         }
     }
 }
