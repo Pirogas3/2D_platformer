@@ -2849,6 +2849,10 @@ PrefabInstance:
       propertyPath: _levelText
       value: 
       objectReference: {fileID: 5489478823836531377}
+    - target: {fileID: 5281001875077635138, guid: f4dafdb59ed78ac4bb2b74620d564f8c, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 9720faa4d4afe1c4fbdc4f36c0ab17d1, type: 3}
     - target: {fileID: 6430784352616446326, guid: f4dafdb59ed78ac4bb2b74620d564f8c, type: 3}
       propertyPath: m_Name
       value: PerkCell (JumpPower)
@@ -2931,11 +2935,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8364791676325010622, guid: f4dafdb59ed78ac4bb2b74620d564f8c, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 87
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 8364791676325010622, guid: f4dafdb59ed78ac4bb2b74620d564f8c, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -3
+      value: -41
       objectReference: {fileID: 0}
     - target: {fileID: 8364791676325010622, guid: f4dafdb59ed78ac4bb2b74620d564f8c, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -3552,7 +3556,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7022347700907535118, guid: 472d1191f56661746843f33aab4cf80d, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 72.4
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7440141377679306409, guid: 472d1191f56661746843f33aab4cf80d, type: 3}
       propertyPath: m_AnchorMax.y
@@ -5220,6 +5224,10 @@ PrefabInstance:
       propertyPath: _levelText
       value: 
       objectReference: {fileID: 654016777136186402}
+    - target: {fileID: 5281001875077635138, guid: f4dafdb59ed78ac4bb2b74620d564f8c, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: df5bfe26104e8b54a844fd9ba612ca24, type: 3}
     - target: {fileID: 6430784352616446326, guid: f4dafdb59ed78ac4bb2b74620d564f8c, type: 3}
       propertyPath: m_Name
       value: PerkCell (Telekinetic)
@@ -5379,6 +5387,10 @@ PrefabInstance:
       propertyPath: _levelText
       value: 
       objectReference: {fileID: 4232856708047206390}
+    - target: {fileID: 5281001875077635138, guid: f4dafdb59ed78ac4bb2b74620d564f8c, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: ba536924860c7ec4aaf5f31ee7bb9d92, type: 3}
     - target: {fileID: 6430784352616446326, guid: f4dafdb59ed78ac4bb2b74620d564f8c, type: 3}
       propertyPath: m_Name
       value: PerkCell (MultiShot)
@@ -5538,6 +5550,10 @@ PrefabInstance:
       propertyPath: _levelText
       value: 
       objectReference: {fileID: 2462179229711351882}
+    - target: {fileID: 5281001875077635138, guid: f4dafdb59ed78ac4bb2b74620d564f8c, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: eff31382ecaa38c48ba76cfefa201d99, type: 3}
     - target: {fileID: 5665677322174210420, guid: f4dafdb59ed78ac4bb2b74620d564f8c, type: 3}
       propertyPath: m_text
       value: "\u041C\u0430\u043A\u0441"
@@ -5620,11 +5636,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8364791676325010622, guid: f4dafdb59ed78ac4bb2b74620d564f8c, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 9
+      value: 87
       objectReference: {fileID: 0}
     - target: {fileID: 8364791676325010622, guid: f4dafdb59ed78ac4bb2b74620d564f8c, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -41
+      value: -3
       objectReference: {fileID: 0}
     - target: {fileID: 8364791676325010622, guid: f4dafdb59ed78ac4bb2b74620d564f8c, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
