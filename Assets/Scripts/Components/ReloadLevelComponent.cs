@@ -1,4 +1,5 @@
 using Assets.Scripts.Model;
+using Assets.Scripts.Model.Data;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -17,19 +18,23 @@ namespace Assets.Scripts.Components
         {
             if (_session == null) return;
 
-            // Проверяем, есть ли сохранения
             string latestSlot = SaveManager.GetLatestSlot();
             if (!string.IsNullOrEmpty(latestSlot))
             {
-                // Загружаем последнее сохранение
-                _session.LoadFromSlot(latestSlot);
+                // Загружаем данные из файла, чтобы проверить сцену
+                var playerData = SaveManager.LoadFromFile<PlayerData>(latestSlot);
+                if (playerData != null && playerData.CurrentScene == SceneManager.GetActiveScene().name)
+                {
+                    // Сохранение сделано в текущей сцене — загружаем его
+                    _session.LoadFromSlot(latestSlot);
+                    return;
+                }
+                // Иначе сохранение из другой сцены — игнорируем
             }
-            else
-            {
-                // Если сохранений нет, сбрасываем состояние до начала сцены и перезагружаем
-                _session.ResetToSceneStartState();
-                SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-            }
+
+            // Если сохранения нет или оно не подходит — сбрасываем состояние и перезагружаем текущую сцену
+            _session.ResetToSceneStartState();
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
     }
 }
