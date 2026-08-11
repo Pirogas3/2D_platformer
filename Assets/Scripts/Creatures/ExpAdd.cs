@@ -6,7 +6,7 @@ namespace Assets.Scripts.Creatures
     public class ExpAdd : MonoBehaviour
     {
         [SerializeField] private int _amount = 10;
-        [SerializeField] private bool _used = false;
+        private bool _used = false;
 
         public void Add(GameObject go)
         {

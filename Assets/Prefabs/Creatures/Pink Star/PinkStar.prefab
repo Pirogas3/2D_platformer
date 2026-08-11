@@ -19,6 +19,7 @@ GameObject:
   - component: {fileID: 5719284665219830249}
   - component: {fileID: 5328340642516215910}
   - component: {fileID: 5061444633136760893}
+  - component: {fileID: 6702874544527139254}
   m_Layer: 10
   m_Name: PinkStar
   m_TagString: Enemy
@@ -237,6 +238,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 6702874544527139254}
+        m_TargetAssemblyTypeName: Assets.Scripts.Creatures.ExpAdd, Assembly-CSharp
+        m_MethodName: FindAndAdd
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   _onHeal:
     m_PersistentCalls:
       m_Calls: []
@@ -333,6 +346,19 @@ MonoBehaviour:
   _action:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &6702874544527139254
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 91416434419338391}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8eeba550ba7aa494d8806550ddab8b3a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _amount: 95
 --- !u!1001 &1600457059382898999
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -617,11 +643,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7002335117092344230, guid: e996ecfbceb5a234d8b087acc1dbe20b, type: 3}
       propertyPath: m_Size.x
-      value: 12.2173815
+      value: 9.723436
+      objectReference: {fileID: 0}
+    - target: {fileID: 7002335117092344230, guid: e996ecfbceb5a234d8b087acc1dbe20b, type: 3}
+      propertyPath: m_Size.y
+      value: 2.8959084
       objectReference: {fileID: 0}
     - target: {fileID: 7002335117092344230, guid: e996ecfbceb5a234d8b087acc1dbe20b, type: 3}
       propertyPath: m_Offset.x
-      value: -3.61869
+      value: -3.6576586
+      objectReference: {fileID: 0}
+    - target: {fileID: 7002335117092344230, guid: e996ecfbceb5a234d8b087acc1dbe20b, type: 3}
+      propertyPath: m_Offset.y
+      value: 0.6979542
       objectReference: {fileID: 0}
     - target: {fileID: 8712590336918708009, guid: e996ecfbceb5a234d8b087acc1dbe20b, type: 3}
       propertyPath: m_LocalPosition.x

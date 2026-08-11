@@ -13,7 +13,8 @@ namespace Assets.Scripts.Creatures.Totems
         [SerializeField] protected List<HealthComponent> _heads = new List<HealthComponent>();
         [SerializeField] private UnityEvent _onDie;
 
-        [Header("Exp")] private int _exp = 20;
+        [Header("Exp")]
+        [SerializeField] private int _exp = 20;
         private int _headsCountInStart = 1;
 
         private BoxCollider2D _collider;

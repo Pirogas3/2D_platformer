@@ -61,6 +61,7 @@ GameObject:
   - component: {fileID: 5868234135771331189}
   - component: {fileID: 5523516926588317935}
   - component: {fileID: 1205207434199984822}
+  - component: {fileID: 940706736432644577}
   m_Layer: 0
   m_Name: TotemHeadBlue (Top)
   m_TagString: Untagged
@@ -189,6 +190,18 @@ MonoBehaviour:
   _onDie:
     m_PersistentCalls:
       m_Calls:
+      - m_Target: {fileID: 940706736432644577}
+        m_TargetAssemblyTypeName: Assets.Scripts.Creatures.ExpAdd, Assembly-CSharp
+        m_MethodName: FindAndAdd
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Die
+          m_BoolArgument: 0
+        m_CallState: 2
       - m_Target: {fileID: 636853382918033342}
         m_TargetAssemblyTypeName: UnityEngine.Animator, UnityEngine
         m_MethodName: SetTrigger
@@ -253,6 +266,19 @@ MonoBehaviour:
   _action:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &940706736432644577
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7105702507780906899}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8eeba550ba7aa494d8806550ddab8b3a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _amount: 20
 --- !u!1001 &5349474112005577813
 PrefabInstance:
   m_ObjectHideFlags: 0
