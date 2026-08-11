@@ -3117,10 +3117,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: BluePotion
       objectReference: {fileID: 0}
-    - target: {fileID: 4900834301656130366, guid: b96e15854e63c7a418ce05fd342f0e72, type: 3}
-      propertyPath: _id
-      value: GoldKey
-      objectReference: {fileID: 0}
     - target: {fileID: 6263575487755842903, guid: b96e15854e63c7a418ce05fd342f0e72, type: 3}
       propertyPath: m_LocalPosition.x
       value: 14.713173
