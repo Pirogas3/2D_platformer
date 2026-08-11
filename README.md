@@ -91,8 +91,10 @@
 ![Тултип в инвентаре](Screenshots/screenshot_22.png)
 ![Тотем](Screenshots/screenshot_26.1.png)
 ![Тотем](Screenshots/screenshot_26.2.png)
-![Ракушка](Screenshots/screenshot_27.2.png)
-![Ракушка](Screenshots/screenshot_27.3.png)
+![4лвл](Screenshots/screenshot_30.1.png)
+![4лвл](Screenshots/screenshot_30.2.png)
+![4лвл](Screenshots/screenshot_31.png)
+![4лвл](Screenshots/screenshot_32.png)
 
 ## 🧱 Архитектура проекта
 
